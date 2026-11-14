@@ -74,7 +74,10 @@ export default defineConfig({
         },
         {
           label: 'Components',
-          items: [{ label: 'Button', slug: 'components/button' }]
+          items: [
+            { label: 'Button', slug: 'components/button' },
+            { label: 'Link', slug: 'components/link' }
+          ]
         },
         {
           label: 'Patterns',

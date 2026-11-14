@@ -1,0 +1,53 @@
+---
+title: Link
+description: Navigation link — distinct from button variant=link.
+---
+
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Use for navigation between pages or external URLs. For in-flow actions without leaving the page, prefer `pond-button variant="link"`.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Default">
+      <pond-text>
+        See the <pond-link href="/getting-started/fork/">fork guide</pond-link> to
+        adopt Pond.
+      </pond-text>
+    </PondDemo>
+  </Fragment>
+
+  <Fragment slot="code">
+
+```html
+<pond-link href="/docs">Read the docs</pond-link>
+<pond-link href="https://example.com" target="_blank">External</pond-link>
+```
+
+  </Fragment>
+
+  <Fragment slot="usage">
+
+**Do** use for navigation. **Don't** use for submit/cancel actions — use Button. `target="_blank"` gets `rel="noopener noreferrer"` by default.
+
+  </Fragment>
+
+  <Fragment slot="changelog">
+
+Unreleased — href, target, plain appearance.
+
+  </Fragment>
+
+  <Fragment slot="accessibility">
+
+Native `<a>` with visible focus ring. Plain mode: you own focus paint.
+
+  </Fragment>
+
+  <Fragment slot="patterns">
+
+Inline with Text; standalone “Learn more” after Section message.
+
+  </Fragment>
+</ComponentTabs>
