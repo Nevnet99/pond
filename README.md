@@ -1,6 +1,8 @@
 # Pond
 
-A WCAG AA–oriented design system built with [Lit](https://lit.dev). Brandable defaults, meant to be **forked** and owned — not only consumed from a registry.
+A WCAG AA–oriented design system built with [Lit](https://lit.dev). Brandable defaults, meant to be **forked** and owned.
+
+This upstream repo is **not** published to npm by its owner. Registry publishing is for forks that choose it. See [docs/forking.md](./docs/forking.md).
 
 ## Intent
 
@@ -27,4 +29,4 @@ See [GLOSSARY.md](./GLOSSARY.md). Planning continues on the Hearthstone hub map:
 
 ## License
 
-TBD.
+[MIT](./LICENSE)

@@ -28,7 +28,7 @@ Each Component page opens with a short header (name + one-line purpose), then **
 | Tab | Content |
 | --- | --- |
 | **Examples** | Canonical compositions / screenshots or embedded demos |
-| **Code** | Install/import snippets; deep API stays in Storybook/CEM with a link |
+| **Code** | Install/import / composition snippets; deep API stays in Storybook/CEM with a link |
 | **Usage** | When to use / when not; do–don’t |
 | **Changelog** | Component-scoped history (ties into release notes later) |
 | **Accessibility** | That component’s manual AA checklist + notes |
