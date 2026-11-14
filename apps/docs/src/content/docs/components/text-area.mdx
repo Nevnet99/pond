@@ -1,0 +1,44 @@
+---
+title: Text area
+description: Multi-line text input with label and error.
+---
+
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Multi-line entry aligned with Text field API.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Default">
+      <pond-text-area label="Description" style="max-width:24rem"></pond-text-area>
+    </PondDemo>
+  </Fragment>
+  <Fragment slot="code">
+
+```html
+<pond-text-area label="Description" rows="4"></pond-text-area>
+```
+
+  </Fragment>
+  <Fragment slot="usage">
+
+Use for longer free text. Prefer Text field for single-line.
+
+  </Fragment>
+  <Fragment slot="changelog">
+
+Unreleased — label, rows, invalid, plain.
+
+  </Fragment>
+  <Fragment slot="accessibility">
+
+Same label/error pattern as Text field. Plain mode: you own chrome.
+
+  </Fragment>
+  <Fragment slot="patterns">
+
+None yet.
+
+  </Fragment>
+</ComponentTabs>
