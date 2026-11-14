@@ -9,9 +9,9 @@ This upstream repo is **not** published to npm by its owner. Registry publishing
 - Accessible primitives and patterns (WCAG AA as a Definition of Done)
 - Sensible theme defaults that consumers can restyle (`appearance="plain"` reset)
 - Storybook for components, Astro Starlight for docs
-- Visual regression via Vitest Browser **in Docker** (pinned Playwright Ubuntu — see [docs/vrt.md](./docs/vrt.md))
+- Visual regression via Vitest Browser **in Docker** at **375 / 768 / 1280** (see [docs/vrt.md](./docs/vrt.md))
 - Biome format/lint (see [docs/biome.md](./docs/biome.md))
-- GitHub Actions releases that stay usable after a fork
+- Changes land via **pull requests**; GitHub Actions releases stay usable after a fork
 
 Component breadth aims at the scale of [Atlassian Design](https://atlassian.design/components) over time — Lit originals, not a React clone.
 
@@ -39,8 +39,12 @@ pnpm docs:dev
 # Browser unit/axe + VRT — requires Docker (not bare-metal host)
 pnpm test
 pnpm test:vrt
-pnpm test:vrt:update   # refresh baselines inside the image
+pnpm test:vrt:update   # refresh baselines (mobile/tablet/desktop) inside the image
 ```
+
+## Contributing
+
+Work on a branch and open a **pull request** against `master`. The PR template asks for DoD + VRT checklist. After visual changes, regenerate baselines with `pnpm test:vrt:update` and commit the `__screenshots__` files so CI can verify them.
 
 ## Docs
 

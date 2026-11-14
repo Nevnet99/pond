@@ -1,6 +1,11 @@
 import { playwright } from '@vitest/browser-playwright'
 import { defineConfig } from 'vitest/config'
 
+/**
+ * VRT config. Breakpoints (375 / 768 / 1280) are applied per assertion via
+ * `matchScreenshotAtViewports` — see `src/test/viewports.ts`.
+ * Default instance viewport is desktop; tests resize before each shot.
+ */
 export default defineConfig({
   test: {
     name: 'vrt',
@@ -9,7 +14,7 @@ export default defineConfig({
       enabled: true,
       provider: playwright(),
       headless: true,
-      screenshotFailures: false,
+      screenshotFailures: true,
       instances: [
         {
           browser: 'chromium',

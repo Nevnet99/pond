@@ -1,5 +1,6 @@
 import { fixture, html } from '@open-wc/testing-helpers'
-import { afterEach, beforeEach, describe, expect, it } from 'vitest'
+import { afterEach, beforeEach, describe, it } from 'vitest'
+import { matchScreenshotAtViewports } from '../test/match-screenshot.js'
 import './pond-button.js'
 import type { PondButton } from './pond-button.js'
 
@@ -20,16 +21,17 @@ describe('pond-button visual', () => {
     link.remove()
   })
 
-  it('matches primary button screenshot', async () => {
+  it('matches primary button at mobile / tablet / desktop', async () => {
     const el = await fixture<PondButton>(
       html`<pond-button variant="primary">Save changes</pond-button>`
     )
-    await expect.element(el).toMatchScreenshot('button-primary')
+    await matchScreenshotAtViewports('button-primary', el)
   })
 
-  it('matches all variants row', async () => {
+  it('matches all variants row at mobile / tablet / desktop', async () => {
     const el = await fixture<HTMLDivElement>(
-      html`<div style="display:flex;gap:12px;align-items:center;padding:8px;">
+      html`<div
+        style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:8px;">
         <pond-button variant="primary">Primary</pond-button>
         <pond-button variant="secondary">Secondary</pond-button>
         <pond-button variant="subtle">Subtle</pond-button>
@@ -37,6 +39,6 @@ describe('pond-button visual', () => {
         <pond-button variant="link">Link action</pond-button>
       </div>`
     )
-    await expect.element(el).toMatchScreenshot('button-variants')
+    await matchScreenshotAtViewports('button-variants', el)
   })
 })
