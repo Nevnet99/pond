@@ -16,7 +16,14 @@ Component breadth aims at the scale of [Atlassian Design](https://atlassian.desi
 
 Early. Architecture and roadmap are being charted; the catalog is not shipped yet.
 
-Planning lives on the Hearthstone hub map: Pond (personal realm).
+Planned layout (not scaffolded yet):
+
+- **NX** monorepo, **pnpm** via Corepack
+- `packages/tokens` (`@pond/tokens`) — Style Dictionary → `plain.css`
+- `packages/components` (`@pond/components`) — Lit
+- `apps/storybook`, `apps/docs` (Starlight)
+
+See [GLOSSARY.md](./GLOSSARY.md). Planning continues on the Hearthstone hub map: Pond.
 
 ## License
 
