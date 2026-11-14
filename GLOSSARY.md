@@ -13,7 +13,7 @@ A named design value (color, space, type, radius, motion, …) that components c
 _Avoid_: variable (alone), CSS variable (implementation detail), brand color
 
 **Theme**:
-A named set of token values applied by a consumer (for example default light, later dark). Pond ships themes; there is no separate “brand” layer in this vocabulary.
+A named set of token values applied by a consumer. Pond ships **light** and **dark** themes by default (CSS / `data-theme`); more themes can be added later. There is no separate “brand” layer in this vocabulary.
 _Avoid_: Brand, skin, stylesheet pack
 
 **Primitive**:
