@@ -1,0 +1,53 @@
+---
+title: Box
+description: Layout box with padding and background tokens.
+---
+
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Generic surface for padding and background. Prefer Stack / Inline for arranging children.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Padding + background">
+      <pond-stack gap="3">
+        <pond-box padding="4" background="surface">Surface · padding 4</pond-box>
+        <pond-box padding="6" background="subtle">Subtle · padding 6</pond-box>
+      </pond-stack>
+    </PondDemo>
+  </Fragment>
+
+  <Fragment slot="code">
+
+```html
+<pond-box padding="4" background="surface">Content</pond-box>
+<pond-box appearance="plain">Unstyled wrapper</pond-box>
+```
+
+  </Fragment>
+
+  <Fragment slot="usage">
+
+Use when you need a padded region or background. **Don't** use for vertical rhythm alone — use Stack. Prefer one background intent per region.
+
+  </Fragment>
+
+  <Fragment slot="changelog">
+
+Unreleased — padding scale `0–8`, backgrounds transparent / canvas / surface / subtle.
+
+  </Fragment>
+
+  <Fragment slot="accessibility">
+
+No interactive role. Plain mode: no Pond visual CSS — you own spacing and paint.
+
+  </Fragment>
+
+  <Fragment slot="patterns">
+
+Compose with Stack and Inline for page structure.
+
+  </Fragment>
+</ComponentTabs>

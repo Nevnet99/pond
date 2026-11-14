@@ -1,0 +1,56 @@
+---
+title: Stack
+description: Vertical layout with tokenized gap.
+---
+
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Stacks children in a column with consistent gap.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Gap 3">
+      <pond-stack gap="3">
+        <pond-text>First</pond-text>
+        <pond-text>Second</pond-text>
+        <pond-text>Third</pond-text>
+      </pond-stack>
+    </PondDemo>
+  </Fragment>
+
+  <Fragment slot="code">
+
+```html
+<pond-stack gap="4">
+  <pond-text>One</pond-text>
+  <pond-text>Two</pond-text>
+</pond-stack>
+```
+
+  </Fragment>
+
+  <Fragment slot="usage">
+
+Default layout for forms and sections. Use `align` for cross-axis. Prefer Inline for horizontal toolbars.
+
+  </Fragment>
+
+  <Fragment slot="changelog">
+
+Unreleased — vertical stack, gap scale, align stretch/start/center/end.
+
+  </Fragment>
+
+  <Fragment slot="accessibility">
+
+Presentational. Plain mode strips flex chrome.
+
+  </Fragment>
+
+  <Fragment slot="patterns">
+
+Pair with Box for section frames; Inline for action rows.
+
+  </Fragment>
+</ComponentTabs>
