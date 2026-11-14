@@ -25,7 +25,7 @@ Planned layout (not scaffolded yet):
 - `packages/components` (`@pond/components`) — Lit
 - `apps/storybook`, `apps/docs` (Starlight)
 
-See [GLOSSARY.md](./GLOSSARY.md) and [docs/component-dod.md](./docs/component-dod.md). Planning continues on the Hearthstone hub map: Pond.
+See [GLOSSARY.md](./GLOSSARY.md), [docs/component-dod.md](./docs/component-dod.md), and [docs/v1-slice.md](./docs/v1-slice.md). Planning continues on the Hearthstone hub map: Pond.
 
 ## License
 
