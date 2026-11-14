@@ -1,4 +1,4 @@
-@import '@pond/tokens/plain.css';
+@import "@pond/tokens/plain.css";
 
 /* Pond docs chrome — demos + Atlassian-like component tabs */
 :root {
@@ -42,7 +42,8 @@ pond-heading:not(:defined) {
  * child after the first. `.not-content` on the figure opts out; this reset
  * is belt-and-suspenders for slotted custom elements.
  */
-.pond-demo.not-content :is(pond-button, pond-text, pond-heading, div, p, figure),
+.pond-demo.not-content
+  :is(pond-button, pond-text, pond-heading, div, p, figure),
 .pond-doc-tabs.not-content :is(pond-button, pond-text, pond-heading) {
   margin-block: 0;
 }
@@ -85,7 +86,7 @@ pond-heading:not(:defined) {
   color: var(--pond-color-fg-default, inherit);
 }
 
-.pond-doc-tabs__tab[aria-selected='true'] {
+.pond-doc-tabs__tab[aria-selected="true"] {
   color: var(--pond-color-fg-default, inherit);
   border-bottom-color: var(--pond-docs-tab-active);
 }

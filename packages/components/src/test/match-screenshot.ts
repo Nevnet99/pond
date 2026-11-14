@@ -1,5 +1,5 @@
-import { page } from 'vitest/browser'
 import { expect } from 'vitest'
+import { page } from 'vitest/browser'
 import { VRT_VIEWPORTS, type VrtViewport } from './viewports.js'
 
 type ScreenshotTarget = Parameters<typeof expect.element>[0]

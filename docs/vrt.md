@@ -20,11 +20,11 @@ Playwright only officially supports specific Linux distros (and macOS/Windows fo
 
 **Rule:** generate, update, and assert baselines only inside the pinned Playwright Ubuntu image — the same image CI uses.
 
-| Surface              | How                                                                     |
-| -------------------- | ----------------------------------------------------------------------- |
-| Local                | `pnpm test:vrt` → Docker (`mcr.microsoft.com/playwright:v1.58.2-jammy`) |
-| Update baselines     | `pnpm test:vrt:update`                                                  |
-| Unit / axe (browser) | `pnpm test:browser` → same image                                        |
+| Surface              | How                                                                              |
+| -------------------- | -------------------------------------------------------------------------------- |
+| Local                | `pnpm test:vrt` → Docker (`mcr.microsoft.com/playwright:v1.58.2-jammy`)          |
+| Update baselines     | `pnpm test:vrt:update`                                                           |
+| Unit / axe (browser) | `pnpm test:browser` → same image                                                 |
 | CI                   | Job `browser` in `.github/workflows/ci.yml` (same image); must stay green on PRs |
 
 Do **not** commit baselines from bare-metal host runs.
