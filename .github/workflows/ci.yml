@@ -75,5 +75,15 @@ jobs:
       - name: Unit / a11y (browser)
         run: pnpm test:browser:native
 
-      - name: VRT
+      - name: VRT (mobile 375 / tablet 768 / desktop 1280)
         run: pnpm test:vrt:native
+
+      - name: Upload VRT artifacts on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vrt-screenshots
+          path: |
+            packages/components/src/**/__screenshots__/**
+            packages/components/**/__screenshots__/**
+          if-no-files-found: ignore
