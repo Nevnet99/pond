@@ -28,6 +28,10 @@ _Avoid_: widget, control (unless talking about form controls specifically)
 A documented shadow-tree style hook exposed for theming, corresponding to CSS `::part()`. Content projection uses slots; branding docs prefer Part for style hooks.
 _Avoid_: slot (for styling), CSS shadow pierce, deep selector
 
+**Plain** (reset):
+A Component presentation mode via `appearance="plain"` that keeps markup, slots, Part names, behavior, and a11y semantics, but applies **no Pond visual CSS**. Consumers own all paint, including focus. Every shipped Component must support it.
+_Avoid_: unstyled package (separate package), headless (implies a different library), naked (slang)
+
 **Pattern**:
 A documented composition of Primitives and/or Components that solves a recurring UI job (for example an empty state). Patterns are guidance first; they are not required to be their own Lit packages in v1.
 _Avoid_: Recipe, template, example (examples illustrate; Patterns prescribe)
