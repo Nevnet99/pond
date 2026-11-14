@@ -1,0 +1,30 @@
+{
+  "name": "@pond/components",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/components/src",
+  "projectType": "library",
+  "tags": ["scope:components"],
+  "targets": {
+    "build": {
+      "executor": "nx:run-script",
+      "options": { "script": "build" },
+      "outputs": ["{projectRoot}/dist"]
+    },
+    "typecheck": {
+      "executor": "nx:run-script",
+      "options": { "script": "typecheck" }
+    },
+    "test": {
+      "executor": "nx:run-script",
+      "options": { "script": "test" }
+    },
+    "test:vrt": {
+      "executor": "nx:run-script",
+      "options": { "script": "test:vrt" }
+    },
+    "cem": {
+      "executor": "nx:run-script",
+      "options": { "script": "cem" }
+    }
+  }
+}

@@ -7,25 +7,49 @@ This upstream repo is **not** published to npm by its owner. Registry publishing
 ## Intent
 
 - Accessible primitives and patterns (WCAG AA as a Definition of Done)
-- Sensible theme defaults that consumers can restyle
+- Sensible theme defaults that consumers can restyle (`appearance="plain"` reset)
 - Storybook for components, Astro Starlight for docs
-- Visual regression via Vitest
+- Visual regression via Vitest Browser **in Docker** (pinned Playwright Ubuntu — see [docs/vrt.md](./docs/vrt.md))
+- Biome format/lint (see [docs/biome.md](./docs/biome.md))
 - GitHub Actions releases that stay usable after a fork
 
 Component breadth aims at the scale of [Atlassian Design](https://atlassian.design/components) over time — Lit originals, not a React clone.
 
-## Status
+## Monorepo
 
-Early. Architecture and roadmap are being charted; the catalog is not shipped yet.
+| Path                  | Package            | Role                                        |
+| --------------------- | ------------------ | ------------------------------------------- |
+| `packages/tokens`     | `@pond/tokens`     | Style Dictionary → `plain.css` (`--pond-*`) |
+| `packages/components` | `@pond/components` | Lit primitives / components                 |
+| `apps/storybook`      | `@pond/storybook`  | Component workbench                         |
+| `apps/docs`           | `@pond/docs`       | Starlight docs                              |
 
-Planned layout (not scaffolded yet):
+NX + **pnpm** (`packageManager` field). Prefer Corepack when available: `corepack enable && corepack prepare`.
 
-- **NX** monorepo, **pnpm** via Corepack
-- `packages/tokens` (`@pond/tokens`) — Style Dictionary → `plain.css`
-- `packages/components` (`@pond/components`) — Lit
-- `apps/storybook`, `apps/docs` (Starlight)
+## Commands
 
-See [GLOSSARY.md](./GLOSSARY.md), [docs/component-dod.md](./docs/component-dod.md), and [docs/v1-slice.md](./docs/v1-slice.md). Planning continues on the Hearthstone hub map: Pond.
+```bash
+pnpm install
+pnpm build
+pnpm lint
+pnpm typecheck
+pnpm storybook
+pnpm docs:dev
+
+# Browser unit/axe + VRT — requires Docker (not bare-metal host)
+pnpm test
+pnpm test:vrt
+pnpm test:vrt:update   # refresh baselines inside the image
+```
+
+## Docs
+
+- [GLOSSARY.md](./GLOSSARY.md)
+- [docs/component-dod.md](./docs/component-dod.md)
+- [docs/v1-slice.md](./docs/v1-slice.md)
+- [docs/vrt.md](./docs/vrt.md)
+- [docs/accessibility.md](./docs/accessibility.md)
+- [docs/forking.md](./docs/forking.md)
 
 ## License
 

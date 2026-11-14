@@ -1,0 +1,22 @@
+{
+  "name": "@pond/storybook",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/storybook",
+  "projectType": "application",
+  "tags": ["scope:storybook"],
+  "targets": {
+    "serve": {
+      "executor": "nx:run-script",
+      "options": { "script": "serve" }
+    },
+    "build": {
+      "executor": "nx:run-script",
+      "options": { "script": "build" },
+      "outputs": ["{projectRoot}/storybook-static"]
+    },
+    "typecheck": {
+      "executor": "nx:run-script",
+      "options": { "script": "typecheck" }
+    }
+  }
+}

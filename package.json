@@ -1,0 +1,42 @@
+{
+  "name": "pond",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Fork-first Lit design system — WCAG AA, brandable tokens, Storybook, Starlight",
+  "type": "module",
+  "packageManager": "pnpm@10.34.9",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "prepare": "pnpm --filter @pond/tokens build",
+    "build": "nx run-many -t build",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
+    "typecheck": "nx run-many -t typecheck",
+    "test": "pnpm test:browser",
+    "test:browser": "bash scripts/browser-in-docker.sh @pond/components:test",
+    "test:browser:native": "nx run @pond/components:test",
+    "test:vrt": "bash scripts/browser-in-docker.sh @pond/components:test:vrt",
+    "test:vrt:update": "bash scripts/browser-in-docker.sh @pond/components:test:vrt -- --update",
+    "test:vrt:native": "nx run @pond/components:test:vrt",
+    "storybook": "nx run @pond/storybook:serve",
+    "docs:dev": "nx run @pond/docs:dev",
+    "cem": "nx run @pond/components:cem",
+    "ci": "pnpm lint && pnpm typecheck && pnpm build"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.6.7",
+    "@nx/js": "24.0.6",
+    "nx": "24.0.6",
+    "typescript": "5.9.3"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "nx",
+      "rs-module-lexer"
+    ]
+  }
+}

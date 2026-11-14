@@ -1,0 +1,14 @@
+# Browser tests + VRT must run in this image locally and in CI.
+# Host OS (Arch/Garuda/macOS) is not a Playwright baseline target.
+services:
+  browser:
+    image: mcr.microsoft.com/playwright:v1.58.2-jammy
+    working_dir: /work
+    volumes:
+      - .:/work
+    environment:
+      # Image already ships Chromium at the Playwright default path.
+      PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
+    # Override at run time, e.g.:
+    #   docker compose run --rm browser pnpm exec nx run @pond/components:test:vrt
+    command: ["pnpm", "exec", "nx", "run", "@pond/components:test:vrt"]

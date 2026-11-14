@@ -1,0 +1,22 @@
+{
+  "name": "@pond/tokens",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Pond design tokens — Style Dictionary → plain.css",
+  "type": "module",
+  "exports": {
+    ".": "./css/plain.css",
+    "./plain.css": "./css/plain.css",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "css"
+  ],
+  "scripts": {
+    "build": "node ./scripts/build.mjs",
+    "typecheck": "node -e \"process.exit(0)\""
+  },
+  "devDependencies": {
+    "style-dictionary": "5.8.0"
+  }
+}

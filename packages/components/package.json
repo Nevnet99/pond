@@ -1,0 +1,42 @@
+{
+  "name": "@pond/components",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Pond Lit primitives and components",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "custom-elements.json"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "cem": "cem analyze --config custom-elements-manifest.config.js",
+    "test": "vitest run --config vitest.config.ts",
+    "test:vrt": "vitest run --config vitest.vrt.config.ts",
+    "test:watch": "vitest --config vitest.config.ts"
+  },
+  "dependencies": {
+    "@pond/tokens": "workspace:*",
+    "lit": "3.3.3"
+  },
+  "devDependencies": {
+    "@custom-elements-manifest/analyzer": "0.11.0",
+    "@open-wc/testing-helpers": "3.0.1",
+    "@storybook/web-components-vite": "10.6.7",
+    "@vitest/browser": "5.1.0",
+    "@vitest/browser-playwright": "5.1.0",
+    "axe-core": "4.14.0",
+    "playwright": "1.58.2",
+    "typescript": "5.9.3",
+    "vitest": "5.1.0",
+    "vitest-browser-lit": "0.1.0"
+  }
+}

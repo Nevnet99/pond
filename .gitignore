@@ -1,4 +1,5 @@
 node_modules/
+.pnpm-store/
 dist/
 .DS_Store
 *.local
@@ -9,3 +10,14 @@ dist/
 coverage/
 playwright-report/
 test-results/
+storybook-static/
+.astro/
+.nx/
+*.tsbuildinfo
+packages/tokens/css/plain.css
+packages/components/custom-elements.json
+# Vitest browser VRT — commit references under **/__screenshots__/; ignore diffs
+**/__screenshots__/**/*-diff-*
+**/__screenshots__/**/*-actual-*
+**/__screenshots__/**/*-new-*
+packages/components/.vitest/

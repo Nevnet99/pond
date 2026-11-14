@@ -1,0 +1,22 @@
+{
+  "name": "@pond/docs",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/docs/src",
+  "projectType": "application",
+  "tags": ["scope:docs"],
+  "targets": {
+    "dev": {
+      "executor": "nx:run-script",
+      "options": { "script": "dev" }
+    },
+    "build": {
+      "executor": "nx:run-script",
+      "options": { "script": "build" },
+      "outputs": ["{projectRoot}/dist"]
+    },
+    "typecheck": {
+      "executor": "nx:run-script",
+      "options": { "script": "typecheck" }
+    }
+  }
+}

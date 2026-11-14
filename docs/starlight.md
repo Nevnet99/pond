@@ -4,37 +4,37 @@ Pond’s narrative documentation site (`apps/docs`).
 
 ## Role vs Storybook
 
-| Surface | Job |
-| --- | --- |
+| Surface       | Job                                                                             |
+| ------------- | ------------------------------------------------------------------------------- |
 | **Starlight** | Get started, theming, contributing, Patterns, and per-component narrative pages |
-| **Storybook** | Live states, controls, CEM-backed API |
+| **Storybook** | Live states, controls, CEM-backed API                                           |
 
 Starlight does not re-host every Storybook control. Component pages **link** to Storybook for interactive playgrounds where useful.
 
 ## Site IA (sidebar)
 
-1. Getting started  
-2. Theming (tokens, `--pond-*`, light / dark)  
-3. Primitives  
-4. Components  
-5. Patterns  
-6. Accessibility  
-7. Contributing / forking  
+1. Getting started
+2. Theming (tokens, `--pond-*`, light / dark)
+3. Primitives
+4. Components
+5. Patterns
+6. Accessibility
+7. Contributing / forking
 
 ## Component page shape (Atlassian-like)
 
-Each Component page opens with a short header (name + one-line purpose), then **tabs**:
+Each Component page opens with a short header (name + one-line purpose), then the same six sections as atlassian.design tabs:
 
-| Tab | Content |
-| --- | --- |
-| **Examples** | Canonical compositions / screenshots or embedded demos |
-| **Code** | Install/import / composition snippets; deep API stays in Storybook/CEM with a link |
-| **Usage** | When to use / when not; do–don’t |
-| **Changelog** | Component-scoped history (ties into release notes later) |
-| **Accessibility** | That component’s manual AA checklist + notes |
-| **Patterns** | Related Patterns that use this Component (or “none yet”) |
+| Section           | Content                                                                            |
+| ----------------- | ---------------------------------------------------------------------------------- |
+| **Examples**      | Canonical compositions / screenshots or embedded demos                             |
+| **Code**          | Install/import / composition snippets; deep API stays in Storybook/CEM with a link |
+| **Usage**         | When to use / when not; do–don’t                                                   |
+| **Changelog**     | Component-scoped history (ties into release notes later)                           |
+| **Accessibility** | That component’s manual AA checklist + notes                                       |
+| **Patterns**      | Related Patterns that use this Component (or “none yet”)                           |
 
-Primitives may use a thinner tab set if some tabs don’t apply.
+Bootstrap ships these as Markdown `##` headings. Starlight `<Tabs>` can return once MDX + Astro 7 native bindings are stable in CI.
 
 ## Theme
 

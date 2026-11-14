@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "types": ["vite/client"]
+  },
+  "include": [
+    ".storybook/**/*.ts",
+    "../../packages/components/src/**/*.stories.ts"
+  ]
+}

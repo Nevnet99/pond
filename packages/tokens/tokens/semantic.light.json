@@ -1,0 +1,29 @@
+{
+  "color": {
+    "bg": {
+      "canvas": { "value": "{color.gray.0}" },
+      "surface": { "value": "{color.gray.50}" },
+      "subtle": { "value": "{color.gray.100}" },
+      "inverse": { "value": "{color.gray.900}" }
+    },
+    "fg": {
+      "default": { "value": "{color.gray.900}" },
+      "muted": { "value": "{color.gray.400}" },
+      "on-accent": { "value": "{color.gray.0}" }
+    },
+    "border": {
+      "default": { "value": "{color.gray.200}" },
+      "strong": { "value": "{color.gray.400}" }
+    },
+    "accent": {
+      "default": { "value": "{color.teal.500}" },
+      "hover": { "value": "{color.teal.600}" }
+    },
+    "danger": {
+      "default": { "value": "{color.red.500}" }
+    },
+    "focus": {
+      "ring": { "value": "{color.teal.500}" }
+    }
+  }
+}
