@@ -16,7 +16,9 @@
       "600": { "value": "#147f74" }
     },
     "red": {
-      "500": { "value": "#d64545" }
+      "500": { "value": "#d64545" },
+      "600": { "value": "#b53737" },
+      "100": { "value": "#fde8e8" }
     }
   },
   "space": {
@@ -39,23 +41,41 @@
       },
       "display": {
         "value": "\"IBM Plex Sans\", \"Segoe UI\", system-ui, sans-serif"
+      },
+      "mono": {
+        "value": "\"IBM Plex Mono\", \"SFMono-Regular\", ui-monospace, monospace"
       }
     },
     "size": {
-      "sm": { "value": "0.875rem" },
-      "md": { "value": "1rem" },
-      "lg": { "value": "1.25rem" },
-      "xl": { "value": "1.75rem" },
-      "2xl": { "value": "2.25rem" }
+      "xs": { "value": "0.75rem", "comment": "12px — captions, meta" },
+      "sm": {
+        "value": "0.875rem",
+        "comment": "14px — secondary body, helpers"
+      },
+      "md": { "value": "1rem", "comment": "16px — body default (base)" },
+      "lg": { "value": "1.125rem", "comment": "18px — lead / large body" },
+      "xl": { "value": "1.25rem", "comment": "20px — h6 / compact titles" },
+      "2xl": { "value": "1.5rem", "comment": "24px — h5" },
+      "3xl": { "value": "1.875rem", "comment": "30px — h4 / h3" },
+      "4xl": { "value": "2.25rem", "comment": "36px — h2" },
+      "5xl": { "value": "3rem", "comment": "48px — h1 / page title" }
     },
     "weight": {
       "regular": { "value": "400" },
       "medium": { "value": "500" },
+      "semibold": { "value": "600" },
       "bold": { "value": "700" }
     },
     "line": {
-      "tight": { "value": "1.25" },
-      "normal": { "value": "1.5" }
+      "tight": { "value": "1.2", "comment": "display / large headings" },
+      "snug": { "value": "1.35", "comment": "small headings" },
+      "normal": { "value": "1.5", "comment": "body" },
+      "relaxed": { "value": "1.65", "comment": "long-form reading" }
+    },
+    "tracking": {
+      "tight": { "value": "-0.02em", "comment": "large display" },
+      "normal": { "value": "0" },
+      "wide": { "value": "0.04em", "comment": "eyebrows / overlines" }
     }
   },
   "motion": {

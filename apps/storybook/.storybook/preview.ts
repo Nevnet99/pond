@@ -1,5 +1,5 @@
 import type { Preview } from '@storybook/web-components-vite'
-import '@pond/tokens/plain.css'
+import '../../../packages/tokens/css/plain.css'
 
 const preview: Preview = {
   globalTypes: {

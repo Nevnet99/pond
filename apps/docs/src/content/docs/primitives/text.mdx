@@ -1,0 +1,62 @@
+---
+title: Text
+description: Body text on the Pond type scale.
+---
+
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Body copy for product UI. Sizes map to the type scale (`xs`–`xl`).
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Type scale">
+      <div class="pond-demo__stack">
+        <pond-text size="xs">xs — captions, meta, timestamps</pond-text>
+        <pond-text size="sm">sm — secondary body, helpers</pond-text>
+        <pond-text size="md">md — default body copy</pond-text>
+        <pond-text size="lg">lg — lead / intro paragraphs</pond-text>
+        <pond-text size="xl">xl — compact title-as-text</pond-text>
+        <pond-text size="sm" muted>
+          Muted helper on the sm step
+        </pond-text>
+      </div>
+    </PondDemo>
+  </Fragment>
+
+  <Fragment slot="code">
+
+```html
+<pond-text size="xs">Caption</pond-text>
+<pond-text size="sm" muted>Helper</pond-text>
+<pond-text>Body (md)</pond-text>
+<pond-text size="lg">Lead paragraph</pond-text>
+<pond-text size="xl">Compact title-as-text</pond-text>
+```
+
+  </Fragment>
+
+  <Fragment slot="usage">
+
+Use for paragraphs and product copy. Prefer Heading for outline titles. See [Typography](/theming/typography/).
+
+  </Fragment>
+
+  <Fragment slot="changelog">
+
+Unreleased — body sizes `xs`–`xl` on the nine-step scale.
+
+  </Fragment>
+
+  <Fragment slot="accessibility">
+
+Semantic `<p>` in the shadow tree. Plain mode: no Pond visual CSS.
+
+  </Fragment>
+
+  <Fragment slot="patterns">
+
+None yet.
+
+  </Fragment>
+</ComponentTabs>

@@ -1,0 +1,26 @@
+---
+interface Props {
+  /** Optional label above the demo frame */
+  label?: string
+}
+const { label } = Astro.props
+---
+
+<figure class="pond-demo not-content">
+  {label ? <figcaption class="pond-demo__label">{label}</figcaption> : null}
+  <div class="pond-demo__canvas">
+    <slot />
+  </div>
+</figure>
+
+<script>
+  import '../scripts/register-pond.ts'
+</script>
+
+<style>
+  .pond-demo__label {
+    margin: 0 0 0.75rem;
+    color: var(--pond-color-fg-muted);
+    font-size: var(--pond-font-size-sm);
+  }
+</style>

@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "@astrojs/starlight": "0.43.1",
+    "@pond/components": "workspace:*",
     "@pond/tokens": "workspace:*",
-    "astro": "7.4.12"
+    "astro": "7.4.12",
+    "lit": "3.3.3"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.6",

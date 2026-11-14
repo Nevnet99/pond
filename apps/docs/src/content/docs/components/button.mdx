@@ -1,0 +1,72 @@
+---
+title: Button
+description: Action control with primary, secondary, subtle, danger, and link variants.
+---
+
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Triggers an action. Pick a **variant** for emphasis; `appearance="plain"` strips Pond visuals.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Variants">
+      <div class="pond-demo__row">
+        <pond-button variant="primary">Primary</pond-button>
+        <pond-button variant="secondary">Secondary</pond-button>
+        <pond-button variant="subtle">Subtle</pond-button>
+        <pond-button variant="danger">Danger</pond-button>
+        <pond-button variant="link">Link action</pond-button>
+      </div>
+    </PondDemo>
+
+    <PondDemo label="Disabled primary">
+      <pond-button variant="primary" disabled>Disabled</pond-button>
+    </PondDemo>
+  </Fragment>
+
+  <Fragment slot="code">
+
+```html
+<pond-button variant="primary">Publish</pond-button>
+<pond-button variant="secondary">Cancel</pond-button>
+<pond-button variant="subtle">More options</pond-button>
+<pond-button variant="danger">Delete project</pond-button>
+<pond-button variant="link">Learn more</pond-button>
+<pond-button appearance="plain">Unstyled action</pond-button>
+```
+
+  </Fragment>
+
+  <Fragment slot="usage">
+
+| Variant | Use when |
+| --- | --- |
+| `primary` | The main call to action on a view |
+| `secondary` | An alternate action beside primary (Cancel, Back) |
+| `subtle` | Low-emphasis chrome — toolbars, dense tables |
+| `danger` | Destructive or irreversible actions |
+| `link` | In-flow actions without button chrome (not page navigation) |
+
+**Do** use for actions the user triggers. **Don't** use for navigation between pages — use Link (when it ships). Prefer one `primary` per region.
+
+  </Fragment>
+
+  <Fragment slot="changelog">
+
+Unreleased — five variants: primary, secondary, subtle, danger, link.
+
+  </Fragment>
+
+  <Fragment slot="accessibility">
+
+Native `<button>` with visible focus ring in default appearance. Manual checklist: focus order, accessible name, disabled state announced. `link` variant is still a button (keyboard + Enter/Space), not an anchor. In plain mode Pond applies no visual CSS — you own focus paint.
+
+  </Fragment>
+
+  <Fragment slot="patterns">
+
+None yet.
+
+  </Fragment>
+</ComponentTabs>

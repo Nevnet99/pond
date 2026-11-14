@@ -48,6 +48,7 @@ pnpm test:vrt:update   # refresh baselines inside the image
 - [docs/component-dod.md](./docs/component-dod.md)
 - [docs/v1-slice.md](./docs/v1-slice.md)
 - [docs/vrt.md](./docs/vrt.md)
+- [docs/typography.md](./docs/typography.md)
 - [docs/accessibility.md](./docs/accessibility.md)
 - [docs/forking.md](./docs/forking.md)
 

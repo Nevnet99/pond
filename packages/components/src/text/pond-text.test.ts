@@ -15,4 +15,12 @@ describe('pond-text', () => {
     )
     expect(el.appearance).toBe('plain')
   })
+
+  it('applies size steps on the type scale', async () => {
+    const el = await fixture<PondText>(
+      html`<pond-text size="lg">Lead</pond-text>`
+    )
+    expect(el.size).toBe('lg')
+    expect(el.getAttribute('size')).toBe('lg')
+  })
 })

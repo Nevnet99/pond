@@ -26,12 +26,18 @@ importers:
       '@astrojs/starlight':
         specifier: 0.43.1
         version: 0.43.1(astro@7.4.12(@types/node@26.6.6)(esbuild@0.28.2)(yaml@2.9.1))(typescript@5.9.3)
+      '@pond/components':
+        specifier: workspace:*
+        version: link:../../packages/components
       '@pond/tokens':
         specifier: workspace:*
         version: link:../../packages/tokens
       astro:
         specifier: 7.4.12
         version: 7.4.12(@types/node@26.6.6)(esbuild@0.28.2)(yaml@2.9.1)
+      lit:
+        specifier: 3.3.3
+        version: 3.3.3
     devDependencies:
       '@astrojs/check':
         specifier: 0.9.6

@@ -4,41 +4,31 @@ Pond’s narrative documentation site (`apps/docs`).
 
 ## Role vs Storybook
 
-| Surface       | Job                                                                             |
-| ------------- | ------------------------------------------------------------------------------- |
-| **Starlight** | Get started, theming, contributing, Patterns, and per-component narrative pages |
-| **Storybook** | Live states, controls, CEM-backed API                                           |
-
-Starlight does not re-host every Storybook control. Component pages **link** to Storybook for interactive playgrounds where useful.
-
-## Site IA (sidebar)
-
-1. Getting started
-2. Theming (tokens, `--pond-*`, light / dark)
-3. Primitives
-4. Components
-5. Patterns
-6. Accessibility
-7. Contributing / forking
+| Surface | Job |
+| --- | --- |
+| **Starlight** | Get started, theming, contributing, Patterns, and per-component narrative pages with **live Lit demos** |
+| **Storybook** | Full state matrix, controls, CEM-backed API |
 
 ## Component page shape (Atlassian-like)
 
-Each Component page opens with a short header (name + one-line purpose), then the same six sections as atlassian.design tabs:
+Each Component / Primitive page uses **`ComponentTabs`** — a horizontal tab bar under the title:
 
-| Section           | Content                                                                            |
-| ----------------- | ---------------------------------------------------------------------------------- |
-| **Examples**      | Canonical compositions / screenshots or embedded demos                             |
-| **Code**          | Install/import / composition snippets; deep API stays in Storybook/CEM with a link |
-| **Usage**         | When to use / when not; do–don’t                                                   |
-| **Changelog**     | Component-scoped history (ties into release notes later)                           |
-| **Accessibility** | That component’s manual AA checklist + notes                                       |
-| **Patterns**      | Related Patterns that use this Component (or “none yet”)                           |
+| Tab | Content |
+| --- | --- |
+| **Examples** | Live `<PondDemo>` frames with real Pond Lit elements |
+| **Code** | Snippets |
+| **Usage** | When to use / when not |
+| **Changelog** | Component-scoped history |
+| **Accessibility** | Manual AA checklist + notes |
+| **Patterns** | Related Patterns (or “none yet”) |
 
-Bootstrap ships these as Markdown `##` headings. Starlight `<Tabs>` can return once MDX + Astro 7 native bindings are stable in CI.
+Implementation: `apps/docs/src/components/ComponentTabs.astro` + `PondDemo.astro` (registers `@pond/components` on the client). We do **not** use Starlight’s built-in `<Tabs>` / `<TabItem>` (Astro 7 MDX native-binding breakage).
+
+Tokens load via Starlight `customCss` → `src/styles/pond-docs.css`.
 
 ## Theme
 
-Docs use Pond light/dark tokens where practical so the site demos the system. Best-effort — don’t block docs if Starlight chrome can’t map 1:1.
+Docs use Pond light/dark tokens on demos. Starlight chrome stays best-effort.
 
 ## Deploy
 

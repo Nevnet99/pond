@@ -1,15 +1,45 @@
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import starlight from '@astrojs/starlight'
 import { defineConfig, passthroughImageService } from 'astro/config'
+
+const root = path.dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
   site: 'https://nevnet99.github.io/pond',
   image: {
     service: passthroughImageService()
   },
+  vite: {
+    resolve: {
+      alias: {
+        '@pond/tokens/plain.css': path.resolve(
+          root,
+          '../../packages/tokens/css/plain.css'
+        ),
+        '@pond/components': path.resolve(
+          root,
+          '../../packages/components/src/index.ts'
+        )
+      }
+    },
+    optimizeDeps: {
+      include: ['lit', 'lit/decorators.js']
+    },
+    esbuild: {
+      tsconfigRaw: {
+        compilerOptions: {
+          experimentalDecorators: true,
+          useDefineForClassFields: false
+        }
+      }
+    }
+  },
   integrations: [
     starlight({
       title: 'Pond',
       description: 'Fork-first Lit design system — WCAG AA, brandable tokens.',
+      customCss: ['./src/styles/pond-docs.css'],
       social: [
         {
           icon: 'github',
@@ -27,7 +57,10 @@ export default defineConfig({
         },
         {
           label: 'Theming',
-          items: [{ label: 'Tokens & themes', slug: 'theming/tokens' }]
+          items: [
+            { label: 'Tokens & themes', slug: 'theming/tokens' },
+            { label: 'Typography', slug: 'theming/typography' }
+          ]
         },
         {
           label: 'Primitives',

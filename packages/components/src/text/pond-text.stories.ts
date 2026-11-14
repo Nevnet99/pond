@@ -6,10 +6,16 @@ const meta: Meta = {
   title: 'Primitives/Text',
   component: 'pond-text',
   args: {
-    content: 'Body copy for product UI.',
+    content: 'The quick brown fox jumps over the lazy dog.',
     appearance: 'default',
     size: 'md',
     muted: false
+  },
+  argTypes: {
+    size: {
+      control: 'select',
+      options: ['xs', 'sm', 'md', 'lg', 'xl']
+    }
   }
 }
 
@@ -24,6 +30,19 @@ export const Default: Story = {
       ?muted=${args.muted}>
       ${args.content}
     </pond-text>
+  `
+}
+
+export const Scale: Story = {
+  render: () => html`
+    <div style="display:grid; gap:1rem; max-width:40rem;">
+      <pond-text size="xs">xs · 0.75rem — captions, meta, timestamps</pond-text>
+      <pond-text size="sm">sm · 0.875rem — secondary body, helpers</pond-text>
+      <pond-text size="md">md · 1rem — default body copy</pond-text>
+      <pond-text size="lg">lg · 1.125rem — lead / intro paragraphs</pond-text>
+      <pond-text size="xl">xl · 1.25rem — compact title-as-text</pond-text>
+      <pond-text size="sm" muted>Muted helper text on the sm step</pond-text>
+    </div>
   `
 }
 

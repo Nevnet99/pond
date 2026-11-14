@@ -17,4 +17,16 @@ describe('pond-heading', () => {
     )
     expect(el.shadowRoot?.querySelector('h1')).toBeTruthy()
   })
+
+  it('defaults data-size from level and allows size override', async () => {
+    const el = await fixture<PondHeading>(
+      html`<pond-heading level="2">Section</pond-heading>`
+    )
+    await el.updateComplete
+    expect(el.getAttribute('data-size')).toBe('4xl')
+
+    el.size = 'lg'
+    await el.updateComplete
+    expect(el.getAttribute('data-size')).toBe('lg')
+  })
 })

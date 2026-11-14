@@ -8,12 +8,17 @@ const meta: Meta = {
   args: {
     label: 'Save changes',
     appearance: 'default',
+    variant: 'primary',
     disabled: false
   },
   argTypes: {
     appearance: {
       control: 'select',
       options: ['default', 'plain']
+    },
+    variant: {
+      control: 'select',
+      options: ['primary', 'secondary', 'subtle', 'danger', 'link']
     }
   }
 }
@@ -25,10 +30,48 @@ export const Default: Story = {
   render: (args) => html`
     <pond-button
       appearance=${args.appearance}
+      variant=${args.variant}
       ?disabled=${args.disabled}>
       ${args.label}
     </pond-button>
   `
+}
+
+export const Variants: Story = {
+  render: () => html`
+    <div style="display:flex; flex-wrap:wrap; gap:1rem; align-items:center;">
+      <pond-button variant="primary">Primary</pond-button>
+      <pond-button variant="secondary">Secondary</pond-button>
+      <pond-button variant="subtle">Subtle</pond-button>
+      <pond-button variant="danger">Danger</pond-button>
+      <pond-button variant="link">Link action</pond-button>
+    </div>
+  `
+}
+
+export const Primary: Story = {
+  args: { variant: 'primary', label: 'Publish' },
+  render: Default.render
+}
+
+export const Secondary: Story = {
+  args: { variant: 'secondary', label: 'Cancel' },
+  render: Default.render
+}
+
+export const Subtle: Story = {
+  args: { variant: 'subtle', label: 'More options' },
+  render: Default.render
+}
+
+export const Danger: Story = {
+  args: { variant: 'danger', label: 'Delete project' },
+  render: Default.render
+}
+
+export const Link: Story = {
+  args: { variant: 'link', label: 'Learn more' },
+  render: Default.render
 }
 
 export const Plain: Story = {

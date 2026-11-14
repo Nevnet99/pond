@@ -1,9 +1,10 @@
 import { css, html, LitElement } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import type { PondAppearance } from '../shared/appearance.js'
+import { headingLevelSize, type PondTypeSize } from '../shared/type-scale.js'
 
 /**
- * @summary Heading primitive (levels 1–6).
+ * @summary Heading primitive — semantic level + optional visual size from the type scale.
  * @status stable
  * @since 0.0.0
  */
@@ -16,6 +17,7 @@ export class PondHeading extends LitElement {
       font-family: var(--pond-font-family-display);
       font-weight: var(--pond-font-weight-bold);
       line-height: var(--pond-font-line-tight);
+      letter-spacing: var(--pond-font-tracking-tight);
     }
 
     :host([appearance='plain']) {
@@ -27,21 +29,50 @@ export class PondHeading extends LitElement {
       margin: 0;
       font: inherit;
       color: inherit;
+      letter-spacing: inherit;
     }
 
-    :host([level='1']) {
-      font-size: var(--pond-font-size-2xl);
+    :host([data-size='xs']) {
+      font-size: var(--pond-font-size-xs);
+      line-height: var(--pond-font-line-snug);
+      letter-spacing: var(--pond-font-tracking-wide);
+      font-weight: var(--pond-font-weight-semibold);
     }
-    :host([level='2']) {
-      font-size: var(--pond-font-size-xl);
+    :host([data-size='sm']) {
+      font-size: var(--pond-font-size-sm);
+      line-height: var(--pond-font-line-snug);
+      letter-spacing: var(--pond-font-tracking-normal);
     }
-    :host([level='3']) {
-      font-size: var(--pond-font-size-lg);
-    }
-    :host([level='4']),
-    :host([level='5']),
-    :host([level='6']) {
+    :host([data-size='md']) {
       font-size: var(--pond-font-size-md);
+      line-height: var(--pond-font-line-snug);
+      letter-spacing: var(--pond-font-tracking-normal);
+    }
+    :host([data-size='lg']) {
+      font-size: var(--pond-font-size-lg);
+      line-height: var(--pond-font-line-snug);
+      letter-spacing: var(--pond-font-tracking-normal);
+    }
+    :host([data-size='xl']) {
+      font-size: var(--pond-font-size-xl);
+      line-height: var(--pond-font-line-snug);
+      letter-spacing: var(--pond-font-tracking-normal);
+    }
+    :host([data-size='2xl']) {
+      font-size: var(--pond-font-size-2xl);
+      line-height: var(--pond-font-line-tight);
+    }
+    :host([data-size='3xl']) {
+      font-size: var(--pond-font-size-3xl);
+      line-height: var(--pond-font-line-tight);
+    }
+    :host([data-size='4xl']) {
+      font-size: var(--pond-font-size-4xl);
+      line-height: var(--pond-font-line-tight);
+    }
+    :host([data-size='5xl']) {
+      font-size: var(--pond-font-size-5xl);
+      line-height: var(--pond-font-line-tight);
     }
   `
 
@@ -49,9 +80,21 @@ export class PondHeading extends LitElement {
   @property({ reflect: true })
   appearance: PondAppearance = 'default'
 
-  /** Heading level — maps to h1–h6. */
+  /** Heading level — maps to h1–h6. Do not skip levels for styling; use `size`. */
   @property({ type: Number, reflect: true })
   level: 1 | 2 | 3 | 4 | 5 | 6 = 2
+
+  /**
+   * Visual size on the type scale. When omitted, follows the default for `level`
+   * (h1→5xl … h6→lg).
+   */
+  @property({ reflect: true })
+  size: PondTypeSize | undefined
+
+  protected override updated(): void {
+    const step = this.size ?? headingLevelSize[this.level]
+    this.setAttribute('data-size', step)
+  }
 
   override render() {
     const content = html`<slot></slot>`

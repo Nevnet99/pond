@@ -1,0 +1,100 @@
+@import '@pond/tokens/plain.css';
+
+/* Pond docs chrome — demos + Atlassian-like component tabs */
+:root {
+  --pond-docs-tab-border: var(--pond-color-border-default);
+  --pond-docs-tab-active: var(--pond-color-accent-default);
+  --pond-docs-demo-bg: var(--pond-color-bg-surface);
+}
+
+/* Avoid FOUC: slotted text shows before Lit upgrades */
+pond-button:not(:defined),
+pond-text:not(:defined),
+pond-heading:not(:defined) {
+  visibility: hidden;
+}
+
+.pond-demo {
+  margin: 0 0 1.25rem;
+  padding: 1.5rem;
+  border: 1px solid var(--pond-docs-tab-border);
+  border-radius: var(--pond-radius-md);
+  background: var(--pond-docs-demo-bg);
+  color: var(--pond-color-fg-default);
+  font-family: var(--pond-font-family-sans);
+}
+
+.pond-demo__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.pond-demo__stack {
+  display: grid;
+  gap: 0.75rem;
+}
+
+/*
+ * Starlight’s content layer adds margin-top between adjacent block siblings
+ * (`A + B { margin-top: var(--sl-content-gap-y) }`). That lifts every demo
+ * child after the first. `.not-content` on the figure opts out; this reset
+ * is belt-and-suspenders for slotted custom elements.
+ */
+.pond-demo.not-content :is(pond-button, pond-text, pond-heading, div, p, figure),
+.pond-doc-tabs.not-content :is(pond-button, pond-text, pond-heading) {
+  margin-block: 0;
+}
+
+.pond-demo__row > * {
+  margin: 0;
+  vertical-align: middle;
+}
+
+.pond-doc-tabs {
+  margin-block: 0.25rem 2rem;
+}
+
+.pond-doc-tabs__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  border-bottom: 1px solid var(--pond-docs-tab-border);
+  list-style: none;
+}
+
+.pond-doc-tabs__tab {
+  margin: 0;
+  padding: 0.75rem 1.1rem;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  background: transparent;
+  color: var(--pond-color-fg-muted, #7a8794);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+}
+
+.pond-doc-tabs__tab:hover {
+  color: var(--pond-color-fg-default, inherit);
+}
+
+.pond-doc-tabs__tab[aria-selected='true'] {
+  color: var(--pond-color-fg-default, inherit);
+  border-bottom-color: var(--pond-docs-tab-active);
+}
+
+.pond-doc-tabs__tab:focus-visible {
+  outline: 2px solid var(--pond-color-focus-ring);
+  outline-offset: 2px;
+}
+
+.pond-doc-tabs__panel[hidden] {
+  display: none;
+}

@@ -15,6 +15,7 @@ const config: StorybookConfig = {
     config.resolve ??= {}
     config.resolve.alias = {
       ...config.resolve.alias,
+      '@pond/tokens/plain.css': join(root, 'packages/tokens/css/plain.css'),
       '@pond/tokens': join(root, 'packages/tokens/css/plain.css')
     }
     return config

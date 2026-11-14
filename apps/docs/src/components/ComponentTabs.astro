@@ -1,0 +1,143 @@
+---
+/**
+ * Atlassian-style top tabs for Pond component pages.
+ * Avoids Starlight <Tabs> (MDX TabItem hit Astro 7 native-binding issues).
+ */
+const tabs = [
+  { id: 'examples', label: 'Examples' },
+  { id: 'code', label: 'Code' },
+  { id: 'usage', label: 'Usage' },
+  { id: 'changelog', label: 'Changelog' },
+  { id: 'accessibility', label: 'Accessibility' },
+  { id: 'patterns', label: 'Patterns' }
+] as const
+---
+
+<script>
+  import '../scripts/register-pond.ts'
+</script>
+
+<div class="pond-doc-tabs not-content" data-pond-doc-tabs>
+  <div class="pond-doc-tabs__list" role="tablist" aria-label="Component documentation">
+    {
+      tabs.map((tab, index) => (
+        <button
+          type="button"
+          class="pond-doc-tabs__tab"
+          role="tab"
+          id={`tab-${tab.id}`}
+          aria-controls={`panel-${tab.id}`}
+          aria-selected={index === 0 ? 'true' : 'false'}
+          tabindex={index === 0 ? 0 : -1}
+          data-tab={tab.id}>
+          {tab.label}
+        </button>
+      ))
+    }
+  </div>
+
+  <div
+    class="pond-doc-tabs__panel"
+    role="tabpanel"
+    id="panel-examples"
+    aria-labelledby="tab-examples"
+    data-panel="examples">
+    <slot name="examples" />
+  </div>
+  <div
+    class="pond-doc-tabs__panel"
+    role="tabpanel"
+    id="panel-code"
+    aria-labelledby="tab-code"
+    data-panel="code"
+    hidden>
+    <slot name="code" />
+  </div>
+  <div
+    class="pond-doc-tabs__panel"
+    role="tabpanel"
+    id="panel-usage"
+    aria-labelledby="tab-usage"
+    data-panel="usage"
+    hidden>
+    <slot name="usage" />
+  </div>
+  <div
+    class="pond-doc-tabs__panel"
+    role="tabpanel"
+    id="panel-changelog"
+    aria-labelledby="tab-changelog"
+    data-panel="changelog"
+    hidden>
+    <slot name="changelog" />
+  </div>
+  <div
+    class="pond-doc-tabs__panel"
+    role="tabpanel"
+    id="panel-accessibility"
+    aria-labelledby="tab-accessibility"
+    data-panel="accessibility"
+    hidden>
+    <slot name="accessibility" />
+  </div>
+  <div
+    class="pond-doc-tabs__panel"
+    role="tabpanel"
+    id="panel-patterns"
+    aria-labelledby="tab-patterns"
+    data-panel="patterns"
+    hidden>
+    <slot name="patterns" />
+  </div>
+</div>
+
+<script>
+  function bindTabs(root: HTMLElement) {
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>('[role="tab"]')]
+    const panels = [...root.querySelectorAll<HTMLElement>('[data-panel]')]
+
+    function activate(id: string) {
+      for (const tab of tabs) {
+        const selected = tab.dataset.tab === id
+        tab.setAttribute('aria-selected', selected ? 'true' : 'false')
+        tab.tabIndex = selected ? 0 : -1
+      }
+      for (const panel of panels) {
+        panel.hidden = panel.dataset.panel !== id
+      }
+    }
+
+    root.addEventListener('click', (event) => {
+      const target = event.target
+      if (!(target instanceof HTMLButtonElement)) return
+      if (target.getAttribute('role') !== 'tab') return
+      const id = target.dataset.tab
+      if (id) activate(id)
+    })
+
+    root.addEventListener('keydown', (event) => {
+      const target = event.target
+      if (!(target instanceof HTMLButtonElement)) return
+      if (target.getAttribute('role') !== 'tab') return
+      const index = tabs.indexOf(target)
+      if (index < 0) return
+      let next = index
+      if (event.key === 'ArrowRight') next = (index + 1) % tabs.length
+      else if (event.key === 'ArrowLeft')
+        next = (index - 1 + tabs.length) % tabs.length
+      else if (event.key === 'Home') next = 0
+      else if (event.key === 'End') next = tabs.length - 1
+      else return
+      event.preventDefault()
+      tabs[next]?.focus()
+      const id = tabs[next]?.dataset.tab
+      if (id) activate(id)
+    })
+  }
+
+  for (const root of document.querySelectorAll<HTMLElement>(
+    '[data-pond-doc-tabs]'
+  )) {
+    bindTabs(root)
+  }
+</script>

@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "serve": "storybook dev -p 6006 --no-open",
+    "serve": "storybook dev -p 6006 --no-open --ci",
     "build": "storybook build -o storybook-static",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },

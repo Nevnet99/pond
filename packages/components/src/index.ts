@@ -1,3 +1,7 @@
+export type { PondButtonVariant } from './button/pond-button.js'
 export { PondButton } from './button/pond-button.js'
 export { PondHeading } from './heading/pond-heading.js'
+export type { PondTypeSize } from './shared/type-scale.js'
+export { headingLevelSize } from './shared/type-scale.js'
+export type { PondTextSize } from './text/pond-text.js'
 export { PondText } from './text/pond-text.js'

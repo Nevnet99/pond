@@ -1,9 +1,15 @@
 import { css, html, LitElement } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import type { PondAppearance } from '../shared/appearance.js'
+import type { PondTypeSize } from '../shared/type-scale.js'
+
+export type PondTextSize = Extract<
+  PondTypeSize,
+  'xs' | 'sm' | 'md' | 'lg' | 'xl'
+>
 
 /**
- * @summary Body text primitive.
+ * @summary Body text primitive on the Pond type scale.
  * @status stable
  * @since 0.0.0
  */
@@ -17,6 +23,7 @@ export class PondText extends LitElement {
       font-size: var(--pond-font-size-md);
       font-weight: var(--pond-font-weight-regular);
       line-height: var(--pond-font-line-normal);
+      letter-spacing: var(--pond-font-tracking-normal);
     }
 
     :host([appearance='plain']) {
@@ -33,12 +40,29 @@ export class PondText extends LitElement {
       display: contents;
     }
 
+    :host([size='xs']) {
+      font-size: var(--pond-font-size-xs);
+      line-height: var(--pond-font-line-normal);
+    }
+
     :host([size='sm']) {
       font-size: var(--pond-font-size-sm);
+      line-height: var(--pond-font-line-normal);
+    }
+
+    :host([size='md']) {
+      font-size: var(--pond-font-size-md);
+      line-height: var(--pond-font-line-normal);
     }
 
     :host([size='lg']) {
       font-size: var(--pond-font-size-lg);
+      line-height: var(--pond-font-line-relaxed);
+    }
+
+    :host([size='xl']) {
+      font-size: var(--pond-font-size-xl);
+      line-height: var(--pond-font-line-snug);
     }
 
     :host([muted]) {
@@ -50,9 +74,12 @@ export class PondText extends LitElement {
   @property({ reflect: true })
   appearance: PondAppearance = 'default'
 
-  /** Type scale step. */
+  /**
+   * Body scale step.
+   * xs caption · sm helper · md body · lg lead · xl compact title-as-text
+   */
   @property({ reflect: true })
-  size: 'sm' | 'md' | 'lg' = 'md'
+  size: PondTextSize = 'md'
 
   /** Muted foreground. Ignored when plain. */
   @property({ type: Boolean, reflect: true })

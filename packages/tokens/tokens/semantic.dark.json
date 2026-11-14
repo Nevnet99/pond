@@ -20,7 +20,9 @@
       "hover": { "value": "{color.teal.500}" }
     },
     "danger": {
-      "default": { "value": "{color.red.500}" }
+      "default": { "value": "{color.red.500}" },
+      "hover": { "value": "{color.red.600}" },
+      "subtle": { "value": "{color.gray.700}" }
     },
     "focus": {
       "ring": { "value": "{color.teal.400}" }

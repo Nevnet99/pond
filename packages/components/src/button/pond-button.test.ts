@@ -20,6 +20,19 @@ describe('pond-button', () => {
     expect(el.getAttribute('appearance')).toBe('plain')
   })
 
+  it('defaults to primary and reflects other variants', async () => {
+    const primary = await fixture<PondButton>(
+      html`<pond-button>Go</pond-button>`
+    )
+    expect(primary.variant).toBe('primary')
+
+    const danger = await fixture<PondButton>(
+      html`<pond-button variant="danger">Delete</pond-button>`
+    )
+    expect(danger.variant).toBe('danger')
+    expect(danger.getAttribute('variant')).toBe('danger')
+  })
+
   it('disables the native button', async () => {
     const el = await fixture<PondButton>(
       html`<pond-button disabled>Nope</pond-button>`

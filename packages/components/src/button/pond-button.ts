@@ -2,8 +2,15 @@ import { css, html, LitElement, nothing } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import type { PondAppearance } from '../shared/appearance.js'
 
+export type PondButtonVariant =
+  | 'primary'
+  | 'secondary'
+  | 'subtle'
+  | 'danger'
+  | 'link'
+
 /**
- * @summary Primary action control.
+ * @summary Action control with emphasis variants.
  * @status stable
  * @since 0.0.0
  *
@@ -25,22 +32,79 @@ export class PondButton extends LitElement {
       align-items: center;
       justify-content: center;
       gap: var(--pond-space-2);
+      box-sizing: border-box;
       margin: 0;
       padding: var(--pond-space-2) var(--pond-space-4);
       border: 1px solid transparent;
       border-radius: var(--pond-radius-md);
-      background: var(--pond-color-accent-default);
-      color: var(--pond-color-fg-on-accent);
       font-family: var(--pond-font-family-sans);
       font-size: var(--pond-font-size-md);
       font-weight: var(--pond-font-weight-medium);
       line-height: var(--pond-font-line-tight);
       cursor: pointer;
-      transition: background-color var(--pond-motion-duration-fast) ease;
+      transition:
+        background-color var(--pond-motion-duration-fast) ease,
+        border-color var(--pond-motion-duration-fast) ease,
+        color var(--pond-motion-duration-fast) ease;
     }
 
-    [part='button']:hover:not(:disabled) {
+    /* primary — main call to action */
+    :host([variant='primary']) [part='button'],
+    :host(:not([variant])) [part='button'] {
+      background: var(--pond-color-accent-default);
+      color: var(--pond-color-fg-on-accent);
+    }
+
+    :host([variant='primary']) [part='button']:hover:not(:disabled),
+    :host(:not([variant])) [part='button']:hover:not(:disabled) {
       background: var(--pond-color-accent-hover);
+    }
+
+    /* secondary — alternate action, outlined */
+    :host([variant='secondary']) [part='button'] {
+      background: var(--pond-color-bg-canvas);
+      border-color: var(--pond-color-border-strong);
+      color: var(--pond-color-fg-default);
+    }
+
+    :host([variant='secondary']) [part='button']:hover:not(:disabled) {
+      background: var(--pond-color-bg-subtle);
+      border-color: var(--pond-color-fg-default);
+    }
+
+    /* subtle — low emphasis chrome / toolbars */
+    :host([variant='subtle']) [part='button'] {
+      background: var(--pond-color-bg-subtle);
+      color: var(--pond-color-fg-default);
+    }
+
+    :host([variant='subtle']) [part='button']:hover:not(:disabled) {
+      background: var(--pond-color-border-default);
+    }
+
+    /* danger — destructive / irreversible */
+    :host([variant='danger']) [part='button'] {
+      background: var(--pond-color-danger-default);
+      color: var(--pond-color-fg-on-accent);
+    }
+
+    :host([variant='danger']) [part='button']:hover:not(:disabled) {
+      background: var(--pond-color-danger-hover);
+    }
+
+    /* link — in-flow action without button chrome (not navigation) */
+    :host([variant='link']) [part='button'] {
+      padding: 0;
+      border-radius: 0;
+      background: transparent;
+      color: var(--pond-color-accent-default);
+      font-weight: var(--pond-font-weight-regular);
+      text-decoration: underline;
+      text-underline-offset: 0.15em;
+    }
+
+    :host([variant='link']) [part='button']:hover:not(:disabled) {
+      color: var(--pond-color-accent-hover);
     }
 
     [part='button']:focus-visible {
@@ -72,6 +136,17 @@ export class PondButton extends LitElement {
   /** Visual presentation. `plain` strips Pond visual CSS. */
   @property({ reflect: true })
   appearance: PondAppearance = 'default'
+
+  /**
+   * Emphasis / intent.
+   * - primary: main call to action
+   * - secondary: alternate action (outlined)
+   * - subtle: low-emphasis chrome (toolbars, dense UI)
+   * - danger: destructive / irreversible
+   * - link: in-flow action without button chrome (use Link for navigation)
+   */
+  @property({ reflect: true })
+  variant: PondButtonVariant = 'primary'
 
   /** Native button type. */
   @property({ reflect: true })
