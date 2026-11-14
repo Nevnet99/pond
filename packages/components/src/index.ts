@@ -9,6 +9,7 @@ export type {
   PondInlineJustify
 } from './inline/pond-inline.js'
 export { PondInline } from './inline/pond-inline.js'
+export { PondLink } from './link/pond-link.js'
 export type { PondSpace } from './shared/space.js'
 export type { PondTypeSize } from './shared/type-scale.js'
 export { headingLevelSize } from './shared/type-scale.js'
