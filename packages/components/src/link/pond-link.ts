@@ -27,8 +27,6 @@ export class PondLink extends LitElement {
       font-weight: var(--pond-font-weight-regular);
       line-height: inherit;
       text-decoration: underline;
-      text-decoration-thickness: from-font;
-      text-underline-position: from-font;
       text-underline-offset: 0.15em;
       cursor: pointer;
     }
