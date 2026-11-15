@@ -88,7 +88,8 @@ export default defineConfig({
             { label: 'Tooltip', slug: 'components/tooltip' },
             { label: 'Modal', slug: 'components/modal' },
             { label: 'Section message', slug: 'components/section-message' },
-            { label: 'Tabs', slug: 'components/tabs' }
+            { label: 'Tabs', slug: 'components/tabs' },
+            { label: 'Breadcrumbs', slug: 'components/breadcrumbs' }
           ]
         },
         {
