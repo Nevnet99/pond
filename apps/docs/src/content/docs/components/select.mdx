@@ -10,21 +10,21 @@ Choose one option from a list (multi-select later).
 <ComponentTabs>
   <Fragment slot="examples">
     <PondDemo label="Default">
-      <pond-select label="Size" value="m" style="max-width:16rem"></pond-select>
-      <script>
-        const el = document.currentScript.previousElementSibling
-        el.options = [
-          { value: 's', label: 'Small' },
-          { value: 'm', label: 'Medium' },
-          { value: 'l', label: 'Large' }
-        ]
-      </script>
+      <pond-select
+        label="Size"
+        value="m"
+        style="max-width:16rem"
+        options='[{"value":"s","label":"Small"},{"value":"m","label":"Medium"},{"value":"l","label":"Large"}]'
+      ></pond-select>
     </PondDemo>
   </Fragment>
   <Fragment slot="code">
 
 ```html
-<pond-select label="Size"></pond-select>
+<pond-select
+  label="Size"
+  options='[{"value":"s","label":"Small"},{"value":"m","label":"Medium"}]'
+></pond-select>
 ```
 
   </Fragment>
