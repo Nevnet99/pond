@@ -12,9 +12,9 @@ describe('pond-page-header', () => {
         Subtitle
       </pond-page-header>`
     )
-    expect(el.shadowRoot?.querySelector('[part="title"]')?.textContent).toContain(
-      'Projects'
-    )
+    expect(
+      el.shadowRoot?.querySelector('[part="title"]')?.textContent
+    ).toContain('Projects')
     expect(el.appearance).toBe('default')
   })
 
