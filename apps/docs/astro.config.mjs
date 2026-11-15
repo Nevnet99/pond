@@ -133,6 +133,7 @@ export default defineConfig({
         {
           label: 'Data display',
           items: [
+            { label: 'Code', slug: 'components/code' },
             { label: 'Date label', slug: 'components/date-label' },
             { label: 'Table', slug: 'components/table' },
             { label: 'Tag', slug: 'components/tag' },
