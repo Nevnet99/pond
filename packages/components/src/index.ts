@@ -1,6 +1,8 @@
 export { PondBadge } from './badge/pond-badge.js'
 export type { PondBoxBackground, PondBoxPadding } from './box/pond-box.js'
 export { PondBox } from './box/pond-box.js'
+export type { PondBreadcrumbItem } from './breadcrumbs/pond-breadcrumbs.js'
+export { PondBreadcrumbs } from './breadcrumbs/pond-breadcrumbs.js'
 export type { PondButtonVariant } from './button/pond-button.js'
 export { PondButton } from './button/pond-button.js'
 export { PondCheckbox } from './checkbox/pond-checkbox.js'
