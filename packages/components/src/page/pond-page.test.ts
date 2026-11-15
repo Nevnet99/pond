@@ -43,6 +43,13 @@ describe('pond-page', () => {
     expect(el.appearance).toBe('plain')
   })
 
+  it('exposes a named size container for responsive stacking', async () => {
+    const el = await fixture<PondPage>(html`<pond-page><p>X</p></pond-page>`)
+    const style = getComputedStyle(el)
+    expect(style.containerType).toBe('inline-size')
+    expect(style.containerName).toBe('pond-page')
+  })
+
   it('has no serious axe violations', async () => {
     const el = await fixture<PondPage>(html`
       <pond-page>

@@ -19,8 +19,11 @@ describe('pond-page visual', () => {
   afterEach(() => link.remove())
 
   it('matches at mobile / tablet / desktop', async () => {
+    // Fill the VRT viewport so breakpoints change the layout (stacked on mobile).
     const el = await fixture<PondPage>(html`
-      <pond-page style="width:40rem;min-height:16rem">
+      <pond-page
+        style="width:100%;min-height:20rem;border:1px solid var(--pond-color-border-default)"
+      >
         <div slot="navigation" style="padding:0.75rem">Nav</div>
         <pond-page-header slot="header" heading="Projects"></pond-page-header>
         <div slot="panel">Panel</div>

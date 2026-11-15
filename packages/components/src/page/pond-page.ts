@@ -20,10 +20,13 @@ export class PondPage extends LitElement {
       display: block;
       box-sizing: border-box;
       min-height: 100%;
+      container-type: inline-size;
+      container-name: pond-page;
     }
 
     :host([appearance="plain"]) {
       display: contents;
+      container-type: normal;
     }
 
     [part="root"] {
@@ -86,6 +89,27 @@ export class PondPage extends LitElement {
       border-inline-start: 1px solid var(--pond-color-border-default);
       background: var(--pond-color-bg-surface);
       padding: var(--pond-space-4);
+    }
+
+    /* Stack chrome when the page is narrower than the tablet VRT width. */
+    @container pond-page (max-width: 47.9375rem) {
+      [part="body"] {
+        flex-direction: column;
+      }
+
+      [part="navigation"],
+      [part="panel"] {
+        width: auto;
+        border-inline: none;
+      }
+
+      [part="navigation"] {
+        border-block-end: 1px solid var(--pond-color-border-default);
+      }
+
+      [part="panel"] {
+        border-block-start: 1px solid var(--pond-color-border-default);
+      }
     }
 
     :host(:not([data-has-banner])) [part="banner"],
