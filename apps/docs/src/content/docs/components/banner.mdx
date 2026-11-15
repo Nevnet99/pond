@@ -1,0 +1,27 @@
+---
+title: Banner
+description: Persistent page-top notice.
+---
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Page-level notice. Distinct from Section message (sectional) and Flag (transient).
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Closable">
+      <pond-banner closable>Maintenance window starts at 18:00 UTC.</pond-banner>
+    </PondDemo>
+  </Fragment>
+  <Fragment slot="code">
+
+```html
+<pond-banner closable>Notice</pond-banner>
+```
+
+  </Fragment>
+  <Fragment slot="usage">Use for site-wide or page-wide notices. Prefer Flag for toasts.</Fragment>
+  <Fragment slot="changelog">Unreleased — tones, closable.</Fragment>
+  <Fragment slot="accessibility">role=region with label; close button named.</Fragment>
+  <Fragment slot="patterns">None yet.</Fragment>
+</ComponentTabs>
