@@ -1,11 +1,11 @@
 ---
 title: Select
-description: Single-select dropdown.
+description: Single or multi-select dropdown.
 ---
 import ComponentTabs from '../../../components/ComponentTabs.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
-Choose one option from a list (multi-select later).
+Choose one or more options from a list.
 
 <ComponentTabs>
   <Fragment slot="examples">
@@ -17,19 +17,26 @@ Choose one option from a list (multi-select later).
         options='[{"value":"s","label":"Small"},{"value":"m","label":"Medium"},{"value":"l","label":"Large"}]'
       ></pond-select>
     </PondDemo>
+    <PondDemo label="Multiple">
+      <pond-select
+        label="Sizes"
+        multiple
+        style="max-width:16rem"
+        options='[{"value":"s","label":"Small"},{"value":"m","label":"Medium"},{"value":"l","label":"Large"}]'
+        values='["s","l"]'
+      ></pond-select>
+    </PondDemo>
   </Fragment>
   <Fragment slot="code">
 
 ```html
-<pond-select
-  label="Size"
-  options='[{"value":"s","label":"Small"},{"value":"m","label":"Medium"}]'
-></pond-select>
+<pond-select label="Size" options='[...]' value="m"></pond-select>
+<pond-select label="Sizes" multiple options='[...]' values='["s","l"]'></pond-select>
 ```
 
   </Fragment>
-  <Fragment slot="usage">Single-select first. Prefer radio groups when all options should stay visible.</Fragment>
-  <Fragment slot="changelog">Unreleased — options array, plain.</Fragment>
-  <Fragment slot="accessibility">Native select + label.</Fragment>
+  <Fragment slot="usage">Use `multiple` for multi-select. Prefer radio / checkbox groups when all options should stay visible.</Fragment>
+  <Fragment slot="changelog">Unreleased — multi mode via `multiple` + `values`.</Fragment>
+  <Fragment slot="accessibility">Native select + label; multi uses the `multiple` attribute.</Fragment>
   <Fragment slot="patterns">None yet.</Fragment>
 </ComponentTabs>

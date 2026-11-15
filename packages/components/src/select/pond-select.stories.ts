@@ -7,14 +7,23 @@ const options = [
   { value: 'm', label: 'Medium' },
   { value: 'l', label: 'Large' }
 ]
-const meta: Meta = {
-  title: 'Components/Select',
-  component: 'pond-select',
-  args: { label: 'Size', value: 'm' }
-}
+
+const meta: Meta = { title: 'Components/Select', component: 'pond-select' }
 export default meta
 type Story = StoryObj
+
 export const Default: Story = {
-  render: (a) =>
-    html`<pond-select label=${a.label} value=${a.value} .options=${options}></pond-select>`
+  render: () =>
+    html`<pond-select label="Size" value="m" style="max-width:16rem" .options=${options}></pond-select>`
+}
+
+export const Multiple: Story = {
+  render: () =>
+    html`<pond-select
+      label="Sizes"
+      multiple
+      style="max-width:16rem"
+      .options=${options}
+      .values=${['s', 'l']}
+    ></pond-select>`
 }
