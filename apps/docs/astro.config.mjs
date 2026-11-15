@@ -113,6 +113,7 @@ export default defineConfig({
         {
           label: 'Overlays',
           items: [
+            { label: 'Blanket', slug: 'components/blanket' },
             { label: 'Tooltip', slug: 'components/tooltip' },
             { label: 'Modal', slug: 'components/modal' },
             { label: 'Menu', slug: 'components/menu' }

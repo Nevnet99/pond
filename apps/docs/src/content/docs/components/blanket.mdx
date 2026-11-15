@@ -1,0 +1,36 @@
+---
+title: Blanket
+description: Slottable backdrop for layered UI (Modal, Drawer, custom).
+---
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Dim the page and host layered content in the default slot. Click the backdrop to dismiss when `click-dismiss` is on (default).
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Default">
+      <div style="position:relative;min-height:10rem;overflow:hidden">
+        <pond-blanket style="--demo:1">
+          <div style="margin:auto;padding:1rem;background:var(--pond-color-bg-canvas);border-radius:8px">
+            Slotted panel
+          </div>
+        </pond-blanket>
+      </div>
+      <style>{`pond-blanket::part(root){position:absolute}`}</style>
+    </PondDemo>
+  </Fragment>
+  <Fragment slot="code">
+
+```html
+<pond-blanket>
+  <div>Layered content</div>
+</pond-blanket>
+```
+
+  </Fragment>
+  <Fragment slot="usage">Compose inside Modal/Drawer, or use alone for custom layers. Popup stays undimmed.</Fragment>
+  <Fragment slot="changelog">Unreleased — slottable backdrop + pond-dismiss.</Fragment>
+  <Fragment slot="accessibility">Decorative dimming; focus management belongs to the layered host (Modal/Drawer).</Fragment>
+  <Fragment slot="patterns">None yet.</Fragment>
+</ComponentTabs>
