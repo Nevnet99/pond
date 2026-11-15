@@ -1,3 +1,5 @@
+export type { PondAvatarSize } from './avatar/pond-avatar.js'
+export { PondAvatar } from './avatar/pond-avatar.js'
 export { PondBadge } from './badge/pond-badge.js'
 export type { PondBoxBackground, PondBoxPadding } from './box/pond-box.js'
 export { PondBox } from './box/pond-box.js'

@@ -93,7 +93,8 @@ export default defineConfig({
             { label: 'Pagination', slug: 'components/pagination' },
             { label: 'Menu', slug: 'components/menu' },
             { label: 'Page header', slug: 'components/page-header' },
-            { label: 'Icon', slug: 'components/icon' }
+            { label: 'Icon', slug: 'components/icon' },
+            { label: 'Avatar', slug: 'components/avatar' }
           ]
         },
         {

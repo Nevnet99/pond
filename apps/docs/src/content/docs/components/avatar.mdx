@@ -1,0 +1,27 @@
+---
+title: Avatar
+description: User image, initials, or icon fallback.
+---
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Represent a person. Falls back to initials, then the user icon.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Initials">
+      <pond-avatar initials="LB" label="Luke"></pond-avatar>
+    </PondDemo>
+  </Fragment>
+  <Fragment slot="code">
+
+```html
+<pond-avatar initials="LB" label="Luke"></pond-avatar>
+```
+
+  </Fragment>
+  <Fragment slot="usage">Prefer src when available; initials for known names; icon when anonymous.</Fragment>
+  <Fragment slot="changelog">Unreleased — src / initials / icon fallback.</Fragment>
+  <Fragment slot="accessibility">role=img with aria-label.</Fragment>
+  <Fragment slot="patterns">None yet.</Fragment>
+</ComponentTabs>
