@@ -59,6 +59,7 @@ export default defineConfig({
           label: 'Theming',
           items: [
             { label: 'Tokens & themes', slug: 'theming/tokens' },
+            { label: 'Motion', slug: 'theming/motion' },
             { label: 'Typography', slug: 'theming/typography' }
           ]
         },
