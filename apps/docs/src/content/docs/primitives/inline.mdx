@@ -1,0 +1,56 @@
+---
+title: Inline
+description: Horizontal row with tokenized gap and optional wrap.
+---
+
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Lays out children in a row. Use `wrap` for dense toolbars that reflow.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Actions">
+      <pond-inline gap="2">
+        <pond-button variant="primary">Save</pond-button>
+        <pond-button variant="secondary">Cancel</pond-button>
+        <pond-button variant="subtle">More</pond-button>
+      </pond-inline>
+    </PondDemo>
+  </Fragment>
+
+  <Fragment slot="code">
+
+```html
+<pond-inline gap="2">
+  <pond-button variant="primary">Save</pond-button>
+  <pond-button variant="secondary">Cancel</pond-button>
+</pond-inline>
+```
+
+  </Fragment>
+
+  <Fragment slot="usage">
+
+Toolbars, chip rows, and sibling actions. Prefer Stack when order is vertical.
+
+  </Fragment>
+
+  <Fragment slot="changelog">
+
+Unreleased — gap, align, justify, wrap.
+
+  </Fragment>
+
+  <Fragment slot="accessibility">
+
+Presentational. Keep interactive children keyboard-reachable in DOM order.
+
+  </Fragment>
+
+  <Fragment slot="patterns">
+
+Button groups; form field + helper on one line.
+
+  </Fragment>
+</ComponentTabs>

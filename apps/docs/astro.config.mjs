@@ -65,6 +65,9 @@ export default defineConfig({
         {
           label: 'Primitives',
           items: [
+            { label: 'Box', slug: 'primitives/box' },
+            { label: 'Stack', slug: 'primitives/stack' },
+            { label: 'Inline', slug: 'primitives/inline' },
             { label: 'Text', slug: 'primitives/text' },
             { label: 'Heading', slug: 'primitives/heading' }
           ]
