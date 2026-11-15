@@ -56,8 +56,8 @@ Control text is `--pond-font-size-md` (16px) so iOS Safari does not zoom on focu
 
 - **Badge** — `tabular-nums` so counters do not shift width.
 - **Lozenge** — uppercase + wide tracking + `nowrap`.
-- **Link** — underline thickness/position `from-font`.
-- **Code block** — mono at `sm`; inline inherits ~0.9em of surrounding size.
+- **Link** — underlined with a stable offset (avoid host-font underline metrics in VRT).
+- **Code** — mono; inline inherits ~0.9em of surrounding size.
 - **Tokens root** — antialiased smoothing once on `:root` (not per component).
 
 ## Do / don’t
