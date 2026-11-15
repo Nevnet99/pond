@@ -79,6 +79,7 @@ export default defineConfig({
             { label: 'Link', slug: 'components/link' },
             { label: 'Text field', slug: 'components/text-field' },
             { label: 'Text area', slug: 'components/text-area' },
+            { label: 'Calendar', slug: 'components/calendar' },
             { label: 'Checkbox', slug: 'components/checkbox' },
             { label: 'Toggle', slug: 'components/toggle' },
             { label: 'Select', slug: 'components/select' },
