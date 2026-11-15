@@ -118,7 +118,9 @@ export class PondCalendar extends LitElement {
     }
     while (cells.length % 7 !== 0) {
       const last = cells[cells.length - 1]
-      const d = parseIso(last.iso)!
+      const parsed = parseIso(last.iso)
+      if (!parsed) break
+      const d = parsed
       d.setDate(d.getDate() + 1)
       cells.push({ iso: toIsoDate(d), day: d.getDate(), outside: true })
     }
