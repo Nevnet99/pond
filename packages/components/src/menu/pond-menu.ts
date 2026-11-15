@@ -186,8 +186,9 @@ export class PondMenu extends LitElement {
       >
         <slot name="trigger">${this.label}</slot>
       </button>
-      ${this.open
-        ? html`
+      ${
+        this.open
+          ? html`
             <ul part="list" role="menu">
               ${this.items.map(
                 (item) => html`
@@ -207,7 +208,8 @@ export class PondMenu extends LitElement {
               )}
             </ul>
           `
-        : nothing}
+          : nothing
+      }
     `
   }
 }
