@@ -1,6 +1,8 @@
 export type { PondAvatarSize } from './avatar/pond-avatar.js'
 export { PondAvatar } from './avatar/pond-avatar.js'
 export { PondBadge } from './badge/pond-badge.js'
+export type { PondBannerTone } from './banner/pond-banner.js'
+export { PondBanner } from './banner/pond-banner.js'
 export type { PondBoxBackground, PondBoxPadding } from './box/pond-box.js'
 export { PondBox } from './box/pond-box.js'
 export type { PondBreadcrumbItem } from './breadcrumbs/pond-breadcrumbs.js'
