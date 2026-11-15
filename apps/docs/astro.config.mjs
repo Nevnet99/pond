@@ -89,7 +89,8 @@ export default defineConfig({
             { label: 'Modal', slug: 'components/modal' },
             { label: 'Section message', slug: 'components/section-message' },
             { label: 'Tabs', slug: 'components/tabs' },
-            { label: 'Breadcrumbs', slug: 'components/breadcrumbs' }
+            { label: 'Breadcrumbs', slug: 'components/breadcrumbs' },
+            { label: 'Pagination', slug: 'components/pagination' }
           ]
         },
         {
