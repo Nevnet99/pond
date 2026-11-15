@@ -152,6 +152,7 @@ export default defineConfig({
           items: [
             { label: 'Icon', slug: 'components/icon' },
             { label: 'Image', slug: 'components/image' },
+            { label: 'Tile', slug: 'components/tile' },
             { label: 'Avatar', slug: 'components/avatar' },
             { label: 'Avatar group', slug: 'components/avatar-group' }
           ]

@@ -206,6 +206,16 @@ const catalog: Record<string, DosDontsEntry> = {
       'Don’t use Image as a clickable button without a real control'
     ]
   },
+  tile: {
+    dos: [
+      'Use for named nouns in grids and pickers',
+      'Set label when the slot is icon-only'
+    ],
+    donts: [
+      'Don’t use Tile for photographic heroes — prefer Image',
+      'Don’t overcrowd the tile with long paragraphs'
+    ]
+  },
   menu: {
     dos: ['Group related actions', 'Support arrow-key movement between items'],
     donts: [
