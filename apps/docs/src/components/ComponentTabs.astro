@@ -7,9 +7,9 @@ const tabs = [
   { id: 'examples', label: 'Examples' },
   { id: 'code', label: 'Code' },
   { id: 'usage', label: 'Usage' },
-  { id: 'changelog', label: 'Changelog' },
   { id: 'accessibility', label: 'Accessibility' },
-  { id: 'patterns', label: 'Patterns' }
+  { id: 'patterns', label: 'Patterns' },
+  { id: 'changelog', label: 'Changelog' }
 ] as const
 ---
 
@@ -65,15 +65,6 @@ const tabs = [
   <div
     class="pond-doc-tabs__panel"
     role="tabpanel"
-    id="panel-changelog"
-    aria-labelledby="tab-changelog"
-    data-panel="changelog"
-    hidden>
-    <slot name="changelog" />
-  </div>
-  <div
-    class="pond-doc-tabs__panel"
-    role="tabpanel"
     id="panel-accessibility"
     aria-labelledby="tab-accessibility"
     data-panel="accessibility"
@@ -88,6 +79,15 @@ const tabs = [
     data-panel="patterns"
     hidden>
     <slot name="patterns" />
+  </div>
+  <div
+    class="pond-doc-tabs__panel"
+    role="tabpanel"
+    id="panel-changelog"
+    aria-labelledby="tab-changelog"
+    data-panel="changelog"
+    hidden>
+    <slot name="changelog" />
   </div>
 </div>
 
