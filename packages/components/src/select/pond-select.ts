@@ -5,7 +5,7 @@ import type { PondAppearance } from '../shared/appearance.js'
 
 export type PondSelectOption = { value: string; label: string }
 
-/** @summary Single-select control. @status stable @since 0.0.0 */
+/** @summary Select control — single or multi. @status stable @since 0.0.0 @fires pond-change */
 @customElement('pond-select')
 export class PondSelect extends LitElement {
   static override styles = css`
@@ -23,6 +23,7 @@ export class PondSelect extends LitElement {
       background: var(--pond-color-bg-canvas); color: var(--pond-color-fg-default);
       font: inherit; font-size: var(--pond-font-size-md);
     }
+    [part='select'][multiple] { min-height: 6.5rem; }
     [part='select']:focus-visible {
       outline: var(--pond-focus-width) solid var(--pond-color-focus-ring);
       outline-offset: var(--pond-focus-offset);
@@ -37,11 +38,24 @@ export class PondSelect extends LitElement {
   @property() label = ''
   @property() name = ''
   @property() value = ''
+  @property({ type: Array }) values: string[] = []
+  @property({ type: Boolean, reflect: true }) multiple = false
   @property({ type: Boolean, reflect: true }) disabled = false
   @property({ type: Array }) options: PondSelectOption[] = []
 
   #onChange(e: Event) {
     const select = e.target as HTMLSelectElement
+    if (this.multiple) {
+      this.values = Array.from(select.selectedOptions).map((o) => o.value)
+      this.dispatchEvent(
+        new CustomEvent('pond-change', {
+          detail: { values: this.values },
+          bubbles: true,
+          composed: true
+        })
+      )
+      return
+    }
     this.value = select.value
     this.dispatchEvent(
       new CustomEvent('pond-change', {
@@ -52,12 +66,28 @@ export class PondSelect extends LitElement {
     )
   }
 
+  #isSelected(optionValue: string) {
+    return this.multiple
+      ? this.values.includes(optionValue)
+      : optionValue === this.value
+  }
+
   override render() {
     return html`<div part="root">
       ${this.label ? html`<label part="label" for="select">${this.label}</label>` : nothing}
-      <select part="select" id="select" name=${ifDefined(this.name || undefined)}
-        .value=${this.value} ?disabled=${this.disabled} @change=${this.#onChange}>
-        ${this.options.map((o) => html`<option value=${o.value} ?selected=${o.value === this.value}>${o.label}</option>`)}
+      <select
+        part="select"
+        id="select"
+        name=${ifDefined(this.name || undefined)}
+        ?multiple=${this.multiple}
+        .value=${this.multiple ? '' : this.value}
+        ?disabled=${this.disabled}
+        @change=${this.#onChange}
+      >
+        ${this.options.map(
+          (o) =>
+            html`<option value=${o.value} ?selected=${this.#isSelected(o.value)}>${o.label}</option>`
+        )}
       </select>
     </div>`
   }
