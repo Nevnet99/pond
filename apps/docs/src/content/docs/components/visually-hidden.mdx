@@ -1,0 +1,30 @@
+---
+title: Visually hidden
+description: Hide content visually while keeping it available to assistive tech.
+---
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Use for labels and instructions that should not appear on screen but must remain in the accessibility tree.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Default">
+      <p>
+        Visible text
+        <pond-visually-hidden>and a screen-reader-only note</pond-visually-hidden>
+      </p>
+    </PondDemo>
+  </Fragment>
+  <Fragment slot="code">
+
+```html
+<pond-visually-hidden>Skip to content</pond-visually-hidden>
+```
+
+  </Fragment>
+  <Fragment slot="usage">Prefer for short accessible names — not as a substitute for visible UI.</Fragment>
+  <Fragment slot="changelog">Unreleased — slotted Lit wrapper.</Fragment>
+  <Fragment slot="accessibility">Content remains in the accessibility tree; clipped visually.</Fragment>
+  <Fragment slot="patterns">None yet.</Fragment>
+</ComponentTabs>

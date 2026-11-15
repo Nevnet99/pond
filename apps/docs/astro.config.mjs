@@ -94,7 +94,8 @@ export default defineConfig({
             { label: 'Section message', slug: 'components/section-message' },
             { label: 'Banner', slug: 'components/banner' },
             { label: 'Flag', slug: 'components/flag' },
-            { label: 'Empty state', slug: 'components/empty-state' }
+            { label: 'Empty state', slug: 'components/empty-state' },
+            { label: 'Visually hidden', slug: 'components/visually-hidden' }
           ]
         },
         {
