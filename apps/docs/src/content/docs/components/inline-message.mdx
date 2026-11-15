@@ -1,0 +1,27 @@
+---
+title: Inline message
+description: Compact field- or control-adjacent notice.
+---
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Sit next to a control for errors or short help. Not a page-level Banner or Flag.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Default">
+      <pond-inline-message tone="danger" title="Email">Enter a valid address.</pond-inline-message>
+    </PondDemo>
+  </Fragment>
+  <Fragment slot="code">
+
+```html
+<pond-inline-message tone="danger" title="Email">Enter a valid address.</pond-inline-message>
+```
+
+  </Fragment>
+  <Fragment slot="usage">Use beside inputs. Prefer Section message / Banner / Flag for larger alerts.</Fragment>
+  <Fragment slot="changelog">Unreleased — tones + optional title.</Fragment>
+  <Fragment slot="accessibility">`status` or `alert` by tone.</Fragment>
+  <Fragment slot="patterns">None yet.</Fragment>
+</ComponentTabs>
