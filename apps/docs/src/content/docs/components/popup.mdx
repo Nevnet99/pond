@@ -1,0 +1,33 @@
+---
+title: Popup
+description: Anchored overlay for brief content — no page dim, no focus trap.
+---
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Undimmed anchored panel. Escape and outside click dismiss; focus restores to the trigger. Prefer Modal/Drawer when you need a trap and Blanket.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Default">
+      <pond-popup open label="Details">
+        <button type="button" slot="trigger">Details</button>
+        Brief anchored content.
+      </pond-popup>
+    </PondDemo>
+  </Fragment>
+  <Fragment slot="code">
+
+```html
+<pond-popup label="Details">
+  <button type="button" slot="trigger">Details</button>
+  Brief anchored content.
+</pond-popup>
+```
+
+  </Fragment>
+  <Fragment slot="usage">No focus trap. Inline dialog stays deferred — use Popup.</Fragment>
+  <Fragment slot="changelog">Unreleased — trigger slot, Escape, outside click.</Fragment>
+  <Fragment slot="accessibility">`role=dialog` without `aria-modal`; restore focus on close.</Fragment>
+  <Fragment slot="patterns">None yet.</Fragment>
+</ComponentTabs>

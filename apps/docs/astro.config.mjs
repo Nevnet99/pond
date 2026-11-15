@@ -116,6 +116,7 @@ export default defineConfig({
             { label: 'Blanket', slug: 'components/blanket' },
             { label: 'Tooltip', slug: 'components/tooltip' },
             { label: 'Modal', slug: 'components/modal' },
+            { label: 'Popup', slug: 'components/popup' },
             { label: 'Menu', slug: 'components/menu' }
           ]
         },
