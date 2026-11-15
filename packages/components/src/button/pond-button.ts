@@ -44,9 +44,21 @@ export class PondButton extends LitElement {
       text-box: trim-both cap alphabetic;
       cursor: pointer;
       transition:
-        background-color var(--pond-motion-duration-fast) ease,
-        border-color var(--pond-motion-duration-fast) ease,
-        color var(--pond-motion-duration-fast) ease;
+        background-color var(--pond-motion-duration-fast)
+        var(--pond-motion-easing-standard),
+        border-color var(--pond-motion-duration-fast)
+        var(--pond-motion-easing-standard),
+        color var(--pond-motion-duration-fast)
+        var(--pond-motion-easing-standard),
+        scale var(--pond-motion-duration-fast) var(--pond-motion-easing-exit);
+    }
+
+    [part="button"]:not(:disabled):active {
+      scale: 0.96;
+    }
+
+    :host([variant="link"]) [part="button"]:not(:disabled):active {
+      scale: none;
     }
 
     /* primary — main call to action */

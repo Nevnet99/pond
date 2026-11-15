@@ -1,0 +1,95 @@
+---
+/**
+ * Shared Accessibility tab body — summary, keyboard, WCAG 2.2 AA criteria.
+ * Data lives in `../data/a11y.ts`.
+ */
+import { getA11yEntry } from '../data/a11y'
+
+interface Props {
+  /** Catalog key matching the docs slug (e.g. `button`, `text-field`). */
+  component: string
+}
+
+const { component } = Astro.props
+const entry = getA11yEntry(component)
+---
+
+{
+  entry ? (
+    <div class="pond-a11y not-content">
+      <p class="pond-a11y__summary">{entry.summary}</p>
+
+      {entry.keyboard?.length ? (
+        <>
+          <h3 class="pond-a11y__h">Keyboard</h3>
+          <ul>
+            {entry.keyboard.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </>
+      ) : null}
+
+      <h3 class="pond-a11y__h">WCAG 2.2 AA</h3>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Criterion</th>
+            <th scope="col">How Pond meets it</th>
+          </tr>
+        </thead>
+        <tbody>
+          {entry.criteria.map((row) => (
+            <tr>
+              <th scope="row">
+                <code>{row.id}</code> {row.title}
+              </th>
+              <td>{row.how}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      {entry.notes?.length ? (
+        <>
+          <h3 class="pond-a11y__h">Notes</h3>
+          <ul>
+            {entry.notes.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </>
+      ) : null}
+    </div>
+  ) : (
+    <p>
+      No accessibility catalog entry for <code>{component}</code> yet.
+    </p>
+  )
+}
+
+<style>
+  .pond-a11y__summary {
+    margin-block: 0 1rem;
+  }
+  .pond-a11y__h {
+    margin-block: 1.25rem 0.5rem;
+    font-size: 0.95rem;
+  }
+  .pond-a11y table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+  .pond-a11y th,
+  .pond-a11y td {
+    border-bottom: 1px solid var(--sl-color-gray-5, #444);
+    padding: 0.5rem 0.65rem;
+    text-align: start;
+    vertical-align: top;
+  }
+  .pond-a11y th[scope='row'] {
+    white-space: nowrap;
+    font-weight: 600;
+  }
+</style>

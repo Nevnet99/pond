@@ -26,12 +26,14 @@ export class PondProgressBar extends LitElement {
       width: var(--pond-progress, 0%);
       border-radius: inherit;
       background: var(--pond-color-accent-default);
-      transition: width var(--pond-motion-duration-normal) ease;
+      transition: width var(--pond-motion-duration-normal)
+        var(--pond-motion-easing-standard);
     }
     :host([indeterminate]) [part="bar"] {
       width: 40%;
       animation: pond-progress-indeterminate
-        var(--pond-motion-duration-slow, 900ms) ease-in-out infinite;
+        var(--pond-motion-duration-slow, 900ms)
+        var(--pond-motion-easing-standard) infinite;
     }
     @keyframes pond-progress-indeterminate {
       0% {

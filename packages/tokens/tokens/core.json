@@ -1,38 +1,84 @@
 {
   "color": {
     "gray": {
-      "0": { "value": "#ffffff" },
-      "50": { "value": "#f4f6f8" },
-      "100": { "value": "#e8ecf0" },
-      "200": { "value": "#c9d1d9" },
-      "400": { "value": "#7a8794" },
-      "700": { "value": "#2f3a45" },
-      "900": { "value": "#12181e" },
-      "1000": { "value": "#0a0e12" }
+      "0": {
+        "value": "#ffffff"
+      },
+      "50": {
+        "value": "#f4f6f8"
+      },
+      "100": {
+        "value": "#e8ecf0"
+      },
+      "200": {
+        "value": "#c9d1d9"
+      },
+      "400": {
+        "value": "#7a8794"
+      },
+      "700": {
+        "value": "#2f3a45"
+      },
+      "900": {
+        "value": "#12181e"
+      },
+      "1000": {
+        "value": "#0a0e12"
+      }
     },
     "teal": {
-      "400": { "value": "#2bb7a8" },
-      "500": { "value": "#1a9b8e" },
-      "600": { "value": "#147f74" }
+      "400": {
+        "value": "#2bb7a8"
+      },
+      "500": {
+        "value": "#1a9b8e"
+      },
+      "600": {
+        "value": "#147f74"
+      }
     },
     "red": {
-      "500": { "value": "#d64545" },
-      "600": { "value": "#b53737" },
-      "100": { "value": "#fde8e8" }
+      "100": {
+        "value": "#fde8e8"
+      },
+      "500": {
+        "value": "#d64545"
+      },
+      "600": {
+        "value": "#b53737"
+      }
     }
   },
   "space": {
-    "1": { "value": "0.25rem" },
-    "2": { "value": "0.5rem" },
-    "3": { "value": "0.75rem" },
-    "4": { "value": "1rem" },
-    "6": { "value": "1.5rem" },
-    "8": { "value": "2rem" }
+    "1": {
+      "value": "0.25rem"
+    },
+    "2": {
+      "value": "0.5rem"
+    },
+    "3": {
+      "value": "0.75rem"
+    },
+    "4": {
+      "value": "1rem"
+    },
+    "6": {
+      "value": "1.5rem"
+    },
+    "8": {
+      "value": "2rem"
+    }
   },
   "radius": {
-    "sm": { "value": "0.25rem" },
-    "md": { "value": "0.5rem" },
-    "pill": { "value": "999px" }
+    "sm": {
+      "value": "0.25rem"
+    },
+    "md": {
+      "value": "0.5rem"
+    },
+    "pill": {
+      "value": "999px"
+    }
   },
   "font": {
     "family": {
@@ -47,34 +93,83 @@
       }
     },
     "size": {
-      "xs": { "value": "0.75rem", "comment": "12px — captions, meta" },
+      "xs": {
+        "value": "0.75rem",
+        "comment": "12px — captions, meta"
+      },
       "sm": {
         "value": "0.875rem",
         "comment": "14px — secondary body, helpers"
       },
-      "md": { "value": "1rem", "comment": "16px — body default (base)" },
-      "lg": { "value": "1.125rem", "comment": "18px — lead / large body" },
-      "xl": { "value": "1.25rem", "comment": "20px — h6 / compact titles" },
-      "2xl": { "value": "1.5rem", "comment": "24px — h5" },
-      "3xl": { "value": "1.875rem", "comment": "30px — h4 / h3" },
-      "4xl": { "value": "2.25rem", "comment": "36px — h2" },
-      "5xl": { "value": "3rem", "comment": "48px — h1 / page title" }
+      "md": {
+        "value": "1rem",
+        "comment": "16px — body default (base)"
+      },
+      "lg": {
+        "value": "1.125rem",
+        "comment": "18px — lead / large body"
+      },
+      "xl": {
+        "value": "1.25rem",
+        "comment": "20px — h6 / compact titles"
+      },
+      "2xl": {
+        "value": "1.5rem",
+        "comment": "24px — h5"
+      },
+      "3xl": {
+        "value": "1.875rem",
+        "comment": "30px — h4 / h3"
+      },
+      "4xl": {
+        "value": "2.25rem",
+        "comment": "36px — h2"
+      },
+      "5xl": {
+        "value": "3rem",
+        "comment": "48px — h1 / page title"
+      }
     },
     "weight": {
-      "regular": { "value": "400" },
-      "medium": { "value": "500" },
-      "semibold": { "value": "600" },
-      "bold": { "value": "700" }
+      "regular": {
+        "value": "400"
+      },
+      "medium": {
+        "value": "500"
+      },
+      "semibold": {
+        "value": "600"
+      },
+      "bold": {
+        "value": "700"
+      }
     },
     "line": {
-      "tight": { "value": "1.2", "comment": "display / large headings" },
-      "snug": { "value": "1.35", "comment": "small headings" },
-      "normal": { "value": "1.5", "comment": "body" },
-      "relaxed": { "value": "1.65", "comment": "long-form reading" }
+      "tight": {
+        "value": "1.2",
+        "comment": "display / large headings"
+      },
+      "snug": {
+        "value": "1.35",
+        "comment": "small headings"
+      },
+      "normal": {
+        "value": "1.5",
+        "comment": "body"
+      },
+      "relaxed": {
+        "value": "1.65",
+        "comment": "long-form reading"
+      }
     },
     "tracking": {
-      "tight": { "value": "-0.02em", "comment": "large display" },
-      "normal": { "value": "0" },
+      "tight": {
+        "value": "-0.02em",
+        "comment": "large display"
+      },
+      "normal": {
+        "value": "0"
+      },
       "wide": {
         "value": "0.05em",
         "comment": "uppercase labels / overlines ≤14px"
@@ -83,16 +178,52 @@
   },
   "motion": {
     "duration": {
-      "fast": { "value": "120ms" },
-      "normal": { "value": "200ms" },
+      "instant": {
+        "value": "0ms",
+        "comment": "reduced-motion / hard cuts"
+      },
+      "fast": {
+        "value": "120ms",
+        "comment": "hover, press, high-frequency UI"
+      },
+      "normal": {
+        "value": "200ms",
+        "comment": "panel open/close, toggles"
+      },
+      "moderate": {
+        "value": "300ms",
+        "comment": "entrances, staged reveals"
+      },
       "slow": {
         "value": "900ms",
         "comment": "loops — spinner, indeterminate progress"
       }
+    },
+    "easing": {
+      "standard": {
+        "value": "cubic-bezier(0.2, 0, 0, 1)",
+        "comment": "default UI transitions"
+      },
+      "enter": {
+        "value": "cubic-bezier(0, 0, 0.2, 1)",
+        "comment": "decelerate into place"
+      },
+      "exit": {
+        "value": "cubic-bezier(0.4, 0, 1, 1)",
+        "comment": "accelerate out"
+      },
+      "linear": {
+        "value": "linear",
+        "comment": "loops only"
+      }
     }
   },
   "focus": {
-    "width": { "value": "2px" },
-    "offset": { "value": "2px" }
+    "width": {
+      "value": "2px"
+    },
+    "offset": {
+      "value": "2px"
+    }
   }
 }

@@ -1,0 +1,57 @@
+---
+title: Motion
+description: Duration and easing tokens, when to animate, and reduced-motion behavior.
+---
+
+import PondDemo from '../../../components/PondDemo.astro'
+
+Pond motion is **token-driven**: durations and easings live on `--pond-motion-*`. Interactive state changes use **CSS transitions**; one-shot sequences (drawer enter, blanket fade) may use short keyframes. Loops (spinner, indeterminate progress) use `duration-slow` + `easing-linear` / standard.
+
+## Durations
+
+| Token | Value | Use |
+| --- | --- | --- |
+| `--pond-motion-duration-instant` | 0ms | Hard cuts / reduced-motion fallback |
+| `--pond-motion-duration-fast` | 120ms | Hover, press, high-frequency UI |
+| `--pond-motion-duration-normal` | 200ms | Panels, toggles, open/close |
+| `--pond-motion-duration-moderate` | 300ms | Entrances / staged reveals |
+| `--pond-motion-duration-slow` | 900ms | Loops only (spinner, indeterminate) |
+
+## Easings
+
+| Token | Curve | Use |
+| --- | --- | --- |
+| `--pond-motion-easing-standard` | `cubic-bezier(0.2, 0, 0, 1)` | Default UI transitions |
+| `--pond-motion-easing-enter` | `cubic-bezier(0, 0, 0.2, 1)` | Decelerate into place |
+| `--pond-motion-easing-exit` | `cubic-bezier(0.4, 0, 1, 1)` | Accelerate out / press |
+| `--pond-motion-easing-linear` | `linear` | Continuous loops |
+
+## Guidance
+
+- **Do** use transitions for hover, toggle, and press so mid-flight reverses cleanly.
+- **Do** keep high-frequency interactions at `fast` (≤150ms).
+- **Do** leave a static cue (color, label, icon) — motion is never the only feedback.
+- **Don't** use keyframes for reversible open/close when a transition can retarget.
+- **Don't** animate under `prefers-reduced-motion: reduce` — tokens collapse durations to `0ms` globally; components also gate loops.
+
+## Reduced motion
+
+`@pond/tokens` zeros interactive and loop durations when the user prefers reduced motion. Components should still avoid relying on movement alone (e.g. indeterminate bars keep a static width).
+
+## Live samples
+
+<PondDemo label="Press scale (Button)">
+  <pond-inline gap="3">
+    <pond-button variant="primary">Primary</pond-button>
+    <pond-button variant="secondary">Secondary</pond-button>
+    <pond-button variant="subtle">Subtle</pond-button>
+  </pond-inline>
+</PondDemo>
+
+<PondDemo label="Toggle + spinner loop">
+  <pond-inline gap="4" align="center">
+    <pond-toggle>Notify me</pond-toggle>
+    <pond-spinner label="Loading"></pond-spinner>
+    <pond-progress-bar indeterminate label="Working"></pond-progress-bar>
+  </pond-inline>
+</PondDemo>

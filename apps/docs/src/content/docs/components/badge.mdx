@@ -3,6 +3,7 @@ title: Badge
 description: Numeric tally for counts.
 ---
 import ComponentTabs from '../../../components/ComponentTabs.astro'
+import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
 Numeric tally for counts.
@@ -22,6 +23,8 @@ Numeric tally for counts.
   </Fragment>
   <Fragment slot="usage">See component DoD. Plain strips Pond visuals.</Fragment>
   <Fragment slot="changelog">Unreleased.</Fragment>
-  <Fragment slot="accessibility">Plain mode: you own chrome.</Fragment>
+  <Fragment slot="accessibility">
+    <A11ySection component="badge" />
+  </Fragment>
   <Fragment slot="patterns">None yet.</Fragment>
 </ComponentTabs>

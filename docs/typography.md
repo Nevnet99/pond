@@ -20,14 +20,14 @@ CSS: `--pond-font-size-xs` … `--pond-font-size-5xl`.
 
 ## Line height & tracking
 
-| Token                         | Value   | Use                  |
-| ----------------------------- | ------- | -------------------- |
-| `--pond-font-line-tight`      | 1.2     | Large headings       |
-| `--pond-font-line-snug`       | 1.35    | Small headings       |
-| `--pond-font-line-normal`     | 1.5     | Body                 |
-| `--pond-font-line-relaxed`    | 1.65    | Long-form / lead     |
-| `--pond-font-tracking-tight`  | -0.02em | Large display        |
-| `--pond-font-tracking-normal` | 0       | Default              |
+| Token                         | Value   | Use                          |
+| ----------------------------- | ------- | ---------------------------- |
+| `--pond-font-line-tight`      | 1.2     | Large headings               |
+| `--pond-font-line-snug`       | 1.35    | Small headings               |
+| `--pond-font-line-normal`     | 1.5     | Body                         |
+| `--pond-font-line-relaxed`    | 1.65    | Long-form / lead             |
+| `--pond-font-tracking-tight`  | -0.02em | Large display                |
+| `--pond-font-tracking-normal` | 0       | Default                      |
 | `--pond-font-tracking-wide`   | 0.05em  | Uppercase labels / overlines |
 
 ## Families
