@@ -7,6 +7,14 @@ import { defineConfig } from 'vitest/config'
  * Default instance viewport is desktop; tests resize before each shot.
  */
 export default defineConfig({
+  optimizeDeps: {
+    include: [
+      'lit',
+      'lit/decorators.js',
+      'lit/directives/if-defined.js',
+      'axe-core'
+    ]
+  },
   test: {
     name: 'vrt',
     include: ['src/**/*.vrt.ts'],
