@@ -1,0 +1,32 @@
+---
+title: Skeleton
+description: Content placeholder while loading.
+---
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Reserve space for content that has not loaded yet.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Default">
+      <div style="display:grid;gap:0.75rem;max-width:20rem">
+        <pond-skeleton></pond-skeleton>
+        <pond-skeleton shape="rect"></pond-skeleton>
+        <pond-skeleton shape="circle"></pond-skeleton>
+      </div>
+    </PondDemo>
+  </Fragment>
+  <Fragment slot="code">
+
+```html
+<pond-skeleton></pond-skeleton>
+<pond-skeleton shape="rect"></pond-skeleton>
+```
+
+  </Fragment>
+  <Fragment slot="usage">Prefer with a live region or Spinner when the wait is interactive.</Fragment>
+  <Fragment slot="changelog">Unreleased — text / rect / circle shapes.</Fragment>
+  <Fragment slot="accessibility">Decorative (`aria-hidden`); pair with status text when needed.</Fragment>
+  <Fragment slot="patterns">None yet.</Fragment>
+</ComponentTabs>
