@@ -186,6 +186,16 @@ const catalog: Record<string, DosDontsEntry> = {
       'Don’t obscure the trigger permanently'
     ]
   },
+  'inline-dialog': {
+    dos: [
+      'Use when the surface needs a title and/or actions',
+      'Close on Escape and restore focus to the trigger'
+    ],
+    donts: [
+      'Don’t replace Modal for destructive or multi-step flows',
+      'Don’t use Inline dialog for one-line hints — prefer Popup or Tooltip'
+    ]
+  },
   menu: {
     dos: ['Group related actions', 'Support arrow-key movement between items'],
     donts: [
