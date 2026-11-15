@@ -24,6 +24,8 @@ export type {
   PondInlineJustify
 } from './inline/pond-inline.js'
 export { PondInline } from './inline/pond-inline.js'
+export type { PondInlineMessageTone } from './inline-message/pond-inline-message.js'
+export { PondInlineMessage } from './inline-message/pond-inline-message.js'
 export { PondLink } from './link/pond-link.js'
 export type { PondLozengeTone } from './lozenge/pond-lozenge.js'
 export { PondLozenge } from './lozenge/pond-lozenge.js'
