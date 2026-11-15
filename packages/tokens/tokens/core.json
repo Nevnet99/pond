@@ -38,35 +38,53 @@
       }
     },
     "red": {
+      "100": {
+        "value": "#fde8e8"
+      },
       "500": {
         "value": "#d64545"
       },
       "600": {
         "value": "#b53737"
-      },
-      "100": {
-        "value": "#fde8e8"
       }
     }
   },
   "space": {
     "1": {
-      "value": "0.25rem"
+      "value": "0.25rem",
+      "comment": "4px — tight inline"
     },
     "2": {
-      "value": "0.5rem"
+      "value": "0.5rem",
+      "comment": "8px — control padding-y / compact gap"
     },
     "3": {
-      "value": "0.75rem"
+      "value": "0.75rem",
+      "comment": "12px — field padding / dense stacks"
     },
     "4": {
-      "value": "1rem"
+      "value": "1rem",
+      "comment": "16px — default stack gap / section pad"
+    },
+    "5": {
+      "value": "1.25rem",
+      "comment": "20px — comfortable control clusters"
     },
     "6": {
-      "value": "1.5rem"
+      "value": "1.5rem",
+      "comment": "24px — card / demo padding"
     },
     "8": {
-      "value": "2rem"
+      "value": "2rem",
+      "comment": "32px — page section rhythm"
+    },
+    "10": {
+      "value": "2.5rem",
+      "comment": "40px — major section break"
+    },
+    "12": {
+      "value": "3rem",
+      "comment": "48px — hero / page chrome"
     }
   },
   "radius": {
@@ -95,39 +113,39 @@
     "size": {
       "xs": {
         "value": "0.75rem",
-        "comment": "12px \u2014 captions, meta"
+        "comment": "12px — captions, meta"
       },
       "sm": {
         "value": "0.875rem",
-        "comment": "14px \u2014 secondary body, helpers"
+        "comment": "14px — secondary body, helpers"
       },
       "md": {
         "value": "1rem",
-        "comment": "16px \u2014 body default (base)"
+        "comment": "16px — body default (base)"
       },
       "lg": {
         "value": "1.125rem",
-        "comment": "18px \u2014 lead / large body"
+        "comment": "18px — lead / large body"
       },
       "xl": {
         "value": "1.25rem",
-        "comment": "20px \u2014 h6 / compact titles"
+        "comment": "20px — h6 / compact titles"
       },
       "2xl": {
         "value": "1.5rem",
-        "comment": "24px \u2014 h5"
+        "comment": "24px — h5"
       },
       "3xl": {
         "value": "1.875rem",
-        "comment": "30px \u2014 h4 / h3"
+        "comment": "30px — h4 / h3"
       },
       "4xl": {
         "value": "2.25rem",
-        "comment": "36px \u2014 h2"
+        "comment": "36px — h2"
       },
       "5xl": {
         "value": "3rem",
-        "comment": "48px \u2014 h1 / page title"
+        "comment": "48px — h1 / page title"
       }
     },
     "weight": {
@@ -196,7 +214,7 @@
       },
       "slow": {
         "value": "900ms",
-        "comment": "loops \u2014 spinner, indeterminate progress"
+        "comment": "loops — spinner, indeterminate progress"
       }
     },
     "easing": {
