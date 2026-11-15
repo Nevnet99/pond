@@ -189,8 +189,8 @@
         "value": "0"
       },
       "wide": {
-        "value": "0.04em",
-        "comment": "eyebrows / overlines"
+        "value": "0.05em",
+        "comment": "uppercase labels / overlines ≤14px"
       }
     }
   },

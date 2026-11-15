@@ -1,0 +1,70 @@
+---
+title: Typography
+description: Pond type scale, wrapping, measure, and how Text / Heading use it.
+---
+
+import PondDemo from '../../../components/PondDemo.astro'
+
+Pond ships a **nine-step rem scale** (16px base). Components consume the scale; they do not invent one-off sizes. Full table: [docs/typography.md](https://github.com/Nevnet99/pond/blob/master/docs/typography.md).
+
+## Scale
+
+| Step | rem | Use |
+| --- | --- | --- |
+| `xs`–`sm` | 0.75–0.875 | Caption / helper |
+| `md` | 1 | Body (also form control text — keeps iOS from zooming) |
+| `lg`–`xl` | 1.125–1.25 | Lead / compact title |
+| `2xl`–`5xl` | 1.5–3 | Headings |
+
+Weights start at **400**. Line heights are unitless (`tight` 1.2 · `snug` 1.35 · `normal` 1.5 · `relaxed` 1.65). Tracking: `tight` (−0.02em) on large display, `wide` (0.05em) on uppercase labels.
+
+## Text
+
+`pond-text` uses `text-wrap: pretty` and `overflow-wrap: break-word`. Cap long-form measure yourself (~60–75ch) on the layout, not on every Text instance.
+
+```html
+<pond-text size="sm" muted>Helper</pond-text>
+<pond-text>Body</pond-text>
+<pond-text size="lg">Lead</pond-text>
+```
+
+<PondDemo label="Body steps">
+  <pond-stack gap="2">
+    <pond-text size="xs" muted>Caption · xs</pond-text>
+    <pond-text size="sm" muted>Helper · sm</pond-text>
+    <pond-text>Body default · md — aim for sixty to seventy-five characters on a reading line when the layout is long-form.</pond-text>
+    <pond-text size="lg">Lead · lg</pond-text>
+  </pond-stack>
+</PondDemo>
+
+## Heading
+
+`level` = document outline. `size` = visual step (optional; defaults from level). Headings use `text-wrap: balance`.
+
+```html
+<pond-heading level="1">Page title</pond-heading>
+<pond-heading level="2" size="lg">h2 that looks smaller</pond-heading>
+```
+
+Do **not** skip heading levels to change size — use `size`.
+
+## Forms
+
+Control text is `--pond-font-size-md` (16px) so iOS Safari does not zoom on focus. Labels/helpers stay `sm`.
+
+## Numbers & chrome
+
+- **Badge** — `tabular-nums` so counters do not shift width.
+- **Lozenge** — uppercase + wide tracking + `nowrap`.
+- **Link** — underlined with a stable offset (avoid host-font underline metrics in VRT).
+- **Code** — mono; inline inherits ~0.9em of surrounding size.
+- **Tokens root** — antialiased smoothing once on `:root` (not per component).
+
+## Do / don’t
+
+| Do | Don’t |
+| --- | --- |
+| Pick a scale step (`size`) | Hard-code `px` / `em` sizes in product CSS |
+| Cap measure on the reading column | Force a 70ch max on every `pond-text` in dense UI |
+| Use Badge / Progress for changing numbers | Proportional figures in live counters |
+| Keep input text at `md` | Drop control text below 16px on mobile |

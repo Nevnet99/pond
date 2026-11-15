@@ -33,6 +33,8 @@ export class PondText extends LitElement {
 
     [part="text"] {
       margin: 0;
+      overflow-wrap: break-word;
+      text-wrap: pretty;
     }
 
     :host([appearance="plain"]) [part="text"] {

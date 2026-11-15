@@ -30,6 +30,8 @@ export class PondHeading extends LitElement {
       font: inherit;
       color: inherit;
       letter-spacing: inherit;
+      text-wrap: balance;
+      overflow-wrap: break-word;
     }
 
     :host([data-size="xs"]) {

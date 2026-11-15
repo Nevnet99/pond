@@ -36,6 +36,7 @@ export class PondLozenge extends LitElement {
       line-height: 1.5rem;
       letter-spacing: var(--pond-font-tracking-wide);
       text-transform: uppercase;
+      white-space: nowrap;
       background: var(--pond-color-bg-subtle);
       color: var(--pond-color-fg-default);
     }
