@@ -34,6 +34,7 @@ export type {
   PondInlineJustify
 } from './inline/pond-inline.js'
 export { PondInline } from './inline/pond-inline.js'
+export { PondInlineEdit } from './inline-edit/pond-inline-edit.js'
 export type { PondInlineMessageTone } from './inline-message/pond-inline-message.js'
 export { PondInlineMessage } from './inline-message/pond-inline-message.js'
 export { PondLink } from './link/pond-link.js'

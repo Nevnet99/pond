@@ -1,0 +1,27 @@
+---
+title: Inline edit
+description: Read → edit → commit/cancel with a text field.
+---
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Edit a value in place. Phase 6 ships a text-field editor only.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Default">
+      <pond-inline-edit style="max-width:16rem" value="Ada Lovelace" label="Name"></pond-inline-edit>
+    </PondDemo>
+  </Fragment>
+  <Fragment slot="code">
+
+```html
+<pond-inline-edit value="Ada Lovelace" label="Name"></pond-inline-edit>
+```
+
+  </Fragment>
+  <Fragment slot="usage">Enter confirms; Escape cancels. Custom editors wait for a later phase.</Fragment>
+  <Fragment slot="changelog">Unreleased — text-field inline edit.</Fragment>
+  <Fragment slot="accessibility">Read control is a button; edit mode uses a labeled input plus Confirm/Cancel.</Fragment>
+  <Fragment slot="patterns">None yet.</Fragment>
+</ComponentTabs>
