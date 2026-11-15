@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/web-components-vite'
 import { html } from 'lit'
 import './pond-menu.js'
 
-const meta: Meta = { title: 'Components/Menu', component: 'pond-menu' }
+const meta: Meta = { title: 'Overlays/Menu', component: 'pond-menu' }
 export default meta
 type Story = StoryObj
 

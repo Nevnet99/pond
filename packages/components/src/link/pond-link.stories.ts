@@ -3,7 +3,7 @@ import { html } from 'lit'
 import './pond-link.js'
 
 const meta: Meta = {
-  title: 'Components/Link',
+  title: 'Forms/Link',
   component: 'pond-link',
   args: { label: 'Read the docs', href: '/docs', appearance: 'default' },
   argTypes: {

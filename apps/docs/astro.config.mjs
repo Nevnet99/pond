@@ -73,7 +73,7 @@ export default defineConfig({
           ]
         },
         {
-          label: 'Components',
+          label: 'Forms',
           items: [
             { label: 'Button', slug: 'components/button' },
             { label: 'Link', slug: 'components/link' },
@@ -82,25 +82,50 @@ export default defineConfig({
             { label: 'Checkbox', slug: 'components/checkbox' },
             { label: 'Toggle', slug: 'components/toggle' },
             { label: 'Select', slug: 'components/select' },
+            { label: 'Radio', slug: 'components/radio' }
+          ]
+        },
+        {
+          label: 'Feedback',
+          items: [
             { label: 'Badge', slug: 'components/badge' },
             { label: 'Lozenge', slug: 'components/lozenge' },
             { label: 'Spinner', slug: 'components/spinner' },
-            { label: 'Tooltip', slug: 'components/tooltip' },
-            { label: 'Modal', slug: 'components/modal' },
             { label: 'Section message', slug: 'components/section-message' },
+            { label: 'Banner', slug: 'components/banner' },
+            { label: 'Flag', slug: 'components/flag' },
+            { label: 'Empty state', slug: 'components/empty-state' }
+          ]
+        },
+        {
+          label: 'Navigation',
+          items: [
             { label: 'Tabs', slug: 'components/tabs' },
             { label: 'Breadcrumbs', slug: 'components/breadcrumbs' },
             { label: 'Pagination', slug: 'components/pagination' },
-            { label: 'Menu', slug: 'components/menu' },
-            { label: 'Page header', slug: 'components/page-header' },
+            { label: 'Page header', slug: 'components/page-header' }
+          ]
+        },
+        {
+          label: 'Overlays',
+          items: [
+            { label: 'Tooltip', slug: 'components/tooltip' },
+            { label: 'Modal', slug: 'components/modal' },
+            { label: 'Menu', slug: 'components/menu' }
+          ]
+        },
+        {
+          label: 'Data display',
+          items: [
+            { label: 'Table', slug: 'components/table' },
+            { label: 'Tag', slug: 'components/tag' }
+          ]
+        },
+        {
+          label: 'Media',
+          items: [
             { label: 'Icon', slug: 'components/icon' },
-            { label: 'Avatar', slug: 'components/avatar' },
-            { label: 'Tag', slug: 'components/tag' },
-            { label: 'Empty state', slug: 'components/empty-state' },
-            { label: 'Banner', slug: 'components/banner' },
-            { label: 'Flag', slug: 'components/flag' },
-            { label: 'Radio', slug: 'components/radio' },
-            { label: 'Table', slug: 'components/table' }
+            { label: 'Avatar', slug: 'components/avatar' }
           ]
         },
         {

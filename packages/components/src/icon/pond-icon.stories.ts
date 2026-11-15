@@ -3,7 +3,7 @@ import { html } from 'lit'
 import '../inline/pond-inline.js'
 import './pond-icon.js'
 
-const meta: Meta = { title: 'Components/Icon', component: 'pond-icon' }
+const meta: Meta = { title: 'Media/Icon', component: 'pond-icon' }
 export default meta
 type Story = StoryObj
 

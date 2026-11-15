@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/web-components-vite'
 import { html } from 'lit'
 import './pond-radio.js'
 
-const meta: Meta = { title: 'Components/Radio', component: 'pond-radio' }
+const meta: Meta = { title: 'Forms/Radio', component: 'pond-radio' }
 export default meta
 type Story = StoryObj
 export const Default: Story = {

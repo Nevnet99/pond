@@ -3,7 +3,7 @@ import { html } from 'lit'
 import './pond-text-area.js'
 
 const meta: Meta = {
-  title: 'Components/Text area',
+  title: 'Forms/Text area',
   component: 'pond-text-area',
   args: {
     label: 'Description',

@@ -3,7 +3,7 @@ import { html } from 'lit'
 import './pond-checkbox.js'
 
 const meta: Meta = {
-  title: 'Components/Checkbox',
+  title: 'Forms/Checkbox',
   component: 'pond-checkbox',
   args: { label: 'Accept terms', checked: false, appearance: 'default' }
 }
