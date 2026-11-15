@@ -11,6 +11,24 @@ describe('pond-modal', () => {
     )
     expect(el.shadowRoot?.querySelector('[role="dialog"]')).toBeTruthy()
   })
+  it('traps focus on Tab', async () => {
+    const el = await fixture<PondModal>(
+      html`<pond-modal open title="Confirm">
+        <button type="button" id="a">A</button>
+        <button type="button" id="b" slot="actions">B</button>
+      </pond-modal>`
+    )
+    document.body.append(el)
+    await el.updateComplete
+    const a = el.querySelector('#a') as HTMLButtonElement
+    const b = el.querySelector('#b') as HTMLButtonElement
+    b.focus()
+    window.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'Tab', bubbles: true })
+    )
+    expect(document.activeElement).toBe(a)
+    el.remove()
+  })
   it('closes on Escape', async () => {
     const el = await fixture<PondModal>(
       html`<pond-modal open title="Confirm">Body</pond-modal>`
