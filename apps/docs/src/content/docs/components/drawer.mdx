@@ -1,0 +1,32 @@
+---
+title: Drawer
+description: Slide-in panel shell with Blanket and focus trap — not a Navigation system.
+---
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Panel shell from the start or end edge. Focus is trapped while open. Compose your own nav content inside.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Default">
+      <div style="position:relative;min-height:12rem;overflow:hidden">
+        <pond-drawer open title="Menu">
+          <p>Compose your own nav.</p>
+        </pond-drawer>
+      </div>
+      <style>{`pond-drawer pond-blanket::part(root){position:absolute}`}</style>
+    </PondDemo>
+  </Fragment>
+  <Fragment slot="code">
+
+```html
+<pond-drawer open title="Menu" side="start">…</pond-drawer>
+```
+
+  </Fragment>
+  <Fragment slot="usage">Not the ADS Navigation system. Use `side="end"` for the opposite edge.</Fragment>
+  <Fragment slot="changelog">Unreleased — Blanket + focus trap.</Fragment>
+  <Fragment slot="accessibility">`aria-modal` dialog; Tab cycled inside; Escape / backdrop dismiss; focus restored.</Fragment>
+  <Fragment slot="patterns">None yet.</Fragment>
+</ComponentTabs>
