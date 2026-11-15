@@ -233,6 +233,16 @@ const catalog: Record<string, DosDontsEntry> = {
       'Don’t make the current crumb a link to itself'
     ]
   },
+  page: {
+    dos: [
+      'Compose Banner / Side nav / Page header into the named slots',
+      'Put the primary reading content in the default slot (main)'
+    ],
+    donts: [
+      'Don’t nest a second Page inside the main slot',
+      'Don’t leave empty decorative wrappers in slots — empty slots should stay empty so regions collapse'
+    ]
+  },
   'page-header': {
     dos: [
       'Use one h1 for the page title',

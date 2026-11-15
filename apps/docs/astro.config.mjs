@@ -119,6 +119,7 @@ export default defineConfig({
             { label: 'Tabs', slug: 'components/tabs' },
             { label: 'Breadcrumbs', slug: 'components/breadcrumbs' },
             { label: 'Pagination', slug: 'components/pagination' },
+            { label: 'Page', slug: 'components/page' },
             { label: 'Page header', slug: 'components/page-header' }
           ]
         },
