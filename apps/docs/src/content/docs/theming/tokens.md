@@ -12,3 +12,5 @@ description: --pond-* custom properties and light/dark themes.
 ```
 
 Switch theme with `data-theme="dark"` on `html` (or `:root`). Prefer overriding **semantic** tokens before component-level ones.
+
+Related: [Motion](/theming/motion/) · [Typography](/theming/typography/).

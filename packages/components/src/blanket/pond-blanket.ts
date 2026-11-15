@@ -18,6 +18,21 @@ export class PondBlanket extends LitElement {
       justify-content: stretch;
       background: rgb(0 0 0 / 45%);
       font-family: var(--pond-font-family-sans);
+      animation: pond-blanket-in var(--pond-motion-duration-normal)
+        var(--pond-motion-easing-enter) both;
+    }
+    @keyframes pond-blanket-in {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      [part="root"] {
+        animation: none;
+      }
     }
     :host([appearance="plain"]) [part="root"] {
       all: unset;

@@ -29,6 +29,32 @@ export class PondDrawer extends LitElement {
       color: var(--pond-color-fg-default);
       font-family: var(--pond-font-family-sans);
       box-shadow: 0 0 24px rgb(0 0 0 / 20%);
+      animation: pond-drawer-in-start var(--pond-motion-duration-normal)
+        var(--pond-motion-easing-enter) both;
+    }
+    :host([side="end"]) [part="panel"] {
+      animation-name: pond-drawer-in-end;
+    }
+    @keyframes pond-drawer-in-start {
+      from {
+        transform: translateX(-100%);
+      }
+      to {
+        transform: translateX(0);
+      }
+    }
+    @keyframes pond-drawer-in-end {
+      from {
+        transform: translateX(100%);
+      }
+      to {
+        transform: translateX(0);
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      [part="panel"] {
+        animation: none;
+      }
     }
     [part="header"] {
       display: flex;

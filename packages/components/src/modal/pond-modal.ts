@@ -28,6 +28,23 @@ export class PondModal extends LitElement {
       color: var(--pond-color-fg-default);
       font-family: var(--pond-font-family-sans);
       box-shadow: 0 8px 32px rgb(0 0 0 / 25%);
+      animation: pond-modal-in var(--pond-motion-duration-normal)
+        var(--pond-motion-easing-enter) both;
+    }
+    @keyframes pond-modal-in {
+      from {
+        opacity: 0;
+        transform: translateY(0.5rem) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      [part="dialog"] {
+        animation: none;
+      }
     }
     [part="title"] {
       margin: 0 0 var(--pond-space-3);
