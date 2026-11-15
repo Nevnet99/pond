@@ -103,17 +103,22 @@ export class PondBreadcrumbs extends LitElement {
       <nav part="root" aria-label="Breadcrumb">
         <ol part="list">
           ${this.items.map((item, index) => {
-            const isCurrent = Boolean(item.current) || index === this.items.length - 1
+            const isCurrent =
+              Boolean(item.current) || index === this.items.length - 1
             return html`
               <li part="item">
-                ${index > 0
-                  ? html`<span part="separator" aria-hidden="true">/</span>`
-                  : nothing}
-                ${isCurrent || !item.href
-                  ? html`<span part="link" aria-current=${isCurrent ? 'page' : nothing}
+                ${
+                  index > 0
+                    ? html`<span part="separator" aria-hidden="true">/</span>`
+                    : nothing
+                }
+                ${
+                  isCurrent || !item.href
+                    ? html`<span part="link" aria-current=${isCurrent ? 'page' : nothing}
                       >${item.label}</span
                     >`
-                  : html`<a part="link" href=${item.href}>${item.label}</a>`}
+                    : html`<a part="link" href=${item.href}>${item.label}</a>`
+                }
               </li>
             `
           })}
