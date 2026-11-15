@@ -29,21 +29,21 @@ Pond English names; Lit originals. ADS links may appear in docs for orientation.
 
 ## Inline message vs peers
 
-| Surface             | Role                                                         |
-| ------------------- | ------------------------------------------------------------ |
-| **Section message** | Persistent sectional / in-flow alert (already shipped)       |
-| **Banner**          | Persistent page-level notice (already shipped)               |
-| **Flag**            | Transient toast-style feedback (already shipped)             |
-| **Inline message**  | Compact field- or control-adjacent notice (errors / help)    |
+| Surface             | Role                                                      |
+| ------------------- | --------------------------------------------------------- |
+| **Section message** | Persistent sectional / in-flow alert (already shipped)    |
+| **Banner**          | Persistent page-level notice (already shipped)            |
+| **Flag**            | Transient toast-style feedback (already shipped)          |
+| **Inline message**  | Compact field- or control-adjacent notice (errors / help) |
 
 ## Overlay focus & dimming
 
-| Surface    | Page dim (Blanket) | Focus trap | Notes                                      |
-| ---------- | ------------------ | ---------- | ------------------------------------------ |
-| **Modal**  | Yes (via Blanket)  | Yes        | Refactored onto Blanket in this wave       |
-| **Drawer** | Yes (via Blanket)  | Yes        | Panel shell only                           |
-| **Popup**  | No                 | No         | Anchored; restore focus on close           |
-| **Blanket**| —                  | —          | Slottable backdrop for Modal/Drawer/custom |
+| Surface     | Page dim (Blanket) | Focus trap | Notes                                      |
+| ----------- | ------------------ | ---------- | ------------------------------------------ |
+| **Modal**   | Yes (via Blanket)  | Yes        | Refactored onto Blanket in this wave       |
+| **Drawer**  | Yes (via Blanket)  | Yes        | Panel shell only                           |
+| **Popup**   | No                 | No         | Anchored; restore focus on close           |
+| **Blanket** | —                  | —          | Slottable backdrop for Modal/Drawer/custom |
 
 ## Explicitly deferred (later / fog)
 
