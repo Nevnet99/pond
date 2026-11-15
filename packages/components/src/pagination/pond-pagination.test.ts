@@ -9,9 +9,9 @@ describe('pond-pagination', () => {
     const el = await fixture<PondPagination>(
       html`<pond-pagination page="1" page-count="3"></pond-pagination>`
     )
-    el.shadowRoot?.querySelector('[part="next"]')?.dispatchEvent(
-      new MouseEvent('click', { bubbles: true })
-    )
+    el.shadowRoot
+      ?.querySelector('[part="next"]')
+      ?.dispatchEvent(new MouseEvent('click', { bubbles: true }))
     await el.updateComplete
     expect(el.page).toBe(2)
   })

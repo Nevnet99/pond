@@ -10,5 +10,6 @@ export default meta
 type Story = StoryObj
 
 export const Default: Story = {
-  render: () => html`<pond-pagination page="2" page-count="5"></pond-pagination>`
+  render: () =>
+    html`<pond-pagination page="2" page-count="5"></pond-pagination>`
 }
