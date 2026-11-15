@@ -12,6 +12,13 @@ describe('pond-progress-bar', () => {
     const root = el.shadowRoot?.querySelector('[part="root"]')
     expect(root?.getAttribute('aria-valuenow')).toBe('40')
   })
+  it('supports indeterminate without valuemow', async () => {
+    const el = await fixture<PondProgressBar>(
+      html`<pond-progress-bar indeterminate></pond-progress-bar>`
+    )
+    const root = el.shadowRoot?.querySelector('[part="root"]')
+    expect(root?.hasAttribute('aria-valuenow')).toBe(false)
+  })
   it('supports plain', async () => {
     const el = await fixture<PondProgressBar>(
       html`<pond-progress-bar appearance="plain"></pond-progress-bar>`

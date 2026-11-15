@@ -1,8 +1,8 @@
-import { css, html, LitElement } from 'lit'
+import { css, html, LitElement, nothing } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import type { PondAppearance } from '../shared/appearance.js'
 
-/** @summary Determinate progress indicator. @status stable @since 0.0.0 */
+/** @summary Progress indicator — determinate or indeterminate. @status stable @since 0.0.0 */
 @customElement('pond-progress-bar')
 export class PondProgressBar extends LitElement {
   static override styles = css`
@@ -20,8 +20,17 @@ export class PondProgressBar extends LitElement {
       background: var(--pond-color-accent-default);
       transition: width var(--pond-motion-duration-normal) ease;
     }
+    :host([indeterminate]) [part='bar'] {
+      width: 40%;
+      animation: pond-progress-indeterminate var(--pond-motion-duration-slow, 900ms) ease-in-out infinite;
+    }
+    @keyframes pond-progress-indeterminate {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(250%); }
+    }
     @media (prefers-reduced-motion: reduce) {
       [part='bar'] { transition: none; }
+      :host([indeterminate]) [part='bar'] { animation: none; width: 40%; }
     }
     :host([appearance='plain']) [part='root'],
     :host([appearance='plain']) [part='bar'] { all: unset; }
@@ -30,6 +39,7 @@ export class PondProgressBar extends LitElement {
   @property({ reflect: true }) appearance: PondAppearance = 'default'
   /** Value from 0 to 1. */
   @property({ type: Number }) value = 0
+  @property({ type: Boolean, reflect: true }) indeterminate = false
   @property() label = 'Progress'
   override render() {
     const pct = Math.max(0, Math.min(1, this.value)) * 100
@@ -37,10 +47,10 @@ export class PondProgressBar extends LitElement {
       part="root"
       role="progressbar"
       aria-label=${this.label}
-      aria-valuemin="0"
-      aria-valuemax="100"
-      aria-valuenow=${Math.round(pct)}
-      style=${`--pond-progress: ${pct}%`}
+      aria-valuemin=${this.indeterminate ? nothing : 0}
+      aria-valuemax=${this.indeterminate ? nothing : 100}
+      aria-valuenow=${this.indeterminate ? nothing : Math.round(pct)}
+      style=${this.indeterminate ? '' : `--pond-progress: ${pct}%`}
     ><span part="bar"></span></div>`
   }
 }
