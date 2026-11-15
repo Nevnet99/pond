@@ -390,6 +390,21 @@ const catalog: Record<string, A11yEntry> = {
       }
     ]
   },
+  'dynamic-table': {
+    summary: 'Sortable column headers with `aria-sort` and Pagination.',
+    keyboard: [
+      'Tab to sort buttons and pagination',
+      'Enter/Space activates sort and page controls'
+    ],
+    criteria: [
+      keyboard('Sort and page without a pointer.'),
+      {
+        id: '1.3.1',
+        title: 'Info and Relationships',
+        how: 'Header cells expose `aria-sort` for the active column.'
+      }
+    ]
+  },
   menu: {
     summary:
       'Menu trigger with `aria-haspopup` / `aria-expanded`; items use menu roles.',

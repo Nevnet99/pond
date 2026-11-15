@@ -145,6 +145,7 @@ export default defineConfig({
             { label: 'Comment', slug: 'components/comment' },
             { label: 'Date label', slug: 'components/date-label' },
             { label: 'Table', slug: 'components/table' },
+            { label: 'Dynamic table', slug: 'components/dynamic-table' },
             { label: 'Tag', slug: 'components/tag' },
             { label: 'Tag group', slug: 'components/tag-group' }
           ]
