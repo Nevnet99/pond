@@ -1,0 +1,29 @@
+---
+title: Progress tracker
+description: Labeled multi-step journey with statuses.
+---
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Show a labeled path with todo / current / done. Prefer Progress indicator for unlabeled dots.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Default">
+      <pond-progress-tracker
+        steps='[{"label":"Details","status":"done"},{"label":"Review","status":"current"},{"label":"Confirm","status":"todo"}]'
+      ></pond-progress-tracker>
+    </PondDemo>
+  </Fragment>
+  <Fragment slot="code">
+
+```html
+<pond-progress-tracker steps='[...]'></pond-progress-tracker>
+```
+
+  </Fragment>
+  <Fragment slot="usage">Pass a `steps` array with `label` and optional `status`.</Fragment>
+  <Fragment slot="changelog">Unreleased — ordered list of labeled steps.</Fragment>
+  <Fragment slot="accessibility">Native ordered list with group label.</Fragment>
+  <Fragment slot="patterns">None yet.</Fragment>
+</ComponentTabs>
