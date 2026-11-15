@@ -1,0 +1,34 @@
+---
+title: Menu
+description: Dropdown actions — not the full Navigation system.
+---
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Choose an action from a trigger. Escape and outside click close.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Open">
+      <pond-menu
+        open
+        label="Actions"
+        items='[{"value":"edit","label":"Edit"},{"value":"delete","label":"Delete","danger":true}]'
+      ></pond-menu>
+    </PondDemo>
+  </Fragment>
+  <Fragment slot="code">
+
+```html
+<pond-menu
+  label="Actions"
+  items='[{"value":"edit","label":"Edit"}]'
+></pond-menu>
+```
+
+  </Fragment>
+  <Fragment slot="usage">Not a nav shell. Prefer Page header actions slot for page-level menus.</Fragment>
+  <Fragment slot="changelog">Unreleased — trigger, items, Escape/outside close.</Fragment>
+  <Fragment slot="accessibility">aria-haspopup/expanded on trigger; role=menu / menuitem.</Fragment>
+  <Fragment slot="patterns">Compose into Page header actions.</Fragment>
+</ComponentTabs>

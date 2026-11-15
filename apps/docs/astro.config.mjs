@@ -90,7 +90,8 @@ export default defineConfig({
             { label: 'Section message', slug: 'components/section-message' },
             { label: 'Tabs', slug: 'components/tabs' },
             { label: 'Breadcrumbs', slug: 'components/breadcrumbs' },
-            { label: 'Pagination', slug: 'components/pagination' }
+            { label: 'Pagination', slug: 'components/pagination' },
+            { label: 'Menu', slug: 'components/menu' }
           ]
         },
         {
