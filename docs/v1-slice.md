@@ -38,6 +38,8 @@ Text and Heading are both required in v1 (not optional).
 
 Pond English names; Lit originals. ADS links may appear in docs for orientation. Every entry follows [component-dod.md](./component-dod.md), including `appearance="plain"`.
 
-## Explicitly deferred (Phase 3+)
+## Explicitly deferred from v1
 
-Navigation system, Table, Tabs, Menu/Dropdown, Banner/Flag, Avatar, Icon set, Empty state, deprecated ADS entries, and Atlaskit-only tooling stay out of v1.
+Tabs, Breadcrumbs, Pagination, Menu, Page header, Navigation system, Table, Banner/Flag, Avatar, Icon set, Empty state, deprecated ADS entries, and Atlaskit-only tooling stayed out of v1.
+
+**Phase 3** (nav/structure) is locked in [phase-3-slice.md](./phase-3-slice.md).

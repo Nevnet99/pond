@@ -87,7 +87,8 @@ export default defineConfig({
             { label: 'Spinner', slug: 'components/spinner' },
             { label: 'Tooltip', slug: 'components/tooltip' },
             { label: 'Modal', slug: 'components/modal' },
-            { label: 'Section message', slug: 'components/section-message' }
+            { label: 'Section message', slug: 'components/section-message' },
+            { label: 'Tabs', slug: 'components/tabs' }
           ]
         },
         {
@@ -103,7 +104,8 @@ export default defineConfig({
           items: [
             { label: 'Component DoD', slug: 'contributing/component-dod' },
             { label: 'Forking', slug: 'contributing/forking' },
-            { label: 'v1 slice', slug: 'contributing/v1-slice' }
+            { label: 'v1 slice', slug: 'contributing/v1-slice' },
+            { label: 'Phase 3 slice', slug: 'contributing/phase-3-slice' }
           ]
         }
       ]
