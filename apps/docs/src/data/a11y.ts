@@ -398,6 +398,26 @@ const catalog: Record<string, A11yEntry> = {
       focus()
     ]
   },
+  page: {
+    summary:
+      'Page layout shell with optional banner, navigation, header, and panel around a `main` content region.',
+    criteria: [
+      labels(
+        'Default slot is wrapped in `<main>`; navigation and panel use `<aside>` when present.'
+      ),
+      {
+        id: '1.3.2',
+        title: 'Meaningful Sequence',
+        how: 'DOM order is banner → navigation → header → main → panel.'
+      },
+      {
+        id: '2.4.1',
+        title: 'Bypass Blocks',
+        how: 'Main landmark lets AT skip chrome; empty slots collapse so unused regions are not exposed.'
+      }
+    ],
+    notes: ['Plain mode: you own landmarks and paint.']
+  },
   'page-header': {
     summary: 'Header landmark with the page title as an `h1`.',
     criteria: [
