@@ -39,6 +39,21 @@ export class PondTooltip extends LitElement {
       line-height: var(--pond-font-line-snug);
       white-space: nowrap;
       pointer-events: none;
+      animation: pond-tooltip-in var(--pond-motion-duration-fast)
+        var(--pond-motion-easing-enter) both;
+    }
+    @keyframes pond-tooltip-in {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      [part="tooltip"] {
+        animation: none;
+      }
     }
 
     :host([appearance="plain"]) [part="tooltip"] {

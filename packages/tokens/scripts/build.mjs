@@ -64,8 +64,11 @@ const focusBlock = `
   :root,
   [data-theme="light"],
   [data-theme="dark"] {
+    --pond-motion-duration-instant: 0ms;
     --pond-motion-duration-fast: 0ms;
     --pond-motion-duration-normal: 0ms;
+    --pond-motion-duration-moderate: 0ms;
+    /* Loops collapse too — prefer static affordances under reduced motion */
     --pond-motion-duration-slow: 0ms;
   }
 }

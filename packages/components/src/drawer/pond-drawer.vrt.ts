@@ -28,6 +28,8 @@ describe('pond-drawer visual', () => {
     await new Promise<void>((r) => requestAnimationFrame(() => r()))
     ;(drawer?.shadowRoot?.activeElement as HTMLElement | null)?.blur()
     ;(document.activeElement as HTMLElement | null)?.blur()
+    // Let enter animation settle so VRT is not mid-slide.
+    await new Promise((r) => setTimeout(r, 250))
     const root = drawer?.shadowRoot
       ?.querySelector('pond-blanket')
       ?.shadowRoot?.querySelector('[part="root"]') as HTMLElement | null

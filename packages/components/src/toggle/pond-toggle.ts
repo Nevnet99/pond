@@ -27,7 +27,8 @@ export class PondToggle extends LitElement {
       height: 1.375rem;
       border-radius: var(--pond-radius-pill);
       background: var(--pond-color-border-strong);
-      transition: background-color var(--pond-motion-duration-fast) ease;
+      transition: background-color var(--pond-motion-duration-fast)
+        var(--pond-motion-easing-standard);
       flex-shrink: 0;
     }
     :host([checked]) [part="track"] {
@@ -41,7 +42,8 @@ export class PondToggle extends LitElement {
       height: 1.125rem;
       border-radius: 50%;
       background: var(--pond-color-bg-canvas);
-      transition: transform var(--pond-motion-duration-fast) ease;
+      transition: transform var(--pond-motion-duration-fast)
+        var(--pond-motion-easing-standard);
     }
     :host([checked]) [part="thumb"] {
       transform: translateX(1.125rem);
