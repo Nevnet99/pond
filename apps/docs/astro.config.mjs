@@ -101,6 +101,7 @@ export default defineConfig({
               label: 'Progress indicator',
               slug: 'components/progress-indicator'
             },
+            { label: 'Progress tracker', slug: 'components/progress-tracker' },
             { label: 'Section message', slug: 'components/section-message' },
             { label: 'Banner', slug: 'components/banner' },
             { label: 'Flag', slug: 'components/flag' },
