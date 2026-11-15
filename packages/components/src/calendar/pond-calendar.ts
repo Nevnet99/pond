@@ -72,7 +72,8 @@ export class PondCalendar extends LitElement {
     [part='day'][aria-selected='true'] {
       background: var(--pond-color-accent-default); color: var(--pond-color-fg-inverse, #fff);
     }
-    [part='day'][data-outside] { opacity: 0.35; }
+    /* Solid muted color — opacity fails axe color-contrast. */
+    [part='day'][data-outside] { color: var(--pond-color-fg-subtle, #595959); }
     :host([appearance='plain']) [part='root'],
     :host([appearance='plain']) [part='header'],
     :host([appearance='plain']) [part='title'],
@@ -157,17 +158,23 @@ export class PondCalendar extends LitElement {
         </div>
         ${chunk(this.#cells(), 7).map(
           (week) => html`<div part="row" role="row">
-            ${week.map(
-              (c) => html`<button
+            ${week.map((c) => {
+              const label = parseIso(c.iso)?.toLocaleDateString(undefined, {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })
+              return html`<button
                 part="day"
                 type="button"
                 role="gridcell"
-                aria-label=${c.iso}
+                aria-label=${label ?? c.iso}
                 aria-selected=${c.iso === this.value ? 'true' : 'false'}
                 ?data-outside=${c.outside}
                 @click=${() => this.#select(c.iso)}
               >${c.day}</button>`
-            )}
+            })}
           </div>`
         )}
       </div>
