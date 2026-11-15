@@ -1,0 +1,33 @@
+---
+title: Avatar group
+description: Overlapping layout for a stack of Avatars.
+---
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Compose existing Avatars into an overlapping group.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Default">
+      <pond-avatar-group label="Team">
+        <pond-avatar initials="AB"></pond-avatar>
+        <pond-avatar initials="CD"></pond-avatar>
+        <pond-avatar initials="EF"></pond-avatar>
+      </pond-avatar-group>
+    </PondDemo>
+  </Fragment>
+  <Fragment slot="code">
+
+```html
+<pond-avatar-group label="Team">
+  <pond-avatar initials="AB"></pond-avatar>
+</pond-avatar-group>
+```
+
+  </Fragment>
+  <Fragment slot="usage">Layout helper only — style comes from Avatar.</Fragment>
+  <Fragment slot="changelog">Unreleased — overlap stack.</Fragment>
+  <Fragment slot="accessibility">`role=group` with accessible name.</Fragment>
+  <Fragment slot="patterns">None yet.</Fragment>
+</ComponentTabs>
