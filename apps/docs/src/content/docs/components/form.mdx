@@ -1,0 +1,33 @@
+---
+title: Form
+description: Layout and validation shell for slotted fields.
+---
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Group fields, surface a form-level error, and host actions. Slot existing inputs — Form is not an input itself.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Default">
+      <pond-form style="max-width:20rem">
+        <pond-text-field label="Name"></pond-text-field>
+        <button type="submit" slot="actions">Save</button>
+      </pond-form>
+    </PondDemo>
+  </Fragment>
+  <Fragment slot="code">
+
+```html
+<pond-form>
+  <pond-text-field label="Name"></pond-text-field>
+  <button type="submit" slot="actions">Save</button>
+</pond-form>
+```
+
+  </Fragment>
+  <Fragment slot="usage">Compose Text field, Select, and peers. Listen for `pond-submit`.</Fragment>
+  <Fragment slot="changelog">Unreleased — shell + optional error alert.</Fragment>
+  <Fragment slot="accessibility">Native form; error uses `role=alert`.</Fragment>
+  <Fragment slot="patterns">None yet.</Fragment>
+</ComponentTabs>

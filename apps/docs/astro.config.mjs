@@ -82,6 +82,7 @@ export default defineConfig({
             { label: 'Calendar', slug: 'components/calendar' },
             { label: 'Date time picker', slug: 'components/date-time-picker' },
             { label: 'Checkbox', slug: 'components/checkbox' },
+            { label: 'Form', slug: 'components/form' },
             { label: 'Toggle', slug: 'components/toggle' },
             { label: 'Select', slug: 'components/select' },
             { label: 'Radio', slug: 'components/radio' },
