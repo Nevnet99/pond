@@ -75,7 +75,10 @@
     "tracking": {
       "tight": { "value": "-0.02em", "comment": "large display" },
       "normal": { "value": "0" },
-      "wide": { "value": "0.04em", "comment": "eyebrows / overlines" }
+      "wide": {
+        "value": "0.05em",
+        "comment": "uppercase labels / overlines ≤14px"
+      }
     }
   },
   "motion": {

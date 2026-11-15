@@ -53,6 +53,12 @@ const dark = await buildTheme({
 })
 
 const focusBlock = `
+/* Root type rendering — once, not per component */
+:root {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 /* Shared focus ring — required by a11y DoD */
 :where(.pond-focus-ring):focus-visible,
 :where(:focus-visible).pond-focus-ring {

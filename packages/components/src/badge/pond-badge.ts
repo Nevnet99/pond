@@ -25,6 +25,8 @@ export class PondBadge extends LitElement {
       font-size: var(--pond-font-size-xs);
       font-weight: var(--pond-font-weight-semibold);
       line-height: 1.25rem;
+      font-variant-numeric: tabular-nums;
+      text-box: trim-both cap alphabetic;
     }
     :host([appearance="plain"]) [part="badge"] {
       all: unset;

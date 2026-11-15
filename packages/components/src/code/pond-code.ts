@@ -30,13 +30,16 @@ export class PondCode extends LitElement {
       background: var(--pond-color-bg-subtle, #f0f0f0);
       border-radius: var(--pond-radius-sm);
       padding: 0.1em 0.35em;
+      overflow-wrap: anywhere;
     }
     :host([variant="block"]) [part="root"] {
       display: block;
       padding: var(--pond-space-3);
       overflow: auto;
       white-space: pre;
+      font-size: var(--pond-font-size-sm);
       line-height: var(--pond-font-line-normal);
+      overflow-wrap: normal;
     }
     :host([appearance="plain"]) [part="root"] {
       all: unset;

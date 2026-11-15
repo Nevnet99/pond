@@ -28,7 +28,7 @@ CSS: `--pond-font-size-xs` … `--pond-font-size-5xl`.
 | `--pond-font-line-relaxed`    | 1.65    | Long-form / lead     |
 | `--pond-font-tracking-tight`  | -0.02em | Large display        |
 | `--pond-font-tracking-normal` | 0       | Default              |
-| `--pond-font-tracking-wide`   | 0.04em  | Eyebrows / overlines |
+| `--pond-font-tracking-wide`   | 0.05em  | Uppercase labels / overlines |
 
 ## Families
 
@@ -36,10 +36,17 @@ CSS: `--pond-font-size-xs` … `--pond-font-size-5xl`.
 - `--pond-font-family-display` — headings (same face for v1; swap in a fork)
 - `--pond-font-family-mono` — code
 
+## Rendering defaults
+
+- Root smoothing (`antialiased`) is emitted once from `@pond/tokens` — do not re-apply per component.
+- Cap long-form measure (~60–75ch) on the reading column; `pond-text` does not force a max-width.
+- Form controls use `--pond-font-size-md` (16px) so iOS does not zoom on focus.
+- Changing numbers (Badge) use `tabular-nums`.
+
 ## Components
 
-- **`pond-text`** — body steps `xs`–`xl` via `size`
-- **`pond-heading`** — `level` is semantics (h1–h6); visual size defaults from level, override with `size` when you need emphasis without skipping outline levels
+- **`pond-text`** — body steps `xs`–`xl` via `size`; `pretty` wrap + `overflow-wrap`
+- **`pond-heading`** — `level` is semantics (h1–h6); visual size defaults from level, override with `size` when you need emphasis without skipping outline levels; `balance` wrap
 
 ```html
 <pond-text size="lg">Lead paragraph</pond-text>
