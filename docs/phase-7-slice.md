@@ -26,26 +26,26 @@ Pond English names; Lit originals. ADS links may appear in docs for orientation.
 
 ## Chrome surfaces
 
-| Surface     | Role                                                                 |
-| ----------- | -------------------------------------------------------------------- |
-| **Page**    | Page-level layout sections                                           |
-| **Panel**   | Contextual side content                                              |
-| **Side nav**| App navigation rail (sections / items / one nest level)              |
+| Surface      | Role                                                    |
+| ------------ | ------------------------------------------------------- |
+| **Page**     | Page-level layout sections                              |
+| **Panel**    | Contextual side content                                 |
+| **Side nav** | App navigation rail (sections / items / one nest level) |
 
 ## Overlay split
 
-| Surface            | Role                                              |
-| ------------------ | ------------------------------------------------- |
-| **Popup** (shipped)| Light non-modal overlay shell                     |
-| **Inline dialog**  | Anchored short content + optional interactive controls |
+| Surface             | Role                                                   |
+| ------------------- | ------------------------------------------------------ |
+| **Popup** (shipped) | Light non-modal overlay shell                          |
+| **Inline dialog**   | Anchored short content + optional interactive controls |
 
 ## Table surfaces
 
-| Surface            | Role                                      |
-| ------------------ | ----------------------------------------- |
-| **Table** (shipped)| Simple data table                         |
-| **Dynamic table**  | Sort + pagination                         |
-| **Table tree**     | Expandable nested hierarchy               |
+| Surface             | Role                        |
+| ------------------- | --------------------------- |
+| **Table** (shipped) | Simple data table           |
+| **Dynamic table**   | Sort + pagination           |
+| **Table tree**      | Expandable nested hierarchy |
 
 ## Explicitly deferred (later / fog)
 
