@@ -28,6 +28,7 @@ export type { PondIconSize } from './icon/pond-icon.js'
 export { PondIcon } from './icon/pond-icon.js'
 export type { PondIconName } from './icon/pond-icons.js'
 export { pondIconPaths } from './icon/pond-icons.js'
+export { PondImage } from './image/pond-image.js'
 export type {
   PondInlineAlign,
   PondInlineGap,

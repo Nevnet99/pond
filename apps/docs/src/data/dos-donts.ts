@@ -196,6 +196,16 @@ const catalog: Record<string, DosDontsEntry> = {
       'Don’t use Inline dialog for one-line hints — prefer Popup or Tooltip'
     ]
   },
+  image: {
+    dos: [
+      'Provide meaningful alt text',
+      'Use src-dark when the asset must change under dark theme'
+    ],
+    donts: [
+      'Don’t omit alt on informative images',
+      'Don’t use Image as a clickable button without a real control'
+    ]
+  },
   menu: {
     dos: ['Group related actions', 'Support arrow-key movement between items'],
     donts: [

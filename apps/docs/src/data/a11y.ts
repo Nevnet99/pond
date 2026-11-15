@@ -347,6 +347,17 @@ const catalog: Record<string, A11yEntry> = {
     ],
     notes: ['Prefer Modal when the task needs a dimmed focus trap.']
   },
+  image: {
+    summary: 'Image with required `alt` (empty only when decorative).',
+    criteria: [
+      labels('Meaningful alternative text, or empty alt when decorative.'),
+      {
+        id: '1.1.1',
+        title: 'Non-text Content',
+        how: 'Provide `alt` that describes the image purpose.'
+      }
+    ]
+  },
   menu: {
     summary:
       'Menu trigger with `aria-haspopup` / `aria-expanded`; items use menu roles.',
