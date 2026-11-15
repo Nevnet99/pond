@@ -97,7 +97,8 @@ export default defineConfig({
             { label: 'Avatar', slug: 'components/avatar' },
             { label: 'Tag', slug: 'components/tag' },
             { label: 'Empty state', slug: 'components/empty-state' },
-            { label: 'Banner', slug: 'components/banner' }
+            { label: 'Banner', slug: 'components/banner' },
+            { label: 'Flag', slug: 'components/flag' }
           ]
         },
         {
