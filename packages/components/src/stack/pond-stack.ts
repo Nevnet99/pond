@@ -52,11 +52,20 @@ export class PondStack extends LitElement {
     :host([gap="4"]) {
       --pond-stack-gap: var(--pond-space-4);
     }
+    :host([gap="5"]) {
+      --pond-stack-gap: var(--pond-space-5);
+    }
     :host([gap="6"]) {
       --pond-stack-gap: var(--pond-space-6);
     }
     :host([gap="8"]) {
       --pond-stack-gap: var(--pond-space-8);
+    }
+    :host([gap="10"]) {
+      --pond-stack-gap: var(--pond-space-10);
+    }
+    :host([gap="12"]) {
+      --pond-stack-gap: var(--pond-space-12);
     }
 
     :host([align="stretch"]) {

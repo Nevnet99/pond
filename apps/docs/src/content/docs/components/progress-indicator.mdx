@@ -3,6 +3,7 @@ title: Progress indicator
 description: Short sequence position (dots).
 ---
 import ComponentTabs from '../../../components/ComponentTabs.astro'
+import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
@@ -21,7 +22,13 @@ Show where the user is in a short sequence. Prefer Progress tracker when steps n
 ```
 
   </Fragment>
-  <Fragment slot="usage">`selected` is 0-based.</Fragment>
+  <Fragment slot="usage">
+
+`selected` is 0-based.
+
+    <DosDonts component="progress-indicator" />
+
+  </Fragment>
   <Fragment slot="changelog">Unreleased — dot sequence.</Fragment>
   <Fragment slot="accessibility">
     <A11ySection component="progress-indicator" />

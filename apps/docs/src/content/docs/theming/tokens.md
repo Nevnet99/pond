@@ -13,4 +13,12 @@ description: --pond-* custom properties and light/dark themes.
 
 Switch theme with `data-theme="dark"` on `html` (or `:root`). Prefer overriding **semantic** tokens before component-level ones.
 
-Related: [Motion](/theming/motion/) · [Typography](/theming/typography/).
+## Families
+
+| Family     | Docs                               | CSS prefix        |
+| ---------- | ---------------------------------- | ----------------- |
+| Color      | this page                          | `--pond-color-*`  |
+| Spacing    | [Spacing](/theming/spacing/)       | `--pond-space-*`  |
+| Typography | [Typography](/theming/typography/) | `--pond-font-*`   |
+| Motion     | [Motion](/theming/motion/)         | `--pond-motion-*` |
+| Focus      | accessibility DoD                  | `--pond-focus-*`  |

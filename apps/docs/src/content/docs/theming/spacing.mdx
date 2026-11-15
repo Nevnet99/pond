@@ -1,0 +1,110 @@
+---
+title: Spacing
+description: Pond space scale — rem steps for padding, gap, and layout rhythm.
+---
+
+import PondDemo from '../../../components/PondDemo.astro'
+
+Pond’s space scale is a **4px-based rem ladder** exposed as `--pond-space-*`. Prefer these tokens over raw `px`/`rem` in components and product layouts.
+
+## Scale
+
+| Token | rem | px @16 | Typical use |
+| --- | --- | --- | --- |
+| `--pond-space-1` | 0.25 | 4 | Icon gutters, tight inline |
+| `--pond-space-2` | 0.5 | 8 | Control padding-y, compact gaps |
+| `--pond-space-3` | 0.75 | 12 | Field padding, dense stacks |
+| `--pond-space-4` | 1 | 16 | Default `pond-stack` gap |
+| `--pond-space-5` | 1.25 | 20 | Comfortable control clusters |
+| `--pond-space-6` | 1.5 | 24 | Card / demo padding |
+| `--pond-space-8` | 2 | 32 | Page section rhythm |
+| `--pond-space-10` | 2.5 | 40 | Major section break |
+| `--pond-space-12` | 3 | 48 | Hero / page chrome |
+
+`gap="0"` on Stack / Inline collapses to `0` (no token).
+
+## Visual ladder
+
+<PondDemo label="Space steps (bar width = token)">
+  <div class="pond-space-ladder">
+    <div class="pond-space-ladder__row">
+      <code class="pond-space-ladder__label">space-1</code>
+      <div class="pond-space-ladder__bar" style="width: var(--pond-space-1)"></div>
+    </div>
+    <div class="pond-space-ladder__row">
+      <code class="pond-space-ladder__label">space-2</code>
+      <div class="pond-space-ladder__bar" style="width: var(--pond-space-2)"></div>
+    </div>
+    <div class="pond-space-ladder__row">
+      <code class="pond-space-ladder__label">space-3</code>
+      <div class="pond-space-ladder__bar" style="width: var(--pond-space-3)"></div>
+    </div>
+    <div class="pond-space-ladder__row">
+      <code class="pond-space-ladder__label">space-4</code>
+      <div class="pond-space-ladder__bar" style="width: var(--pond-space-4)"></div>
+    </div>
+    <div class="pond-space-ladder__row">
+      <code class="pond-space-ladder__label">space-5</code>
+      <div class="pond-space-ladder__bar" style="width: var(--pond-space-5)"></div>
+    </div>
+    <div class="pond-space-ladder__row">
+      <code class="pond-space-ladder__label">space-6</code>
+      <div class="pond-space-ladder__bar" style="width: var(--pond-space-6)"></div>
+    </div>
+    <div class="pond-space-ladder__row">
+      <code class="pond-space-ladder__label">space-8</code>
+      <div class="pond-space-ladder__bar" style="width: var(--pond-space-8)"></div>
+    </div>
+    <div class="pond-space-ladder__row">
+      <code class="pond-space-ladder__label">space-10</code>
+      <div class="pond-space-ladder__bar" style="width: var(--pond-space-10)"></div>
+    </div>
+    <div class="pond-space-ladder__row">
+      <code class="pond-space-ladder__label">space-12</code>
+      <div class="pond-space-ladder__bar" style="width: var(--pond-space-12)"></div>
+    </div>
+  </div>
+</PondDemo>
+
+## Layout primitives
+
+Use **Stack** and **Inline** so gaps stay on the scale:
+
+```html
+<pond-stack gap="4">
+  <pond-heading level="2">Section</pond-heading>
+  <pond-text>Body copy with default stack gap.</pond-text>
+</pond-stack>
+
+<pond-inline gap="3" wrap>
+  <pond-button variant="primary">Save</pond-button>
+  <pond-button variant="subtle">Cancel</pond-button>
+</pond-inline>
+```
+
+<PondDemo label="Stack gap comparison">
+  <pond-inline gap="8" align="start" wrap>
+    <pond-stack gap="2">
+      <pond-text size="sm" muted>gap="2"</pond-text>
+      <pond-button variant="secondary">A</pond-button>
+      <pond-button variant="secondary">B</pond-button>
+    </pond-stack>
+    <pond-stack gap="4">
+      <pond-text size="sm" muted>gap="4"</pond-text>
+      <pond-button variant="secondary">A</pond-button>
+      <pond-button variant="secondary">B</pond-button>
+    </pond-stack>
+    <pond-stack gap="6">
+      <pond-text size="sm" muted>gap="6"</pond-text>
+      <pond-button variant="secondary">A</pond-button>
+      <pond-button variant="secondary">B</pond-button>
+    </pond-stack>
+  </pond-inline>
+</PondDemo>
+
+## Guidance
+
+- **Do** pick the next step on the scale rather than inventing `14px` / `18px`.
+- **Do** use smaller steps inside controls; larger steps between sections.
+- **Don't** mix raw spacing with tokens in the same component surface.
+- **Don't** use space tokens for typography metrics — use `--pond-font-line-*` / size tokens.

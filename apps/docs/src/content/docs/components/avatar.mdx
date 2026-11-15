@@ -3,6 +3,7 @@ title: Avatar
 description: User image, initials, or icon fallback.
 ---
 import ComponentTabs from '../../../components/ComponentTabs.astro'
+import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
@@ -21,7 +22,13 @@ Represent a person. Falls back to initials, then the user icon.
 ```
 
   </Fragment>
-  <Fragment slot="usage">Prefer src when available; initials for known names; icon when anonymous.</Fragment>
+  <Fragment slot="usage">
+
+Prefer src when available; initials for known names; icon when anonymous.
+
+    <DosDonts component="avatar" />
+
+  </Fragment>
   <Fragment slot="changelog">Unreleased — src / initials / icon fallback.</Fragment>
   <Fragment slot="accessibility">
     <A11ySection component="avatar" />

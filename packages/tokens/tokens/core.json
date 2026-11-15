@@ -51,22 +51,40 @@
   },
   "space": {
     "1": {
-      "value": "0.25rem"
+      "value": "0.25rem",
+      "comment": "4px — tight inline"
     },
     "2": {
-      "value": "0.5rem"
+      "value": "0.5rem",
+      "comment": "8px — control padding-y / compact gap"
     },
     "3": {
-      "value": "0.75rem"
+      "value": "0.75rem",
+      "comment": "12px — field padding / dense stacks"
     },
     "4": {
-      "value": "1rem"
+      "value": "1rem",
+      "comment": "16px — default stack gap / section pad"
+    },
+    "5": {
+      "value": "1.25rem",
+      "comment": "20px — comfortable control clusters"
     },
     "6": {
-      "value": "1.5rem"
+      "value": "1.5rem",
+      "comment": "24px — card / demo padding"
     },
     "8": {
-      "value": "2rem"
+      "value": "2rem",
+      "comment": "32px — page section rhythm"
+    },
+    "10": {
+      "value": "2.5rem",
+      "comment": "40px — major section break"
+    },
+    "12": {
+      "value": "3rem",
+      "comment": "48px — hero / page chrome"
     }
   },
   "radius": {

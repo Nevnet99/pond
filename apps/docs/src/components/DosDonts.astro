@@ -1,0 +1,80 @@
+---
+/**
+ * Shared do / don’t pairs for component Usage tabs.
+ * Data: `../data/dos-donts.ts`.
+ */
+import { getDosDonts } from '../data/dos-donts'
+
+interface Props {
+  component: string
+}
+
+const { component } = Astro.props
+const entry = getDosDonts(component)
+---
+
+{
+  entry ? (
+    <div class="pond-dos not-content">
+      <h3 class="pond-dos__h">Do’s and don’ts</h3>
+      <div class="pond-dos__grid">
+        <div class="pond-dos__col pond-dos__col--do">
+          <h4>Do</h4>
+          <ul>
+            {entry.dos.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+        <div class="pond-dos__col pond-dos__col--dont">
+          <h4>Don’t</h4>
+          <ul>
+            {entry.donts.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  ) : (
+    <p>
+      No do/don’t entry for <code>{component}</code> yet.
+    </p>
+  )
+}
+
+<style>
+  .pond-dos__h {
+    margin-block: 1.5rem 0.75rem;
+    font-size: 1rem;
+  }
+  .pond-dos__grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  }
+  .pond-dos__col {
+    padding: 0.85rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--sl-color-gray-5, #444);
+  }
+  .pond-dos__col h4 {
+    margin: 0 0 0.5rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .pond-dos__col--do {
+    border-color: color-mix(in srgb, #1a9b8e 45%, transparent);
+  }
+  .pond-dos__col--dont {
+    border-color: color-mix(in srgb, #d64545 45%, transparent);
+  }
+  .pond-dos__col ul {
+    margin: 0;
+    padding-inline-start: 1.1rem;
+  }
+  .pond-dos__col li + li {
+    margin-top: 0.35rem;
+  }
+</style>
