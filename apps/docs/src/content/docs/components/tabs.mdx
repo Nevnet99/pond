@@ -1,0 +1,41 @@
+---
+title: Tabs
+description: Switch between related views in one place.
+---
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Switch between related views. Panel content uses named slots matching each tab value.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Default">
+      <pond-tabs
+        selected="overview"
+        style="max-width:24rem"
+        items='[{"value":"overview","label":"Overview"},{"value":"usage","label":"Usage"},{"value":"a11y","label":"Accessibility"}]'
+      >
+        <p slot="overview">Overview panel</p>
+        <p slot="usage">Usage panel</p>
+        <p slot="a11y">Accessibility panel</p>
+      </pond-tabs>
+    </PondDemo>
+  </Fragment>
+  <Fragment slot="code">
+
+```html
+<pond-tabs
+  selected="overview"
+  items='[{"value":"overview","label":"Overview"},{"value":"usage","label":"Usage"}]'
+>
+  <p slot="overview">Overview</p>
+  <p slot="usage">Usage</p>
+</pond-tabs>
+```
+
+  </Fragment>
+  <Fragment slot="usage">One selected tab at a time. Prefer separate pages when content is not closely related.</Fragment>
+  <Fragment slot="changelog">Unreleased — items array, named panel slots, keyboard arrows.</Fragment>
+  <Fragment slot="accessibility">role=tablist / tab / tabpanel; arrow keys, Home, End; aria-selected and aria-controls.</Fragment>
+  <Fragment slot="patterns">Compose into Page header bottom slot in Phase 3.</Fragment>
+</ComponentTabs>

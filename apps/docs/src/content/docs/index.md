@@ -13,4 +13,4 @@ Pond is a Lit design system meant to be **forked and owned**. Upstream does not 
 - Storybook workbench + Starlight docs
 - Vitest unit / axe / VRT wiring and release-please for forks
 
-Start with [Install / fork](/getting-started/fork/) or the [v1 slice](/contributing/v1-slice/).
+Start with [Install / fork](/getting-started/fork/), the [v1 slice](/contributing/v1-slice/), or [Phase 3](/contributing/phase-3-slice/).
