@@ -76,7 +76,9 @@ export default defineConfig({
           label: 'Components',
           items: [
             { label: 'Button', slug: 'components/button' },
-            { label: 'Link', slug: 'components/link' }
+            { label: 'Link', slug: 'components/link' },
+            { label: 'Text field', slug: 'components/text-field' },
+            { label: 'Text area', slug: 'components/text-area' }
           ]
         },
         {
