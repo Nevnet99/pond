@@ -92,6 +92,7 @@ export default defineConfig({
             { label: 'Lozenge', slug: 'components/lozenge' },
             { label: 'Spinner', slug: 'components/spinner' },
             { label: 'Skeleton', slug: 'components/skeleton' },
+            { label: 'Progress bar', slug: 'components/progress-bar' },
             { label: 'Section message', slug: 'components/section-message' },
             { label: 'Banner', slug: 'components/banner' },
             { label: 'Flag', slug: 'components/flag' },
