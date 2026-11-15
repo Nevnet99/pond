@@ -86,4 +86,5 @@ jobs:
           path: |
             packages/components/src/**/__screenshots__/**
             packages/components/**/__screenshots__/**
+            packages/components/.vitest/attachments/**
           if-no-files-found: ignore
