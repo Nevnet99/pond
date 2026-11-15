@@ -95,7 +95,8 @@ export default defineConfig({
             { label: 'Page header', slug: 'components/page-header' },
             { label: 'Icon', slug: 'components/icon' },
             { label: 'Avatar', slug: 'components/avatar' },
-            { label: 'Tag', slug: 'components/tag' }
+            { label: 'Tag', slug: 'components/tag' },
+            { label: 'Empty state', slug: 'components/empty-state' }
           ]
         },
         {

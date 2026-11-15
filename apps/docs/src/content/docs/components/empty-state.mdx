@@ -1,0 +1,30 @@
+---
+title: Empty state
+description: Placeholder when a view has no content.
+---
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Guide the user when a list or page has nothing yet.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Default">
+      <pond-empty-state heading="No projects">
+        Create a project to get started.
+        <pond-button slot="actions" variant="primary">New project</pond-button>
+      </pond-empty-state>
+    </PondDemo>
+  </Fragment>
+  <Fragment slot="code">
+
+```html
+<pond-empty-state heading="No projects">...</pond-empty-state>
+```
+
+  </Fragment>
+  <Fragment slot="usage">Always offer a next action when possible.</Fragment>
+  <Fragment slot="changelog">Unreleased — icon slot, title, actions.</Fragment>
+  <Fragment slot="accessibility">Title is an h2; actions are normal controls.</Fragment>
+  <Fragment slot="patterns">None yet.</Fragment>
+</ComponentTabs>
