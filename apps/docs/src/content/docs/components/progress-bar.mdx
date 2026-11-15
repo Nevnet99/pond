@@ -1,0 +1,27 @@
+---
+title: Progress bar
+description: Determinate progress indicator (0–1).
+---
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Show how far a process has advanced. Indeterminate mode comes later.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Default">
+      <pond-progress-bar style="max-width:20rem" value="0.65" label="Upload"></pond-progress-bar>
+    </PondDemo>
+  </Fragment>
+  <Fragment slot="code">
+
+```html
+<pond-progress-bar value="0.65" label="Upload"></pond-progress-bar>
+```
+
+  </Fragment>
+  <Fragment slot="usage">Pass `value` from 0 to 1. Prefer Spinner when progress is unknown.</Fragment>
+  <Fragment slot="changelog">Unreleased — determinate only.</Fragment>
+  <Fragment slot="accessibility">Native `progressbar` role with valuemin/max/now.</Fragment>
+  <Fragment slot="patterns">None yet.</Fragment>
+</ComponentTabs>
