@@ -24,11 +24,11 @@ Pond English names; Lit originals. ADS links may appear in docs for orientation.
 
 ## Banner vs Flag vs Section message
 
-| Surface | Role |
-| --- | --- |
+| Surface             | Role                                                   |
+| ------------------- | ------------------------------------------------------ |
 | **Section message** | Persistent sectional / in-flow alert (already shipped) |
-| **Banner** | Persistent page-level notice |
-| **Flag** | Transient toast-style feedback |
+| **Banner**          | Persistent page-level notice                           |
+| **Flag**            | Transient toast-style feedback                         |
 
 ## Icon
 
