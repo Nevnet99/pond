@@ -454,6 +454,32 @@ const catalog: Record<string, A11yEntry> = {
     ],
     notes: ['Plain mode: you own structure and paint.']
   },
+  'side-nav': {
+    summary:
+      'Vertical navigation landmark with collapsible sections and current-item indication.',
+    keyboard: [
+      'Tab moves through section toggles and items',
+      'Enter/Space activates buttons and toggles'
+    ],
+    criteria: [
+      labels(
+        '`nav` named via `label`; section toggles expose `aria-expanded`; current item uses `aria-current="page"`.'
+      ),
+      {
+        id: '1.3.1',
+        title: 'Info and Relationships',
+        how: 'Sections and items use list semantics (`role="list"` / `listitem`); nest at most one level.'
+      },
+      {
+        id: '2.4.8',
+        title: 'Location',
+        how: 'Mark the active route with `current` on the matching item.'
+      }
+    ],
+    notes: [
+      'Plain mode: you own paint; keep the landmark and current semantics.'
+    ]
+  },
   banner: {
     summary:
       '`role="region"` with a label; close control is named when present.',
