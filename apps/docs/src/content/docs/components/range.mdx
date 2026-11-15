@@ -1,0 +1,27 @@
+---
+title: Range
+description: Slider for an approximate numeric value.
+---
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Choose an approximate value on a continuum.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Default">
+      <pond-range label="Volume" style="max-width:16rem" value="65"></pond-range>
+    </PondDemo>
+  </Fragment>
+  <Fragment slot="code">
+
+```html
+<pond-range label="Volume" value="65" min="0" max="100"></pond-range>
+```
+
+  </Fragment>
+  <Fragment slot="usage">Prefer number fields when an exact value matters.</Fragment>
+  <Fragment slot="changelog">Unreleased — native range input.</Fragment>
+  <Fragment slot="accessibility">Labeled native range with valuemin/max/now.</Fragment>
+  <Fragment slot="patterns">None yet.</Fragment>
+</ComponentTabs>
