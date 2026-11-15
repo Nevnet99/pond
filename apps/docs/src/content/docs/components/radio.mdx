@@ -1,0 +1,31 @@
+---
+title: Radio
+description: Single choice from a list of options.
+---
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Choose one option. Prefer Select when the list is long.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Default">
+      <pond-radio
+        label="Size"
+        value="m"
+        options='[{"value":"s","label":"Small"},{"value":"m","label":"Medium"},{"value":"l","label":"Large"}]'
+      ></pond-radio>
+    </PondDemo>
+  </Fragment>
+  <Fragment slot="code">
+
+```html
+<pond-radio label="Size" options='[...]' value="m"></pond-radio>
+```
+
+  </Fragment>
+  <Fragment slot="usage">Use when all options should stay visible.</Fragment>
+  <Fragment slot="changelog">Unreleased — options array, fieldset/legend.</Fragment>
+  <Fragment slot="accessibility">Native radios in a fieldset with legend.</Fragment>
+  <Fragment slot="patterns">None yet.</Fragment>
+</ComponentTabs>
