@@ -16,11 +16,11 @@ export class PondSectionMessage extends LitElement {
       display: block;
     }
 
-    :host([appearance='plain']) {
+    :host([appearance="plain"]) {
       display: contents;
     }
 
-    [part='root'] {
+    [part="root"] {
       box-sizing: border-box;
       padding: var(--pond-space-3) var(--pond-space-4);
       border: 1px solid var(--pond-color-border-default);
@@ -33,40 +33,40 @@ export class PondSectionMessage extends LitElement {
       line-height: var(--pond-font-line-normal);
     }
 
-    :host([tone='info']) [part='root'] {
+    :host([tone="info"]) [part="root"] {
       border-left-color: var(--pond-color-accent-default);
     }
 
-    :host([tone='success']) [part='root'] {
+    :host([tone="success"]) [part="root"] {
       border-left-color: var(--pond-color-accent-hover);
     }
 
-    :host([tone='warning']) [part='root'] {
+    :host([tone="warning"]) [part="root"] {
       border-left-color: var(--pond-color-border-strong);
     }
 
-    :host([tone='danger']) [part='root'] {
+    :host([tone="danger"]) [part="root"] {
       border-left-color: var(--pond-color-danger-default);
       background: var(--pond-color-danger-subtle);
     }
 
-    [part='title'] {
+    [part="title"] {
       margin: 0 0 var(--pond-space-1);
       font-size: var(--pond-font-size-sm);
       font-weight: var(--pond-font-weight-semibold);
     }
 
-    [part='body'] {
+    [part="body"] {
       margin: 0;
     }
 
-    :host([appearance='plain']) [part='root'],
-    :host([appearance='plain']) [part='title'],
-    :host([appearance='plain']) [part='body'] {
+    :host([appearance="plain"]) [part="root"],
+    :host([appearance="plain"]) [part="title"],
+    :host([appearance="plain"]) [part="body"] {
       all: unset;
     }
 
-    :host([appearance='plain']) [part='root'] {
+    :host([appearance="plain"]) [part="root"] {
       display: contents;
     }
   `

@@ -25,11 +25,11 @@ export class PondMenu extends LitElement {
       position: relative;
     }
 
-    :host([appearance='plain']) {
+    :host([appearance="plain"]) {
       display: contents;
     }
 
-    [part='trigger'] {
+    [part="trigger"] {
       display: inline-flex;
       align-items: center;
       gap: var(--pond-space-2);
@@ -46,12 +46,12 @@ export class PondMenu extends LitElement {
       cursor: pointer;
     }
 
-    [part='trigger']:focus-visible {
+    [part="trigger"]:focus-visible {
       outline: var(--pond-focus-width) solid var(--pond-color-focus-ring);
       outline-offset: var(--pond-focus-offset);
     }
 
-    [part='list'] {
+    [part="list"] {
       position: absolute;
       z-index: 20;
       top: calc(100% + var(--pond-space-1));
@@ -66,7 +66,7 @@ export class PondMenu extends LitElement {
       list-style: none;
     }
 
-    [part='item'] {
+    [part="item"] {
       display: block;
       width: 100%;
       box-sizing: border-box;
@@ -82,24 +82,24 @@ export class PondMenu extends LitElement {
       cursor: pointer;
     }
 
-    [part='item']:hover:not(:disabled),
-    [part='item']:focus-visible {
+    [part="item"]:hover:not(:disabled),
+    [part="item"]:focus-visible {
       background: var(--pond-color-bg-subtle);
       outline: none;
     }
 
-    [part='item'][data-danger] {
+    [part="item"][data-danger] {
       color: var(--pond-color-danger-default);
     }
 
-    [part='item']:disabled {
+    [part="item"]:disabled {
       opacity: 0.5;
       cursor: not-allowed;
     }
 
-    :host([appearance='plain']) [part='trigger'],
-    :host([appearance='plain']) [part='list'],
-    :host([appearance='plain']) [part='item'] {
+    :host([appearance="plain"]) [part="trigger"],
+    :host([appearance="plain"]) [part="list"],
+    :host([appearance="plain"]) [part="item"] {
       all: unset;
     }
   `

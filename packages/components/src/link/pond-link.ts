@@ -16,11 +16,11 @@ export class PondLink extends LitElement {
       display: inline;
     }
 
-    :host([appearance='plain']) {
+    :host([appearance="plain"]) {
       display: contents;
     }
 
-    [part='link'] {
+    [part="link"] {
       color: var(--pond-color-accent-default);
       font-family: var(--pond-font-family-sans);
       font-size: inherit;
@@ -31,22 +31,22 @@ export class PondLink extends LitElement {
       cursor: pointer;
     }
 
-    [part='link']:hover {
+    [part="link"]:hover {
       color: var(--pond-color-accent-hover);
     }
 
-    [part='link']:focus-visible {
+    [part="link"]:focus-visible {
       outline: var(--pond-focus-width) solid var(--pond-color-focus-ring);
       outline-offset: var(--pond-focus-offset);
       border-radius: var(--pond-radius-sm);
     }
 
-    :host([appearance='plain']) [part='link'] {
+    :host([appearance="plain"]) [part="link"] {
       all: unset;
       cursor: pointer;
     }
 
-    :host([appearance='plain']) [part='link']:focus-visible {
+    :host([appearance="plain"]) [part="link"]:focus-visible {
       outline: revert;
     }
   `

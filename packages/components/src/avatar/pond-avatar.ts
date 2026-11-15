@@ -17,11 +17,11 @@ export class PondAvatar extends LitElement {
       display: inline-flex;
     }
 
-    :host([appearance='plain']) {
+    :host([appearance="plain"]) {
       display: contents;
     }
 
-    [part='root'] {
+    [part="root"] {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -37,30 +37,30 @@ export class PondAvatar extends LitElement {
       font-weight: var(--pond-font-weight-medium);
     }
 
-    :host([size='sm']) [part='root'] {
+    :host([size="sm"]) [part="root"] {
       width: 1.5rem;
       height: 1.5rem;
       font-size: var(--pond-font-size-xs);
     }
 
-    :host([size='lg']) [part='root'] {
+    :host([size="lg"]) [part="root"] {
       width: 2.5rem;
       height: 2.5rem;
       font-size: var(--pond-font-size-md);
     }
 
-    [part='image'] {
+    [part="image"] {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    :host([appearance='plain']) [part='root'],
-    :host([appearance='plain']) [part='image'] {
+    :host([appearance="plain"]) [part="root"],
+    :host([appearance="plain"]) [part="image"] {
       all: unset;
     }
 
-    :host([appearance='plain']) [part='root'] {
+    :host([appearance="plain"]) [part="root"] {
       display: contents;
     }
   `

@@ -6,26 +6,44 @@ import type { PondAppearance } from '../shared/appearance.js'
 @customElement('pond-checkbox')
 export class PondCheckbox extends LitElement {
   static override styles = css`
-    :host { display: inline-flex; }
-    :host([appearance='plain']) { display: contents; }
-    [part='root'] {
-      display: inline-flex; align-items: center; gap: var(--pond-space-2);
-      font-family: var(--pond-font-family-sans); color: var(--pond-color-fg-default);
-      font-size: var(--pond-font-size-md); cursor: pointer;
+    :host {
+      display: inline-flex;
     }
-    [part='input'] {
-      width: 1.125rem; height: 1.125rem; accent-color: var(--pond-color-accent-default);
+    :host([appearance="plain"]) {
+      display: contents;
+    }
+    [part="root"] {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--pond-space-2);
+      font-family: var(--pond-font-family-sans);
+      color: var(--pond-color-fg-default);
+      font-size: var(--pond-font-size-md);
       cursor: pointer;
     }
-    [part='input']:focus-visible {
+    [part="input"] {
+      width: 1.125rem;
+      height: 1.125rem;
+      accent-color: var(--pond-color-accent-default);
+      cursor: pointer;
+    }
+    [part="input"]:focus-visible {
       outline: var(--pond-focus-width) solid var(--pond-color-focus-ring);
       outline-offset: var(--pond-focus-offset);
     }
-    [part='input']:disabled, :host([disabled]) [part='root'] { opacity: 0.5; cursor: not-allowed; }
-    :host([appearance='plain']) [part='root'],
-    :host([appearance='plain']) [part='input'],
-    :host([appearance='plain']) [part='label'] { all: unset; }
-    :host([appearance='plain']) [part='root'] { display: contents; }
+    [part="input"]:disabled,
+    :host([disabled]) [part="root"] {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    :host([appearance="plain"]) [part="root"],
+    :host([appearance="plain"]) [part="input"],
+    :host([appearance="plain"]) [part="label"] {
+      all: unset;
+    }
+    :host([appearance="plain"]) [part="root"] {
+      display: contents;
+    }
   `
   @property({ reflect: true }) appearance: PondAppearance = 'default'
   @property() label = ''

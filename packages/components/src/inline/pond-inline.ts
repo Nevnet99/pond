@@ -26,11 +26,11 @@ export class PondInline extends LitElement {
       display: block;
     }
 
-    :host([appearance='plain']) {
+    :host([appearance="plain"]) {
       display: contents;
     }
 
-    [part='inline'] {
+    [part="inline"] {
       display: flex;
       flex-direction: row;
       flex-wrap: var(--pond-inline-wrap, nowrap);
@@ -40,7 +40,7 @@ export class PondInline extends LitElement {
       margin: 0;
     }
 
-    :host([appearance='plain']) [part='inline'] {
+    :host([appearance="plain"]) [part="inline"] {
       all: unset;
       display: contents;
     }
@@ -49,54 +49,54 @@ export class PondInline extends LitElement {
       --pond-inline-wrap: wrap;
     }
 
-    :host([gap='0']) {
+    :host([gap="0"]) {
       --pond-inline-gap: 0;
     }
-    :host([gap='1']) {
+    :host([gap="1"]) {
       --pond-inline-gap: var(--pond-space-1);
     }
-    :host([gap='2']) {
+    :host([gap="2"]) {
       --pond-inline-gap: var(--pond-space-2);
     }
-    :host([gap='3']) {
+    :host([gap="3"]) {
       --pond-inline-gap: var(--pond-space-3);
     }
-    :host([gap='4']) {
+    :host([gap="4"]) {
       --pond-inline-gap: var(--pond-space-4);
     }
-    :host([gap='6']) {
+    :host([gap="6"]) {
       --pond-inline-gap: var(--pond-space-6);
     }
-    :host([gap='8']) {
+    :host([gap="8"]) {
       --pond-inline-gap: var(--pond-space-8);
     }
 
-    :host([align='start']) {
+    :host([align="start"]) {
       --pond-inline-align: flex-start;
     }
-    :host([align='center']) {
+    :host([align="center"]) {
       --pond-inline-align: center;
     }
-    :host([align='end']) {
+    :host([align="end"]) {
       --pond-inline-align: flex-end;
     }
-    :host([align='baseline']) {
+    :host([align="baseline"]) {
       --pond-inline-align: baseline;
     }
 
-    :host([justify='start']) {
+    :host([justify="start"]) {
       --pond-inline-justify: flex-start;
     }
-    :host([justify='center']) {
+    :host([justify="center"]) {
       --pond-inline-justify: center;
     }
-    :host([justify='end']) {
+    :host([justify="end"]) {
       --pond-inline-justify: flex-end;
     }
-    :host([justify='between']) {
+    :host([justify="between"]) {
       --pond-inline-justify: space-between;
     }
-    :host([justify='around']) {
+    :host([justify="around"]) {
       --pond-inline-justify: space-around;
     }
   `

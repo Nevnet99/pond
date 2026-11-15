@@ -9,30 +9,54 @@ export type PondSelectOption = { value: string; label: string }
 @customElement('pond-select')
 export class PondSelect extends LitElement {
   static override styles = css`
-    :host { display: block; }
-    :host([appearance='plain']) { display: contents; }
-    [part='root'] {
-      display: flex; flex-direction: column; gap: var(--pond-space-1);
-      font-family: var(--pond-font-family-sans); color: var(--pond-color-fg-default);
+    :host {
+      display: block;
     }
-    [part='label'] { font-size: var(--pond-font-size-sm); font-weight: var(--pond-font-weight-medium); }
-    [part='select'] {
-      box-sizing: border-box; width: 100%; margin: 0;
+    :host([appearance="plain"]) {
+      display: contents;
+    }
+    [part="root"] {
+      display: flex;
+      flex-direction: column;
+      gap: var(--pond-space-1);
+      font-family: var(--pond-font-family-sans);
+      color: var(--pond-color-fg-default);
+    }
+    [part="label"] {
+      font-size: var(--pond-font-size-sm);
+      font-weight: var(--pond-font-weight-medium);
+    }
+    [part="select"] {
+      box-sizing: border-box;
+      width: 100%;
+      margin: 0;
       padding: var(--pond-space-2) var(--pond-space-3);
-      border: 1px solid var(--pond-color-border-strong); border-radius: var(--pond-radius-md);
-      background: var(--pond-color-bg-canvas); color: var(--pond-color-fg-default);
-      font: inherit; font-size: var(--pond-font-size-md);
+      border: 1px solid var(--pond-color-border-strong);
+      border-radius: var(--pond-radius-md);
+      background: var(--pond-color-bg-canvas);
+      color: var(--pond-color-fg-default);
+      font: inherit;
+      font-size: var(--pond-font-size-md);
     }
-    [part='select'][multiple] { min-height: 6.5rem; }
-    [part='select']:focus-visible {
+    [part="select"][multiple] {
+      min-height: 6.5rem;
+    }
+    [part="select"]:focus-visible {
       outline: var(--pond-focus-width) solid var(--pond-color-focus-ring);
       outline-offset: var(--pond-focus-offset);
     }
-    [part='select']:disabled { opacity: 0.5; cursor: not-allowed; }
-    :host([appearance='plain']) [part='root'],
-    :host([appearance='plain']) [part='label'],
-    :host([appearance='plain']) [part='select'] { all: unset; }
-    :host([appearance='plain']) [part='root'] { display: contents; }
+    [part="select"]:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    :host([appearance="plain"]) [part="root"],
+    :host([appearance="plain"]) [part="label"],
+    :host([appearance="plain"]) [part="select"] {
+      all: unset;
+    }
+    :host([appearance="plain"]) [part="root"] {
+      display: contents;
+    }
   `
   @property({ reflect: true }) appearance: PondAppearance = 'default'
   @property() label = ''

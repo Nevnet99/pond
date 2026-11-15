@@ -20,11 +20,11 @@ export class PondBox extends LitElement {
       display: block;
     }
 
-    :host([appearance='plain']) {
+    :host([appearance="plain"]) {
       display: contents;
     }
 
-    [part='box'] {
+    [part="box"] {
       box-sizing: border-box;
       display: block;
       margin: 0;
@@ -35,43 +35,43 @@ export class PondBox extends LitElement {
       border-radius: var(--pond-radius-md);
     }
 
-    :host([appearance='plain']) [part='box'] {
+    :host([appearance="plain"]) [part="box"] {
       all: unset;
       display: contents;
     }
 
-    :host([padding='0']) {
+    :host([padding="0"]) {
       --pond-box-padding: 0;
     }
-    :host([padding='1']) {
+    :host([padding="1"]) {
       --pond-box-padding: var(--pond-space-1);
     }
-    :host([padding='2']) {
+    :host([padding="2"]) {
       --pond-box-padding: var(--pond-space-2);
     }
-    :host([padding='3']) {
+    :host([padding="3"]) {
       --pond-box-padding: var(--pond-space-3);
     }
-    :host([padding='4']) {
+    :host([padding="4"]) {
       --pond-box-padding: var(--pond-space-4);
     }
-    :host([padding='6']) {
+    :host([padding="6"]) {
       --pond-box-padding: var(--pond-space-6);
     }
-    :host([padding='8']) {
+    :host([padding="8"]) {
       --pond-box-padding: var(--pond-space-8);
     }
 
-    :host([background='transparent']) {
+    :host([background="transparent"]) {
       --pond-box-bg: transparent;
     }
-    :host([background='canvas']) {
+    :host([background="canvas"]) {
       --pond-box-bg: var(--pond-color-bg-canvas);
     }
-    :host([background='surface']) {
+    :host([background="surface"]) {
       --pond-box-bg: var(--pond-color-bg-surface);
     }
-    :host([background='subtle']) {
+    :host([background="subtle"]) {
       --pond-box-bg: var(--pond-color-bg-subtle);
     }
   `

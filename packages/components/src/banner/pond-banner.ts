@@ -9,32 +9,61 @@ export type PondBannerTone = 'info' | 'success' | 'warning' | 'danger'
 @customElement('pond-banner')
 export class PondBanner extends LitElement {
   static override styles = css`
-    :host { display: block; }
-    :host([appearance='plain']) { display: contents; }
-    [part='root'] {
-      display: flex; align-items: flex-start; gap: var(--pond-space-3);
-      box-sizing: border-box; padding: var(--pond-space-3) var(--pond-space-4);
+    :host {
+      display: block;
+    }
+    :host([appearance="plain"]) {
+      display: contents;
+    }
+    [part="root"] {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--pond-space-3);
+      box-sizing: border-box;
+      padding: var(--pond-space-3) var(--pond-space-4);
       border-bottom: 1px solid var(--pond-color-border-default);
-      background: var(--pond-color-bg-subtle); color: var(--pond-color-fg-default);
-      font-family: var(--pond-font-family-sans); font-size: var(--pond-font-size-md);
+      background: var(--pond-color-bg-subtle);
+      color: var(--pond-color-fg-default);
+      font-family: var(--pond-font-family-sans);
+      font-size: var(--pond-font-size-md);
     }
-    :host([tone='danger']) [part='root'] { background: var(--pond-color-danger-subtle); }
-    :host([tone='warning']) [part='root'] { border-bottom-color: var(--pond-color-border-strong); }
-    :host([tone='success']) [part='root'] { border-bottom-color: var(--pond-color-accent-hover); }
-    :host([tone='info']) [part='root'] { border-bottom-color: var(--pond-color-accent-default); }
-    [part='body'] { flex: 1; min-width: 0; }
-    [part='close'] {
-      margin: 0; padding: var(--pond-space-1); border: 0; border-radius: var(--pond-radius-sm);
-      background: transparent; color: inherit; cursor: pointer;
+    :host([tone="danger"]) [part="root"] {
+      background: var(--pond-color-danger-subtle);
     }
-    [part='close']:focus-visible {
+    :host([tone="warning"]) [part="root"] {
+      border-bottom-color: var(--pond-color-border-strong);
+    }
+    :host([tone="success"]) [part="root"] {
+      border-bottom-color: var(--pond-color-accent-hover);
+    }
+    :host([tone="info"]) [part="root"] {
+      border-bottom-color: var(--pond-color-accent-default);
+    }
+    [part="body"] {
+      flex: 1;
+      min-width: 0;
+    }
+    [part="close"] {
+      margin: 0;
+      padding: var(--pond-space-1);
+      border: 0;
+      border-radius: var(--pond-radius-sm);
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+    }
+    [part="close"]:focus-visible {
       outline: var(--pond-focus-width) solid var(--pond-color-focus-ring);
       outline-offset: var(--pond-focus-offset);
     }
-    :host([appearance='plain']) [part='root'],
-    :host([appearance='plain']) [part='body'],
-    :host([appearance='plain']) [part='close'] { all: unset; }
-    :host([appearance='plain']) [part='root'] { display: contents; }
+    :host([appearance="plain"]) [part="root"],
+    :host([appearance="plain"]) [part="body"],
+    :host([appearance="plain"]) [part="close"] {
+      all: unset;
+    }
+    :host([appearance="plain"]) [part="root"] {
+      display: contents;
+    }
   `
   @property({ reflect: true }) appearance: PondAppearance = 'default'
   @property({ reflect: true }) tone: PondBannerTone = 'info'

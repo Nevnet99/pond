@@ -6,24 +6,40 @@ import type { PondAppearance } from '../shared/appearance.js'
 @customElement('pond-range')
 export class PondRange extends LitElement {
   static override styles = css`
-    :host { display: block; }
-    :host([appearance='plain']) { display: contents; }
-    [part='root'] {
-      display: flex; flex-direction: column; gap: var(--pond-space-1);
-      font-family: var(--pond-font-family-sans); color: var(--pond-color-fg-default);
+    :host {
+      display: block;
     }
-    [part='label'] { font-size: var(--pond-font-size-sm); font-weight: var(--pond-font-weight-medium); }
-    [part='input'] {
-      width: 100%; margin: 0; accent-color: var(--pond-color-accent-default);
+    :host([appearance="plain"]) {
+      display: contents;
     }
-    [part='input']:focus-visible {
+    [part="root"] {
+      display: flex;
+      flex-direction: column;
+      gap: var(--pond-space-1);
+      font-family: var(--pond-font-family-sans);
+      color: var(--pond-color-fg-default);
+    }
+    [part="label"] {
+      font-size: var(--pond-font-size-sm);
+      font-weight: var(--pond-font-weight-medium);
+    }
+    [part="input"] {
+      width: 100%;
+      margin: 0;
+      accent-color: var(--pond-color-accent-default);
+    }
+    [part="input"]:focus-visible {
       outline: var(--pond-focus-width) solid var(--pond-color-focus-ring);
       outline-offset: var(--pond-focus-offset);
     }
-    :host([appearance='plain']) [part='root'],
-    :host([appearance='plain']) [part='label'],
-    :host([appearance='plain']) [part='input'] { all: unset; }
-    :host([appearance='plain']) [part='root'] { display: contents; }
+    :host([appearance="plain"]) [part="root"],
+    :host([appearance="plain"]) [part="label"],
+    :host([appearance="plain"]) [part="input"] {
+      all: unset;
+    }
+    :host([appearance="plain"]) [part="root"] {
+      display: contents;
+    }
   `
   @property({ reflect: true }) appearance: PondAppearance = 'default'
   @property() label = ''

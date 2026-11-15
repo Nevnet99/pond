@@ -6,20 +6,35 @@ import type { PondAppearance } from '../shared/appearance.js'
 @customElement('pond-progress-indicator')
 export class PondProgressIndicator extends LitElement {
   static override styles = css`
-    :host { display: block; }
-    :host([appearance='plain']) { display: contents; }
-    [part='root'] {
-      display: flex; gap: var(--pond-space-2); align-items: center;
+    :host {
+      display: block;
+    }
+    :host([appearance="plain"]) {
+      display: contents;
+    }
+    [part="root"] {
+      display: flex;
+      gap: var(--pond-space-2);
+      align-items: center;
       font-family: var(--pond-font-family-sans);
     }
-    [part='dot'] {
-      width: 0.5rem; height: 0.5rem; border-radius: 999px;
+    [part="dot"] {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 999px;
       background: var(--pond-color-border-strong);
     }
-    [part='dot'][data-active] { background: var(--pond-color-accent-default); transform: scale(1.25); }
-    :host([appearance='plain']) [part='root'],
-    :host([appearance='plain']) [part='dot'] { all: unset; }
-    :host([appearance='plain']) [part='root'] { display: contents; }
+    [part="dot"][data-active] {
+      background: var(--pond-color-accent-default);
+      transform: scale(1.25);
+    }
+    :host([appearance="plain"]) [part="root"],
+    :host([appearance="plain"]) [part="dot"] {
+      all: unset;
+    }
+    :host([appearance="plain"]) [part="root"] {
+      display: contents;
+    }
   `
   @property({ reflect: true }) appearance: PondAppearance = 'default'
   @property({ type: Number }) steps = 4

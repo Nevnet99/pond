@@ -6,13 +6,21 @@ import type { PondAppearance } from '../shared/appearance.js'
 @customElement('pond-date-label')
 export class PondDateLabel extends LitElement {
   static override styles = css`
-    :host { display: inline; }
-    :host([appearance='plain']) { display: contents; }
-    [part='root'] {
-      font-family: var(--pond-font-family-sans); font-size: var(--pond-font-size-sm);
+    :host {
+      display: inline;
+    }
+    :host([appearance="plain"]) {
+      display: contents;
+    }
+    [part="root"] {
+      font-family: var(--pond-font-family-sans);
+      font-size: var(--pond-font-size-sm);
       color: var(--pond-color-fg-default);
     }
-    :host([appearance='plain']) [part='root'] { all: unset; display: contents; }
+    :host([appearance="plain"]) [part="root"] {
+      all: unset;
+      display: contents;
+    }
   `
   @property({ reflect: true }) appearance: PondAppearance = 'default'
   /** ISO date YYYY-MM-DD */

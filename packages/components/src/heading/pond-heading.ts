@@ -20,57 +20,57 @@ export class PondHeading extends LitElement {
       letter-spacing: var(--pond-font-tracking-tight);
     }
 
-    :host([appearance='plain']) {
+    :host([appearance="plain"]) {
       all: unset;
       display: contents;
     }
 
-    [part='heading'] {
+    [part="heading"] {
       margin: 0;
       font: inherit;
       color: inherit;
       letter-spacing: inherit;
     }
 
-    :host([data-size='xs']) {
+    :host([data-size="xs"]) {
       font-size: var(--pond-font-size-xs);
       line-height: var(--pond-font-line-snug);
       letter-spacing: var(--pond-font-tracking-wide);
       font-weight: var(--pond-font-weight-semibold);
     }
-    :host([data-size='sm']) {
+    :host([data-size="sm"]) {
       font-size: var(--pond-font-size-sm);
       line-height: var(--pond-font-line-snug);
       letter-spacing: var(--pond-font-tracking-normal);
     }
-    :host([data-size='md']) {
+    :host([data-size="md"]) {
       font-size: var(--pond-font-size-md);
       line-height: var(--pond-font-line-snug);
       letter-spacing: var(--pond-font-tracking-normal);
     }
-    :host([data-size='lg']) {
+    :host([data-size="lg"]) {
       font-size: var(--pond-font-size-lg);
       line-height: var(--pond-font-line-snug);
       letter-spacing: var(--pond-font-tracking-normal);
     }
-    :host([data-size='xl']) {
+    :host([data-size="xl"]) {
       font-size: var(--pond-font-size-xl);
       line-height: var(--pond-font-line-snug);
       letter-spacing: var(--pond-font-tracking-normal);
     }
-    :host([data-size='2xl']) {
+    :host([data-size="2xl"]) {
       font-size: var(--pond-font-size-2xl);
       line-height: var(--pond-font-line-tight);
     }
-    :host([data-size='3xl']) {
+    :host([data-size="3xl"]) {
       font-size: var(--pond-font-size-3xl);
       line-height: var(--pond-font-line-tight);
     }
-    :host([data-size='4xl']) {
+    :host([data-size="4xl"]) {
       font-size: var(--pond-font-size-4xl);
       line-height: var(--pond-font-line-tight);
     }
-    :host([data-size='5xl']) {
+    :host([data-size="5xl"]) {
       font-size: var(--pond-font-size-5xl);
       line-height: var(--pond-font-line-tight);
     }

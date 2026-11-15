@@ -24,11 +24,11 @@ export class PondTabs extends LitElement {
       display: block;
     }
 
-    :host([appearance='plain']) {
+    :host([appearance="plain"]) {
       display: contents;
     }
 
-    [part='root'] {
+    [part="root"] {
       display: flex;
       flex-direction: column;
       gap: var(--pond-space-3);
@@ -36,7 +36,7 @@ export class PondTabs extends LitElement {
       color: var(--pond-color-fg-default);
     }
 
-    [part='tablist'] {
+    [part="tablist"] {
       display: flex;
       flex-wrap: wrap;
       gap: var(--pond-space-1);
@@ -46,7 +46,7 @@ export class PondTabs extends LitElement {
       list-style: none;
     }
 
-    [part='tab'] {
+    [part="tab"] {
       box-sizing: border-box;
       margin: 0 0 -1px;
       padding: var(--pond-space-2) var(--pond-space-3);
@@ -61,46 +61,46 @@ export class PondTabs extends LitElement {
       cursor: pointer;
     }
 
-    [part='tab'][aria-selected='true'] {
+    [part="tab"][aria-selected="true"] {
       border-color: var(--pond-color-border-default);
       border-bottom-color: var(--pond-color-bg-canvas);
       background: var(--pond-color-bg-canvas);
       color: var(--pond-color-fg-default);
     }
 
-    [part='tab']:hover:not(:disabled):not([aria-selected='true']) {
+    [part="tab"]:hover:not(:disabled):not([aria-selected="true"]) {
       color: var(--pond-color-fg-default);
     }
 
-    [part='tab']:focus-visible {
+    [part="tab"]:focus-visible {
       outline: var(--pond-focus-width) solid var(--pond-color-focus-ring);
       outline-offset: var(--pond-focus-offset);
     }
 
-    [part='tab']:disabled {
+    [part="tab"]:disabled {
       opacity: 0.5;
       cursor: not-allowed;
     }
 
-    [part='panels'] {
+    [part="panels"] {
       min-width: 0;
     }
 
-    [part='panel'] {
+    [part="panel"] {
       margin: 0;
     }
 
-    :host([appearance='plain']) [part='root'],
-    :host([appearance='plain']) [part='tablist'],
-    :host([appearance='plain']) [part='tab'],
-    :host([appearance='plain']) [part='panels'],
-    :host([appearance='plain']) [part='panel'] {
+    :host([appearance="plain"]) [part="root"],
+    :host([appearance="plain"]) [part="tablist"],
+    :host([appearance="plain"]) [part="tab"],
+    :host([appearance="plain"]) [part="panels"],
+    :host([appearance="plain"]) [part="panel"] {
       all: unset;
     }
 
-    :host([appearance='plain']) [part='root'],
-    :host([appearance='plain']) [part='tablist'],
-    :host([appearance='plain']) [part='panels'] {
+    :host([appearance="plain"]) [part="root"],
+    :host([appearance="plain"]) [part="tablist"],
+    :host([appearance="plain"]) [part="panels"] {
       display: contents;
     }
   `

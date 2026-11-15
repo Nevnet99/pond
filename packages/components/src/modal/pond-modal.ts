@@ -13,24 +13,42 @@ import '../blanket/pond-blanket.js'
 @customElement('pond-modal')
 export class PondModal extends LitElement {
   static override styles = css`
-    :host { display: contents; }
-    [part='dialog'] {
-      box-sizing: border-box; width: min(100%, 28rem); max-height: min(90vh, 40rem);
-      margin: auto; overflow: auto; padding: var(--pond-space-6);
-      border-radius: var(--pond-radius-md); background: var(--pond-color-bg-canvas);
-      color: var(--pond-color-fg-default); font-family: var(--pond-font-family-sans);
+    :host {
+      display: contents;
+    }
+    [part="dialog"] {
+      box-sizing: border-box;
+      width: min(100%, 28rem);
+      max-height: min(90vh, 40rem);
+      margin: auto;
+      overflow: auto;
+      padding: var(--pond-space-6);
+      border-radius: var(--pond-radius-md);
+      background: var(--pond-color-bg-canvas);
+      color: var(--pond-color-fg-default);
+      font-family: var(--pond-font-family-sans);
       box-shadow: 0 8px 32px rgb(0 0 0 / 25%);
     }
-    [part='title'] {
-      margin: 0 0 var(--pond-space-3); font-size: var(--pond-font-size-xl);
-      font-weight: var(--pond-font-weight-semibold); line-height: var(--pond-font-line-snug);
+    [part="title"] {
+      margin: 0 0 var(--pond-space-3);
+      font-size: var(--pond-font-size-xl);
+      font-weight: var(--pond-font-weight-semibold);
+      line-height: var(--pond-font-line-snug);
     }
-    [part='body'] { margin: 0 0 var(--pond-space-4); }
-    [part='actions'] { display: flex; justify-content: flex-end; gap: var(--pond-space-2); }
-    :host([appearance='plain']) [part='dialog'],
-    :host([appearance='plain']) [part='title'],
-    :host([appearance='plain']) [part='body'],
-    :host([appearance='plain']) [part='actions'] { all: unset; }
+    [part="body"] {
+      margin: 0 0 var(--pond-space-4);
+    }
+    [part="actions"] {
+      display: flex;
+      justify-content: flex-end;
+      gap: var(--pond-space-2);
+    }
+    :host([appearance="plain"]) [part="dialog"],
+    :host([appearance="plain"]) [part="title"],
+    :host([appearance="plain"]) [part="body"],
+    :host([appearance="plain"]) [part="actions"] {
+      all: unset;
+    }
   `
 
   @property({ reflect: true }) appearance: PondAppearance = 'default'

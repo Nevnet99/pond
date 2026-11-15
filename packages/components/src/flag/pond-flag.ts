@@ -9,32 +9,61 @@ export type PondFlagTone = 'info' | 'success' | 'warning' | 'danger'
 @customElement('pond-flag')
 export class PondFlag extends LitElement {
   static override styles = css`
-    :host { display: block; max-width: 24rem; }
-    :host([appearance='plain']) { display: contents; }
-    [part='root'] {
-      display: flex; align-items: flex-start; gap: var(--pond-space-3);
-      box-sizing: border-box; padding: var(--pond-space-3);
-      border: 1px solid var(--pond-color-border-default); border-radius: var(--pond-radius-md);
-      background: var(--pond-color-bg-surface); color: var(--pond-color-fg-default);
-      font-family: var(--pond-font-family-sans); font-size: var(--pond-font-size-sm);
+    :host {
+      display: block;
+      max-width: 24rem;
+    }
+    :host([appearance="plain"]) {
+      display: contents;
+    }
+    [part="root"] {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--pond-space-3);
+      box-sizing: border-box;
+      padding: var(--pond-space-3);
+      border: 1px solid var(--pond-color-border-default);
+      border-radius: var(--pond-radius-md);
+      background: var(--pond-color-bg-surface);
+      color: var(--pond-color-fg-default);
+      font-family: var(--pond-font-family-sans);
+      font-size: var(--pond-font-size-sm);
       box-shadow: var(--pond-shadow-md, 0 4px 12px rgb(0 0 0 / 12%));
     }
-    :host([tone='danger']) [part='root'] { border-color: var(--pond-color-danger-default); }
-    [part='title'] { margin: 0 0 var(--pond-space-1); font-weight: var(--pond-font-weight-semibold); }
-    [part='body'] { margin: 0; flex: 1; min-width: 0; }
-    [part='close'] {
-      margin: 0; padding: var(--pond-space-1); border: 0; border-radius: var(--pond-radius-sm);
-      background: transparent; color: inherit; cursor: pointer;
+    :host([tone="danger"]) [part="root"] {
+      border-color: var(--pond-color-danger-default);
     }
-    [part='close']:focus-visible {
+    [part="title"] {
+      margin: 0 0 var(--pond-space-1);
+      font-weight: var(--pond-font-weight-semibold);
+    }
+    [part="body"] {
+      margin: 0;
+      flex: 1;
+      min-width: 0;
+    }
+    [part="close"] {
+      margin: 0;
+      padding: var(--pond-space-1);
+      border: 0;
+      border-radius: var(--pond-radius-sm);
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+    }
+    [part="close"]:focus-visible {
       outline: var(--pond-focus-width) solid var(--pond-color-focus-ring);
       outline-offset: var(--pond-focus-offset);
     }
-    :host([appearance='plain']) [part='root'],
-    :host([appearance='plain']) [part='title'],
-    :host([appearance='plain']) [part='body'],
-    :host([appearance='plain']) [part='close'] { all: unset; }
-    :host([appearance='plain']) [part='root'] { display: contents; }
+    :host([appearance="plain"]) [part="root"],
+    :host([appearance="plain"]) [part="title"],
+    :host([appearance="plain"]) [part="body"],
+    :host([appearance="plain"]) [part="close"] {
+      all: unset;
+    }
+    :host([appearance="plain"]) [part="root"] {
+      display: contents;
+    }
   `
   @property({ reflect: true }) appearance: PondAppearance = 'default'
   @property({ reflect: true }) tone: PondFlagTone = 'info'

@@ -6,14 +6,23 @@ import type { PondAppearance } from '../shared/appearance.js'
 @customElement('pond-blanket')
 export class PondBlanket extends LitElement {
   static override styles = css`
-    :host { display: contents; }
-    [part='root'] {
-      position: fixed; inset: 0; z-index: 40;
-      display: flex; align-items: stretch; justify-content: stretch;
+    :host {
+      display: contents;
+    }
+    [part="root"] {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      display: flex;
+      align-items: stretch;
+      justify-content: stretch;
       background: rgb(0 0 0 / 45%);
       font-family: var(--pond-font-family-sans);
     }
-    :host([appearance='plain']) [part='root'] { all: unset; display: contents; }
+    :host([appearance="plain"]) [part="root"] {
+      all: unset;
+      display: contents;
+    }
   `
   @property({ reflect: true }) appearance: PondAppearance = 'default'
   @property({ type: Boolean, attribute: 'click-dismiss' }) clickDismiss = true

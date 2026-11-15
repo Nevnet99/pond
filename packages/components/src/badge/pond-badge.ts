@@ -6,17 +6,30 @@ import type { PondAppearance } from '../shared/appearance.js'
 @customElement('pond-badge')
 export class PondBadge extends LitElement {
   static override styles = css`
-    :host { display: inline-flex; }
-    :host([appearance='plain']) { display: contents; }
-    [part='badge'] {
-      display: inline-flex; align-items: center; justify-content: center;
-      min-width: 1.25rem; padding: 0 var(--pond-space-1);
-      border-radius: var(--pond-radius-pill);
-      background: var(--pond-color-danger-default); color: var(--pond-color-fg-on-accent);
-      font-family: var(--pond-font-family-sans); font-size: var(--pond-font-size-xs);
-      font-weight: var(--pond-font-weight-semibold); line-height: 1.25rem;
+    :host {
+      display: inline-flex;
     }
-    :host([appearance='plain']) [part='badge'] { all: unset; display: contents; }
+    :host([appearance="plain"]) {
+      display: contents;
+    }
+    [part="badge"] {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 1.25rem;
+      padding: 0 var(--pond-space-1);
+      border-radius: var(--pond-radius-pill);
+      background: var(--pond-color-danger-default);
+      color: var(--pond-color-fg-on-accent);
+      font-family: var(--pond-font-family-sans);
+      font-size: var(--pond-font-size-xs);
+      font-weight: var(--pond-font-weight-semibold);
+      line-height: 1.25rem;
+    }
+    :host([appearance="plain"]) [part="badge"] {
+      all: unset;
+      display: contents;
+    }
   `
   @property({ reflect: true }) appearance: PondAppearance = 'default'
   @property({ type: Number }) value = 0

@@ -18,29 +18,30 @@ export class PondSpinner extends LitElement {
       display: inline-flex;
     }
 
-    :host([appearance='plain']) {
+    :host([appearance="plain"]) {
       display: contents;
     }
 
-    [part='spinner'] {
+    [part="spinner"] {
       box-sizing: border-box;
       width: var(--pond-spinner-size, 1.5rem);
       height: var(--pond-spinner-size, 1.5rem);
       border: 2px solid var(--pond-color-border-default);
       border-top-color: var(--pond-color-accent-default);
       border-radius: 50%;
-      animation: pond-spin var(--pond-motion-duration-slow, 900ms) linear infinite;
+      animation: pond-spin var(--pond-motion-duration-slow, 900ms) linear
+        infinite;
     }
 
-    :host([size='sm']) {
+    :host([size="sm"]) {
       --pond-spinner-size: 1rem;
     }
 
-    :host([size='md']) {
+    :host([size="md"]) {
       --pond-spinner-size: 1.5rem;
     }
 
-    :host([size='lg']) {
+    :host([size="lg"]) {
       --pond-spinner-size: 2rem;
     }
 
@@ -51,13 +52,13 @@ export class PondSpinner extends LitElement {
     }
 
     @media (prefers-reduced-motion: reduce) {
-      [part='spinner'] {
+      [part="spinner"] {
         animation: none;
         opacity: 0.85;
       }
     }
 
-    :host([appearance='plain']) [part='spinner'] {
+    :host([appearance="plain"]) [part="spinner"] {
       all: unset;
       display: contents;
     }

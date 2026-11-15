@@ -6,35 +6,57 @@ import type { PondAppearance } from '../shared/appearance.js'
 @customElement('pond-progress-bar')
 export class PondProgressBar extends LitElement {
   static override styles = css`
-    :host { display: block; }
-    :host([appearance='plain']) { display: contents; }
-    [part='root'] {
-      display: block; width: 100%; height: 0.5rem;
+    :host {
+      display: block;
+    }
+    :host([appearance="plain"]) {
+      display: contents;
+    }
+    [part="root"] {
+      display: block;
+      width: 100%;
+      height: 0.5rem;
       border-radius: var(--pond-radius-full, 999px);
       background: var(--pond-color-bg-subtle, #e8e8e8);
       overflow: hidden;
     }
-    [part='bar'] {
-      display: block; height: 100%; width: var(--pond-progress, 0%);
+    [part="bar"] {
+      display: block;
+      height: 100%;
+      width: var(--pond-progress, 0%);
       border-radius: inherit;
       background: var(--pond-color-accent-default);
       transition: width var(--pond-motion-duration-normal) ease;
     }
-    :host([indeterminate]) [part='bar'] {
+    :host([indeterminate]) [part="bar"] {
       width: 40%;
-      animation: pond-progress-indeterminate var(--pond-motion-duration-slow, 900ms) ease-in-out infinite;
+      animation: pond-progress-indeterminate
+        var(--pond-motion-duration-slow, 900ms) ease-in-out infinite;
     }
     @keyframes pond-progress-indeterminate {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(250%); }
+      0% {
+        transform: translateX(-100%);
+      }
+      100% {
+        transform: translateX(250%);
+      }
     }
     @media (prefers-reduced-motion: reduce) {
-      [part='bar'] { transition: none; }
-      :host([indeterminate]) [part='bar'] { animation: none; width: 40%; }
+      [part="bar"] {
+        transition: none;
+      }
+      :host([indeterminate]) [part="bar"] {
+        animation: none;
+        width: 40%;
+      }
     }
-    :host([appearance='plain']) [part='root'],
-    :host([appearance='plain']) [part='bar'] { all: unset; }
-    :host([appearance='plain']) [part='root'] { display: contents; }
+    :host([appearance="plain"]) [part="root"],
+    :host([appearance="plain"]) [part="bar"] {
+      all: unset;
+    }
+    :host([appearance="plain"]) [part="root"] {
+      display: contents;
+    }
   `
   @property({ reflect: true }) appearance: PondAppearance = 'default'
   /** Value from 0 to 1. */
