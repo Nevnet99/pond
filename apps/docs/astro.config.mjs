@@ -121,7 +121,8 @@ export default defineConfig({
             { label: 'Pagination', slug: 'components/pagination' },
             { label: 'Page', slug: 'components/page' },
             { label: 'Page header', slug: 'components/page-header' },
-            { label: 'Panel', slug: 'components/panel' }
+            { label: 'Panel', slug: 'components/panel' },
+            { label: 'Side nav', slug: 'components/side-nav' }
           ]
         },
         {

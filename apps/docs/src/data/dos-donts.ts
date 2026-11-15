@@ -263,6 +263,16 @@ const catalog: Record<string, DosDontsEntry> = {
       'Don’t put the primary reading column inside Panel'
     ]
   },
+  'side-nav': {
+    dos: [
+      'Put Side nav in the Page navigation slot',
+      'Mark the active item with current; nest at most one level'
+    ],
+    donts: [
+      'Don’t rebuild the full Atlassian top + side Navigation system here',
+      'Don’t nest Side nav items more than one level deep'
+    ]
+  },
   banner: {
     dos: [
       'Use for page-level notices the user should see on arrival',
