@@ -13,51 +13,31 @@ Nested rows expand in place. No remote children API or drag-and-drop yet.
 <ComponentTabs>
   <Fragment slot="examples">
     <PondDemo label="Expanded">
-      <pond-table-tree caption="Project"></pond-table-tree>
-      <script>
-        const tree = document.currentScript.previousElementSibling
-        tree.columns = [
-          { key: 'name', label: 'Name' },
-          { key: 'type', label: 'Type' }
-        ]
-        tree.nodes = [
-          {
-            id: 'src',
-            cells: { name: 'src', type: 'Folder' },
-            children: [{ id: 'a', cells: { name: 'app.ts', type: 'File' } }]
-          },
-          { id: 'r', cells: { name: 'README.md', type: 'File' } }
-        ]
-        tree.expandedIds = ['src']
-      </script>
+      <pond-table-tree
+        caption="Project"
+        columns='[{"key":"name","label":"Name"},{"key":"type","label":"Type"}]'
+        nodes='[{"id":"src","cells":{"name":"src","type":"Folder"},"children":[{"id":"a","cells":{"name":"app.ts","type":"File"}}]},{"id":"r","cells":{"name":"README.md","type":"File"}}]'
+        expanded-ids='["src"]'
+      ></pond-table-tree>
     </PondDemo>
   </Fragment>
 
   <Fragment slot="code">
 
 ```html
-<pond-table-tree caption="Project"></pond-table-tree>
-<script type="module">
-  const el = document.querySelector('pond-table-tree')
-  el.columns = [
-    { key: 'name', label: 'Name' },
-    { key: 'type', label: 'Type' }
-  ]
-  el.nodes = [
-    {
-      id: 'src',
-      cells: { name: 'src', type: 'Folder' },
-      children: [{ id: 'a', cells: { name: 'app.ts', type: 'File' } }]
-    }
-  ]
-</script>
+<pond-table-tree
+  caption="Project"
+  columns='[{"key":"name","label":"Name"}]'
+  nodes='[{"id":"src","cells":{"name":"src"},"children":[]}]'
+  expanded-ids='["src"]'
+></pond-table-tree>
 ```
 
   </Fragment>
 
   <Fragment slot="usage">
 
-Pass `expandedIds` to control which parents start open. Toggle fires `pond-toggle`.
+Pass `expanded-ids` to control which parents start open. Toggle fires `pond-toggle`.
 
     <DosDonts component="table-tree" />
 
