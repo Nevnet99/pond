@@ -3,6 +3,7 @@ title: Pagination
 description: Navigate multi-page lists.
 ---
 import ComponentTabs from '../../../components/ComponentTabs.astro'
+import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
 Move between pages of a list. Compact ellipsis can wait for a later iteration.
@@ -22,6 +23,8 @@ Move between pages of a list. Compact ellipsis can wait for a later iteration.
   </Fragment>
   <Fragment slot="usage">Prefer infinite scroll only when the product already commits to it.</Fragment>
   <Fragment slot="changelog">Unreleased — page, page-count, previous/next.</Fragment>
-  <Fragment slot="accessibility">nav aria-label=Pagination; aria-current=page on the active page.</Fragment>
+  <Fragment slot="accessibility">
+    <A11ySection component="pagination" />
+  </Fragment>
   <Fragment slot="patterns">None yet.</Fragment>
 </ComponentTabs>

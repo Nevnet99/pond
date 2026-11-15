@@ -3,6 +3,7 @@ title: Icon
 description: Named or slotted SVG icon.
 ---
 import ComponentTabs from '../../../components/ComponentTabs.astro'
+import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
 Built-in names for common UI glyphs; slot custom SVG when needed. Phase 4 starts here.
@@ -30,6 +31,8 @@ Built-in names for common UI glyphs; slot custom SVG when needed. Phase 4 starts
   </Fragment>
   <Fragment slot="usage">Pass label for meaningful icons; omit for decorative. Forks extend via slot or by growing the path map.</Fragment>
   <Fragment slot="changelog">Unreleased — built-in path map + slot.</Fragment>
-  <Fragment slot="accessibility">Decorative when label empty (aria-hidden); role=img + aria-label when labelled.</Fragment>
+  <Fragment slot="accessibility">
+    <A11ySection component="icon" />
+  </Fragment>
   <Fragment slot="patterns">Used by Avatar, Tag, Empty state, Banner, Flag.</Fragment>
 </ComponentTabs>
