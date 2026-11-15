@@ -29,7 +29,7 @@ export class PondSpinner extends LitElement {
       border: 2px solid var(--pond-color-border-default);
       border-top-color: var(--pond-color-accent-default);
       border-radius: 50%;
-      animation: pond-spin var(--pond-motion-duration-normal) linear infinite;
+      animation: pond-spin var(--pond-motion-duration-slow, 900ms) linear infinite;
     }
 
     :host([size='sm']) {
