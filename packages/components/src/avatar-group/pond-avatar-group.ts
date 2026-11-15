@@ -12,9 +12,13 @@ export class PondAvatarGroup extends LitElement {
       display: flex; flex-direction: row; align-items: center;
       font-family: var(--pond-font-family-sans);
     }
+    /* Ring on circular host so it matches the avatar face (not a box around the host). */
     [part='root'] ::slotted(pond-avatar) {
+      position: relative;
       margin-inline-start: calc(var(--pond-space-2) * -1);
+      border-radius: 999px;
       box-shadow: 0 0 0 2px var(--pond-color-bg-canvas);
+      background: var(--pond-color-bg-canvas);
     }
     [part='root'] ::slotted(pond-avatar:first-child) { margin-inline-start: 0; }
     :host([appearance='plain']) [part='root'] { all: unset; display: contents; }
