@@ -1,0 +1,30 @@
+---
+title: Toggle
+description: On/off switch for settings.
+---
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Immediate on/off for a setting.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="States">
+      <pond-stack gap="3">
+        <pond-toggle label="Off"></pond-toggle>
+        <pond-toggle label="On" checked></pond-toggle>
+      </pond-stack>
+    </PondDemo>
+  </Fragment>
+  <Fragment slot="code">
+
+```html
+<pond-toggle label="Notifications"></pond-toggle>
+```
+
+  </Fragment>
+  <Fragment slot="usage">Prefer for settings that take effect immediately. Use Checkbox for forms/lists.</Fragment>
+  <Fragment slot="changelog">Unreleased — role=switch, plain, reduced-motion.</Fragment>
+  <Fragment slot="accessibility">role="switch" with aria-checked. Keyboard Space/Enter.</Fragment>
+  <Fragment slot="patterns">None yet.</Fragment>
+</ComponentTabs>
