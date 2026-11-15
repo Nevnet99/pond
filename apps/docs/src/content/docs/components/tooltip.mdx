@@ -1,0 +1,29 @@
+---
+title: Tooltip
+description: Non-actionable help on hover or focus.
+---
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Short help for an element. Not for critical instructions.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Hover / focus">
+      <pond-tooltip content="Fork Pond into your org">
+        <pond-button variant="subtle">What is a fork?</pond-button>
+      </pond-tooltip>
+    </PondDemo>
+  </Fragment>
+  <Fragment slot="code">
+
+```html
+<pond-tooltip content="Help"><button>Info</button></pond-tooltip>
+```
+
+  </Fragment>
+  <Fragment slot="usage">Do not put interactive content in the tooltip. Prefer Section message for persistent alerts.</Fragment>
+  <Fragment slot="changelog">Unreleased — hover/focus tooltip.</Fragment>
+  <Fragment slot="accessibility">role=tooltip when open. Trigger must be keyboard-focusable.</Fragment>
+  <Fragment slot="patterns">None yet.</Fragment>
+</ComponentTabs>

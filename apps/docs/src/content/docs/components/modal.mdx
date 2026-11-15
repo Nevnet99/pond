@@ -1,0 +1,31 @@
+---
+title: Modal
+description: Dialog overlay with Escape and backdrop dismiss.
+---
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Focused task that blocks the page until dismissed.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Open">
+      <pond-modal open title="Delete project">
+        <p>This cannot be undone.</p>
+        <pond-button slot="actions" variant="secondary">Cancel</pond-button>
+        <pond-button slot="actions" variant="danger">Delete</pond-button>
+      </pond-modal>
+    </PondDemo>
+  </Fragment>
+  <Fragment slot="code">
+
+```html
+<pond-modal open title="Confirm">...</pond-modal>
+```
+
+  </Fragment>
+  <Fragment slot="usage">Use for confirmations and short forms. Escape and backdrop click close.</Fragment>
+  <Fragment slot="changelog">Unreleased — open, title, Escape/backdrop close.</Fragment>
+  <Fragment slot="accessibility">role=dialog, aria-modal, labelled by title. Focus moves to dialog on open.</Fragment>
+  <Fragment slot="patterns">None yet.</Fragment>
+</ComponentTabs>
