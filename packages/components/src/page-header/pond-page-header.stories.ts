@@ -6,7 +6,7 @@ import '../tabs/pond-tabs.js'
 import './pond-page-header.js'
 
 const meta: Meta = {
-  title: 'Components/Page header',
+  title: 'Navigation/Page header',
   component: 'pond-page-header'
 }
 export default meta

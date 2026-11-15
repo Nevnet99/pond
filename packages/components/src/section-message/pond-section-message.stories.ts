@@ -3,7 +3,7 @@ import { html } from 'lit'
 import './pond-section-message.js'
 
 const meta: Meta = {
-  title: 'Components/Section message',
+  title: 'Feedback/Section message',
   component: 'pond-section-message'
 }
 export default meta

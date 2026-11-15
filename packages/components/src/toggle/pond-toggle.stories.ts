@@ -3,7 +3,7 @@ import { html } from 'lit'
 import './pond-toggle.js'
 
 const meta: Meta = {
-  title: 'Components/Toggle',
+  title: 'Forms/Toggle',
   component: 'pond-toggle',
   args: { label: 'Notifications', checked: false }
 }

@@ -3,7 +3,7 @@ import { html } from 'lit'
 import './pond-pagination.js'
 
 const meta: Meta = {
-  title: 'Components/Pagination',
+  title: 'Navigation/Pagination',
   component: 'pond-pagination'
 }
 export default meta

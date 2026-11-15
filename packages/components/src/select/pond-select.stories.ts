@@ -8,7 +8,7 @@ const options = [
   { value: 'l', label: 'Large' }
 ]
 
-const meta: Meta = { title: 'Components/Select', component: 'pond-select' }
+const meta: Meta = { title: 'Forms/Select', component: 'pond-select' }
 export default meta
 type Story = StoryObj
 

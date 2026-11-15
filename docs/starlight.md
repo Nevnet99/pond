@@ -9,6 +9,10 @@ Pond’s narrative documentation site (`apps/docs`).
 | **Starlight** | Get started, theming, contributing, Patterns, and per-component narrative pages with **live Lit demos** |
 | **Storybook** | Full state matrix, controls, CEM-backed API                                                             |
 
+## Sidebar groups
+
+Component pages stay under `content/docs/components/` (and primitives under `primitives/`). The Starlight sidebar groups them the same way as Storybook: **Primitives**, **Forms**, **Feedback**, **Navigation**, **Overlays**, **Data display**, **Media**.
+
 ## Component page shape (Atlassian-like)
 
 Each Component / Primitive page uses **`ComponentTabs`** — a horizontal tab bar under the title:

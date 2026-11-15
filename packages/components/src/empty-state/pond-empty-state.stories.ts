@@ -4,7 +4,7 @@ import '../button/pond-button.js'
 import './pond-empty-state.js'
 
 const meta: Meta = {
-  title: 'Components/Empty state',
+  title: 'Feedback/Empty state',
   component: 'pond-empty-state'
 }
 export default meta

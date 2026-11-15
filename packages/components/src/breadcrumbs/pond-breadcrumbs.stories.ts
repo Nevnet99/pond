@@ -3,7 +3,7 @@ import { html } from 'lit'
 import './pond-breadcrumbs.js'
 
 const meta: Meta = {
-  title: 'Components/Breadcrumbs',
+  title: 'Navigation/Breadcrumbs',
   component: 'pond-breadcrumbs'
 }
 export default meta

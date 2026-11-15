@@ -3,7 +3,7 @@ import { html } from 'lit'
 import './pond-button.js'
 
 const meta: Meta = {
-  title: 'Components/Button',
+  title: 'Forms/Button',
   component: 'pond-button',
   args: {
     label: 'Save changes',
