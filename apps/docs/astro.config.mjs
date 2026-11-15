@@ -92,7 +92,8 @@ export default defineConfig({
             { label: 'Breadcrumbs', slug: 'components/breadcrumbs' },
             { label: 'Pagination', slug: 'components/pagination' },
             { label: 'Menu', slug: 'components/menu' },
-            { label: 'Page header', slug: 'components/page-header' }
+            { label: 'Page header', slug: 'components/page-header' },
+            { label: 'Icon', slug: 'components/icon' }
           ]
         },
         {
@@ -109,7 +110,8 @@ export default defineConfig({
             { label: 'Component DoD', slug: 'contributing/component-dod' },
             { label: 'Forking', slug: 'contributing/forking' },
             { label: 'v1 slice', slug: 'contributing/v1-slice' },
-            { label: 'Phase 3 slice', slug: 'contributing/phase-3-slice' }
+            { label: 'Phase 3 slice', slug: 'contributing/phase-3-slice' },
+            { label: 'Phase 4 slice', slug: 'contributing/phase-4-slice' }
           ]
         }
       ]

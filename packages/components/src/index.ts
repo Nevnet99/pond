@@ -7,6 +7,10 @@ export type { PondButtonVariant } from './button/pond-button.js'
 export { PondButton } from './button/pond-button.js'
 export { PondCheckbox } from './checkbox/pond-checkbox.js'
 export { PondHeading } from './heading/pond-heading.js'
+export type { PondIconSize } from './icon/pond-icon.js'
+export { PondIcon } from './icon/pond-icon.js'
+export type { PondIconName } from './icon/pond-icons.js'
+export { pondIconPaths } from './icon/pond-icons.js'
 export type {
   PondInlineAlign,
   PondInlineGap,
