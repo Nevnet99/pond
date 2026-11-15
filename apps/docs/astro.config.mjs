@@ -80,6 +80,7 @@ export default defineConfig({
             { label: 'Text field', slug: 'components/text-field' },
             { label: 'Text area', slug: 'components/text-area' },
             { label: 'Calendar', slug: 'components/calendar' },
+            { label: 'Date time picker', slug: 'components/date-time-picker' },
             { label: 'Checkbox', slug: 'components/checkbox' },
             { label: 'Toggle', slug: 'components/toggle' },
             { label: 'Select', slug: 'components/select' },

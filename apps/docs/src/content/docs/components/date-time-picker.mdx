@@ -1,0 +1,27 @@
+---
+title: Date time picker
+description: Combined date and time control.
+---
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Pick a date (Calendar) and a time in one value (`YYYY-MM-DDTHH:mm`).
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Default">
+      <pond-date-time-picker label="When" value="2026-11-15T14:30"></pond-date-time-picker>
+    </PondDemo>
+  </Fragment>
+  <Fragment slot="code">
+
+```html
+<pond-date-time-picker label="When" value="2026-11-15T14:30"></pond-date-time-picker>
+```
+
+  </Fragment>
+  <Fragment slot="usage">No standalone Time picker in Phase 6 — time lives here.</Fragment>
+  <Fragment slot="changelog">Unreleased — Calendar + native time input.</Fragment>
+  <Fragment slot="accessibility">Calendar grid plus labeled time input.</Fragment>
+  <Fragment slot="patterns">None yet.</Fragment>
+</ComponentTabs>
