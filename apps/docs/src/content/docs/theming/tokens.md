@@ -15,10 +15,10 @@ Switch theme with `data-theme="dark"` on `html` (or `:root`). Prefer overriding 
 
 ## Families
 
-| Family     | Docs                                                | CSS prefix        |
-| ---------- | --------------------------------------------------- | ----------------- |
-| Color      | this page                                           | `--pond-color-*`  |
-| Spacing    | [Spacing](/theming/spacing/)                        | `--pond-space-*`  |
-| Typography | [Typography](/theming/typography/)                  | `--pond-font-*`   |
-| Motion     | `--pond-motion-duration-*` (docs in a follow-up PR) | `--pond-motion-*` |
-| Focus      | accessibility DoD                                   | `--pond-focus-*`  |
+| Family     | Docs                               | CSS prefix        |
+| ---------- | ---------------------------------- | ----------------- |
+| Color      | this page                          | `--pond-color-*`  |
+| Spacing    | [Spacing](/theming/spacing/)       | `--pond-space-*`  |
+| Typography | [Typography](/theming/typography/) | `--pond-font-*`   |
+| Motion     | [Motion](/theming/motion/)         | `--pond-motion-*` |
+| Focus      | accessibility DoD                  | `--pond-focus-*`  |

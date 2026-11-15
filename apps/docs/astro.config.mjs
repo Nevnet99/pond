@@ -60,6 +60,7 @@ export default defineConfig({
           items: [
             { label: 'Tokens & themes', slug: 'theming/tokens' },
             { label: 'Spacing', slug: 'theming/spacing' },
+            { label: 'Motion', slug: 'theming/motion' },
             { label: 'Typography', slug: 'theming/typography' }
           ]
         },

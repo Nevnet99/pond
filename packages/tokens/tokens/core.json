@@ -38,53 +38,53 @@
       }
     },
     "red": {
+      "100": {
+        "value": "#fde8e8"
+      },
       "500": {
         "value": "#d64545"
       },
       "600": {
         "value": "#b53737"
-      },
-      "100": {
-        "value": "#fde8e8"
       }
     }
   },
   "space": {
     "1": {
       "value": "0.25rem",
-      "comment": "4px \u2014 tight inline"
+      "comment": "4px — tight inline"
     },
     "2": {
       "value": "0.5rem",
-      "comment": "8px \u2014 control padding-y / compact gap"
+      "comment": "8px — control padding-y / compact gap"
     },
     "3": {
       "value": "0.75rem",
-      "comment": "12px \u2014 field padding / dense stacks"
+      "comment": "12px — field padding / dense stacks"
     },
     "4": {
       "value": "1rem",
-      "comment": "16px \u2014 default stack gap / section pad"
+      "comment": "16px — default stack gap / section pad"
     },
     "5": {
       "value": "1.25rem",
-      "comment": "20px \u2014 comfortable control clusters"
+      "comment": "20px — comfortable control clusters"
     },
     "6": {
       "value": "1.5rem",
-      "comment": "24px \u2014 card / demo padding"
+      "comment": "24px — card / demo padding"
     },
     "8": {
       "value": "2rem",
-      "comment": "32px \u2014 page section rhythm"
+      "comment": "32px — page section rhythm"
     },
     "10": {
       "value": "2.5rem",
-      "comment": "40px \u2014 major section break"
+      "comment": "40px — major section break"
     },
     "12": {
       "value": "3rem",
-      "comment": "48px \u2014 hero / page chrome"
+      "comment": "48px — hero / page chrome"
     }
   },
   "radius": {
@@ -113,39 +113,39 @@
     "size": {
       "xs": {
         "value": "0.75rem",
-        "comment": "12px \u2014 captions, meta"
+        "comment": "12px — captions, meta"
       },
       "sm": {
         "value": "0.875rem",
-        "comment": "14px \u2014 secondary body, helpers"
+        "comment": "14px — secondary body, helpers"
       },
       "md": {
         "value": "1rem",
-        "comment": "16px \u2014 body default (base)"
+        "comment": "16px — body default (base)"
       },
       "lg": {
         "value": "1.125rem",
-        "comment": "18px \u2014 lead / large body"
+        "comment": "18px — lead / large body"
       },
       "xl": {
         "value": "1.25rem",
-        "comment": "20px \u2014 h6 / compact titles"
+        "comment": "20px — h6 / compact titles"
       },
       "2xl": {
         "value": "1.5rem",
-        "comment": "24px \u2014 h5"
+        "comment": "24px — h5"
       },
       "3xl": {
         "value": "1.875rem",
-        "comment": "30px \u2014 h4 / h3"
+        "comment": "30px — h4 / h3"
       },
       "4xl": {
         "value": "2.25rem",
-        "comment": "36px \u2014 h2"
+        "comment": "36px — h2"
       },
       "5xl": {
         "value": "3rem",
-        "comment": "48px \u2014 h1 / page title"
+        "comment": "48px — h1 / page title"
       }
     },
     "weight": {
@@ -196,15 +196,43 @@
   },
   "motion": {
     "duration": {
+      "instant": {
+        "value": "0ms",
+        "comment": "reduced-motion / hard cuts"
+      },
       "fast": {
-        "value": "120ms"
+        "value": "120ms",
+        "comment": "hover, press, high-frequency UI"
       },
       "normal": {
-        "value": "200ms"
+        "value": "200ms",
+        "comment": "panel open/close, toggles"
+      },
+      "moderate": {
+        "value": "300ms",
+        "comment": "entrances, staged reveals"
       },
       "slow": {
         "value": "900ms",
-        "comment": "loops \u2014 spinner, indeterminate progress"
+        "comment": "loops — spinner, indeterminate progress"
+      }
+    },
+    "easing": {
+      "standard": {
+        "value": "cubic-bezier(0.2, 0, 0, 1)",
+        "comment": "default UI transitions"
+      },
+      "enter": {
+        "value": "cubic-bezier(0, 0, 0.2, 1)",
+        "comment": "decelerate into place"
+      },
+      "exit": {
+        "value": "cubic-bezier(0.4, 0, 1, 1)",
+        "comment": "accelerate out"
+      },
+      "linear": {
+        "value": "linear",
+        "comment": "loops only"
       }
     }
   },

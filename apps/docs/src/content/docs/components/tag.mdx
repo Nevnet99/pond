@@ -3,6 +3,7 @@ title: Tag
 description: Compact label chip with optional remove.
 ---
 import ComponentTabs from '../../../components/ComponentTabs.astro'
+import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
 Compact labels for metadata. Optional remove control.
@@ -22,6 +23,8 @@ Compact labels for metadata. Optional remove control.
   </Fragment>
   <Fragment slot="usage">Use for filters and metadata. Prefer Lozenge for status.</Fragment>
   <Fragment slot="changelog">Unreleased — removable optional.</Fragment>
-  <Fragment slot="accessibility">Remove button has accessible name.</Fragment>
+  <Fragment slot="accessibility">
+    <A11ySection component="tag" />
+  </Fragment>
   <Fragment slot="patterns">None yet.</Fragment>
 </ComponentTabs>
