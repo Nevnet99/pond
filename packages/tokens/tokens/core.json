@@ -1,38 +1,102 @@
 {
   "color": {
     "gray": {
-      "0": { "value": "#ffffff" },
-      "50": { "value": "#f4f6f8" },
-      "100": { "value": "#e8ecf0" },
-      "200": { "value": "#c9d1d9" },
-      "400": { "value": "#7a8794" },
-      "700": { "value": "#2f3a45" },
-      "900": { "value": "#12181e" },
-      "1000": { "value": "#0a0e12" }
+      "0": {
+        "value": "#ffffff"
+      },
+      "50": {
+        "value": "#f4f6f8"
+      },
+      "100": {
+        "value": "#e8ecf0"
+      },
+      "200": {
+        "value": "#c9d1d9"
+      },
+      "400": {
+        "value": "#7a8794"
+      },
+      "700": {
+        "value": "#2f3a45"
+      },
+      "900": {
+        "value": "#12181e"
+      },
+      "1000": {
+        "value": "#0a0e12"
+      }
     },
     "teal": {
-      "400": { "value": "#2bb7a8" },
-      "500": { "value": "#1a9b8e" },
-      "600": { "value": "#147f74" }
+      "400": {
+        "value": "#2bb7a8"
+      },
+      "500": {
+        "value": "#1a9b8e"
+      },
+      "600": {
+        "value": "#147f74"
+      }
     },
     "red": {
-      "500": { "value": "#d64545" },
-      "600": { "value": "#b53737" },
-      "100": { "value": "#fde8e8" }
+      "500": {
+        "value": "#d64545"
+      },
+      "600": {
+        "value": "#b53737"
+      },
+      "100": {
+        "value": "#fde8e8"
+      }
     }
   },
   "space": {
-    "1": { "value": "0.25rem" },
-    "2": { "value": "0.5rem" },
-    "3": { "value": "0.75rem" },
-    "4": { "value": "1rem" },
-    "6": { "value": "1.5rem" },
-    "8": { "value": "2rem" }
+    "1": {
+      "value": "0.25rem",
+      "comment": "4px \u2014 tight inline"
+    },
+    "2": {
+      "value": "0.5rem",
+      "comment": "8px \u2014 control padding-y / compact gap"
+    },
+    "3": {
+      "value": "0.75rem",
+      "comment": "12px \u2014 field padding / dense stacks"
+    },
+    "4": {
+      "value": "1rem",
+      "comment": "16px \u2014 default stack gap / section pad"
+    },
+    "5": {
+      "value": "1.25rem",
+      "comment": "20px \u2014 comfortable control clusters"
+    },
+    "6": {
+      "value": "1.5rem",
+      "comment": "24px \u2014 card / demo padding"
+    },
+    "8": {
+      "value": "2rem",
+      "comment": "32px \u2014 page section rhythm"
+    },
+    "10": {
+      "value": "2.5rem",
+      "comment": "40px \u2014 major section break"
+    },
+    "12": {
+      "value": "3rem",
+      "comment": "48px \u2014 hero / page chrome"
+    }
   },
   "radius": {
-    "sm": { "value": "0.25rem" },
-    "md": { "value": "0.5rem" },
-    "pill": { "value": "999px" }
+    "sm": {
+      "value": "0.25rem"
+    },
+    "md": {
+      "value": "0.5rem"
+    },
+    "pill": {
+      "value": "999px"
+    }
   },
   "font": {
     "family": {
@@ -47,49 +111,109 @@
       }
     },
     "size": {
-      "xs": { "value": "0.75rem", "comment": "12px — captions, meta" },
+      "xs": {
+        "value": "0.75rem",
+        "comment": "12px \u2014 captions, meta"
+      },
       "sm": {
         "value": "0.875rem",
-        "comment": "14px — secondary body, helpers"
+        "comment": "14px \u2014 secondary body, helpers"
       },
-      "md": { "value": "1rem", "comment": "16px — body default (base)" },
-      "lg": { "value": "1.125rem", "comment": "18px — lead / large body" },
-      "xl": { "value": "1.25rem", "comment": "20px — h6 / compact titles" },
-      "2xl": { "value": "1.5rem", "comment": "24px — h5" },
-      "3xl": { "value": "1.875rem", "comment": "30px — h4 / h3" },
-      "4xl": { "value": "2.25rem", "comment": "36px — h2" },
-      "5xl": { "value": "3rem", "comment": "48px — h1 / page title" }
+      "md": {
+        "value": "1rem",
+        "comment": "16px \u2014 body default (base)"
+      },
+      "lg": {
+        "value": "1.125rem",
+        "comment": "18px \u2014 lead / large body"
+      },
+      "xl": {
+        "value": "1.25rem",
+        "comment": "20px \u2014 h6 / compact titles"
+      },
+      "2xl": {
+        "value": "1.5rem",
+        "comment": "24px \u2014 h5"
+      },
+      "3xl": {
+        "value": "1.875rem",
+        "comment": "30px \u2014 h4 / h3"
+      },
+      "4xl": {
+        "value": "2.25rem",
+        "comment": "36px \u2014 h2"
+      },
+      "5xl": {
+        "value": "3rem",
+        "comment": "48px \u2014 h1 / page title"
+      }
     },
     "weight": {
-      "regular": { "value": "400" },
-      "medium": { "value": "500" },
-      "semibold": { "value": "600" },
-      "bold": { "value": "700" }
+      "regular": {
+        "value": "400"
+      },
+      "medium": {
+        "value": "500"
+      },
+      "semibold": {
+        "value": "600"
+      },
+      "bold": {
+        "value": "700"
+      }
     },
     "line": {
-      "tight": { "value": "1.2", "comment": "display / large headings" },
-      "snug": { "value": "1.35", "comment": "small headings" },
-      "normal": { "value": "1.5", "comment": "body" },
-      "relaxed": { "value": "1.65", "comment": "long-form reading" }
+      "tight": {
+        "value": "1.2",
+        "comment": "display / large headings"
+      },
+      "snug": {
+        "value": "1.35",
+        "comment": "small headings"
+      },
+      "normal": {
+        "value": "1.5",
+        "comment": "body"
+      },
+      "relaxed": {
+        "value": "1.65",
+        "comment": "long-form reading"
+      }
     },
     "tracking": {
-      "tight": { "value": "-0.02em", "comment": "large display" },
-      "normal": { "value": "0" },
-      "wide": { "value": "0.04em", "comment": "eyebrows / overlines" }
+      "tight": {
+        "value": "-0.02em",
+        "comment": "large display"
+      },
+      "normal": {
+        "value": "0"
+      },
+      "wide": {
+        "value": "0.04em",
+        "comment": "eyebrows / overlines"
+      }
     }
   },
   "motion": {
     "duration": {
-      "fast": { "value": "120ms" },
-      "normal": { "value": "200ms" },
+      "fast": {
+        "value": "120ms"
+      },
+      "normal": {
+        "value": "200ms"
+      },
       "slow": {
         "value": "900ms",
-        "comment": "loops — spinner, indeterminate progress"
+        "comment": "loops \u2014 spinner, indeterminate progress"
       }
     }
   },
   "focus": {
-    "width": { "value": "2px" },
-    "offset": { "value": "2px" }
+    "width": {
+      "value": "2px"
+    },
+    "offset": {
+      "value": "2px"
+    }
   }
 }

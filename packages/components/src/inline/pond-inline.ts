@@ -64,11 +64,20 @@ export class PondInline extends LitElement {
     :host([gap="4"]) {
       --pond-inline-gap: var(--pond-space-4);
     }
+    :host([gap="5"]) {
+      --pond-inline-gap: var(--pond-space-5);
+    }
     :host([gap="6"]) {
       --pond-inline-gap: var(--pond-space-6);
     }
     :host([gap="8"]) {
       --pond-inline-gap: var(--pond-space-8);
+    }
+    :host([gap="10"]) {
+      --pond-inline-gap: var(--pond-space-10);
+    }
+    :host([gap="12"]) {
+      --pond-inline-gap: var(--pond-space-12);
     }
 
     :host([align="start"]) {

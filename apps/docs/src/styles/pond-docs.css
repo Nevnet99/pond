@@ -99,3 +99,34 @@ pond-heading:not(:defined) {
 .pond-doc-tabs__panel[hidden] {
   display: none;
 }
+
+.pond-doc-tabs__panel {
+  min-height: 12rem;
+  color: var(--pond-color-fg-default);
+}
+
+.pond-space-ladder {
+  display: grid;
+  gap: var(--pond-space-2);
+  width: 100%;
+}
+
+.pond-space-ladder__row {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  gap: var(--pond-space-3);
+  align-items: center;
+}
+
+.pond-space-ladder__label {
+  font-size: var(--pond-font-size-xs);
+  font-variant-numeric: tabular-nums;
+  color: var(--pond-color-fg-muted);
+}
+
+.pond-space-ladder__bar {
+  height: var(--pond-space-4);
+  min-width: 2px;
+  border-radius: var(--pond-radius-sm);
+  background: var(--pond-color-accent-default);
+}

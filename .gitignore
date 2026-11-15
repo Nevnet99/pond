@@ -21,3 +21,6 @@ packages/components/custom-elements.json
 **/__screenshots__/**/*-actual-*
 **/__screenshots__/**/*-new-*
 packages/components/.vitest/
+
+# Local experiments — never push
+scratch/
