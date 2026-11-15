@@ -9,9 +9,10 @@ describe('pond-select', () => {
     const el = await fixture<PondSelect>(
       html`<pond-select label="Size" .options=${[{ value: 's', label: 'Small' }, { value: 'm', label: 'Medium' }]} value="m"></pond-select>`
     )
-    const select = el.shadowRoot!.querySelector('select')!
-    expect(select.value).toBe('m')
-    expect(select.options.length).toBe(2)
+    const select = el.shadowRoot?.querySelector('select')
+    expect(select).toBeTruthy()
+    expect(select?.value).toBe('m')
+    expect(select?.options.length).toBe(2)
   })
   it('supports plain', async () => {
     const el = await fixture<PondSelect>(

@@ -9,8 +9,9 @@ describe('pond-checkbox', () => {
     const el = await fixture<PondCheckbox>(
       html`<pond-checkbox label="Accept"></pond-checkbox>`
     )
-    const input = el.shadowRoot!.querySelector('input')!
-    input.click()
+    const input = el.shadowRoot?.querySelector('input')
+    expect(input).toBeTruthy()
+    input?.click()
     await el.updateComplete
     expect(el.checked).toBe(true)
   })
