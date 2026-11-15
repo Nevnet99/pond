@@ -99,7 +99,8 @@ export default defineConfig({
             { label: 'Empty state', slug: 'components/empty-state' },
             { label: 'Banner', slug: 'components/banner' },
             { label: 'Flag', slug: 'components/flag' },
-            { label: 'Radio', slug: 'components/radio' }
+            { label: 'Radio', slug: 'components/radio' },
+            { label: 'Table', slug: 'components/table' }
           ]
         },
         {

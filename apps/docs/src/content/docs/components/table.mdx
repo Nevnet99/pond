@@ -1,0 +1,31 @@
+---
+title: Table
+description: Simple data table with headers and rows.
+---
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Present tabular data. Not a Dynamic table or Table tree.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Default">
+      <pond-table
+        caption="Team"
+        columns='[{"key":"name","label":"Name"},{"key":"role","label":"Role"},{"key":"status","label":"Status"}]'
+        rows='[{"name":"Ada","role":"Engineer","status":"Active"},{"name":"Grace","role":"Lead","status":"Active"},{"name":"Alan","role":"Research","status":"Away"}]'
+      ></pond-table>
+    </PondDemo>
+  </Fragment>
+  <Fragment slot="code">
+
+```html
+<pond-table caption="Team" columns='[...]' rows='[...]'></pond-table>
+```
+
+  </Fragment>
+  <Fragment slot="usage">Simple headers + rows only. Sorting, selection, and trees come later.</Fragment>
+  <Fragment slot="changelog">Unreleased — caption, columns, rows.</Fragment>
+  <Fragment slot="accessibility">Native table with caption and scoped column headers.</Fragment>
+  <Fragment slot="patterns">None yet.</Fragment>
+</ComponentTabs>
