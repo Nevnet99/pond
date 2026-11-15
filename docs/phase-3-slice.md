@@ -25,6 +25,8 @@ Phase 3 ships with **slots / text labels** for leading visuals. Consumers may dr
 
 **Page header** is a slot-based shell (title, actions, breadcrumbs region, optional bottom region). Consumers compose Breadcrumbs, Tabs, and peers into slots — Pond does not hard-wire those components inside the header.
 
-## Explicitly deferred (Phase 4 / later)
+## Explicitly deferred from Phase 3
 
-Flag, Banner, Avatar, Table, Empty state, Icon set, Tag, Radio, multi-select Select, full Navigation system / drawers / side nav, deprecated ADS entries, and Atlaskit-only tooling stay out of Phase 3.
+Flag, Banner, Avatar, Table, Empty state, Icon set, Tag, Radio, multi-select Select, full Navigation system / drawers / side nav, deprecated ADS entries, and Atlaskit-only tooling stayed out of Phase 3.
+
+**Phase 4** (data & density + deferred forms) is locked in [phase-4-slice.md](./phase-4-slice.md).
