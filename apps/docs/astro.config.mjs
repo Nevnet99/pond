@@ -81,7 +81,10 @@ export default defineConfig({
             { label: 'Text area', slug: 'components/text-area' },
             { label: 'Checkbox', slug: 'components/checkbox' },
             { label: 'Toggle', slug: 'components/toggle' },
-            { label: 'Select', slug: 'components/select' }
+            { label: 'Select', slug: 'components/select' },
+            { label: 'Badge', slug: 'components/badge' },
+            { label: 'Lozenge', slug: 'components/lozenge' },
+            { label: 'Spinner', slug: 'components/spinner' }
           ]
         },
         {
