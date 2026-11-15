@@ -3,6 +3,7 @@ title: Calendar
 description: Month grid for selecting a single date.
 ---
 import ComponentTabs from '../../../components/ComponentTabs.astro'
+import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
@@ -21,7 +22,13 @@ Pick one date. No range-select or time in this surface.
 ```
 
   </Fragment>
-  <Fragment slot="usage">Use Date time picker when time matters too.</Fragment>
+  <Fragment slot="usage">
+
+Use Date time picker when time matters too.
+
+    <DosDonts component="calendar" />
+
+  </Fragment>
   <Fragment slot="changelog">Unreleased — single-date month grid.</Fragment>
   <Fragment slot="accessibility">
     <A11ySection component="calendar" />
