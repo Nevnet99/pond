@@ -84,7 +84,10 @@ export default defineConfig({
             { label: 'Select', slug: 'components/select' },
             { label: 'Badge', slug: 'components/badge' },
             { label: 'Lozenge', slug: 'components/lozenge' },
-            { label: 'Spinner', slug: 'components/spinner' }
+            { label: 'Spinner', slug: 'components/spinner' },
+            { label: 'Tooltip', slug: 'components/tooltip' },
+            { label: 'Modal', slug: 'components/modal' },
+            { label: 'Section message', slug: 'components/section-message' }
           ]
         },
         {
