@@ -122,7 +122,8 @@ export default defineConfig({
           label: 'Data display',
           items: [
             { label: 'Table', slug: 'components/table' },
-            { label: 'Tag', slug: 'components/tag' }
+            { label: 'Tag', slug: 'components/tag' },
+            { label: 'Tag group', slug: 'components/tag-group' }
           ]
         },
         {
