@@ -74,7 +74,21 @@ export default defineConfig({
         },
         {
           label: 'Components',
-          items: [{ label: 'Button', slug: 'components/button' }]
+          items: [
+            { label: 'Button', slug: 'components/button' },
+            { label: 'Link', slug: 'components/link' },
+            { label: 'Text field', slug: 'components/text-field' },
+            { label: 'Text area', slug: 'components/text-area' },
+            { label: 'Checkbox', slug: 'components/checkbox' },
+            { label: 'Toggle', slug: 'components/toggle' },
+            { label: 'Select', slug: 'components/select' },
+            { label: 'Badge', slug: 'components/badge' },
+            { label: 'Lozenge', slug: 'components/lozenge' },
+            { label: 'Spinner', slug: 'components/spinner' },
+            { label: 'Tooltip', slug: 'components/tooltip' },
+            { label: 'Modal', slug: 'components/modal' },
+            { label: 'Section message', slug: 'components/section-message' }
+          ]
         },
         {
           label: 'Patterns',

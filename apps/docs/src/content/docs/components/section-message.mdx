@@ -1,0 +1,30 @@
+---
+title: Section message
+description: In-page alert for info, success, warning, or danger.
+---
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Persistent in-page feedback. Closes the v1 product slice.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Tones">
+      <pond-stack gap="3">
+        <pond-section-message title="Tip">Fork Pond before customizing tokens.</pond-section-message>
+        <pond-section-message tone="danger" title="Error">Release failed.</pond-section-message>
+      </pond-stack>
+    </PondDemo>
+  </Fragment>
+  <Fragment slot="code">
+
+```html
+<pond-section-message title="Tip">...</pond-section-message>
+```
+
+  </Fragment>
+  <Fragment slot="usage">Use for page-level notices. Prefer Toast/Flag later for transient feedback.</Fragment>
+  <Fragment slot="changelog">Unreleased — tones info/success/warning/danger.</Fragment>
+  <Fragment slot="accessibility">role=status by default; role=alert for danger.</Fragment>
+  <Fragment slot="patterns">None yet.</Fragment>
+</ComponentTabs>

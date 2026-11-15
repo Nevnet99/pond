@@ -1,0 +1,48 @@
+---
+title: Text field
+description: Single-line text input with label and error.
+---
+
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Single-line entry for names, emails, and short values.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Default + invalid">
+      <pond-stack gap="4" style="max-width:20rem">
+        <pond-text-field label="Project name" value="Pond"></pond-text-field>
+        <pond-text-field label="Email" invalid error-message="Enter a valid email"></pond-text-field>
+      </pond-stack>
+    </PondDemo>
+  </Fragment>
+  <Fragment slot="code">
+
+```html
+<pond-text-field label="Project name"></pond-text-field>
+<pond-text-field label="Email" invalid error-message="Required"></pond-text-field>
+```
+
+  </Fragment>
+  <Fragment slot="usage">
+
+Use for single-line values. Prefer Text area for multi-line. Always provide a visible label.
+
+  </Fragment>
+  <Fragment slot="changelog">
+
+Unreleased — label, value, invalid, error-message, plain.
+
+  </Fragment>
+  <Fragment slot="accessibility">
+
+Label associated via `for`/`id`. Errors linked with `aria-describedby`. Plain mode: you own chrome.
+
+  </Fragment>
+  <Fragment slot="patterns">
+
+Stack of fields in forms; Inline for field + Button.
+
+  </Fragment>
+</ComponentTabs>

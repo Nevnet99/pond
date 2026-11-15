@@ -1,0 +1,35 @@
+---
+title: Select
+description: Single-select dropdown.
+---
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Choose one option from a list (multi-select later).
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Default">
+      <pond-select
+        label="Size"
+        value="m"
+        style="max-width:16rem"
+        options='[{"value":"s","label":"Small"},{"value":"m","label":"Medium"},{"value":"l","label":"Large"}]'
+      ></pond-select>
+    </PondDemo>
+  </Fragment>
+  <Fragment slot="code">
+
+```html
+<pond-select
+  label="Size"
+  options='[{"value":"s","label":"Small"},{"value":"m","label":"Medium"}]'
+></pond-select>
+```
+
+  </Fragment>
+  <Fragment slot="usage">Single-select first. Prefer radio groups when all options should stay visible.</Fragment>
+  <Fragment slot="changelog">Unreleased — options array, plain.</Fragment>
+  <Fragment slot="accessibility">Native select + label.</Fragment>
+  <Fragment slot="patterns">None yet.</Fragment>
+</ComponentTabs>

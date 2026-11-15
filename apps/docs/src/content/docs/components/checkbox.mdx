@@ -1,0 +1,31 @@
+---
+title: Checkbox
+description: Binary choice control.
+---
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Binary on/off for a single option (or indeterminate for partial).
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="States">
+      <pond-stack gap="2">
+        <pond-checkbox label="Unchecked"></pond-checkbox>
+        <pond-checkbox label="Checked" checked></pond-checkbox>
+        <pond-checkbox label="Disabled" disabled></pond-checkbox>
+      </pond-stack>
+    </PondDemo>
+  </Fragment>
+  <Fragment slot="code">
+
+```html
+<pond-checkbox label="Accept terms"></pond-checkbox>
+```
+
+  </Fragment>
+  <Fragment slot="usage">Use for multi-select lists or a single consent. Prefer Toggle for settings on/off.</Fragment>
+  <Fragment slot="changelog">Unreleased — checked, indeterminate, plain.</Fragment>
+  <Fragment slot="accessibility">Native checkbox + label. Plain mode: you own chrome.</Fragment>
+  <Fragment slot="patterns">None yet.</Fragment>
+</ComponentTabs>
