@@ -82,7 +82,8 @@ export default defineConfig({
             { label: 'Checkbox', slug: 'components/checkbox' },
             { label: 'Toggle', slug: 'components/toggle' },
             { label: 'Select', slug: 'components/select' },
-            { label: 'Radio', slug: 'components/radio' }
+            { label: 'Radio', slug: 'components/radio' },
+            { label: 'Range', slug: 'components/range' }
           ]
         },
         {
