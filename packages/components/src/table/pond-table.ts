@@ -9,37 +9,58 @@ export type PondTableRow = Record<string, string>
 @customElement('pond-table')
 export class PondTable extends LitElement {
   static override styles = css`
-    :host { display: block; }
-    :host([appearance='plain']) { display: contents; }
-    [part='root'] {
-      width: 100%; overflow: auto;
-      font-family: var(--pond-font-family-sans); color: var(--pond-color-fg-default);
-      border: 1px solid var(--pond-color-border-default); border-radius: var(--pond-radius-md);
+    :host {
+      display: block;
     }
-    [part='caption'] {
+    :host([appearance="plain"]) {
+      display: contents;
+    }
+    [part="root"] {
+      width: 100%;
+      overflow: auto;
+      font-family: var(--pond-font-family-sans);
+      color: var(--pond-color-fg-default);
+      border: 1px solid var(--pond-color-border-default);
+      border-radius: var(--pond-radius-md);
+    }
+    [part="caption"] {
       padding: var(--pond-space-3) var(--pond-space-4);
-      font-size: var(--pond-font-size-sm); font-weight: var(--pond-font-weight-medium);
-      text-align: left; border-bottom: 1px solid var(--pond-color-border-default);
-    }
-    [part='table'] {
-      width: 100%; border-collapse: collapse; font-size: var(--pond-font-size-md);
-    }
-    [part='th'], [part='td'] {
-      padding: var(--pond-space-2) var(--pond-space-4);
-      text-align: left; vertical-align: top;
+      font-size: var(--pond-font-size-sm);
+      font-weight: var(--pond-font-weight-medium);
+      text-align: left;
       border-bottom: 1px solid var(--pond-color-border-default);
     }
-    [part='th'] {
-      font-size: var(--pond-font-size-sm); font-weight: var(--pond-font-weight-medium);
-      color: var(--pond-color-fg-subtle); background: var(--pond-color-bg-subtle, transparent);
+    [part="table"] {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--pond-font-size-md);
     }
-    [part='tr']:last-child [part='td'] { border-bottom: none; }
-    :host([appearance='plain']) [part='root'],
-    :host([appearance='plain']) [part='caption'],
-    :host([appearance='plain']) [part='table'],
-    :host([appearance='plain']) [part='th'],
-    :host([appearance='plain']) [part='td'] { all: unset; }
-    :host([appearance='plain']) [part='root'] { display: contents; }
+    [part="th"],
+    [part="td"] {
+      padding: var(--pond-space-2) var(--pond-space-4);
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--pond-color-border-default);
+    }
+    [part="th"] {
+      font-size: var(--pond-font-size-sm);
+      font-weight: var(--pond-font-weight-medium);
+      color: var(--pond-color-fg-subtle);
+      background: var(--pond-color-bg-subtle, transparent);
+    }
+    [part="tr"]:last-child [part="td"] {
+      border-bottom: none;
+    }
+    :host([appearance="plain"]) [part="root"],
+    :host([appearance="plain"]) [part="caption"],
+    :host([appearance="plain"]) [part="table"],
+    :host([appearance="plain"]) [part="th"],
+    :host([appearance="plain"]) [part="td"] {
+      all: unset;
+    }
+    :host([appearance="plain"]) [part="root"] {
+      display: contents;
+    }
   `
   @property({ reflect: true }) appearance: PondAppearance = 'default'
   @property() caption = ''

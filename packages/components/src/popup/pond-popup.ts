@@ -6,21 +6,40 @@ import type { PondAppearance } from '../shared/appearance.js'
 @customElement('pond-popup')
 export class PondPopup extends LitElement {
   static override styles = css`
-    :host { display: inline-block; position: relative; }
-    :host([appearance='plain']) { display: contents; }
-    [part='trigger'] { display: inline-flex; }
-    [part='panel'] {
-      position: absolute; z-index: 30; top: calc(100% + var(--pond-space-1)); left: 0;
-      min-width: 12rem; max-width: min(20rem, 90vw);
-      box-sizing: border-box; padding: var(--pond-space-3);
-      border: 1px solid var(--pond-color-border-default); border-radius: var(--pond-radius-md);
-      background: var(--pond-color-bg-canvas); color: var(--pond-color-fg-default);
-      font-family: var(--pond-font-family-sans); font-size: var(--pond-font-size-sm);
+    :host {
+      display: inline-block;
+      position: relative;
+    }
+    :host([appearance="plain"]) {
+      display: contents;
+    }
+    [part="trigger"] {
+      display: inline-flex;
+    }
+    [part="panel"] {
+      position: absolute;
+      z-index: 30;
+      top: calc(100% + var(--pond-space-1));
+      left: 0;
+      min-width: 12rem;
+      max-width: min(20rem, 90vw);
+      box-sizing: border-box;
+      padding: var(--pond-space-3);
+      border: 1px solid var(--pond-color-border-default);
+      border-radius: var(--pond-radius-md);
+      background: var(--pond-color-bg-canvas);
+      color: var(--pond-color-fg-default);
+      font-family: var(--pond-font-family-sans);
+      font-size: var(--pond-font-size-sm);
       box-shadow: var(--pond-shadow-md, 0 4px 12px rgb(0 0 0 / 12%));
     }
-    :host([appearance='plain']) [part='trigger'],
-    :host([appearance='plain']) [part='panel'] { all: unset; }
-    :host([appearance='plain']) [part='trigger'] { display: contents; }
+    :host([appearance="plain"]) [part="trigger"],
+    :host([appearance="plain"]) [part="panel"] {
+      all: unset;
+    }
+    :host([appearance="plain"]) [part="trigger"] {
+      display: contents;
+    }
   `
   @property({ reflect: true }) appearance: PondAppearance = 'default'
   @property({ type: Boolean, reflect: true }) open = false

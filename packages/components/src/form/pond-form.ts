@@ -6,23 +6,41 @@ import type { PondAppearance } from '../shared/appearance.js'
 @customElement('pond-form')
 export class PondForm extends LitElement {
   static override styles = css`
-    :host { display: block; }
-    :host([appearance='plain']) { display: contents; }
-    [part='root'] {
-      display: flex; flex-direction: column; gap: var(--pond-space-4);
-      font-family: var(--pond-font-family-sans); color: var(--pond-color-fg-default);
+    :host {
+      display: block;
+    }
+    :host([appearance="plain"]) {
+      display: contents;
+    }
+    [part="root"] {
+      display: flex;
+      flex-direction: column;
+      gap: var(--pond-space-4);
+      font-family: var(--pond-font-family-sans);
+      color: var(--pond-color-fg-default);
       margin: 0;
     }
-    [part='error'] {
-      margin: 0; padding: var(--pond-space-2) var(--pond-space-3);
-      border-radius: var(--pond-radius-sm); color: var(--pond-color-danger-default);
-      font-size: var(--pond-font-size-sm); background: var(--pond-color-danger-subtle, transparent);
+    [part="error"] {
+      margin: 0;
+      padding: var(--pond-space-2) var(--pond-space-3);
+      border-radius: var(--pond-radius-sm);
+      color: var(--pond-color-danger-default);
+      font-size: var(--pond-font-size-sm);
+      background: var(--pond-color-danger-subtle, transparent);
     }
-    [part='actions'] { display: flex; gap: var(--pond-space-2); justify-content: flex-end; }
-    :host([appearance='plain']) [part='root'],
-    :host([appearance='plain']) [part='error'],
-    :host([appearance='plain']) [part='actions'] { all: unset; }
-    :host([appearance='plain']) [part='root'] { display: contents; }
+    [part="actions"] {
+      display: flex;
+      gap: var(--pond-space-2);
+      justify-content: flex-end;
+    }
+    :host([appearance="plain"]) [part="root"],
+    :host([appearance="plain"]) [part="error"],
+    :host([appearance="plain"]) [part="actions"] {
+      all: unset;
+    }
+    :host([appearance="plain"]) [part="root"] {
+      display: contents;
+    }
   `
   @property({ reflect: true }) appearance: PondAppearance = 'default'
   @property() error = ''

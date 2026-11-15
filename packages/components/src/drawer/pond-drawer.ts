@@ -10,39 +10,58 @@ export type PondDrawerSide = 'start' | 'end'
 @customElement('pond-drawer')
 export class PondDrawer extends LitElement {
   static override styles = css`
-    :host { display: contents; }
+    :host {
+      display: contents;
+    }
     pond-blanket::part(root) {
       justify-content: flex-start;
     }
-    :host([side='end']) pond-blanket::part(root) {
+    :host([side="end"]) pond-blanket::part(root) {
       justify-content: flex-end;
     }
-    [part='panel'] {
-      box-sizing: border-box; width: min(100%, 22rem); height: 100%;
-      overflow: auto; padding: var(--pond-space-4);
-      background: var(--pond-color-bg-canvas); color: var(--pond-color-fg-default);
+    [part="panel"] {
+      box-sizing: border-box;
+      width: min(100%, 22rem);
+      height: 100%;
+      overflow: auto;
+      padding: var(--pond-space-4);
+      background: var(--pond-color-bg-canvas);
+      color: var(--pond-color-fg-default);
       font-family: var(--pond-font-family-sans);
       box-shadow: 0 0 24px rgb(0 0 0 / 20%);
     }
-    [part='header'] {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: var(--pond-space-2); margin-bottom: var(--pond-space-3);
+    [part="header"] {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--pond-space-2);
+      margin-bottom: var(--pond-space-3);
     }
-    [part='title'] {
-      margin: 0; font-size: var(--pond-font-size-lg); font-weight: var(--pond-font-weight-semibold);
+    [part="title"] {
+      margin: 0;
+      font-size: var(--pond-font-size-lg);
+      font-weight: var(--pond-font-weight-semibold);
     }
-    [part='close'] {
-      margin: 0; padding: var(--pond-space-1); border: 0; border-radius: var(--pond-radius-sm);
-      background: transparent; color: inherit; cursor: pointer; font: inherit;
+    [part="close"] {
+      margin: 0;
+      padding: var(--pond-space-1);
+      border: 0;
+      border-radius: var(--pond-radius-sm);
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      font: inherit;
     }
-    [part='close']:focus-visible {
+    [part="close"]:focus-visible {
       outline: var(--pond-focus-width) solid var(--pond-color-focus-ring);
       outline-offset: var(--pond-focus-offset);
     }
-    :host([appearance='plain']) [part='panel'],
-    :host([appearance='plain']) [part='header'],
-    :host([appearance='plain']) [part='title'],
-    :host([appearance='plain']) [part='close'] { all: unset; }
+    :host([appearance="plain"]) [part="panel"],
+    :host([appearance="plain"]) [part="header"],
+    :host([appearance="plain"]) [part="title"],
+    :host([appearance="plain"]) [part="close"] {
+      all: unset;
+    }
   `
 
   @property({ reflect: true }) appearance: PondAppearance = 'default'

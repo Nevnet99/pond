@@ -7,24 +7,53 @@ import '../icon/pond-icon.js'
 @customElement('pond-empty-state')
 export class PondEmptyState extends LitElement {
   static override styles = css`
-    :host { display: block; }
-    :host([appearance='plain']) { display: contents; }
-    [part='root'] {
-      display: flex; flex-direction: column; align-items: center; gap: var(--pond-space-3);
-      box-sizing: border-box; padding: var(--pond-space-6); text-align: center;
-      font-family: var(--pond-font-family-sans); color: var(--pond-color-fg-default);
+    :host {
+      display: block;
     }
-    [part='icon'] { color: var(--pond-color-fg-muted); }
-    [part='title'] { margin: 0; font-size: var(--pond-font-size-lg); font-weight: var(--pond-font-weight-semibold); }
-    [part='body'] { margin: 0; color: var(--pond-color-fg-muted); font-size: var(--pond-font-size-md); max-width: 28rem; }
-    [part='actions'] { display: inline-flex; flex-wrap: wrap; gap: var(--pond-space-2); }
-    :host([appearance='plain']) [part='root'],
-    :host([appearance='plain']) [part='icon'],
-    :host([appearance='plain']) [part='title'],
-    :host([appearance='plain']) [part='body'],
-    :host([appearance='plain']) [part='actions'] { all: unset; }
-    :host([appearance='plain']) [part='root'],
-    :host([appearance='plain']) [part='actions'] { display: contents; }
+    :host([appearance="plain"]) {
+      display: contents;
+    }
+    [part="root"] {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--pond-space-3);
+      box-sizing: border-box;
+      padding: var(--pond-space-6);
+      text-align: center;
+      font-family: var(--pond-font-family-sans);
+      color: var(--pond-color-fg-default);
+    }
+    [part="icon"] {
+      color: var(--pond-color-fg-muted);
+    }
+    [part="title"] {
+      margin: 0;
+      font-size: var(--pond-font-size-lg);
+      font-weight: var(--pond-font-weight-semibold);
+    }
+    [part="body"] {
+      margin: 0;
+      color: var(--pond-color-fg-muted);
+      font-size: var(--pond-font-size-md);
+      max-width: 28rem;
+    }
+    [part="actions"] {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: var(--pond-space-2);
+    }
+    :host([appearance="plain"]) [part="root"],
+    :host([appearance="plain"]) [part="icon"],
+    :host([appearance="plain"]) [part="title"],
+    :host([appearance="plain"]) [part="body"],
+    :host([appearance="plain"]) [part="actions"] {
+      all: unset;
+    }
+    :host([appearance="plain"]) [part="root"],
+    :host([appearance="plain"]) [part="actions"] {
+      display: contents;
+    }
   `
   @property({ reflect: true }) appearance: PondAppearance = 'default'
   @property() heading = ''

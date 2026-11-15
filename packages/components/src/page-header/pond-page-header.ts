@@ -20,11 +20,11 @@ export class PondPageHeader extends LitElement {
       display: block;
     }
 
-    :host([appearance='plain']) {
+    :host([appearance="plain"]) {
       display: contents;
     }
 
-    [part='root'] {
+    [part="root"] {
       display: flex;
       flex-direction: column;
       gap: var(--pond-space-3);
@@ -32,11 +32,11 @@ export class PondPageHeader extends LitElement {
       color: var(--pond-color-fg-default);
     }
 
-    [part='breadcrumbs'] {
+    [part="breadcrumbs"] {
       min-width: 0;
     }
 
-    [part='main'] {
+    [part="main"] {
       display: flex;
       flex-wrap: wrap;
       align-items: flex-start;
@@ -44,52 +44,52 @@ export class PondPageHeader extends LitElement {
       gap: var(--pond-space-3);
     }
 
-    [part='text'] {
+    [part="text"] {
       display: flex;
       flex-direction: column;
       gap: var(--pond-space-1);
       min-width: 0;
     }
 
-    [part='title'] {
+    [part="title"] {
       margin: 0;
       font-size: var(--pond-font-size-xl);
       font-weight: var(--pond-font-weight-semibold);
       line-height: var(--pond-font-line-tight);
     }
 
-    [part='description'] {
+    [part="description"] {
       margin: 0;
       color: var(--pond-color-fg-muted);
       font-size: var(--pond-font-size-md);
     }
 
-    [part='actions'] {
+    [part="actions"] {
       display: inline-flex;
       flex-wrap: wrap;
       align-items: center;
       gap: var(--pond-space-2);
     }
 
-    [part='bottom'] {
+    [part="bottom"] {
       min-width: 0;
     }
 
-    :host([appearance='plain']) [part='root'],
-    :host([appearance='plain']) [part='breadcrumbs'],
-    :host([appearance='plain']) [part='main'],
-    :host([appearance='plain']) [part='text'],
-    :host([appearance='plain']) [part='title'],
-    :host([appearance='plain']) [part='description'],
-    :host([appearance='plain']) [part='actions'],
-    :host([appearance='plain']) [part='bottom'] {
+    :host([appearance="plain"]) [part="root"],
+    :host([appearance="plain"]) [part="breadcrumbs"],
+    :host([appearance="plain"]) [part="main"],
+    :host([appearance="plain"]) [part="text"],
+    :host([appearance="plain"]) [part="title"],
+    :host([appearance="plain"]) [part="description"],
+    :host([appearance="plain"]) [part="actions"],
+    :host([appearance="plain"]) [part="bottom"] {
       all: unset;
     }
 
-    :host([appearance='plain']) [part='root'],
-    :host([appearance='plain']) [part='main'],
-    :host([appearance='plain']) [part='text'],
-    :host([appearance='plain']) [part='actions'] {
+    :host([appearance="plain"]) [part="root"],
+    :host([appearance="plain"]) [part="main"],
+    :host([appearance="plain"]) [part="text"],
+    :host([appearance="plain"]) [part="actions"] {
       display: contents;
     }
   `

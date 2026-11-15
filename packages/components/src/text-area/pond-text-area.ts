@@ -20,11 +20,11 @@ export class PondTextArea extends LitElement {
       display: block;
     }
 
-    :host([appearance='plain']) {
+    :host([appearance="plain"]) {
       display: contents;
     }
 
-    [part='root'] {
+    [part="root"] {
       display: flex;
       flex-direction: column;
       gap: var(--pond-space-1);
@@ -32,12 +32,12 @@ export class PondTextArea extends LitElement {
       color: var(--pond-color-fg-default);
     }
 
-    [part='label'] {
+    [part="label"] {
       font-size: var(--pond-font-size-sm);
       font-weight: var(--pond-font-weight-medium);
     }
 
-    [part='textarea'] {
+    [part="textarea"] {
       box-sizing: border-box;
       width: 100%;
       min-height: 6rem;
@@ -53,39 +53,39 @@ export class PondTextArea extends LitElement {
       resize: vertical;
     }
 
-    [part='textarea']:focus-visible {
+    [part="textarea"]:focus-visible {
       outline: var(--pond-focus-width) solid var(--pond-color-focus-ring);
       outline-offset: var(--pond-focus-offset);
     }
 
-    :host([invalid]) [part='textarea'] {
+    :host([invalid]) [part="textarea"] {
       border-color: var(--pond-color-danger-default);
     }
 
-    [part='textarea']:disabled {
+    [part="textarea"]:disabled {
       opacity: 0.5;
       cursor: not-allowed;
       resize: none;
     }
 
-    [part='error'] {
+    [part="error"] {
       margin: 0;
       color: var(--pond-color-danger-default);
       font-size: var(--pond-font-size-sm);
     }
 
-    :host([appearance='plain']) [part='root'],
-    :host([appearance='plain']) [part='label'],
-    :host([appearance='plain']) [part='textarea'],
-    :host([appearance='plain']) [part='error'] {
+    :host([appearance="plain"]) [part="root"],
+    :host([appearance="plain"]) [part="label"],
+    :host([appearance="plain"]) [part="textarea"],
+    :host([appearance="plain"]) [part="error"] {
       all: unset;
     }
 
-    :host([appearance='plain']) [part='root'] {
+    :host([appearance="plain"]) [part="root"] {
       display: contents;
     }
 
-    :host([appearance='plain']) [part='textarea'] {
+    :host([appearance="plain"]) [part="textarea"] {
       display: block;
       cursor: text;
     }

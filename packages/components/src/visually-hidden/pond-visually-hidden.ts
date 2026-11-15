@@ -6,9 +6,14 @@ import type { PondAppearance } from '../shared/appearance.js'
 @customElement('pond-visually-hidden')
 export class PondVisuallyHidden extends LitElement {
   static override styles = css`
-    :host { display: contents; }
-    :host([appearance='plain']) [part='root'] { all: unset; display: contents; }
-    [part='root'] {
+    :host {
+      display: contents;
+    }
+    :host([appearance="plain"]) [part="root"] {
+      all: unset;
+      display: contents;
+    }
+    [part="root"] {
       position: absolute !important;
       width: 1px !important;
       height: 1px !important;

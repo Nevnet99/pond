@@ -8,21 +8,40 @@ export type PondCodeVariant = 'inline' | 'block'
 @customElement('pond-code')
 export class PondCode extends LitElement {
   static override styles = css`
-    :host { display: inline; }
-    :host([variant='block']) { display: block; }
-    :host([appearance='plain']) { display: contents; }
-    [part='root'] {
-      font-family: var(--pond-font-family-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
-      font-size: 0.9em; color: var(--pond-color-fg-default);
+    :host {
+      display: inline;
+    }
+    :host([variant="block"]) {
+      display: block;
+    }
+    :host([appearance="plain"]) {
+      display: contents;
+    }
+    [part="root"] {
+      font-family: var(
+        --pond-font-family-mono,
+        ui-monospace,
+        SFMono-Regular,
+        Menlo,
+        monospace
+      );
+      font-size: 0.9em;
+      color: var(--pond-color-fg-default);
       background: var(--pond-color-bg-subtle, #f0f0f0);
       border-radius: var(--pond-radius-sm);
       padding: 0.1em 0.35em;
     }
-    :host([variant='block']) [part='root'] {
-      display: block; padding: var(--pond-space-3); overflow: auto;
-      white-space: pre; line-height: var(--pond-font-line-normal);
+    :host([variant="block"]) [part="root"] {
+      display: block;
+      padding: var(--pond-space-3);
+      overflow: auto;
+      white-space: pre;
+      line-height: var(--pond-font-line-normal);
     }
-    :host([appearance='plain']) [part='root'] { all: unset; display: contents; }
+    :host([appearance="plain"]) [part="root"] {
+      all: unset;
+      display: contents;
+    }
   `
   @property({ reflect: true }) appearance: PondAppearance = 'default'
   @property({ reflect: true }) variant: PondCodeVariant = 'inline'

@@ -7,27 +7,47 @@ import '../calendar/pond-calendar.js'
 @customElement('pond-date-time-picker')
 export class PondDateTimePicker extends LitElement {
   static override styles = css`
-    :host { display: block; max-width: 18rem; }
-    :host([appearance='plain']) { display: contents; }
-    [part='root'] {
-      display: flex; flex-direction: column; gap: var(--pond-space-3);
-      font-family: var(--pond-font-family-sans); color: var(--pond-color-fg-default);
+    :host {
+      display: block;
+      max-width: 18rem;
     }
-    [part='label'] { font-size: var(--pond-font-size-sm); font-weight: var(--pond-font-weight-medium); }
-    [part='time'] {
-      box-sizing: border-box; width: 100%; margin: 0;
+    :host([appearance="plain"]) {
+      display: contents;
+    }
+    [part="root"] {
+      display: flex;
+      flex-direction: column;
+      gap: var(--pond-space-3);
+      font-family: var(--pond-font-family-sans);
+      color: var(--pond-color-fg-default);
+    }
+    [part="label"] {
+      font-size: var(--pond-font-size-sm);
+      font-weight: var(--pond-font-weight-medium);
+    }
+    [part="time"] {
+      box-sizing: border-box;
+      width: 100%;
+      margin: 0;
       padding: var(--pond-space-2) var(--pond-space-3);
-      border: 1px solid var(--pond-color-border-strong); border-radius: var(--pond-radius-md);
-      background: var(--pond-color-bg-canvas); color: inherit; font: inherit;
+      border: 1px solid var(--pond-color-border-strong);
+      border-radius: var(--pond-radius-md);
+      background: var(--pond-color-bg-canvas);
+      color: inherit;
+      font: inherit;
     }
-    [part='time']:focus-visible {
+    [part="time"]:focus-visible {
       outline: var(--pond-focus-width) solid var(--pond-color-focus-ring);
       outline-offset: var(--pond-focus-offset);
     }
-    :host([appearance='plain']) [part='root'],
-    :host([appearance='plain']) [part='label'],
-    :host([appearance='plain']) [part='time'] { all: unset; }
-    :host([appearance='plain']) [part='root'] { display: contents; }
+    :host([appearance="plain"]) [part="root"],
+    :host([appearance="plain"]) [part="label"],
+    :host([appearance="plain"]) [part="time"] {
+      all: unset;
+    }
+    :host([appearance="plain"]) [part="root"] {
+      display: contents;
+    }
   `
   @property({ reflect: true }) appearance: PondAppearance = 'default'
   @property() label = ''

@@ -21,11 +21,11 @@ export class PondLozenge extends LitElement {
       display: inline-flex;
     }
 
-    :host([appearance='plain']) {
+    :host([appearance="plain"]) {
       display: contents;
     }
 
-    [part='lozenge'] {
+    [part="lozenge"] {
       display: inline-flex;
       align-items: center;
       padding: 0 var(--pond-space-2);
@@ -40,23 +40,23 @@ export class PondLozenge extends LitElement {
       color: var(--pond-color-fg-default);
     }
 
-    :host([tone='success']) [part='lozenge'],
-    :host([tone='new']) [part='lozenge'] {
+    :host([tone="success"]) [part="lozenge"],
+    :host([tone="new"]) [part="lozenge"] {
       background: var(--pond-color-accent-default);
       color: var(--pond-color-fg-on-accent);
     }
 
-    :host([tone='warning']) [part='lozenge'] {
+    :host([tone="warning"]) [part="lozenge"] {
       background: var(--pond-color-bg-inverse);
       color: var(--pond-color-fg-on-accent);
     }
 
-    :host([tone='danger']) [part='lozenge'] {
+    :host([tone="danger"]) [part="lozenge"] {
       background: var(--pond-color-danger-subtle);
       color: var(--pond-color-danger-default);
     }
 
-    :host([appearance='plain']) [part='lozenge'] {
+    :host([appearance="plain"]) [part="lozenge"] {
       all: unset;
       display: contents;
     }

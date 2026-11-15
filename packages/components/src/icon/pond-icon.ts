@@ -22,28 +22,28 @@ export class PondIcon extends LitElement {
       color: inherit;
     }
 
-    :host([appearance='plain']) {
+    :host([appearance="plain"]) {
       display: contents;
     }
 
-    [part='icon'] {
+    [part="icon"] {
       display: block;
       width: 1.25rem;
       height: 1.25rem;
       fill: currentColor;
     }
 
-    :host([size='sm']) [part='icon'] {
+    :host([size="sm"]) [part="icon"] {
       width: 1rem;
       height: 1rem;
     }
 
-    :host([size='lg']) [part='icon'] {
+    :host([size="lg"]) [part="icon"] {
       width: 1.5rem;
       height: 1.5rem;
     }
 
-    :host([appearance='plain']) [part='icon'] {
+    :host([appearance="plain"]) [part="icon"] {
       all: unset;
     }
   `

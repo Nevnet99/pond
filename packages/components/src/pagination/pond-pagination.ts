@@ -16,11 +16,11 @@ export class PondPagination extends LitElement {
       display: block;
     }
 
-    :host([appearance='plain']) {
+    :host([appearance="plain"]) {
       display: contents;
     }
 
-    [part='root'] {
+    [part="root"] {
       display: inline-flex;
       flex-wrap: wrap;
       align-items: center;
@@ -30,9 +30,9 @@ export class PondPagination extends LitElement {
       color: var(--pond-color-fg-default);
     }
 
-    [part='page'],
-    [part='prev'],
-    [part='next'] {
+    [part="page"],
+    [part="prev"],
+    [part="next"] {
       box-sizing: border-box;
       min-width: 2rem;
       margin: 0;
@@ -45,34 +45,34 @@ export class PondPagination extends LitElement {
       cursor: pointer;
     }
 
-    [part='page'][aria-current='page'] {
+    [part="page"][aria-current="page"] {
       border-color: var(--pond-color-accent-default);
       background: var(--pond-color-accent-default);
       color: var(--pond-color-fg-on-accent);
     }
 
-    [part='page']:focus-visible,
-    [part='prev']:focus-visible,
-    [part='next']:focus-visible {
+    [part="page"]:focus-visible,
+    [part="prev"]:focus-visible,
+    [part="next"]:focus-visible {
       outline: var(--pond-focus-width) solid var(--pond-color-focus-ring);
       outline-offset: var(--pond-focus-offset);
     }
 
-    [part='page']:disabled,
-    [part='prev']:disabled,
-    [part='next']:disabled {
+    [part="page"]:disabled,
+    [part="prev"]:disabled,
+    [part="next"]:disabled {
       opacity: 0.5;
       cursor: not-allowed;
     }
 
-    :host([appearance='plain']) [part='root'],
-    :host([appearance='plain']) [part='page'],
-    :host([appearance='plain']) [part='prev'],
-    :host([appearance='plain']) [part='next'] {
+    :host([appearance="plain"]) [part="root"],
+    :host([appearance="plain"]) [part="page"],
+    :host([appearance="plain"]) [part="prev"],
+    :host([appearance="plain"]) [part="next"] {
       all: unset;
     }
 
-    :host([appearance='plain']) [part='root'] {
+    :host([appearance="plain"]) [part="root"] {
       display: contents;
     }
   `

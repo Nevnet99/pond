@@ -26,17 +26,17 @@ export class PondBreadcrumbs extends LitElement {
       display: block;
     }
 
-    :host([appearance='plain']) {
+    :host([appearance="plain"]) {
       display: contents;
     }
 
-    [part='root'] {
+    [part="root"] {
       font-family: var(--pond-font-family-sans);
       font-size: var(--pond-font-size-sm);
       color: var(--pond-color-fg-muted);
     }
 
-    [part='list'] {
+    [part="list"] {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -46,48 +46,48 @@ export class PondBreadcrumbs extends LitElement {
       list-style: none;
     }
 
-    [part='item'] {
+    [part="item"] {
       display: inline-flex;
       align-items: center;
       gap: var(--pond-space-1);
     }
 
-    [part='link'] {
+    [part="link"] {
       color: var(--pond-color-accent-default);
       text-decoration: none;
     }
 
-    [part='link']:hover {
+    [part="link"]:hover {
       text-decoration: underline;
     }
 
-    [part='link']:focus-visible {
+    [part="link"]:focus-visible {
       outline: var(--pond-focus-width) solid var(--pond-color-focus-ring);
       outline-offset: var(--pond-focus-offset);
     }
 
-    [part='link'][aria-current='page'] {
+    [part="link"][aria-current="page"] {
       color: var(--pond-color-fg-default);
       font-weight: var(--pond-font-weight-medium);
       text-decoration: none;
       pointer-events: none;
     }
 
-    [part='separator'] {
+    [part="separator"] {
       color: var(--pond-color-fg-muted);
       user-select: none;
     }
 
-    :host([appearance='plain']) [part='root'],
-    :host([appearance='plain']) [part='list'],
-    :host([appearance='plain']) [part='item'],
-    :host([appearance='plain']) [part='link'],
-    :host([appearance='plain']) [part='separator'] {
+    :host([appearance="plain"]) [part="root"],
+    :host([appearance="plain"]) [part="list"],
+    :host([appearance="plain"]) [part="item"],
+    :host([appearance="plain"]) [part="link"],
+    :host([appearance="plain"]) [part="separator"] {
       all: unset;
     }
 
-    :host([appearance='plain']) [part='root'],
-    :host([appearance='plain']) [part='list'] {
+    :host([appearance="plain"]) [part="root"],
+    :host([appearance="plain"]) [part="list"] {
       display: contents;
     }
   `

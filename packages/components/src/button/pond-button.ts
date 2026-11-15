@@ -23,11 +23,11 @@ export class PondButton extends LitElement {
       display: inline-block;
     }
 
-    :host([appearance='plain']) {
+    :host([appearance="plain"]) {
       display: contents;
     }
 
-    [part='button'] {
+    [part="button"] {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -49,51 +49,51 @@ export class PondButton extends LitElement {
     }
 
     /* primary — main call to action */
-    :host([variant='primary']) [part='button'],
-    :host(:not([variant])) [part='button'] {
+    :host([variant="primary"]) [part="button"],
+    :host(:not([variant])) [part="button"] {
       background: var(--pond-color-accent-default);
       color: var(--pond-color-fg-on-accent);
     }
 
-    :host([variant='primary']) [part='button']:hover:not(:disabled),
-    :host(:not([variant])) [part='button']:hover:not(:disabled) {
+    :host([variant="primary"]) [part="button"]:hover:not(:disabled),
+    :host(:not([variant])) [part="button"]:hover:not(:disabled) {
       background: var(--pond-color-accent-hover);
     }
 
     /* secondary — alternate action, outlined */
-    :host([variant='secondary']) [part='button'] {
+    :host([variant="secondary"]) [part="button"] {
       background: var(--pond-color-bg-canvas);
       border-color: var(--pond-color-border-strong);
       color: var(--pond-color-fg-default);
     }
 
-    :host([variant='secondary']) [part='button']:hover:not(:disabled) {
+    :host([variant="secondary"]) [part="button"]:hover:not(:disabled) {
       background: var(--pond-color-bg-subtle);
       border-color: var(--pond-color-fg-default);
     }
 
     /* subtle — low emphasis chrome / toolbars */
-    :host([variant='subtle']) [part='button'] {
+    :host([variant="subtle"]) [part="button"] {
       background: var(--pond-color-bg-subtle);
       color: var(--pond-color-fg-default);
     }
 
-    :host([variant='subtle']) [part='button']:hover:not(:disabled) {
+    :host([variant="subtle"]) [part="button"]:hover:not(:disabled) {
       background: var(--pond-color-border-default);
     }
 
     /* danger — destructive / irreversible */
-    :host([variant='danger']) [part='button'] {
+    :host([variant="danger"]) [part="button"] {
       background: var(--pond-color-danger-default);
       color: var(--pond-color-fg-on-accent);
     }
 
-    :host([variant='danger']) [part='button']:hover:not(:disabled) {
+    :host([variant="danger"]) [part="button"]:hover:not(:disabled) {
       background: var(--pond-color-danger-hover);
     }
 
     /* link — in-flow action without button chrome (not navigation) */
-    :host([variant='link']) [part='button'] {
+    :host([variant="link"]) [part="button"] {
       padding: 0;
       border-radius: 0;
       background: transparent;
@@ -103,31 +103,31 @@ export class PondButton extends LitElement {
       text-underline-offset: 0.15em;
     }
 
-    :host([variant='link']) [part='button']:hover:not(:disabled) {
+    :host([variant="link"]) [part="button"]:hover:not(:disabled) {
       color: var(--pond-color-accent-hover);
     }
 
-    [part='button']:focus-visible {
+    [part="button"]:focus-visible {
       outline: var(--pond-focus-width) solid var(--pond-color-focus-ring);
       outline-offset: var(--pond-focus-offset);
     }
 
-    [part='button']:disabled {
+    [part="button"]:disabled {
       opacity: 0.5;
       cursor: not-allowed;
     }
 
-    :host([appearance='plain']) [part='button'] {
+    :host([appearance="plain"]) [part="button"] {
       all: unset;
       cursor: pointer;
       display: inline;
     }
 
-    :host([appearance='plain']) [part='button']:disabled {
+    :host([appearance="plain"]) [part="button"]:disabled {
       cursor: not-allowed;
     }
 
-    :host([appearance='plain']) [part='button']:focus-visible {
+    :host([appearance="plain"]) [part="button"]:focus-visible {
       /* Consumer owns focus paint in plain mode */
       outline: revert;
     }

@@ -12,26 +12,43 @@ export type PondRadioOption = {
 @customElement('pond-radio')
 export class PondRadio extends LitElement {
   static override styles = css`
-    :host { display: block; }
-    :host([appearance='plain']) { display: contents; }
-    [part='root'] {
-      display: flex; flex-direction: column; gap: var(--pond-space-2);
-      font-family: var(--pond-font-family-sans); color: var(--pond-color-fg-default);
+    :host {
+      display: block;
     }
-    [part='legend'] { font-size: var(--pond-font-size-sm); font-weight: var(--pond-font-weight-medium); }
-    [part='option'] {
-      display: flex; align-items: center; gap: var(--pond-space-2);
-      font-size: var(--pond-font-size-md); cursor: pointer;
+    :host([appearance="plain"]) {
+      display: contents;
     }
-    [part='input']:focus-visible {
+    [part="root"] {
+      display: flex;
+      flex-direction: column;
+      gap: var(--pond-space-2);
+      font-family: var(--pond-font-family-sans);
+      color: var(--pond-color-fg-default);
+    }
+    [part="legend"] {
+      font-size: var(--pond-font-size-sm);
+      font-weight: var(--pond-font-weight-medium);
+    }
+    [part="option"] {
+      display: flex;
+      align-items: center;
+      gap: var(--pond-space-2);
+      font-size: var(--pond-font-size-md);
+      cursor: pointer;
+    }
+    [part="input"]:focus-visible {
       outline: var(--pond-focus-width) solid var(--pond-color-focus-ring);
       outline-offset: var(--pond-focus-offset);
     }
-    :host([appearance='plain']) [part='root'],
-    :host([appearance='plain']) [part='legend'],
-    :host([appearance='plain']) [part='option'],
-    :host([appearance='plain']) [part='input'] { all: unset; }
-    :host([appearance='plain']) [part='root'] { display: contents; }
+    :host([appearance="plain"]) [part="root"],
+    :host([appearance="plain"]) [part="legend"],
+    :host([appearance="plain"]) [part="option"],
+    :host([appearance="plain"]) [part="input"] {
+      all: unset;
+    }
+    :host([appearance="plain"]) [part="root"] {
+      display: contents;
+    }
   `
   @property({ reflect: true }) appearance: PondAppearance = 'default'
   @property() label = ''

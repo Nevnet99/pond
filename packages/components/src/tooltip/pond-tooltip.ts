@@ -15,15 +15,15 @@ export class PondTooltip extends LitElement {
       position: relative;
     }
 
-    :host([appearance='plain']) {
+    :host([appearance="plain"]) {
       display: contents;
     }
 
-    [part='trigger'] {
+    [part="trigger"] {
       display: inline-flex;
     }
 
-    [part='tooltip'] {
+    [part="tooltip"] {
       position: absolute;
       bottom: calc(100% + var(--pond-space-1));
       left: 50%;
@@ -41,7 +41,7 @@ export class PondTooltip extends LitElement {
       pointer-events: none;
     }
 
-    :host([appearance='plain']) [part='tooltip'] {
+    :host([appearance="plain"]) [part="tooltip"] {
       all: unset;
       display: contents;
     }

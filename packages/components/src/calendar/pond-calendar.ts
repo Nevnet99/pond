@@ -33,55 +33,98 @@ function parseIso(value: string): Date | null {
 @customElement('pond-calendar')
 export class PondCalendar extends LitElement {
   static override styles = css`
-    :host { display: block; max-width: 18rem; }
-    :host([appearance='plain']) { display: contents; }
-    [part='root'] {
-      font-family: var(--pond-font-family-sans); color: var(--pond-color-fg-default);
-      border: 1px solid var(--pond-color-border-default); border-radius: var(--pond-radius-md);
-      padding: var(--pond-space-3); background: var(--pond-color-bg-canvas);
+    :host {
+      display: block;
+      max-width: 18rem;
     }
-    [part='header'] {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: var(--pond-space-2); gap: var(--pond-space-2);
+    :host([appearance="plain"]) {
+      display: contents;
     }
-    [part='title'] { margin: 0; font-size: var(--pond-font-size-sm); font-weight: var(--pond-font-weight-semibold); }
-    [part='nav'] {
-      margin: 0; padding: var(--pond-space-1) var(--pond-space-2); border: 1px solid var(--pond-color-border-default);
-      border-radius: var(--pond-radius-sm); background: transparent; color: inherit; cursor: pointer; font: inherit;
+    [part="root"] {
+      font-family: var(--pond-font-family-sans);
+      color: var(--pond-color-fg-default);
+      border: 1px solid var(--pond-color-border-default);
+      border-radius: var(--pond-radius-md);
+      padding: var(--pond-space-3);
+      background: var(--pond-color-bg-canvas);
     }
-    [part='nav']:focus-visible {
+    [part="header"] {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--pond-space-2);
+      gap: var(--pond-space-2);
+    }
+    [part="title"] {
+      margin: 0;
+      font-size: var(--pond-font-size-sm);
+      font-weight: var(--pond-font-weight-semibold);
+    }
+    [part="nav"] {
+      margin: 0;
+      padding: var(--pond-space-1) var(--pond-space-2);
+      border: 1px solid var(--pond-color-border-default);
+      border-radius: var(--pond-radius-sm);
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      font: inherit;
+    }
+    [part="nav"]:focus-visible {
       outline: var(--pond-focus-width) solid var(--pond-color-focus-ring);
       outline-offset: var(--pond-focus-offset);
     }
-    [part='grid'] {
-      display: flex; flex-direction: column; gap: var(--pond-space-1);
-      text-align: center; font-size: var(--pond-font-size-sm);
+    [part="grid"] {
+      display: flex;
+      flex-direction: column;
+      gap: var(--pond-space-1);
+      text-align: center;
+      font-size: var(--pond-font-size-sm);
     }
-    [part='row'] {
-      display: grid; grid-template-columns: repeat(7, 1fr); gap: var(--pond-space-1);
+    [part="row"] {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: var(--pond-space-1);
     }
-    [part='weekday'] { color: var(--pond-color-fg-subtle); font-weight: var(--pond-font-weight-medium); padding: var(--pond-space-1); }
-    [part='day'] {
-      margin: 0; padding: var(--pond-space-1); border: 0; border-radius: var(--pond-radius-sm);
-      background: transparent; color: inherit; cursor: pointer; font: inherit;
+    [part="weekday"] {
+      color: var(--pond-color-fg-subtle);
+      font-weight: var(--pond-font-weight-medium);
+      padding: var(--pond-space-1);
     }
-    [part='day']:focus-visible {
+    [part="day"] {
+      margin: 0;
+      padding: var(--pond-space-1);
+      border: 0;
+      border-radius: var(--pond-radius-sm);
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      font: inherit;
+    }
+    [part="day"]:focus-visible {
       outline: var(--pond-focus-width) solid var(--pond-color-focus-ring);
       outline-offset: var(--pond-focus-offset);
     }
-    [part='day'][aria-selected='true'] {
-      background: var(--pond-color-accent-default); color: var(--pond-color-fg-inverse, #fff);
+    [part="day"][aria-selected="true"] {
+      background: var(--pond-color-accent-default);
+      color: var(--pond-color-fg-inverse, #fff);
     }
     /* Solid muted color — opacity fails axe color-contrast. */
-    [part='day'][data-outside] { color: var(--pond-color-fg-subtle, #595959); }
-    :host([appearance='plain']) [part='root'],
-    :host([appearance='plain']) [part='header'],
-    :host([appearance='plain']) [part='title'],
-    :host([appearance='plain']) [part='nav'],
-    :host([appearance='plain']) [part='grid'],
-    :host([appearance='plain']) [part='row'],
-    :host([appearance='plain']) [part='day'] { all: unset; }
-    :host([appearance='plain']) [part='root'] { display: contents; }
+    [part="day"][data-outside] {
+      color: var(--pond-color-fg-subtle, #595959);
+    }
+    :host([appearance="plain"]) [part="root"],
+    :host([appearance="plain"]) [part="header"],
+    :host([appearance="plain"]) [part="title"],
+    :host([appearance="plain"]) [part="nav"],
+    :host([appearance="plain"]) [part="grid"],
+    :host([appearance="plain"]) [part="row"],
+    :host([appearance="plain"]) [part="day"] {
+      all: unset;
+    }
+    :host([appearance="plain"]) [part="root"] {
+      display: contents;
+    }
   `
   @property({ reflect: true }) appearance: PondAppearance = 'default'
   /** Selected date as YYYY-MM-DD */

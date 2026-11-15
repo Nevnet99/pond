@@ -20,11 +20,11 @@ export class PondStack extends LitElement {
       display: block;
     }
 
-    :host([appearance='plain']) {
+    :host([appearance="plain"]) {
       display: contents;
     }
 
-    [part='stack'] {
+    [part="stack"] {
       display: flex;
       flex-direction: column;
       align-items: var(--pond-stack-align, stretch);
@@ -32,43 +32,43 @@ export class PondStack extends LitElement {
       margin: 0;
     }
 
-    :host([appearance='plain']) [part='stack'] {
+    :host([appearance="plain"]) [part="stack"] {
       all: unset;
       display: contents;
     }
 
-    :host([gap='0']) {
+    :host([gap="0"]) {
       --pond-stack-gap: 0;
     }
-    :host([gap='1']) {
+    :host([gap="1"]) {
       --pond-stack-gap: var(--pond-space-1);
     }
-    :host([gap='2']) {
+    :host([gap="2"]) {
       --pond-stack-gap: var(--pond-space-2);
     }
-    :host([gap='3']) {
+    :host([gap="3"]) {
       --pond-stack-gap: var(--pond-space-3);
     }
-    :host([gap='4']) {
+    :host([gap="4"]) {
       --pond-stack-gap: var(--pond-space-4);
     }
-    :host([gap='6']) {
+    :host([gap="6"]) {
       --pond-stack-gap: var(--pond-space-6);
     }
-    :host([gap='8']) {
+    :host([gap="8"]) {
       --pond-stack-gap: var(--pond-space-8);
     }
 
-    :host([align='stretch']) {
+    :host([align="stretch"]) {
       --pond-stack-align: stretch;
     }
-    :host([align='start']) {
+    :host([align="start"]) {
       --pond-stack-align: flex-start;
     }
-    :host([align='center']) {
+    :host([align="center"]) {
       --pond-stack-align: center;
     }
-    :host([align='end']) {
+    :host([align="end"]) {
       --pond-stack-align: flex-end;
     }
   `
