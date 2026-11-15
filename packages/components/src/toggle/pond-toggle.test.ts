@@ -9,9 +9,9 @@ describe('pond-toggle', () => {
     const el = await fixture<PondToggle>(
       html`<pond-toggle label="Notifications"></pond-toggle>`
     )
-    el.shadowRoot!.querySelector('[part="root"]')!.dispatchEvent(
-      new MouseEvent('click', { bubbles: true })
-    )
+    const root = el.shadowRoot?.querySelector('[part="root"]')
+    expect(root).toBeTruthy()
+    root?.dispatchEvent(new MouseEvent('click', { bubbles: true }))
     await el.updateComplete
     expect(el.checked).toBe(true)
   })
