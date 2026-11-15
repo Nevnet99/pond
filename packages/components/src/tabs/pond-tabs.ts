@@ -198,8 +198,9 @@ export class PondTabs extends LitElement {
           })}
         </div>
         <div part="panels">
-          ${selected
-            ? html`
+          ${
+            selected
+              ? html`
                 <div
                   part="panel"
                   role="tabpanel"
@@ -209,7 +210,8 @@ export class PondTabs extends LitElement {
                   <slot name=${selected}></slot>
                 </div>
               `
-            : nothing}
+              : nothing
+          }
         </div>
       </div>
     `
