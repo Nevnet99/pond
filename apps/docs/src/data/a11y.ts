@@ -369,6 +369,14 @@ const catalog: Record<string, A11yEntry> = {
       }
     ]
   },
+  'time-picker': {
+    summary: 'Labeled native time input.',
+    keyboard: ['Tab to the field', 'Platform time controls'],
+    criteria: [
+      labels('Visible label or `aria-label` on the input.'),
+      keyboard('Operable without a pointer.')
+    ]
+  },
   menu: {
     summary:
       'Menu trigger with `aria-haspopup` / `aria-expanded`; items use menu roles.',

@@ -83,6 +83,7 @@ export default defineConfig({
             { label: 'Text area', slug: 'components/text-area' },
             { label: 'Calendar', slug: 'components/calendar' },
             { label: 'Date time picker', slug: 'components/date-time-picker' },
+            { label: 'Time picker', slug: 'components/time-picker' },
             { label: 'Checkbox', slug: 'components/checkbox' },
             { label: 'Form', slug: 'components/form' },
             { label: 'Inline edit', slug: 'components/inline-edit' },
