@@ -1,0 +1,31 @@
+---
+title: Code
+description: Inline or simple block code — no syntax highlighter.
+---
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Highlight short snippets inline, or a plain block. No highlighter dependency.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Inline">
+      <p>Run <pond-code>pnpm install</pond-code> to start.</p>
+    </PondDemo>
+    <PondDemo label="Block">
+      <pond-code variant="block">const x = 1</pond-code>
+    </PondDemo>
+  </Fragment>
+  <Fragment slot="code">
+
+```html
+<pond-code>pnpm install</pond-code>
+<pond-code variant="block">const x = 1</pond-code>
+```
+
+  </Fragment>
+  <Fragment slot="usage">Keep snippets short; consumers own highlighting if needed.</Fragment>
+  <Fragment slot="changelog">Unreleased — inline + block variants.</Fragment>
+  <Fragment slot="accessibility">Native `code` / `pre > code`.</Fragment>
+  <Fragment slot="patterns">None yet.</Fragment>
+</ComponentTabs>
