@@ -1,0 +1,27 @@
+---
+title: Flag
+description: Transient toast-style feedback.
+---
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Short-lived feedback. Distinct from Banner (persistent) and Section message (sectional).
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Success">
+      <pond-flag title="Saved" tone="success">Project settings updated.</pond-flag>
+    </PondDemo>
+  </Fragment>
+  <Fragment slot="code">
+
+```html
+<pond-flag title="Saved" tone="success">Done</pond-flag>
+```
+
+  </Fragment>
+  <Fragment slot="usage">Optional auto-dismiss via auto-dismiss ms. Prefer Banner for page-wide notices.</Fragment>
+  <Fragment slot="changelog">Unreleased — tones, closable, auto-dismiss.</Fragment>
+  <Fragment slot="accessibility">role=status by default; role=alert for danger.</Fragment>
+  <Fragment slot="patterns">None yet.</Fragment>
+</ComponentTabs>
