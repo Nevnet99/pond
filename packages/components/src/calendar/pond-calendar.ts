@@ -4,6 +4,13 @@ import type { PondAppearance } from '../shared/appearance.js'
 
 const WEEKDAYS = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
 
+function chunk<T>(items: T[], size: number): T[][] {
+  const out: T[][] = []
+  for (let i = 0; i < items.length; i += size)
+    out.push(items.slice(i, i + size))
+  return out
+}
+
 function startOfMonth(d: Date) {
   return new Date(d.getFullYear(), d.getMonth(), 1)
 }
@@ -47,8 +54,11 @@ export class PondCalendar extends LitElement {
       outline-offset: var(--pond-focus-offset);
     }
     [part='grid'] {
-      display: grid; grid-template-columns: repeat(7, 1fr); gap: var(--pond-space-1);
+      display: flex; flex-direction: column; gap: var(--pond-space-1);
       text-align: center; font-size: var(--pond-font-size-sm);
+    }
+    [part='row'] {
+      display: grid; grid-template-columns: repeat(7, 1fr); gap: var(--pond-space-1);
     }
     [part='weekday'] { color: var(--pond-color-fg-subtle); font-weight: var(--pond-font-weight-medium); padding: var(--pond-space-1); }
     [part='day'] {
@@ -68,6 +78,7 @@ export class PondCalendar extends LitElement {
     :host([appearance='plain']) [part='title'],
     :host([appearance='plain']) [part='nav'],
     :host([appearance='plain']) [part='grid'],
+    :host([appearance='plain']) [part='row'],
     :host([appearance='plain']) [part='day'] { all: unset; }
     :host([appearance='plain']) [part='root'] { display: contents; }
   `
@@ -139,16 +150,25 @@ export class PondCalendar extends LitElement {
         <button part="nav" type="button" aria-label="Next month" @click=${() => this.#shift(1)}>›</button>
       </div>
       <div part="grid" role="grid" aria-label=${title}>
-        ${WEEKDAYS.map((d) => html`<div part="weekday">${d}</div>`)}
-        ${this.#cells().map(
-          (c) => html`<button
-            part="day"
-            type="button"
-            role="gridcell"
-            aria-selected=${c.iso === this.value ? 'true' : 'false'}
-            ?data-outside=${c.outside}
-            @click=${() => this.#select(c.iso)}
-          >${c.day}</button>`
+        <div part="row" role="row">
+          ${WEEKDAYS.map(
+            (d) => html`<div part="weekday" role="columnheader">${d}</div>`
+          )}
+        </div>
+        ${chunk(this.#cells(), 7).map(
+          (week) => html`<div part="row" role="row">
+            ${week.map(
+              (c) => html`<button
+                part="day"
+                type="button"
+                role="gridcell"
+                aria-label=${c.iso}
+                aria-selected=${c.iso === this.value ? 'true' : 'false'}
+                ?data-outside=${c.outside}
+                @click=${() => this.#select(c.iso)}
+              >${c.day}</button>`
+            )}
+          </div>`
         )}
       </div>
     </div>`
