@@ -83,7 +83,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: vrt-screenshots
+          include-hidden-files: true
           path: |
             packages/components/src/**/__screenshots__/**
             packages/components/**/__screenshots__/**
+            packages/components/.vitest/attachments/**
           if-no-files-found: ignore

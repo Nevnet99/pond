@@ -24,7 +24,11 @@ describe('pond-modal', () => {
     const b = el.querySelector('#b') as HTMLButtonElement
     b.focus()
     window.dispatchEvent(
-      new KeyboardEvent('keydown', { key: 'Tab', bubbles: true })
+      new KeyboardEvent('keydown', {
+        key: 'Tab',
+        bubbles: true,
+        cancelable: true
+      })
     )
     expect(document.activeElement).toBe(a)
     el.remove()

@@ -1,9 +1,18 @@
 const FOCUSABLE =
   'a[href],button:not([disabled]),textarea:not([disabled]),input:not([disabled]),select:not([disabled]),[tabindex]:not([tabindex="-1"])'
 
+/** Visible for tab order. Avoid offsetParent — null under display:contents hosts. */
+function isShown(el: HTMLElement): boolean {
+  if (el === document.activeElement) return true
+  if (typeof el.checkVisibility === 'function') {
+    return el.checkVisibility({ checkOpacity: true, checkVisibilityCSS: true })
+  }
+  return el.getClientRects().length > 0
+}
+
 export function getFocusable(root: ParentNode): HTMLElement[] {
   return Array.from(root.querySelectorAll<HTMLElement>(FOCUSABLE)).filter(
-    (el) => el.offsetParent !== null || el === document.activeElement
+    isShown
   )
 }
 

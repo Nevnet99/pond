@@ -48,3 +48,5 @@ Pond English names; Lit originals. ADS links may appear in docs for orientation.
 ## Explicitly deferred (later / fog)
 
 Full **Navigation system**, **Dynamic table**, **Table tree**, **Inline dialog** (Popup covers the need), Calendar / Date time picker / Range / Form wrapper, Spotlight, Panel / Page, Code / Inline edit, indeterminate Progress bar, deprecated ADS entries, Atlaskit-only tooling, React/Vue wrappers, Figma source-of-truth, i18n/RTL-as-first-class.
+
+**Phase 6** (forms & journeys) is locked in [phase-6-slice.md](./phase-6-slice.md).
