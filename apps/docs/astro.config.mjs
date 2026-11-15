@@ -83,6 +83,7 @@ export default defineConfig({
             { label: 'Date time picker', slug: 'components/date-time-picker' },
             { label: 'Checkbox', slug: 'components/checkbox' },
             { label: 'Form', slug: 'components/form' },
+            { label: 'Inline edit', slug: 'components/inline-edit' },
             { label: 'Toggle', slug: 'components/toggle' },
             { label: 'Select', slug: 'components/select' },
             { label: 'Radio', slug: 'components/radio' },
