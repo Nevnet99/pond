@@ -91,8 +91,8 @@ export class PondPage extends LitElement {
       padding: var(--pond-space-4);
     }
 
-    /* Stack chrome when the page is narrower than the tablet VRT width. */
-    @container pond-page (max-width: 47.9375rem) {
+    /* Stack chrome on narrow pages (mobile). Tablet+ stays nav | main | panel. */
+    @container pond-page (max-width: 599px) {
       [part="body"] {
         flex-direction: column;
       }
