@@ -1,0 +1,33 @@
+---
+title: Tag group
+description: Wrapping layout for a collection of Tags.
+---
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Compose existing Tags into a wrapping row.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Default">
+      <pond-tag-group label="Labels">
+        <pond-tag>Design</pond-tag>
+        <pond-tag>Lit</pond-tag>
+        <pond-tag>AA</pond-tag>
+      </pond-tag-group>
+    </PondDemo>
+  </Fragment>
+  <Fragment slot="code">
+
+```html
+<pond-tag-group label="Labels">
+  <pond-tag>Design</pond-tag>
+</pond-tag-group>
+```
+
+  </Fragment>
+  <Fragment slot="usage">Layout helper only — style comes from Tag.</Fragment>
+  <Fragment slot="changelog">Unreleased — wrap row.</Fragment>
+  <Fragment slot="accessibility">`role=group` with accessible name.</Fragment>
+  <Fragment slot="patterns">None yet.</Fragment>
+</ComponentTabs>
