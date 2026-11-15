@@ -120,7 +120,8 @@ export default defineConfig({
             { label: 'Breadcrumbs', slug: 'components/breadcrumbs' },
             { label: 'Pagination', slug: 'components/pagination' },
             { label: 'Page', slug: 'components/page' },
-            { label: 'Page header', slug: 'components/page-header' }
+            { label: 'Page header', slug: 'components/page-header' },
+            { label: 'Panel', slug: 'components/panel' }
           ]
         },
         {

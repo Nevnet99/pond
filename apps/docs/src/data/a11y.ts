@@ -434,6 +434,26 @@ const catalog: Record<string, A11yEntry> = {
       }
     ]
   },
+  panel: {
+    summary:
+      'Contextual side section with an optional labelled header (`h2` via `heading`) and footer.',
+    criteria: [
+      labels(
+        '`section` labelled by the heading when `heading` is set; actions stay ordinary named controls.'
+      ),
+      {
+        id: '2.4.6',
+        title: 'Headings and Labels',
+        how: 'Panel title is an `h2` under the page `h1` — do not use Panel as the page title.'
+      },
+      {
+        id: '1.3.1',
+        title: 'Info and Relationships',
+        how: 'Header / body / footer order is preserved; empty regions collapse.'
+      }
+    ],
+    notes: ['Plain mode: you own structure and paint.']
+  },
   banner: {
     summary:
       '`role="region"` with a label; close control is named when present.',

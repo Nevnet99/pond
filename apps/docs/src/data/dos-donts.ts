@@ -253,6 +253,16 @@ const catalog: Record<string, DosDontsEntry> = {
       'Don’t overload the header with every possible action'
     ]
   },
+  panel: {
+    dos: [
+      'Place Panel in the Page panel slot for contextual side content',
+      'Use heading (h2) for the panel title; keep page title in Page header'
+    ],
+    donts: [
+      'Don’t use Panel as a second page chrome shell',
+      'Don’t put the primary reading column inside Panel'
+    ]
+  },
   banner: {
     dos: [
       'Use for page-level notices the user should see on arrival',
