@@ -45,4 +45,4 @@ Pond English names; Lit originals. ADS links may appear in docs for orientation.
 
 ## Explicitly deferred (later / fog)
 
-Full **Navigation system**, **Dynamic table**, **Table tree**, **Inline dialog**, Spotlight, Panel / Page, Image / Logo / Tile / Object, standalone Time picker, custom Inline edit editors, deprecated ADS entries, Atlaskit-only tooling, React/Vue wrappers, Figma source-of-truth, i18n/RTL-as-first-class.
+Items pulled into **Phase 7** are locked in [phase-7-slice.md](./phase-7-slice.md). Still later: full **Navigation system**, Spotlight, Logo, Object, custom Inline edit editors, deprecated ADS entries, Atlaskit-only tooling, React/Vue wrappers, Figma source-of-truth, i18n/RTL-as-first-class.
