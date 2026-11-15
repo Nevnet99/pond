@@ -129,7 +129,8 @@ export default defineConfig({
           label: 'Media',
           items: [
             { label: 'Icon', slug: 'components/icon' },
-            { label: 'Avatar', slug: 'components/avatar' }
+            { label: 'Avatar', slug: 'components/avatar' },
+            { label: 'Avatar group', slug: 'components/avatar-group' }
           ]
         },
         {
