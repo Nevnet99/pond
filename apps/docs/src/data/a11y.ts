@@ -377,6 +377,19 @@ const catalog: Record<string, A11yEntry> = {
       keyboard('Operable without a pointer.')
     ]
   },
+  comment: {
+    summary: 'Article for a single discussion item with author identity.',
+    criteria: [
+      labels(
+        'Author text identifies the speaker; actions are ordinary named controls.'
+      ),
+      {
+        id: '1.3.1',
+        title: 'Info and Relationships',
+        how: 'Header / body / actions order is preserved.'
+      }
+    ]
+  },
   menu: {
     summary:
       'Menu trigger with `aria-haspopup` / `aria-expanded`; items use menu roles.',
