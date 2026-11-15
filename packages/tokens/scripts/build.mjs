@@ -66,6 +66,7 @@ const focusBlock = `
   [data-theme="dark"] {
     --pond-motion-duration-fast: 0ms;
     --pond-motion-duration-normal: 0ms;
+    --pond-motion-duration-slow: 0ms;
   }
 }
 `

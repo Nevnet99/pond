@@ -81,7 +81,11 @@
   "motion": {
     "duration": {
       "fast": { "value": "120ms" },
-      "normal": { "value": "200ms" }
+      "normal": { "value": "200ms" },
+      "slow": {
+        "value": "900ms",
+        "comment": "loops — spinner, indeterminate progress"
+      }
     }
   },
   "focus": {

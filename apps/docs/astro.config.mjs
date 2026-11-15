@@ -143,7 +143,8 @@ export default defineConfig({
             { label: 'Forking', slug: 'contributing/forking' },
             { label: 'v1 slice', slug: 'contributing/v1-slice' },
             { label: 'Phase 3 slice', slug: 'contributing/phase-3-slice' },
-            { label: 'Phase 4 slice', slug: 'contributing/phase-4-slice' }
+            { label: 'Phase 4 slice', slug: 'contributing/phase-4-slice' },
+            { label: 'Phase 5 slice', slug: 'contributing/phase-5-slice' }
           ]
         }
       ]

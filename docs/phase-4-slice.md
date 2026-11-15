@@ -37,3 +37,5 @@ Icon ships in this slice (early) so Avatar / Tag / Empty can use it. Delivery sh
 ## Explicitly deferred (later / fog)
 
 Full Navigation system / drawers / side nav, Dynamic table / Table tree, deprecated ADS entries, Atlaskit-only tooling, React/Vue wrappers, Figma source-of-truth, i18n/RTL-as-first-class.
+
+**Phase 5** (overlays, loading, composition helpers) is locked in [phase-5-slice.md](./phase-5-slice.md).
