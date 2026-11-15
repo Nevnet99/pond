@@ -1,0 +1,39 @@
+---
+title: Page header
+description: Slot-based page chrome shell.
+---
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Compose breadcrumbs, title, actions, and optional bottom tabs into slots — Pond does not hard-wire those children.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Composed">
+      <pond-page-header heading="Projects">
+        <pond-breadcrumbs
+          slot="breadcrumbs"
+          items='[{"label":"Home","href":"/"},{"label":"Projects","current":true}]'
+        ></pond-breadcrumbs>
+        <pond-button slot="actions" variant="primary">New</pond-button>
+        Design system catalog
+      </pond-page-header>
+    </PondDemo>
+  </Fragment>
+  <Fragment slot="code">
+
+```html
+<pond-page-header heading="Projects">
+  <pond-breadcrumbs slot="breadcrumbs" ...></pond-breadcrumbs>
+  <pond-button slot="actions">New</pond-button>
+  Subtitle
+  <pond-tabs slot="bottom" ...></pond-tabs>
+</pond-page-header>
+```
+
+  </Fragment>
+  <Fragment slot="usage">Slots only — consumers compose Breadcrumbs, Menu, Tabs.</Fragment>
+  <Fragment slot="changelog">Unreleased — breadcrumbs / title / actions / bottom slots.</Fragment>
+  <Fragment slot="accessibility">Uses a header landmark; page title is an h1.</Fragment>
+  <Fragment slot="patterns">Pair with Tabs in the bottom slot for sectioned pages.</Fragment>
+</ComponentTabs>
