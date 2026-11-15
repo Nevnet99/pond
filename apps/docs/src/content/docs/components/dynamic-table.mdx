@@ -16,20 +16,9 @@ Sort and paginate in the browser — no remote data API or row reorder in this p
       <pond-dynamic-table
         caption="People"
         page-size="3"
+        columns='[{"key":"name","label":"Name"},{"key":"role","label":"Role"}]'
+        rows='[{"name":"Ada","role":"Lead"},{"name":"Bea","role":"QA"},{"name":"Cal","role":"Dev"},{"name":"Dee","role":"PM"}]'
       ></pond-dynamic-table>
-      <script>
-        const table = document.currentScript.previousElementSibling
-        table.columns = [
-          { key: 'name', label: 'Name' },
-          { key: 'role', label: 'Role' }
-        ]
-        table.rows = [
-          { name: 'Ada', role: 'Lead' },
-          { name: 'Bea', role: 'QA' },
-          { name: 'Cal', role: 'Dev' },
-          { name: 'Dee', role: 'PM' }
-        ]
-      </script>
     </PondDemo>
   </Fragment>
 
@@ -39,18 +28,9 @@ Sort and paginate in the browser — no remote data API or row reorder in this p
 <pond-dynamic-table
   caption="People"
   page-size="5"
+  columns='[{"key":"name","label":"Name"}]'
+  rows='[{"name":"Ada"}]'
 ></pond-dynamic-table>
-<script type="module">
-  const el = document.querySelector('pond-dynamic-table')
-  el.columns = [
-    { key: 'name', label: 'Name' },
-    { key: 'role', label: 'Role' }
-  ]
-  el.rows = [
-    { name: 'Ada', role: 'Lead' },
-    { name: 'Bea', role: 'QA' }
-  ]
-</script>
 ```
 
   </Fragment>
