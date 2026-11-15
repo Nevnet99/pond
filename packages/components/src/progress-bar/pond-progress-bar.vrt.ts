@@ -21,4 +21,10 @@ describe('pond-progress-bar visual', () => {
     )
     await matchScreenshotAtViewports('progress-bar-default', el)
   })
+  it('matches indeterminate at mobile / tablet / desktop', async () => {
+    const el = await fixture<PondProgressBar>(
+      html`<pond-progress-bar style="width:16rem" indeterminate></pond-progress-bar>`
+    )
+    await matchScreenshotAtViewports('progress-bar-indeterminate', el)
+  })
 })
