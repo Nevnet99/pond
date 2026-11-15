@@ -22,9 +22,14 @@ describe('pond-drawer visual', () => {
         <p>Panel content</p>
       </pond-drawer>
     </div>`)
-    const root = el
-      .querySelector('pond-drawer')
-      ?.shadowRoot?.querySelector('pond-blanket')
+    const drawer = el.querySelector('pond-drawer') as PondDrawer | null
+    await drawer?.updateComplete
+    // Autofocus runs in updated(); wait then drop ring (flaky :focus-visible in CI).
+    await new Promise<void>((r) => requestAnimationFrame(() => r()))
+    ;(drawer?.shadowRoot?.activeElement as HTMLElement | null)?.blur()
+    ;(document.activeElement as HTMLElement | null)?.blur()
+    const root = drawer?.shadowRoot
+      ?.querySelector('pond-blanket')
       ?.shadowRoot?.querySelector('[part="root"]') as HTMLElement | null
     if (root) root.style.position = 'absolute'
     await matchScreenshotAtViewports('drawer-default', el)
