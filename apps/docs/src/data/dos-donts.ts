@@ -640,6 +640,16 @@ const catalog: Record<string, DosDontsEntry> = {
       'Don’t bleed interactive chrome off-screen on small viewports',
       'Don’t nest bleeds that cancel each other into confusion'
     ]
+  },
+  'metric-text': {
+    dos: [
+      'Use for short numeric KPIs and counts',
+      'Pair with a Text label for the unit or meaning'
+    ],
+    donts: [
+      'Don’t set long sentences in Metric text',
+      'Don’t use Metric text as a page heading — prefer Heading'
+    ]
   }
 }
 

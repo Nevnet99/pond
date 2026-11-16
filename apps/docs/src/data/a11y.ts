@@ -919,6 +919,17 @@ const catalog: Record<string, A11yEntry> = {
         how: 'No control role; do not put click handlers on Bleed alone.'
       }
     ]
+  },
+  'metric-text': {
+    summary:
+      'Presentational metric typography; pair with visible labels for meaning.',
+    criteria: [
+      {
+        id: '1.3.1',
+        title: 'Info and Relationships',
+        how: 'Provide a visible label or caption so the number’s meaning is clear.'
+      }
+    ]
   }
 }
 
