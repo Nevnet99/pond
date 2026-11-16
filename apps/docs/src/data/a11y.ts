@@ -694,7 +694,8 @@ const catalog: Record<string, A11yEntry> = {
       'Vertical navigation landmark with collapsible sections and current-item indication.',
     keyboard: [
       'Tab moves through section toggles and items',
-      'Enter/Space activates buttons and toggles'
+      'Enter/Space activates buttons and toggles',
+      'Arrow keys are not remapped — follow the document tab order'
     ],
     criteria: [
       labels(
@@ -709,10 +710,21 @@ const catalog: Record<string, A11yEntry> = {
         id: '2.4.8',
         title: 'Location',
         how: 'Mark the active route with `current` on the matching item.'
-      }
+      },
+      keyboard(
+        'Section headings and items are native buttons/links — full keyboard activation without custom arrow maps.'
+      ),
+      focus()
     ],
     notes: [
       'Plain mode: you own paint; keep the landmark and current semantics.'
+    ],
+    limitations: [
+      'Keyboard follows tab order only — Pond does not implement APG menu arrow navigation inside the rail.',
+      'When `collapsed`, item labels are visually hidden but must remain in the default slot so the control can expose `aria-label` / `title` from that text.',
+      'Collapsed rail hides section headings and nested items — do not put the only path to a destination exclusively under a nested item if users collapse the rail.',
+      'Icon-only items without label text have no accessible name in rail mode.',
+      'Plain mode: consumer owns focus paint and contrast.'
     ]
   },
   banner: {

@@ -141,10 +141,11 @@ export class PondSideNavItem extends LitElement {
     }
   `
 
+  /** Visual presentation. `plain` strips Pond visual CSS. */
   @property({ reflect: true })
   appearance: PondAppearance = 'default'
 
-  /** When set, the control renders as a link. */
+  /** When set, the control renders as a link; otherwise a button. */
   @property()
   href = ''
 
@@ -152,7 +153,10 @@ export class PondSideNavItem extends LitElement {
   @property({ type: Boolean, reflect: true })
   current = false
 
-  /** Icon-only rail mode (set by parent Side nav when collapsed). */
+  /**
+   * Icon-only rail mode (set by parent when collapsed). Label text stays for
+   * assistive tech via `aria-label` / `title`.
+   */
   @property({ type: Boolean, reflect: true })
   rail = false
 

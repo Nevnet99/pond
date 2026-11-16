@@ -8,7 +8,7 @@ import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
-App navigation rail for the Page `navigation` slot — sections, link/button items, optional icons, one nest level. Not the full Atlassian Navigation system.
+App navigation rail for the [Page](/components/page/) `navigation` slot — sections, link/button items, optional icons, one nest level. Not the full Atlassian Navigation system. When `collapsed`, labels stay available to assistive tech (visually hidden) — every item still needs a text name. `appearance="plain"` strips Pond visuals — you own focus paint and contrast.
 
 <ComponentTabs>
   <Fragment slot="examples">
@@ -29,6 +29,37 @@ App navigation rail for the Page `navigation` slot — sections, link/button ite
         </pond-side-nav-section>
       </pond-side-nav>
     </PondDemo>
+
+    <p>
+      Collapsed (icon-only) rail: section headings and nested items hide;
+      item labels remain for AT via the label slot / <code>aria-label</code>.
+      Provide an icon and a real text label for every item.
+    </p>
+
+    <PondDemo label="Collapsed rail">
+      <pond-side-nav
+        collapsed
+        label="App"
+        style="border: 1px solid var(--pond-color-border-default); background: var(--pond-color-bg-surface)"
+      >
+        <pond-side-nav-section heading="Plan">
+          <pond-side-nav-item href="#board" current>
+            <span slot="icon" aria-hidden="true">▣</span>
+            Board
+          </pond-side-nav-item>
+          <pond-side-nav-item href="#list">
+            <span slot="icon" aria-hidden="true">☰</span>
+            List
+          </pond-side-nav-item>
+        </pond-side-nav-section>
+      </pond-side-nav>
+    </PondDemo>
+
+    <PondDemo label="Plain / reset">
+      <pond-side-nav appearance="plain" label="App">
+        <pond-side-nav-item href="#home">Home</pond-side-nav-item>
+      </pond-side-nav>
+    </PondDemo>
   </Fragment>
 
   <Fragment slot="code">
@@ -44,21 +75,78 @@ App navigation rail for the Page `navigation` slot — sections, link/button ite
 </pond-side-nav>
 ```
 
+### API
+
+#### `pond-side-nav`
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `string` | `'Side navigation'` | Accessible name for the `nav` landmark |
+| `collapsed` | `boolean` | `false` | Icon-only rail; labels stay for AT |
+| `appearance` | `'default' \| 'plain'` | `'default'` | `plain` strips Pond visual CSS |
+
+**Slots:** default — `pond-side-nav-section` children.
+
+**CSS parts:** `root`.
+
+**Events:** `pond-collapse` — `{ detail: { collapsed } }` when `collapsed` changes.
+
+#### `pond-side-nav-section`
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `heading` | `string` | `''` | Section toggle label |
+| `collapsed` | `boolean` | `false` | Section open state |
+
+**Events:** `pond-toggle` — `{ detail: { collapsed } }`.
+
+#### `pond-side-nav-item`
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `href` | `string` | `''` | When set, renders as a link; otherwise a button |
+| `current` | `boolean` | `false` | Sets `aria-current="page"` |
+| `rail` | `boolean` | `false` | Icon-only mode (usually set by parent when collapsed) |
+
+**Slots:** `icon`, `nested` (one level of items), default (label text).
+
+**Events:** `pond-select` — button items (no `href`) when activated.
+
   </Fragment>
 
   <Fragment slot="usage">
 
-Items with `href` render as links; without `href` they are buttons and fire `pond-select`. Sections fire `pond-toggle` when collapsed. Nest at most one level via `slot="nested"`. Set `collapsed` on the side nav for an icon-only rail (labels stay available to assistive tech).
+### Purpose
+
+Side nav is the persistent app destination rail. It is **not** in-page tabs ([Tabs](/components/tabs/)), breadcrumbs ([Breadcrumbs](/components/breadcrumbs/)), or a full top+side Atlassian Navigation clone.
+
+### Anatomy
+
+1. **Nav** (`::part(root)`) — landmark named by `label`
+2. **Section** — collapsible heading + item list
+3. **Item** — link (`href`) or button; optional `icon` + one `nested` level
+4. **Collapsed rail** — icons visible; labels visually hidden but named for AT
+
+### Content guidelines
+
+- Sentence case item labels that match destination titles
+- Always include text in the default slot — required for collapsed rail names
+- Mark decorative icons `aria-hidden="true"`
+- Nest at most one level; deeper trees need a different IA
+
+### Happy path vs plain
+
+Default ships surface padding, current-item accent bar, and Pond focus rings. `appearance="plain"` keeps the landmark and current semantics — **you** own paint; keep accessible names when collapsed.
 
     <DosDonts component="side-nav" />
+
+**Related:** [Page](/components/page/) · [Tabs](/components/tabs/) · [Breadcrumbs](/components/breadcrumbs/) · [Link](/components/link/)
 
   </Fragment>
 
   <Fragment slot="changelog">
 
-Unreleased — collapsed icon-only rail (`collapsed` + `pond-collapse`).
-
-Unreleased — side nav rail with sections, items, icons, one nest level.
+Unreleased — Phase 9 docs (purpose, anatomy, API, content, limitations including collapsed rail names, patterns); no API break.
 
   </Fragment>
 
@@ -68,7 +156,24 @@ Unreleased — side nav rail with sections, items, icons, one nest level.
 
   <Fragment slot="patterns">
 
-Compose in `pond-page`’s `navigation` slot. Mark the active route with `current` (`aria-current="page"`).
+**In Page navigation** — mark the active route with `current`.
+
+```html
+<pond-page>
+  <pond-side-nav slot="navigation" label="App">
+    <pond-side-nav-section heading="Plan">
+      <pond-side-nav-item href="/board" current>
+        <span slot="icon" aria-hidden="true">▣</span>
+        Board
+      </pond-side-nav-item>
+    </pond-side-nav-section>
+  </pond-side-nav>
+  <pond-page-header slot="header" heading="Board"></pond-page-header>
+  <p>Main</p>
+</pond-page>
+```
+
+**Prefer Tabs for in-page panels** — if destinations share one URL and swap local panels, use [Tabs](/components/tabs/) instead of Side nav items.
 
   </Fragment>
 </ComponentTabs>
