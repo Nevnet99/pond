@@ -954,6 +954,11 @@ const catalog: Record<string, A11yEntry> = {
       name('Remove button named (e.g. “Remove {tag}”).'),
       keyboard('Remove is keyboard operable.'),
       focus()
+    ],
+    limitations: [
+      'Default remove `aria-label` is currently the generic “Remove” — prefer “Remove {label}” via a consumer override until Pond derives the name from slotted text.',
+      'Not a link or button for navigation — do not use Tag as the only way to reach a page.',
+      'Plain mode: consumer owns chrome, remove focus paint, and contrast.'
     ]
   },
   'tag-group': {
