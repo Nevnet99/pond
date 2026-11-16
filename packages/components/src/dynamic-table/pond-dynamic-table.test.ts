@@ -48,6 +48,25 @@ describe('pond-dynamic-table', () => {
     expect(first).toBe('Ada')
   })
 
+  it('reorders rows with up/down controls', async () => {
+    const el = await fixture<PondDynamicTable>(html`
+      <pond-dynamic-table
+        reorderable
+        .columns=${columns}
+        .rows=${rows.slice(0, 3)}
+        page-size="10"
+      ></pond-dynamic-table>
+    `)
+    await el.updateComplete
+    const down = el.shadowRoot?.querySelector(
+      '[part="reorder"] button[aria-label="Move down"]'
+    ) as HTMLButtonElement
+    down.click()
+    await el.updateComplete
+    expect(el.rows[0]?.name).toBe('Ada')
+    expect(el.rows[1]?.name).toBe('Zoe')
+  })
+
   it('supports plain', async () => {
     const el = await fixture<PondDynamicTable>(
       html`<pond-dynamic-table appearance="plain"></pond-dynamic-table>`
