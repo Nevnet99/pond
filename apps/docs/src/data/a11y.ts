@@ -631,7 +631,12 @@ const catalog: Record<string, A11yEntry> = {
         how: 'Main landmark lets AT skip chrome; empty slots collapse so unused regions are not exposed.'
       }
     ],
-    notes: ['Plain mode: you own landmarks and paint.']
+    notes: ['Plain mode: you own landmarks and paint.'],
+    limitations: [
+      'Empty named slots collapse visually, but only assign real chrome into slots — leftover empty wrappers can still expose regions.',
+      '`appearance="plain"` strips layout CSS (`display: contents`) — you must preserve a sensible landmark structure yourself.',
+      'Narrow containers stack nav → main → panel; verify reading order still matches the product intent.'
+    ]
   },
   'page-header': {
     summary: 'Header landmark with the page title as an `h1`.',

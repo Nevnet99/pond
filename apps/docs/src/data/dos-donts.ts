@@ -346,12 +346,14 @@ const catalog: Record<string, DosDontsEntry> = {
   },
   page: {
     dos: [
-      'Compose Banner / Side nav / Page header into the named slots',
-      'Put the primary reading content in the default slot (main)'
+      'Compose Banner / Side nav / Page header / Panel into the named slots',
+      'Put the primary reading content in the default slot (main)',
+      'Leave unused slots empty so regions collapse'
     ],
     donts: [
       'Don’t nest a second Page inside the main slot',
-      'Don’t leave empty decorative wrappers in slots — empty slots should stay empty so regions collapse'
+      'Don’t leave empty decorative wrappers in slots',
+      'Don’t put the primary article only in the panel column'
     ]
   },
   'page-header': {

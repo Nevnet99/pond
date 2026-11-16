@@ -12,6 +12,15 @@ import type { PondAppearance } from '../shared/appearance.js'
  * @slot header — Top of the main column (e.g. Page header).
  * @slot panel — End column for contextual content.
  * @slot — Main page content.
+ *
+ * @csspart root — Outer shell.
+ * @csspart banner — Banner region.
+ * @csspart body — Nav + main + panel row.
+ * @csspart navigation — Start aside.
+ * @csspart main-column — Header + main stack.
+ * @csspart header — Header region.
+ * @csspart content — Main landmark.
+ * @csspart panel — End aside.
  */
 @customElement('pond-page')
 export class PondPage extends LitElement {
@@ -137,6 +146,7 @@ export class PondPage extends LitElement {
     }
   `
 
+  /** Visual presentation. `plain` strips Pond layout/visual CSS. */
   @property({ reflect: true })
   appearance: PondAppearance = 'default'
 
