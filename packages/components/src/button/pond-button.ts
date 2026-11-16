@@ -45,6 +45,7 @@ export class PondButton extends LitElement {
       font-size: var(--pond-font-size-md);
       font-weight: var(--pond-font-weight-medium);
       line-height: var(--pond-font-line-tight);
+      letter-spacing: var(--pond-font-tracking-normal);
       text-box: trim-both cap alphabetic;
       cursor: pointer;
       transition:

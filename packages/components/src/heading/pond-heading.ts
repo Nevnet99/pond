@@ -68,18 +68,22 @@ export class PondHeading extends LitElement {
     :host([data-size="2xl"]) {
       font-size: var(--pond-font-size-2xl);
       line-height: var(--pond-font-line-tight);
+      letter-spacing: var(--pond-font-tracking-tight);
     }
     :host([data-size="3xl"]) {
       font-size: var(--pond-font-size-3xl);
       line-height: var(--pond-font-line-tight);
+      letter-spacing: var(--pond-font-tracking-tight);
     }
     :host([data-size="4xl"]) {
       font-size: var(--pond-font-size-4xl);
       line-height: var(--pond-font-line-tight);
+      letter-spacing: var(--pond-font-tracking-tight);
     }
     :host([data-size="5xl"]) {
       font-size: var(--pond-font-size-5xl);
       line-height: var(--pond-font-line-tight);
+      letter-spacing: var(--pond-font-tracking-tight);
     }
   `
 
