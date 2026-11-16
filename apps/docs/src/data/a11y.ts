@@ -899,6 +899,16 @@ const catalog: Record<string, A11yEntry> = {
       }
     ],
     notes: ['Plain mode strips flex chrome.']
+  },
+  grid: {
+    summary: 'Presentational CSS grid layout.',
+    criteria: [
+      {
+        id: '1.3.2',
+        title: 'Meaningful Sequence',
+        how: 'DOM order should remain sensible when columns reflow.'
+      }
+    ]
   }
 }
 

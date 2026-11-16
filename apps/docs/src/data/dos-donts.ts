@@ -620,6 +620,16 @@ const catalog: Record<string, DosDontsEntry> = {
       'Don’t reach for Flex when Stack or Inline already fits',
       'Don’t use Flex to fake tabular data — prefer Table'
     ]
+  },
+  grid: {
+    dos: [
+      'Use equal columns for tile grids and form matrices',
+      'Override --pond-grid-columns for custom tracks'
+    ],
+    donts: [
+      'Don’t use Grid for linear reading stacks — prefer Stack',
+      'Don’t pack interactive controls so dense they fail hit targets'
+    ]
   }
 }
 
