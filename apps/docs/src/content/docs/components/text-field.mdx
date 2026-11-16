@@ -8,44 +8,156 @@ import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
-Single-line entry for names, emails, and short values.
+Single-line entry for names, emails, and short values. Prefer [Text area](/components/text-area/) for multi-line. Always pair with a visible `label` — never placeholder alone. `appearance="plain"` strips Pond visuals — you own chrome, focus paint, and contrast.
 
 <ComponentTabs>
   <Fragment slot="examples">
-    <PondDemo label="Default + invalid">
-      <pond-stack gap="4" style="max-width:20rem">
-        <pond-text-field label="Project name" value="Pond"></pond-text-field>
-        <pond-text-field label="Email" invalid error-message="Enter a valid email"></pond-text-field>
-      </pond-stack>
+    <PondDemo label="Default">
+      <pond-text-field
+        label="Project name"
+        value="Pond"
+        style="max-width:20rem"></pond-text-field>
+    </PondDemo>
+
+    <p>
+      Surface errors in text linked with <code>aria-describedby</code> — not
+      color alone.
+    </p>
+
+    <PondDemo label="Invalid">
+      <pond-text-field
+        label="Email"
+        type="email"
+        invalid
+        error-message="Enter a valid email"
+        style="max-width:20rem"></pond-text-field>
+    </PondDemo>
+
+    <PondDemo label="Required">
+      <pond-text-field
+        label="Display name"
+        required
+        style="max-width:20rem"></pond-text-field>
+    </PondDemo>
+
+    <p>
+      Prefer keeping submit pressable and validating on submit over disabling
+      the field until every character is perfect.
+    </p>
+
+    <PondDemo label="Disabled">
+      <pond-text-field
+        label="Workspace id"
+        value="pond-prod"
+        disabled
+        style="max-width:20rem"></pond-text-field>
+    </PondDemo>
+
+    <PondDemo label="Plain / reset">
+      <pond-text-field
+        appearance="plain"
+        label="Plain field"
+        value="Unstyled"></pond-text-field>
     </PondDemo>
   </Fragment>
+
   <Fragment slot="code">
 
 ```html
 <pond-text-field label="Project name"></pond-text-field>
-<pond-text-field label="Email" invalid error-message="Required"></pond-text-field>
+<pond-text-field
+  label="Email"
+  type="email"
+  invalid
+  error-message="Enter a valid email"></pond-text-field>
 ```
 
+Listen for value changes:
+
+```html
+<pond-text-field label="Name"></pond-text-field>
+<script type="module">
+  document.querySelector('pond-text-field').addEventListener('pond-input', (e) => {
+    console.log(e.detail.value)
+  })
+</script>
+```
+
+### API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `string` | `''` | Visible label (required for accessible use) |
+| `name` | `string` | `''` | Native form name |
+| `value` | `string` | `''` | Current value (reflects on `pond-input`) |
+| `type` | `'text' \| 'email' \| 'password' \| 'search' \| 'url' \| 'tel'` | `'text'` | Native input type |
+| `placeholder` | `string` | `''` | Hint only — never the only label |
+| `disabled` | `boolean` | `false` | Removes from tab order when set |
+| `required` | `boolean` | `false` | Native required |
+| `invalid` | `boolean` | `false` | Sets `aria-invalid` and danger chrome |
+| `error-message` | `string` | `''` | Error text; linked via `aria-describedby` when `invalid` |
+| `appearance` | `'default' \| 'plain'` | `'default'` | `plain` strips Pond visual CSS |
+
+**Slots:** none — label and error are attributes.
+
+**CSS parts:** `root`, `label`, `input`, `error`.
+
+**Events:** `pond-input` — `{ detail: { value: string } }` on each input.
+
   </Fragment>
+
   <Fragment slot="usage">
 
+### Purpose
 
-Use for single-line values. Prefer Text area for multi-line. Always provide a visible label.
+Collect a single line of text in a form or filter. Not for long notes ([Text area](/components/text-area/)) or choosing from a fixed list ([Select](/components/select/)).
+
+### Anatomy
+
+1. **Root** (`::part(root)`) — stacks label, input, error  
+2. **Label** (`::part(label)`) — associated with the input via `for`/`id`  
+3. **Input** (`::part(input)`) — native `<input>`  
+4. **Error** (`::part(error)`) — shown when `invalid` + `error-message`
+
+### Content guidelines
+
+- Visible label in sentence case (“Project name”)
+- Error copy says how to fix (“Enter a valid email”), not only “Invalid”
+- Placeholder is a hint for format, never the label
+- Keep input text at the `md` (16px) step on mobile (Pond default)
+
+### Happy path vs plain
+
+Default ships label type, border, danger chrome, and focus ring. `appearance="plain"` keeps label association, `aria-invalid` / `aria-describedby`, and `pond-input` — **you** own chrome.
 
     <DosDonts component="text-field" />
 
+**Related:** [Text area](/components/text-area/) · [Select](/components/select/) · [Form](/components/form/) · [Button](/components/button/) (`pending` on submit)
+
   </Fragment>
+
   <Fragment slot="changelog">
 
-Unreleased — label, value, invalid, error-message, plain.
+Unreleased — Phase 9 docs (purpose, anatomy, API, content, patterns); no API break.
 
   </Fragment>
+
   <Fragment slot="accessibility">
     <A11ySection component="text-field" />
   </Fragment>
+
   <Fragment slot="patterns">
 
-Stack of fields in forms; Inline for field + Button.
+**Labeled field + validate on submit** — keep the primary [Button](/components/button/) pressable; set `invalid` + `error-message` from your validator instead of disabling the field while the user types.
+
+```html
+<pond-stack gap="4">
+  <pond-text-field label="Email" type="email"></pond-text-field>
+  <pond-button type="submit">Continue</pond-button>
+</pond-stack>
+```
+
+**Prefer Text area** when the answer is more than one short line.
 
   </Fragment>
 </ComponentTabs>

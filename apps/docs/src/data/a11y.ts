@@ -125,10 +125,14 @@ const catalog: Record<string, A11yEntry> = {
     ],
     notes: [
       'Control text is 16px (`md`) to avoid iOS zoom.',
+      'Errors link with `aria-describedby` when `invalid` + `error-message` are set.',
+      'Prefer form-level or polite live regions if you need errors announced without moving focus.',
       'Plain mode: you own chrome.'
     ],
     limitations: [
       'Placeholder is never the only label — SR and recall both suffer.',
+      '`disabled` removes the input from tab order — prefer validate-while-pressable on submit.',
+      'Pond does not ship an `aria-live` region on the field itself — announce dynamic errors at the form if required.',
       'Plain mode: consumer owns chrome, focus paint, and contrast.'
     ]
   },
