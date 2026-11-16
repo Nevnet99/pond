@@ -32,8 +32,10 @@ export const pondObjectPaths: Record<PondObjectType, string> = {
  * @status stable
  * @since 0.0.0
  *
- * @slot — Optional override of the built-in glyph.
+ * Generic type cues (not vendor product icons). Prefer Tile for square pickers,
+ * Avatar for person identity, Logo for brand marks.
  *
+ * @slot — Optional override of the built-in glyph.
  * @csspart root — Object surface.
  * @csspart glyph — SVG or slotted glyph wrapper.
  */

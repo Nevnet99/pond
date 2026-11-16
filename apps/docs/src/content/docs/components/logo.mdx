@@ -8,12 +8,34 @@ import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
-Logo is the consumer’s brand mark. Pond does not ship Atlassian (or any vendor) logos — pass your own `src` and wordmark.
+Consumer brand mark — pass your own `src` and wordmark. Pond does not ship vendor logos. Prefer [Image](/components/image/) for non-brand photography, [Tile](/components/tile/) / [Object](/components/object/) for content nouns. With `href`, Logo navigates like a link. `appearance="plain"` strips Pond chrome — you own focus paint when linked.
 
 <ComponentTabs>
   <Fragment slot="examples">
-    <PondDemo label="Wordmark">
-      <pond-logo size="lg" href="#">Pond</pond-logo>
+    <PondDemo label="Default (wordmark)">
+      <pond-logo size="lg">Pond</pond-logo>
+    </PondDemo>
+
+    <p>Set <code>href</code> for home links. Empty <code>alt</code> when the wordmark already names the brand.</p>
+
+    <PondDemo label="Linked home">
+      <pond-logo href="/" size="md">Pond</pond-logo>
+    </PondDemo>
+
+    <PondDemo label="Image + wordmark">
+      <pond-logo src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%235b6cff'/%3E%3C/svg%3E" alt="" size="lg">Pond</pond-logo>
+    </PondDemo>
+
+    <PondDemo label="Sizes">
+      <pond-inline gap="4" align="center">
+        <pond-logo size="sm">Pond</pond-logo>
+        <pond-logo size="md">Pond</pond-logo>
+        <pond-logo size="lg">Pond</pond-logo>
+      </pond-inline>
+    </PondDemo>
+
+    <PondDemo label="Plain / reset">
+      <pond-logo appearance="plain" href="/">Pond</pond-logo>
     </PondDemo>
   </Fragment>
 
@@ -21,21 +43,60 @@ Logo is the consumer’s brand mark. Pond does not ship Atlassian (or any vendor
 
 ```html
 <pond-logo src="/brand.svg" alt="">Pond</pond-logo>
+<pond-logo href="/" size="lg">Pond</pond-logo>
+<pond-logo appearance="plain" href="/">Pond</pond-logo>
 ```
+
+### API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `src` | `string` | `''` | Brand image URL |
+| `alt` | `string` | `''` | Image (and overall) name; empty when wordmark carries the brand |
+| `href` | `string` | `''` | When set, renders as a native `<a>` |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Mark + wordmark scale |
+| `appearance` | `'default' \| 'plain'` | `'default'` | `plain` strips Pond visual CSS |
+
+**Slots:** default — wordmark / brand name text.
+
+**CSS parts:** `root` (span or anchor), `image`, `wordmark`.
+
+**Events:** standard navigation when `href` is set.
 
   </Fragment>
 
   <Fragment slot="usage">
 
-Use empty `alt` when the wordmark text already names the brand; set `alt` when the mark is image-only.
+### Purpose
+
+Logo is the **product brand mark**. It is **not** photography ([Image](/components/image/)), a content noun ([Tile](/components/tile/) / [Object](/components/object/)), or a person ([Avatar](/components/avatar/)).
+
+### Anatomy
+
+1. **Host** — `pond-logo`
+2. **Root** (`::part(root)`) — `span` or `<a>` when `href` is set
+3. **Image** (`::part(image)`) — optional mark
+4. **Wordmark** (`::part(wordmark)`) — default slot
+
+### Content guidelines
+
+- Pass your own assets — Pond never ships third-party logos
+- Empty `alt` when the wordmark names the brand; set `alt` for image-only marks
+- Linked logos need an accessible name via wordmark or `alt`
+
+### Happy path vs plain
+
+Default ships size, weight, gap, and focus ring when linked. `appearance="plain"` unwraps — **you** own focus paint and color when `href` is set.
 
     <DosDonts component="logo" />
+
+**Related:** [Image](/components/image/) · [Object](/components/object/) · [Tile](/components/tile/) · [Link](/components/link/) for non-brand navigation
 
   </Fragment>
 
   <Fragment slot="changelog">
 
-Unreleased — brand mark with image + wordmark, optional link, sm / md / lg.
+Unreleased — Phase 9 docs (purpose, anatomy, API, content, patterns); no API break.
 
   </Fragment>
 
@@ -45,7 +106,13 @@ Unreleased — brand mark with image + wordmark, optional link, sm / md / lg.
 
   <Fragment slot="patterns">
 
-Home links: set `href`. Prefer Image for non-brand photography; Tile/Object for content nouns.
+**App header home** — linked wordmark.
+
+```html
+<pond-logo href="/" src="/brand.svg" alt="">Acme</pond-logo>
+```
+
+**Prefer Image for heroes** — marketing photography is [Image](/components/image/), not Logo. Prefer Object/Tile for content-type nouns.
 
   </Fragment>
 </ComponentTabs>

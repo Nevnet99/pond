@@ -9,8 +9,10 @@ export type PondLogoSize = 'sm' | 'md' | 'lg'
  * @status stable
  * @since 0.0.0
  *
- * @slot — Wordmark or brand name text.
+ * Consumer brand only — Pond ships no vendor logos. Prefer Image for photos,
+ * Object/Tile for content nouns. Set `href` for home navigation.
  *
+ * @slot — Wordmark or brand name text.
  * @csspart root — Logo surface (span or anchor).
  * @csspart image — Brand image when `src` is set.
  * @csspart wordmark — Wordmark slot wrapper.

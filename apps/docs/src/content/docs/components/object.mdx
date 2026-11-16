@@ -8,19 +8,46 @@ import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
-Object marks a generic content type (document, folder, link, image, code, person). It is not an Atlassian product icon set — forks can slot custom glyphs.
+Generic content-type glyph (document, folder, link, image, code, person) for lists, tables, and pickers. Not an Atlassian product icon set — forks can slot custom glyphs. Prefer [Tile](/components/tile/) for labeled square cards, [Logo](/components/logo/) for brand marks, [Icon](/components/icon/) for UI chrome glyphs, and [Image](/components/image/) for photos. `appearance="plain"` strips Pond chrome — you own the glyph surface.
 
 <ComponentTabs>
   <Fragment slot="examples">
+    <PondDemo label="Default (document)">
+      <pond-object type="document" label="Document"></pond-object>
+    </PondDemo>
+
+    <p>Pick the type that matches the noun — do not treat Object as product branding.</p>
+
     <PondDemo label="Types">
-      <div style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap">
+      <pond-inline gap="3" align="center" wrap>
         <pond-object type="document" label="Document"></pond-object>
         <pond-object type="folder" label="Folder"></pond-object>
         <pond-object type="link" label="Link"></pond-object>
         <pond-object type="image" label="Image"></pond-object>
         <pond-object type="code" label="Code"></pond-object>
         <pond-object type="person" label="Person"></pond-object>
-      </div>
+      </pond-inline>
+    </PondDemo>
+
+    <PondDemo label="Sizes beside a title">
+      <pond-stack gap="2">
+        <pond-inline gap="2" align="center">
+          <pond-object size="sm" type="folder" label="Folder"></pond-object>
+          <pond-text>Small beside dense rows</pond-text>
+        </pond-inline>
+        <pond-inline gap="2" align="center">
+          <pond-object type="folder" label="Folder"></pond-object>
+          <pond-text>Default md</pond-text>
+        </pond-inline>
+        <pond-inline gap="2" align="center">
+          <pond-object size="lg" type="folder" label="Folder"></pond-object>
+          <pond-text>Large emphasis</pond-text>
+        </pond-inline>
+      </pond-stack>
+    </PondDemo>
+
+    <PondDemo label="Plain / reset">
+      <pond-object type="code" label="Code" appearance="plain"></pond-object>
     </PondDemo>
   </Fragment>
 
@@ -28,21 +55,58 @@ Object marks a generic content type (document, folder, link, image, code, person
 
 ```html
 <pond-object type="folder" label="Folder"></pond-object>
+<pond-object type="document" size="sm" label="Document"></pond-object>
+<pond-object type="code" appearance="plain" label="Code"></pond-object>
 ```
+
+### API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `type` | `'document' \| 'folder' \| 'link' \| 'image' \| 'code' \| 'person'` | `'document'` | Built-in content-type glyph |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Glyph footprint |
+| `label` | `string` | `''` | Accessible name (`role="img"`); unlabeled objects are decorative / `aria-hidden` |
+| `appearance` | `'default' \| 'plain'` | `'default'` | `plain` strips Pond visual CSS |
+
+**Slots:** default — optional override of the built-in glyph.
+
+**CSS parts:** `root`, `glyph`.
+
+**Events:** none (presentational).
 
   </Fragment>
 
   <Fragment slot="usage">
 
-Set `label` whenever the glyph carries meaning on its own.
+### Purpose
+
+Object marks a **content type** beside titles and rows. It is **not** a brand ([Logo](/components/logo/)), photo ([Image](/components/image/)), square picker card ([Tile](/components/tile/)), or person face ([Avatar](/components/avatar/) — use `type="person"` only as a type cue, not identity).
+
+### Anatomy
+
+1. **Host** — `pond-object`
+2. **Surface** (`::part(root)`) — rounded glyph well
+3. **Glyph** (`::part(glyph)`) — SVG or slotted override
+
+### Content guidelines
+
+- Set `label` when the glyph is the only name
+- Leave unlabeled only when decorative beside visible text that already names the type
+- Do not treat Object as Atlassian (or any vendor) product icons
+
+### Happy path vs plain
+
+Default ships subtle surface, size steps, and built-in paths. `appearance="plain"` unwraps — **you** own chrome; labelling rules stay.
 
     <DosDonts component="object" />
+
+**Related:** [Tile](/components/tile/) · [Icon](/components/icon/) · [Logo](/components/logo/) · [Image](/components/image/) · [Avatar](/components/avatar/)
 
   </Fragment>
 
   <Fragment slot="changelog">
 
-Unreleased — six generic content types, sm / md / lg, slot override.
+Unreleased — Phase 9 docs (purpose, anatomy, API, content, patterns); no API break.
 
   </Fragment>
 
@@ -52,7 +116,16 @@ Unreleased — six generic content types, sm / md / lg, slot override.
 
   <Fragment slot="patterns">
 
-Use beside row titles in tables and pickers. Prefer Tile when you need a labeled square card; Logo for brand marks.
+**Row title with type** — Object + Text in an Inline.
+
+```html
+<pond-inline gap="2" align="center">
+  <pond-object type="document" label="Document"></pond-object>
+  <pond-text>Q3 roadmap</pond-text>
+</pond-inline>
+```
+
+**Prefer Tile in pickers** — when the noun needs a labeled square card, use [Tile](/components/tile/). Prefer Logo for brand marks.
 
   </Fragment>
 </ComponentTabs>
