@@ -99,8 +99,13 @@ const catalog: Record<string, A11yEntry> = {
         how: 'Visible text should describe the destination.'
       }
     ],
+    notes: [
+      'Default `href="#"` is a placeholder — always set a real destination before shipping.',
+      '`target="_blank"` applies `rel="noopener noreferrer"` unless `rel` is set.'
+    ],
     limitations: [
       'Do not use Link for in-page actions — use Button (including `variant="link"` for chrome-free actions).',
+      'Opening a new tab without saying so in the UI surprises keyboard and SR users.',
       'Plain mode: consumer owns focus paint and contrast.'
     ]
   },

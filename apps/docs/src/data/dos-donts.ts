@@ -25,11 +25,13 @@ const catalog: Record<string, DosDontsEntry> = {
     dos: [
       'Use for navigation between pages or URLs',
       'Write link text that names the destination',
-      'Keep underline visible for affordance'
+      'Keep underline visible for affordance',
+      'Say when a link opens in a new tab'
     ],
     donts: [
       'Don’t use for in-place actions — use Button (link variant if needed)',
       'Don’t use vague text like “click here”',
+      'Don’t ship the default href="#” placeholder',
       'Don’t open new tabs without telling the user'
     ]
   },
