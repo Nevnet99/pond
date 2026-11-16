@@ -559,10 +559,15 @@ const catalog: Record<string, DosDontsEntry> = {
     ]
   },
   'tag-group': {
-    dos: ['Name the group for AT', 'Keep related tags together'],
+    dos: [
+      'Name the group for AT with a specific `label`',
+      'Keep related tags together',
+      'Let Tag own remove behavior and chrome'
+    ],
     donts: [
       'Don’t mix unrelated taxonomies in one group',
-      'Don’t omit remove names on dismissible tags'
+      'Don’t omit remove names on dismissible tags',
+      'Don’t use Tag group for status lists — use Lozenge'
     ]
   },
   avatar: {

@@ -966,6 +966,12 @@ const catalog: Record<string, A11yEntry> = {
     criteria: [
       labels('Group named for related tags.'),
       name('Each tag remains independently operable.')
+    ],
+    keyboard: ['Tab moves through removable controls inside child Tags'],
+    limitations: [
+      'Group does not manage selection or roving tabindex — each Tag is independent.',
+      'Default `label` is “Tags”; override with a specific set name for real UIs.',
+      'Plain mode: consumer owns spacing chrome and contrast; child Tags keep their own plain duties.'
     ]
   },
   avatar: {
