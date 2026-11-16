@@ -8,7 +8,7 @@ import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
-Use Panel in the Page `panel` slot (or any side column) for titled contextual content.
+Use Panel in the [Page](/components/page/) `panel` slot (or any side column) for titled contextual content — filters, inspectors, secondary actions. Keep the primary page title in [Page header](/components/page-header/) (`h1`); Panel titles are `h2`. `appearance="plain"` strips Pond visuals — you own structure and paint.
 
 <ComponentTabs>
   <Fragment slot="examples">
@@ -20,6 +20,27 @@ Use Panel in the Page `panel` slot (or any side column) for titled contextual co
         </pond-panel>
         <pond-text>Main content</pond-text>
       </pond-page>
+    </PondDemo>
+
+    <p>
+      Empty header/footer regions collapse. Prefer <code>heading</code> or the
+      <code>heading</code> slot — not both with conflicting titles.
+    </p>
+
+    <PondDemo label="Actions + footer">
+      <pond-panel heading="Inspector" style="max-width: 18rem; border: 1px solid var(--pond-color-border-default); padding: 0.75rem">
+        <pond-button slot="actions" variant="subtle">Clear</pond-button>
+        <pond-text size="sm">Selected item details.</pond-text>
+        <div slot="footer">
+          <pond-button variant="primary">Apply</pond-button>
+        </div>
+      </pond-panel>
+    </PondDemo>
+
+    <PondDemo label="Plain / reset">
+      <pond-panel appearance="plain" heading="Unstyled panel">
+        <pond-text size="sm">You own paint and structure.</pond-text>
+      </pond-panel>
     </PondDemo>
   </Fragment>
 
@@ -37,19 +58,54 @@ Use Panel in the Page `panel` slot (or any side column) for titled contextual co
 </pond-page>
 ```
 
+### API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `heading` | `string` | `''` | Panel title (`h2`) when the `heading` slot is empty |
+| `appearance` | `'default' \| 'plain'` | `'default'` | `plain` strips Pond visual CSS |
+
+**Slots:** `heading`, `actions`, `footer`, default (body).
+
+**CSS parts:** `root`, `header`, `heading`, `actions`, `body`, `footer`.
+
+**Events:** none.
+
   </Fragment>
 
   <Fragment slot="usage">
 
-Empty header/footer regions collapse. Prefer `heading` (renders an `h2`) or the `heading` slot — not both with conflicting titles.
+### Purpose
+
+Panel holds contextual side content beside the main reading column. It is **not** page chrome ([Page](/components/page/) / [Page header](/components/page-header/)) and **not** a modal ([Modal](/components/modal/)).
+
+### Anatomy
+
+1. **Section** (`::part(root)`) — labelled when `heading` is set
+2. **Header** (`::part(header)`) — title + actions (collapses when empty)
+3. **Heading** (`::part(heading)`) — `h2` from property or slot
+4. **Body** (`::part(body)`) — default slot (scrolls when tall)
+5. **Footer** (`::part(footer)`) — optional sticky actions region
+
+### Content guidelines
+
+- Sentence case panel titles (“Filters”, “Details”)
+- Keep the page `h1` in Page header; Panel stays `h2`
+- Footer for apply/reset clusters; don’t hide destructive confirms only in the panel without a clear label
+
+### Happy path vs plain
+
+Default ships header/body/footer rhythm and a footer rule. `appearance="plain"` keeps the section structure when you provide a heading — **you** own paint and any landmark labels for slotted headings.
 
     <DosDonts component="panel" />
+
+**Related:** [Page](/components/page/) · [Page header](/components/page-header/) · [Drawer](/components/drawer/) for temporary overlays
 
   </Fragment>
 
   <Fragment slot="changelog">
 
-Unreleased — header / body / footer panel chrome for Page side columns.
+Unreleased — Phase 9 docs (purpose, anatomy, API, content, limitations, patterns); no API break.
 
   </Fragment>
 
@@ -59,7 +115,19 @@ Unreleased — header / body / footer panel chrome for Page side columns.
 
   <Fragment slot="patterns">
 
-Compose inside `pond-page`’s `panel` slot. Keep primary page title in Page header (`h1`); Panel uses `h2`.
+**Filters beside a catalog** — Page header keeps the `h1`; Panel owns filter chrome.
+
+```html
+<pond-page>
+  <pond-page-header slot="header" heading="Projects"></pond-page-header>
+  <pond-panel slot="panel" heading="Filters">
+    <!-- filter fields -->
+  </pond-panel>
+  <p>Results</p>
+</pond-page>
+```
+
+**Prefer Drawer for temporary overlays** — if the side content should interrupt and dismiss, use [Drawer](/components/drawer/) instead of a persistent Panel.
 
   </Fragment>
 </ComponentTabs>

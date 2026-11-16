@@ -103,10 +103,11 @@ export class PondPanel extends LitElement {
     }
   `
 
+  /** Visual presentation. `plain` strips Pond visual CSS. */
   @property({ reflect: true })
   appearance: PondAppearance = 'default'
 
-  /** Panel title when the heading slot is empty. */
+  /** Panel title (`h2`) when the `heading` slot is empty. Labels the section. */
   @property()
   heading = ''
 
