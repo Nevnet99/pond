@@ -17,9 +17,7 @@ describe('pond-code visual', () => {
   afterEach(() => link.remove())
   it('matches at mobile / tablet / desktop', async () => {
     const el = await fixture<PondCode>(
-      html`<p
-        style="margin:0;font:16px/24px system-ui,sans-serif"
-      >Run <pond-code>pnpm install</pond-code></p>`
+      html`<p style="font-family:sans-serif">Run <pond-code>pnpm install</pond-code></p>`
     )
     await matchScreenshotAtViewports('code-default', el)
   })
