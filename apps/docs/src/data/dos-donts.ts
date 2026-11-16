@@ -584,11 +584,13 @@ const catalog: Record<string, DosDontsEntry> = {
   text: {
     dos: [
       'Pick a scale step with size',
-      'Cap long-form measure on the reading column (~60–75ch)'
+      'Cap long-form measure on the reading column (~60–75ch)',
+      'Use muted for helpers secondary to a visible label'
     ],
     donts: [
       'Don’t hard-code one-off font sizes in product CSS',
-      'Don’t skip Heading when you need outline structure'
+      'Don’t skip Heading when you need outline structure',
+      'Don’t use Text for short KPIs — prefer Metric text'
     ]
   },
   heading: {
@@ -598,27 +600,31 @@ const catalog: Record<string, DosDontsEntry> = {
     ],
     donts: [
       'Don’t skip levels to get a visual size — use size',
-      'Don’t style a div to look like a heading'
+      'Don’t style a div to look like a heading',
+      'Don’t use Heading for body paragraphs — prefer Text'
     ]
   },
   box: {
     dos: [
-      'Use for layout and surface grouping',
-      'Prefer semantic components for interactive content'
+      'Use for padding and surface grouping',
+      'Prefer Stack / Inline / Flex / Grid to arrange children'
     ],
     donts: [
       'Don’t attach click handlers to Box instead of a Button/Link',
-      'Don’t nest boxes purely for shadow stacking'
+      'Don’t nest boxes purely for shadow stacking',
+      'Don’t use Box alone for vertical rhythm — prefer Stack'
     ]
   },
   stack: {
     dos: [
       'Use gap tokens for vertical rhythm',
-      'Keep DOM order matching reading order'
+      'Keep DOM order matching reading order',
+      'Default choice for forms and section columns'
     ],
     donts: [
       'Don’t use Stack to fake a table or grid of tabular data',
-      'Don’t reverse visual order against DOM without a strong reason'
+      'Don’t reverse visual order against DOM without a strong reason',
+      'Don’t use Stack for horizontal toolbars — prefer Inline'
     ]
   },
   inline: {
@@ -628,7 +634,8 @@ const catalog: Record<string, DosDontsEntry> = {
     ],
     donts: [
       'Don’t force nowrap on groups that must reflow on small screens',
-      'Don’t put primary page structure only in an Inline'
+      'Don’t put primary page structure only in an Inline',
+      'Don’t use Inline for multi-column matrices — prefer Grid'
     ]
   },
   flex: {

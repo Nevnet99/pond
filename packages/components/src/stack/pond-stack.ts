@@ -11,6 +11,10 @@ export type PondStackAlign = 'stretch' | 'start' | 'center' | 'end'
  * @status stable
  * @since 0.0.0
  *
+ * Default for forms and sections. Prefer Inline for rows; Flex for reverse /
+ * space-evenly; Grid for equal columns.
+ *
+ * @slot — Stacked children (DOM order = reading order).
  * @csspart stack — The flex column container.
  */
 @customElement('pond-stack')

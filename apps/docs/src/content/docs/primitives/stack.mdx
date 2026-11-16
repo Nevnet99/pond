@@ -8,15 +8,46 @@ import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
-Stacks children in a column with consistent gap.
+Vertical column with consistent gap. Default layout for forms and sections. Prefer [Inline](/primitives/inline/) for horizontal toolbars; [Flex](/components/flex/) when you need reverse or space-evenly; [Grid](/components/grid/) for equal columns. `appearance="plain"` strips flex chrome — you own layout CSS.
 
 <ComponentTabs>
   <Fragment slot="examples">
-    <PondDemo label="Gap 3">
-      <pond-stack gap="3">
+    <PondDemo label="Default (gap 4)">
+      <pond-stack>
         <pond-text>First</pond-text>
         <pond-text>Second</pond-text>
         <pond-text>Third</pond-text>
+      </pond-stack>
+    </PondDemo>
+
+    <p>Tighten or open gap with space tokens — do not invent one-off margins.</p>
+
+    <PondDemo label="Gap variants">
+      <pond-inline gap="6" align="start">
+        <pond-stack gap="2">
+          <pond-text size="sm" muted>gap 2</pond-text>
+          <pond-text>A</pond-text>
+          <pond-text>B</pond-text>
+        </pond-stack>
+        <pond-stack gap="6">
+          <pond-text size="sm" muted>gap 6</pond-text>
+          <pond-text>A</pond-text>
+          <pond-text>B</pond-text>
+        </pond-stack>
+      </pond-inline>
+    </PondDemo>
+
+    <PondDemo label="Cross-axis align">
+      <pond-stack gap="2" align="center" style="width: 12rem; border: 1px dashed var(--pond-color-border-default); padding: 0.5rem">
+        <pond-button variant="secondary">Narrow</pond-button>
+        <pond-button variant="primary">Centered</pond-button>
+      </pond-stack>
+    </PondDemo>
+
+    <PondDemo label="Plain / reset">
+      <pond-stack appearance="plain" gap="3">
+        <pond-text>Unstyled stack children</pond-text>
+        <pond-text>You own the column CSS</pond-text>
       </pond-stack>
     </PondDemo>
   </Fragment>
@@ -28,22 +59,57 @@ Stacks children in a column with consistent gap.
   <pond-text>One</pond-text>
   <pond-text>Two</pond-text>
 </pond-stack>
+<pond-stack gap="2" align="center">…</pond-stack>
+<pond-stack appearance="plain">…</pond-stack>
 ```
+
+### API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `gap` | space scale (`'0'`–`'12'`) | `'4'` | Vertical gap between children |
+| `align` | `'stretch' \| 'start' \| 'center' \| 'end'` | `'stretch'` | Cross-axis alignment |
+| `appearance` | `'default' \| 'plain'` | `'default'` | `plain` strips flex chrome |
+
+**Slots:** default — stacked children (DOM order = reading order).
+
+**CSS parts:** `stack` — flex column container.
+
+**Events:** none (presentational).
 
   </Fragment>
 
   <Fragment slot="usage">
 
+### Purpose
 
-Default layout for forms and sections. Use `align` for cross-axis. Prefer Inline for horizontal toolbars.
+Stack is the vertical rhythm primitive. It is **not** a table, grid, or horizontal toolbar ([Inline](/primitives/inline/) / [Flex](/components/flex/) / [Grid](/components/grid/)).
+
+### Anatomy
+
+1. **Host** — `pond-stack`
+2. **Column** (`::part(stack)`) — flex column + gap
+3. **Children** — default slot
+
+### Content guidelines
+
+- Keep DOM order matching reading order (no visual-only reordering)
+- Prefer token `gap` over ad-hoc margins between siblings
+- Pair with [Box](/primitives/box/) when the column needs a padded surface
+
+### Happy path vs plain
+
+Default ships column flex, gap tokens, and align. `appearance="plain"` unwraps — **you** own flex/gap CSS; children and order stay.
 
     <DosDonts component="stack" />
+
+**Related:** [Inline](/primitives/inline/) (row) · [Box](/primitives/box/) (surface) · [Flex](/components/flex/) (direction/reverse/evenly) · [Grid](/components/grid/) (columns)
 
   </Fragment>
 
   <Fragment slot="changelog">
 
-Unreleased — vertical stack, gap scale, align stretch/start/center/end.
+Unreleased — Phase 9 docs (purpose, anatomy, API, content, patterns); no API break.
 
   </Fragment>
 
@@ -53,7 +119,20 @@ Unreleased — vertical stack, gap scale, align stretch/start/center/end.
 
   <Fragment slot="patterns">
 
-Pair with Box for section frames; Inline for action rows.
+**Form column** — Stack fields with a consistent gap.
+
+```html
+<pond-stack gap="4">
+  <pond-text-field label="Email"></pond-text-field>
+  <pond-text-field label="Name"></pond-text-field>
+  <pond-inline gap="2">
+    <pond-button variant="primary">Save</pond-button>
+    <pond-button variant="secondary">Cancel</pond-button>
+  </pond-inline>
+</pond-stack>
+```
+
+**Prefer Inline for toolbars** — horizontal action rows belong in [Inline](/primitives/inline/), not a sideways Stack.
 
   </Fragment>
 </ComponentTabs>

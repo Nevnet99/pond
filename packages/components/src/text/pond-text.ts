@@ -12,6 +12,11 @@ export type PondTextSize = Extract<
  * @summary Body text primitive on the Pond type scale.
  * @status stable
  * @since 0.0.0
+ *
+ * Prefer Heading for outline titles; Metric text for short KPIs.
+ *
+ * @slot — Text content (may include inline links).
+ * @csspart text — Semantic `<p>`.
  */
 @customElement('pond-text')
 export class PondText extends LitElement {

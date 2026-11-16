@@ -11,6 +11,10 @@ export type PondBoxBackground = 'transparent' | 'canvas' | 'surface' | 'subtle'
  * @status stable
  * @since 0.0.0
  *
+ * Prefer Stack / Inline to arrange children; Box only frames the surface.
+ * Not an interactive control — put actions on Button or Link.
+ *
+ * @slot — Box content.
  * @csspart box — The inner layout element.
  */
 @customElement('pond-box')

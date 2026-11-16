@@ -7,6 +7,11 @@ import { headingLevelSize, type PondTypeSize } from '../shared/type-scale.js'
  * @summary Heading primitive — semantic level + optional visual size from the type scale.
  * @status stable
  * @since 0.0.0
+ *
+ * `level` owns the outline; `size` owns visuals. Prefer Text for body copy.
+ *
+ * @slot — Heading text.
+ * @csspart heading — Native `h1`–`h6`.
  */
 @customElement('pond-heading')
 export class PondHeading extends LitElement {
