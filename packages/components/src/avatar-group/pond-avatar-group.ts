@@ -2,7 +2,16 @@ import { css, html, LitElement } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import type { PondAppearance } from '../shared/appearance.js'
 
-/** @summary Layout helper for a stack of Avatars. @status stable @since 0.0.0 */
+/**
+ * @summary Overlapping layout helper for a stack of Avatars.
+ * @status stable
+ * @since 0.0.0
+ *
+ * Layout only — face styling comes from Avatar. No overflow/`+N` count yet.
+ *
+ * @slot — One or more `pond-avatar` children.
+ * @csspart root — Group row (`role="group"`).
+ */
 @customElement('pond-avatar-group')
 export class PondAvatarGroup extends LitElement {
   static override styles = css`

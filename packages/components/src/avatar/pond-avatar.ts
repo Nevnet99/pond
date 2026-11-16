@@ -9,6 +9,12 @@ export type PondAvatarSize = 'sm' | 'md' | 'lg'
  * @summary User image, initials, or icon fallback.
  * @status stable
  * @since 0.0.0
+ *
+ * Person identity. Prefer Avatar group for overlapping stacks; Object
+ * `type="person"` only as a content-type cue, not a face.
+ *
+ * @csspart root — Circle surface.
+ * @csspart image — Photo when `src` is set.
  */
 @customElement('pond-avatar')
 export class PondAvatar extends LitElement {

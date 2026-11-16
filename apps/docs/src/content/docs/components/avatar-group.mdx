@@ -2,42 +2,123 @@
 title: Avatar group
 description: Overlapping layout for a stack of Avatars.
 ---
+
 import ComponentTabs from '../../../components/ComponentTabs.astro'
 import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
-Compose existing Avatars into an overlapping group.
+Overlapping layout for a stack of [Avatar](/components/avatar/) children. Layout helper only — face styling comes from Avatar. Prefer a single Avatar for one person. `appearance="plain"` strips overlap chrome — you own the stack layout.
 
 <ComponentTabs>
   <Fragment slot="examples">
     <PondDemo label="Default">
       <pond-avatar-group label="Team">
-        <pond-avatar initials="AB"></pond-avatar>
-        <pond-avatar initials="CD"></pond-avatar>
-        <pond-avatar initials="EF"></pond-avatar>
+        <pond-avatar initials="AB" label="Ada Byron"></pond-avatar>
+        <pond-avatar initials="CD" label="Chris Diaz"></pond-avatar>
+        <pond-avatar initials="EF" label="Eve Frost"></pond-avatar>
+      </pond-avatar-group>
+    </PondDemo>
+
+    <p>Name the group for AT. Keep each Avatar labelled as well.</p>
+
+    <PondDemo label="With photo mix">
+      <pond-avatar-group label="Reviewers">
+        <pond-avatar
+          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect fill='%2390a4ae' width='64' height='64'/%3E%3C/svg%3E"
+          label="Alex Rivera"
+        ></pond-avatar>
+        <pond-avatar initials="LB" label="Luke Brannagan"></pond-avatar>
+        <pond-avatar label="Anonymous"></pond-avatar>
+      </pond-avatar-group>
+    </PondDemo>
+
+    <PondDemo label="Plain / reset">
+      <pond-avatar-group label="Plain group" appearance="plain">
+        <pond-avatar initials="A" label="A"></pond-avatar>
+        <pond-avatar initials="B" label="B"></pond-avatar>
       </pond-avatar-group>
     </PondDemo>
   </Fragment>
+
   <Fragment slot="code">
 
 ```html
 <pond-avatar-group label="Team">
-  <pond-avatar initials="AB"></pond-avatar>
+  <pond-avatar initials="AB" label="Ada Byron"></pond-avatar>
+  <pond-avatar initials="CD" label="Chris Diaz"></pond-avatar>
 </pond-avatar-group>
+<pond-avatar-group label="Plain" appearance="plain">…</pond-avatar-group>
 ```
 
+### API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `string` | `'Avatars'` | Accessible name for `role="group"` |
+| `appearance` | `'default' \| 'plain'` | `'default'` | `plain` strips overlap chrome |
+
+**Slots:** default — one or more `pond-avatar` children.
+
+**CSS parts:** `root` — flex row that overlaps slotted avatars.
+
+**Events:** none (presentational).
+
   </Fragment>
+
   <Fragment slot="usage">
 
-Layout helper only — style comes from Avatar.
+### Purpose
+
+Avatar group stacks **multiple people** with overlap. It is **not** a single identity ([Avatar](/components/avatar/)) and does **not** yet ship overflow/`+N` counting — keep the set small or provide another way to list members.
+
+### Anatomy
+
+1. **Host** — `pond-avatar-group`
+2. **Group** (`::part(root)`) — `role="group"` row
+3. **Children** — slotted `pond-avatar` faces
+
+### Content guidelines
+
+- Set a meaningful group `label` (e.g. “Collaborators”)
+- Label each Avatar with the person’s name
+- Do not stack so many faces that names become impossible to discover
+
+### Happy path vs plain
+
+Default ships negative-margin overlap and canvas rings. `appearance="plain"` unwraps — **you** own stack layout; group naming stays.
 
     <DosDonts component="avatar-group" />
 
+**Related:** [Avatar](/components/avatar/) · [Inline](/primitives/inline/) for non-overlapping rows
+
   </Fragment>
-  <Fragment slot="changelog">Unreleased — overlap stack.</Fragment>
+
+  <Fragment slot="changelog">
+
+Unreleased — Phase 9 docs (purpose, anatomy, API, content, patterns); no API break.
+
+  </Fragment>
+
   <Fragment slot="accessibility">
     <A11ySection component="avatar-group" />
   </Fragment>
-  <Fragment slot="patterns">None yet.</Fragment>
+
+  <Fragment slot="patterns">
+
+**Collaborators on a card** — named group of Avatars.
+
+```html
+<pond-stack gap="2">
+  <pond-text size="sm" muted>Collaborators</pond-text>
+  <pond-avatar-group label="Collaborators">
+    <pond-avatar initials="AB" label="Ada Byron"></pond-avatar>
+    <pond-avatar initials="CD" label="Chris Diaz"></pond-avatar>
+  </pond-avatar-group>
+</pond-stack>
+```
+
+**Prefer a single Avatar** — one person does not need a group. Prefer Inline of Avatars only when overlap is undesirable and each face stays fully visible.
+
+  </Fragment>
 </ComponentTabs>
