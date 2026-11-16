@@ -9,8 +9,10 @@ export type PondMetricTextSize = 'sm' | 'md' | 'lg' | 'xl'
  * @status stable
  * @since 0.0.0
  *
- * @slot — Metric value (prefer digits / short units).
+ * Short KPIs with tabular nums. Prefer Text for prose; Heading for titles.
+ * Always pair with a visible label.
  *
+ * @slot — Metric value (prefer digits / short units).
  * @csspart root — Metric text element.
  */
 @customElement('pond-metric-text')

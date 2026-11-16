@@ -8,34 +8,107 @@ import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
-Metric text is for short numeric values — counts, percentages, KPIs — with tabular numerals and display weight.
+Short numeric values — counts, percentages, KPIs — with tabular numerals and display weight. Prefer [Text](/primitives/text/) for sentences and [Heading](/primitives/heading/) for outline titles. `appearance="plain"` strips Pond type CSS — you own font size and contrast.
 
 <ComponentTabs>
   <Fragment slot="examples">
-    <PondDemo label="Sizes">
-      <div style="display:flex;gap:1.5rem;align-items:baseline">
-        <pond-metric-text size="sm">12</pond-metric-text>
+    <PondDemo label="Default (lg)">
+      <pond-stack gap="1">
         <pond-metric-text>48</pond-metric-text>
-        <pond-metric-text size="xl">1.2k</pond-metric-text>
-      </div>
+        <pond-text size="sm" muted>Open issues</pond-text>
+      </pond-stack>
+    </PondDemo>
+
+    <p>Size steps emphasize hierarchy — pair every number with a visible label.</p>
+
+    <PondDemo label="Sizes">
+      <pond-inline gap="6" align="end">
+        <pond-stack gap="1" align="center">
+          <pond-metric-text size="sm">12</pond-metric-text>
+          <pond-text size="xs" muted>sm</pond-text>
+        </pond-stack>
+        <pond-stack gap="1" align="center">
+          <pond-metric-text size="md">24</pond-metric-text>
+          <pond-text size="xs" muted>md</pond-text>
+        </pond-stack>
+        <pond-stack gap="1" align="center">
+          <pond-metric-text size="lg">48</pond-metric-text>
+          <pond-text size="xs" muted>lg</pond-text>
+        </pond-stack>
+        <pond-stack gap="1" align="center">
+          <pond-metric-text size="xl">1.2k</pond-metric-text>
+          <pond-text size="xs" muted>xl</pond-text>
+        </pond-stack>
+      </pond-inline>
+    </PondDemo>
+
+    <PondDemo label="Muted secondary metric">
+      <pond-metric-text size="md" muted>3%</pond-metric-text>
+    </PondDemo>
+
+    <PondDemo label="Plain / reset">
+      <pond-metric-text appearance="plain">99</pond-metric-text>
     </PondDemo>
   </Fragment>
 
   <Fragment slot="code">
 
 ```html
-<pond-metric-text>48</pond-metric-text>
+<pond-stack gap="1">
+  <pond-metric-text>48</pond-metric-text>
+  <pond-text size="sm" muted>Open issues</pond-text>
+</pond-stack>
+<pond-metric-text size="xl">1.2k</pond-metric-text>
+<pond-metric-text appearance="plain">99</pond-metric-text>
 ```
+
+### API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `size` | `'sm' \| 'md' \| 'lg' \| 'xl'` | `'lg'` | Display scale step |
+| `muted` | `boolean` | `false` | Muted foreground (ignored when plain) |
+| `appearance` | `'default' \| 'plain'` | `'default'` | `plain` strips Pond visual CSS |
+
+**Slots:** default — metric value (digits / short units).
+
+**CSS parts:** `root` — metric `<p>`.
+
+**Events:** none (presentational).
 
   </Fragment>
 
   <Fragment slot="usage">
+
+### Purpose
+
+Metric text is for **short numbers** people compare at a glance. It is **not** body copy ([Text](/primitives/text/)) and **not** a section title ([Heading](/primitives/heading/)).
+
+### Anatomy
+
+1. **Host** — `pond-metric-text`
+2. **Value** (`::part(root)`) — tabular display numeral
+3. **Content** — default slot (the number)
+
+### Content guidelines
+
+- Digits and short units only (`48`, `3%`, `1.2k`) — not sentences
+- Always pair with a visible label or caption naming the metric
+- Sentence-case unit labels in adjacent Text
+
+### Happy path vs plain
+
+Default ships display face, tabular nums, weight, and size steps. `appearance="plain"` unwraps — **you** own type CSS and contrast; keep a visible label.
+
     <DosDonts component="metric-text" />
+
+**Related:** [Text](/primitives/text/) · [Heading](/primitives/heading/) · [Stack](/primitives/stack/) for number + label
+
   </Fragment>
 
   <Fragment slot="changelog">
 
-Unreleased — sm / md / lg / xl metric typography with muted.
+Unreleased — Phase 9 docs (purpose, anatomy, API, content, patterns); no API break.
 
   </Fragment>
 
@@ -45,7 +118,16 @@ Unreleased — sm / md / lg / xl metric typography with muted.
 
   <Fragment slot="patterns">
 
-Pair with Text for the unit label. Prefer Heading for section titles.
+**KPI with label** — Metric text + muted Text.
+
+```html
+<pond-stack gap="1">
+  <pond-metric-text size="xl">128</pond-metric-text>
+  <pond-text size="sm" muted>Active seats</pond-text>
+</pond-stack>
+```
+
+**Prefer Heading for titles** — if the string belongs in the outline, use [Heading](/primitives/heading/). Prefer [Text](/primitives/text/) for prose around the metric.
 
   </Fragment>
 </ComponentTabs>

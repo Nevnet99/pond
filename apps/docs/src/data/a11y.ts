@@ -1016,7 +1016,12 @@ const catalog: Record<string, A11yEntry> = {
         id: '1.3.1',
         title: 'Info and Relationships',
         how: 'Provide a visible label or caption so the number’s meaning is clear.'
-      }
+      },
+      contrast()
+    ],
+    limitations: [
+      'A bare number without a visible label is ambiguous to everyone, including AT.',
+      'Plain mode: consumer owns type CSS and contrast.'
     ]
   }
 }
