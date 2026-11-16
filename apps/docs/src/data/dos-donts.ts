@@ -226,6 +226,16 @@ const catalog: Record<string, DosDontsEntry> = {
       'Don’t leave the field unlabeled'
     ]
   },
+  comment: {
+    dos: [
+      'Show author and relative time clearly',
+      'Keep actions in the actions slot'
+    ],
+    donts: [
+      'Don’t nest Comment inside Comment for threads in this phase',
+      'Don’t build reactions or a live editor here'
+    ]
+  },
   menu: {
     dos: ['Group related actions', 'Support arrow-key movement between items'],
     donts: [
