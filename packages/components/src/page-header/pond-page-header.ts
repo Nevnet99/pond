@@ -12,6 +12,15 @@ import type { PondAppearance } from '../shared/appearance.js'
  * @slot actions — Primary actions (buttons, menu).
  * @slot bottom — Optional bottom region (e.g. Tabs).
  * @slot — Default description / subtitle under the title.
+ *
+ * @csspart root — Header landmark.
+ * @csspart breadcrumbs — Breadcrumb region.
+ * @csspart main — Title + actions row.
+ * @csspart text — Title + description stack.
+ * @csspart title — Page h1.
+ * @csspart description — Subtitle region.
+ * @csspart actions — Actions cluster.
+ * @csspart bottom — Bottom region.
  */
 @customElement('pond-page-header')
 export class PondPageHeader extends LitElement {
@@ -94,9 +103,11 @@ export class PondPageHeader extends LitElement {
     }
   `
 
+  /** Visual presentation. `plain` strips Pond visual CSS. */
   @property({ reflect: true })
   appearance: PondAppearance = 'default'
 
+  /** Page title when the `title` slot is empty. Renders as the page `h1`. */
   @property()
   heading = ''
 
