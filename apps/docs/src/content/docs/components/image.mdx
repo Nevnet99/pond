@@ -8,16 +8,47 @@ import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
-Use `src-dark` when the asset should swap under `data-theme="dark"`.
+Photographic or illustrative media with optional `src-dark` under `data-theme="dark"` and an optional caption. Prefer [Tile](/components/tile/) for compact noun markers, [Logo](/components/logo/) for brand marks, and [Object](/components/object/) for content-type glyphs. `appearance="plain"` strips Pond chrome — you own radius and caption type.
 
 <ComponentTabs>
   <Fragment slot="examples">
-    <PondDemo label="Captioned">
+    <PondDemo label="Default (captioned)">
       <pond-image
         src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='96'%3E%3Crect fill='%23dde3ea' width='160' height='96'/%3E%3C/svg%3E"
-        alt="Placeholder"
+        alt="Placeholder surface"
         caption="Light surface"
         style="width: 10rem"
+      ></pond-image>
+    </PondDemo>
+
+    <p>
+      Use empty <code>alt</code> only when the image is decorative. Informative
+      images need a purpose-describing <code>alt</code>.
+    </p>
+
+    <PondDemo label="Without caption">
+      <pond-image
+        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='80'%3E%3Crect fill='%23c5d0db' width='120' height='80'/%3E%3C/svg%3E"
+        alt="Product thumbnail"
+        style="width: 7.5rem"
+      ></pond-image>
+    </PondDemo>
+
+    <PondDemo label="Theme pair (src + src-dark)">
+      <pond-image
+        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='96'%3E%3Crect fill='%23dde3ea' width='160' height='96'/%3E%3Ctext x='12' y='52' fill='%23333' font-size='14'%3ELight%3C/text%3E%3C/svg%3E"
+        src-dark="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='96'%3E%3Crect fill='%232a323c' width='160' height='96'/%3E%3Ctext x='12' y='52' fill='%23eee' font-size='14'%3EDark%3C/text%3E%3C/svg%3E"
+        alt="Theme-aware placeholder"
+        caption="Swaps under data-theme=dark"
+        style="width: 10rem"
+      ></pond-image>
+    </PondDemo>
+
+    <PondDemo label="Plain / reset">
+      <pond-image
+        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='48'%3E%3Crect fill='%23dde3ea' width='80' height='48'/%3E%3C/svg%3E"
+        alt="Unstyled image"
+        appearance="plain"
       ></pond-image>
     </PondDemo>
   </Fragment>
@@ -31,21 +62,60 @@ Use `src-dark` when the asset should swap under `data-theme="dark"`.
   alt="Product hero"
   caption="Optional caption"
 ></pond-image>
+<pond-image src="/thumb.png" alt="" appearance="plain"></pond-image>
 ```
+
+### API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `src` | `string` | `''` | Light (default) image URL |
+| `src-dark` | `string` | `''` | Optional dark-theme URL when an ancestor has `data-theme="dark"` |
+| `alt` | `string` | `''` | Alternative text; empty only when decorative |
+| `caption` | `string` | `''` | Optional figcaption; wraps in `<figure>` when set |
+| `appearance` | `'default' \| 'plain'` | `'default'` | `plain` strips Pond visual CSS |
+
+**Slots:** none — use attributes for the image.
+
+**CSS parts:** `root` (figure when captioned), `image` (`img`), `caption` (figcaption).
+
+**Events:** none (presentational).
 
   </Fragment>
 
   <Fragment slot="usage">
 
-Always provide meaningful `alt` (empty only for decorative images).
+### Purpose
+
+Image shows **photos and illustrations**. It is **not** a brand mark ([Logo](/components/logo/)), noun tile ([Tile](/components/tile/)), or content-type glyph ([Object](/components/object/)).
+
+### Anatomy
+
+1. **Host** — `pond-image`
+2. **Image** (`::part(image)`) — native `img`
+3. **Caption** (`::part(caption)`) — optional figcaption
+4. **Figure** (`::part(root)`) — present when `caption` is set
+
+### Content guidelines
+
+- Write `alt` that describes purpose, not “image of…”
+- Empty `alt` only for decorative images
+- Use `src-dark` when contrast or artwork must change in dark theme
+- Do not make Image itself a button — wrap a real control
+
+### Happy path vs plain
+
+Default ships radius, caption type, and theme swap. `appearance="plain"` unwraps — **you** own chrome; `alt` rules stay.
 
     <DosDonts component="image" />
+
+**Related:** [Tile](/components/tile/) · [Logo](/components/logo/) · [Object](/components/object/) · [Bleed](/components/bleed/) for flush media in a Box
 
   </Fragment>
 
   <Fragment slot="changelog">
 
-Unreleased — theme-aware image with optional caption.
+Unreleased — Phase 9 docs (purpose, anatomy, API, content, patterns); no API break.
 
   </Fragment>
 
@@ -55,7 +125,17 @@ Unreleased — theme-aware image with optional caption.
 
   <Fragment slot="patterns">
 
-Pair with Tile when the asset represents a noun in a grid; use Image for photographic or illustrative content.
+**Flush in a card** — Bleed + Image inside Box.
+
+```html
+<pond-box padding="4" background="surface">
+  <pond-bleed all="4">
+    <pond-image src="/hero.png" alt="Product hero"></pond-image>
+  </pond-bleed>
+</pond-box>
+```
+
+**Prefer Tile for noun grids** — documents, apps, and folders in a picker are [Tile](/components/tile/), not photographic Image.
 
   </Fragment>
 </ComponentTabs>
