@@ -148,12 +148,14 @@ const catalog: Record<string, DosDontsEntry> = {
   },
   'date-label': {
     dos: [
-      'Always set a machine-readable datetime',
-      'Keep visible text human-friendly'
+      'Always set a machine-readable ISO `value`',
+      'Keep visible text human-friendly via the locale formatter',
+      'Pair with editable pickers when the user must change the date'
     ],
     donts: [
-      'Don’t show relative times without a way to see the absolute value',
-      'Don’t omit datetime on the time element'
+      'Don’t use Date label as an input control',
+      'Don’t pass free-form strings when you need a reliable `datetime`',
+      'Don’t invent a second visible date that disagrees with `value`'
     ]
   },
   modal: {
