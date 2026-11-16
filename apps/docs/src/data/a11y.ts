@@ -652,6 +652,15 @@ const catalog: Record<string, A11yEntry> = {
         title: 'Info and Relationships',
         how: 'Actions remain ordinary labeled controls in the header.'
       }
+    ],
+    notes: [
+      'Plain mode: you own type and paint; keep the header landmark and single h1.'
+    ],
+    limitations: [
+      'Always provide exactly one page title via `heading` or the `title` slot — an empty h1 fails name/heading expectations.',
+      'Do not place another h1 in breadcrumbs, description, actions, or bottom slots.',
+      'Slotted actions must bring their own accessible names (Button / Menu / Link).',
+      'Plain mode: consumer owns focus paint and contrast on slotted controls.'
     ]
   },
   panel: {

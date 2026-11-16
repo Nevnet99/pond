@@ -359,11 +359,13 @@ const catalog: Record<string, DosDontsEntry> = {
   'page-header': {
     dos: [
       'Use one h1 for the page title',
-      'Keep primary actions in the header consistent across pages'
+      'Keep primary actions in the header consistent across pages',
+      'Compose Breadcrumbs / Tabs into slots — don’t hard-wire them'
     ],
     donts: [
       'Don’t skip the h1 or replace it with a styled div',
-      'Don’t overload the header with every possible action'
+      'Don’t overload the header with every possible action',
+      'Don’t put a second h1 in the bottom or description slots'
     ]
   },
   panel: {

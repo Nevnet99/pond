@@ -2,12 +2,13 @@
 title: Page header
 description: Slot-based page chrome shell.
 ---
+
 import ComponentTabs from '../../../components/ComponentTabs.astro'
 import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
-Compose breadcrumbs, title, actions, and optional bottom tabs into slots — Pond does not hard-wire those children.
+Compose breadcrumbs, title, actions, and optional bottom tabs into slots — Pond does not hard-wire those children. Prefer one Page header per [Page](/components/page/) (`header` slot). `appearance="plain"` strips Pond visuals — you own focus paint and contrast.
 
 <ComponentTabs>
   <Fragment slot="examples">
@@ -21,29 +22,120 @@ Compose breadcrumbs, title, actions, and optional bottom tabs into slots — Pon
         Design system catalog
       </pond-page-header>
     </PondDemo>
+
+    <p>
+      Use the <code>bottom</code> slot for section tabs under the title row.
+    </p>
+
+    <PondDemo label="With bottom tabs">
+      <pond-page-header heading="Projects">
+        <pond-tabs
+          slot="bottom"
+          selected="overview"
+          items='[{"value":"overview","label":"Overview"},{"value":"activity","label":"Activity"}]'
+        >
+          <p slot="overview">Overview content</p>
+          <p slot="activity">Activity content</p>
+        </pond-tabs>
+      </pond-page-header>
+    </PondDemo>
+
+    <PondDemo label="Plain / reset">
+      <pond-page-header appearance="plain" heading="Unstyled header">
+        Subtitle only — you own paint.
+      </pond-page-header>
+    </PondDemo>
   </Fragment>
+
   <Fragment slot="code">
 
 ```html
 <pond-page-header heading="Projects">
-  <pond-breadcrumbs slot="breadcrumbs" ...></pond-breadcrumbs>
-  <pond-button slot="actions">New</pond-button>
+  <pond-breadcrumbs
+    slot="breadcrumbs"
+    items='[{"label":"Home","href":"/"},{"label":"Projects","current":true}]'
+  ></pond-breadcrumbs>
+  <pond-button slot="actions" variant="primary">New</pond-button>
   Subtitle
-  <pond-tabs slot="bottom" ...></pond-tabs>
+  <pond-tabs slot="bottom" selected="overview" items="[...]"></pond-tabs>
 </pond-page-header>
 ```
 
+### API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `heading` | `string` | `''` | Page title when the `title` slot is empty |
+| `appearance` | `'default' \| 'plain'` | `'default'` | `plain` strips Pond visual CSS |
+
+**Slots:** `breadcrumbs`, `title`, `actions`, `bottom`, default (description / subtitle).
+
+**CSS parts:** `root`, `breadcrumbs`, `main`, `text`, `title`, `description`, `actions`, `bottom`.
+
+**Events:** none.
+
   </Fragment>
+
   <Fragment slot="usage">
 
-Slots only — consumers compose Breadcrumbs, Menu, Tabs.
+### Purpose
+
+Page header is the title chrome for a view: trail, `h1`, actions, and optional bottom region. It is **not** a card header or panel title ([Panel](/components/panel/) uses `h2`).
+
+### Anatomy
+
+1. **Header** (`::part(root)`) — `header` landmark
+2. **Breadcrumbs** (`::part(breadcrumbs)`) — optional trail slot
+3. **Title** (`::part(title)`) — `h1` from `heading` or `title` slot
+4. **Description** (`::part(description)`) — default slot
+5. **Actions** (`::part(actions)`) — primary controls
+6. **Bottom** (`::part(bottom)`) — optional Tabs / filters
+
+### Content guidelines
+
+- One `h1` per page — prefer `heading` or a single `title` slot child
+- Sentence case titles matching the nav label when possible
+- Keep actions to the primary jobs for this view; move overflow into a Menu
+- Description is optional supporting copy — not a second heading
+
+### Happy path vs plain
+
+Default ships title scale, muted description, and action clustering. `appearance="plain"` keeps the `header` / `h1` structure — **you** own type and focus paint on slotted controls.
 
     <DosDonts component="page-header" />
 
+**Related:** [Page](/components/page/) · [Breadcrumbs](/components/breadcrumbs/) · [Tabs](/components/tabs/) · [Button](/components/button/)
+
   </Fragment>
-  <Fragment slot="changelog">Unreleased — breadcrumbs / title / actions / bottom slots.</Fragment>
+
+  <Fragment slot="changelog">
+
+Unreleased — Phase 9 docs (purpose, anatomy, API, content, limitations, patterns); no API break.
+
+  </Fragment>
+
   <Fragment slot="accessibility">
     <A11ySection component="page-header" />
   </Fragment>
-  <Fragment slot="patterns">Pair with Tabs in the bottom slot for sectioned pages.</Fragment>
+
+  <Fragment slot="patterns">
+
+**Page + header + breadcrumbs** — standard product chrome.
+
+```html
+<pond-page>
+  <pond-page-header slot="header" heading="Projects">
+    <pond-breadcrumbs
+      slot="breadcrumbs"
+      items='[{"label":"Home","href":"/"},{"label":"Projects","current":true}]'
+    ></pond-breadcrumbs>
+    <pond-button slot="actions" variant="primary">New project</pond-button>
+  </pond-page-header>
+  <p>Main content</p>
+</pond-page>
+```
+
+**Prefer Panel for side titles** — contextual `h2` titles belong in [Panel](/components/panel/), not a second Page header.
+
+  </Fragment>
 </ComponentTabs>
