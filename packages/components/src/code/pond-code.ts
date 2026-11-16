@@ -4,7 +4,14 @@ import type { PondAppearance } from '../shared/appearance.js'
 
 export type PondCodeVariant = 'inline' | 'block'
 
-/** @summary Code snippet — inline or simple block; no highlighter. @status stable @since 0.0.0 */
+/**
+ * @summary Code snippet — inline or simple block; no highlighter.
+ * @status stable
+ * @since 0.0.0
+ *
+ * @slot — Snippet text.
+ * @csspart root — Native `code` (inline) or `pre` (block).
+ */
 @customElement('pond-code')
 export class PondCode extends LitElement {
   static override styles = css`
@@ -43,7 +50,9 @@ export class PondCode extends LitElement {
       display: contents;
     }
   `
+  /** Visual reset — `plain` strips Pond chrome; consumer owns surface/contrast. */
   @property({ reflect: true }) appearance: PondAppearance = 'default'
+  /** `inline` uses `<code>`; `block` uses `<pre><code>` for whitespace. */
   @property({ reflect: true }) variant: PondCodeVariant = 'inline'
   override render() {
     return this.variant === 'block'

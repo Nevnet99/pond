@@ -2,40 +2,108 @@
 title: Code
 description: Inline or simple block code — no syntax highlighter.
 ---
+
 import ComponentTabs from '../../../components/ComponentTabs.astro'
 import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
-Highlight short snippets inline, or a plain block. No highlighter dependency.
+Highlight short identifiers or commands inline, or a plain multi-line block. Not a syntax highlighter — consumers own coloring if needed. Prefer ordinary prose for explanations around the snippet. `appearance="plain"` strips Pond chrome — you own mono surface and contrast.
 
 <ComponentTabs>
   <Fragment slot="examples">
-    <PondDemo label="Inline">
+    <PondDemo label="Inline (default)">
       <p>Run <pond-code>pnpm install</pond-code> to start.</p>
     </PondDemo>
+
+    <p>
+      Use <strong>block</strong> when whitespace and line breaks matter (snippets,
+      configs). Keep blocks short — Code is not a docs article surface.
+    </p>
+
     <PondDemo label="Block">
-      <pond-code variant="block">const x = 1</pond-code>
+      <pond-code variant="block">const x = 1
+console.log(x)</pond-code>
+    </PondDemo>
+
+    <PondDemo label="Plain / reset">
+      <p>
+        Plain inline: <pond-code appearance="plain">GET /api</pond-code>
+      </p>
     </PondDemo>
   </Fragment>
+
   <Fragment slot="code">
 
 ```html
-<pond-code>pnpm install</pond-code>
+<p>Run <pond-code>pnpm install</pond-code> to start.</p>
+
 <pond-code variant="block">const x = 1</pond-code>
+
+<pond-code appearance="plain">GET /api</pond-code>
 ```
 
+### API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `variant` | `'inline' \| 'block'` | `'inline'` | Inline `<code>` vs `<pre><code>` block |
+| `appearance` | `'default' \| 'plain'` | `'default'` | `plain` strips Pond visual CSS |
+
+**Slots:** default — code text / content.
+
+**CSS parts:** `root` — the native `code` (inline) or `pre` (block) host.
+
+**Events:** none.
+
   </Fragment>
+
   <Fragment slot="usage">
 
-Keep snippets short; consumers own highlighting if needed.
+### Purpose
+
+Mark literal machine text (commands, tokens, short snippets). Not for long-form prose, syntax-colored editors, or status labels ([Lozenge](/components/lozenge/), [Tag](/components/tag/)).
+
+### Anatomy
+
+1. **Root** (`::part(root)`) — native `<code>` (inline) or `<pre>` wrapping `<code>` (block)  
+2. **Default slot** — the snippet text
+
+### Content guidelines
+
+- Prefer short, copy-pasteable strings
+- Keep literal casing from the source language or command
+- Do not rely on color alone for meaning (no highlighter ships)
+
+### Happy path vs plain
+
+Default ships mono font, subtle surface, and padding. Plain keeps native `code` / `pre` semantics — **you** own chrome and contrast.
 
     <DosDonts component="code" />
 
+**Related:** [Tag](/components/tag/) · [Lozenge](/components/lozenge/) · [Metric text](/components/metric-text/)
+
   </Fragment>
-  <Fragment slot="changelog">Unreleased — inline + block variants.</Fragment>
+
+  <Fragment slot="changelog">
+
+Unreleased — Phase 9 docs (purpose, anatomy, API, content, patterns); variants unchanged.
+
+  </Fragment>
+
   <Fragment slot="accessibility">
     <A11ySection component="code" />
   </Fragment>
-  <Fragment slot="patterns">None yet.</Fragment>
+
+  <Fragment slot="patterns">
+
+**Inline command in a sentence** — wrap the literal with Code so AT gets native code semantics without a custom role.
+
+```html
+<p>Copy <pond-code>pnpm lint</pond-code> into your terminal.</p>
+```
+
+**Prefer ordinary prose** for explanations around the snippet — Code is the machine fragment only. Prefer [Lozenge](/components/lozenge/) for status, [Tag](/components/tag/) for metadata chips.
+
+  </Fragment>
 </ComponentTabs>
