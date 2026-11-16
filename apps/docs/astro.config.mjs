@@ -132,6 +132,7 @@ export default defineConfig({
             { label: 'Tooltip', slug: 'components/tooltip' },
             { label: 'Modal', slug: 'components/modal' },
             { label: 'Popup', slug: 'components/popup' },
+            { label: 'Inline dialog', slug: 'components/inline-dialog' },
             { label: 'Drawer', slug: 'components/drawer' },
             { label: 'Menu', slug: 'components/menu' }
           ]

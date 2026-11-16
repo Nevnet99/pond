@@ -325,6 +325,28 @@ const catalog: Record<string, A11yEntry> = {
       }
     ]
   },
+  'inline-dialog': {
+    summary:
+      'Non-modal `role="dialog"` with optional heading, actions, and close control; restore focus on close.',
+    keyboard: [
+      'Open from a trigger',
+      'Tab through body and actions',
+      'Escape / close control dismisses',
+      'Focus restores'
+    ],
+    criteria: [
+      keyboard('Dismiss and navigate without a pointer.'),
+      labels(
+        'Named via heading (`aria-labelledby`) or a fallback dialog label.'
+      ),
+      {
+        id: '2.4.3',
+        title: 'Focus Order',
+        how: 'Focus moves into the panel when opened and restores to the trigger on close.'
+      }
+    ],
+    notes: ['Prefer Modal when the task needs a dimmed focus trap.']
+  },
   menu: {
     summary:
       'Menu trigger with `aria-haspopup` / `aria-expanded`; items use menu roles.',
