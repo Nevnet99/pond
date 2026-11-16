@@ -630,6 +630,16 @@ const catalog: Record<string, DosDontsEntry> = {
       'Don’t use Grid for linear reading stacks — prefer Stack',
       'Don’t pack interactive controls so dense they fail hit targets'
     ]
+  },
+  bleed: {
+    dos: [
+      'Pull media flush with a padded parent',
+      'Prefer token steps over ad-hoc negative margins'
+    ],
+    donts: [
+      'Don’t bleed interactive chrome off-screen on small viewports',
+      'Don’t nest bleeds that cancel each other into confusion'
+    ]
   }
 }
 

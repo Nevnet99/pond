@@ -909,6 +909,16 @@ const catalog: Record<string, A11yEntry> = {
         how: 'DOM order should remain sensible when columns reflow.'
       }
     ]
+  },
+  bleed: {
+    summary: 'Presentational negative-margin wrapper — no interactive role.',
+    criteria: [
+      {
+        id: '4.1.2',
+        title: 'Name, Role, Value',
+        how: 'No control role; do not put click handlers on Bleed alone.'
+      }
+    ]
   }
 }
 
