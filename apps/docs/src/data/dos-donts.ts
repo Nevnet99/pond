@@ -678,7 +678,8 @@ const catalog: Record<string, DosDontsEntry> = {
     ],
     donts: [
       'Don’t set long sentences in Metric text',
-      'Don’t use Metric text as a page heading — prefer Heading'
+      'Don’t use Metric text as a page heading — prefer Heading',
+      'Don’t use Metric text for body copy — prefer Text'
     ]
   }
 }
