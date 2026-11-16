@@ -405,6 +405,14 @@ const catalog: Record<string, A11yEntry> = {
       }
     ]
   },
+  'table-tree': {
+    summary: 'Tree rows with expand/collapse controls and indent.',
+    keyboard: ['Tab to toggles', 'Enter/Space expands or collapses'],
+    criteria: [
+      keyboard('Expand and collapse without a pointer.'),
+      labels('Toggle buttons named Expand / Collapse with `aria-expanded`.')
+    ]
+  },
   menu: {
     summary:
       'Menu trigger with `aria-haspopup` / `aria-expanded`; items use menu roles.',

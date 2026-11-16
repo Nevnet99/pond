@@ -246,6 +246,16 @@ const catalog: Record<string, DosDontsEntry> = {
       'Don’t add row reorder in this phase'
     ]
   },
+  'table-tree': {
+    dos: [
+      'Use for hierarchical rows with one expand control per parent',
+      'Indent children so depth is visible'
+    ],
+    donts: [
+      'Don’t lazy-load children via a remote API in this phase',
+      'Don’t combine drag-and-drop with the tree yet'
+    ]
+  },
   menu: {
     dos: ['Group related actions', 'Support arrow-key movement between items'],
     donts: [

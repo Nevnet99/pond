@@ -76,6 +76,11 @@ export type { PondStackAlign, PondStackGap } from './stack/pond-stack.js'
 export { PondStack } from './stack/pond-stack.js'
 export type { PondTableColumn, PondTableRow } from './table/pond-table.js'
 export { PondTable } from './table/pond-table.js'
+export type {
+  PondTableTreeColumn,
+  PondTableTreeNode
+} from './table-tree/pond-table-tree.js'
+export { PondTableTree } from './table-tree/pond-table-tree.js'
 export type { PondTabItem } from './tabs/pond-tabs.js'
 export { PondTabs } from './tabs/pond-tabs.js'
 export { PondTag } from './tag/pond-tag.js'
