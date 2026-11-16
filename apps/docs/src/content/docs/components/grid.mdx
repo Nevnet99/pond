@@ -8,15 +8,39 @@ import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
-Grid lays out equal-width columns (1–4, 6, or 12) with tokenized gap. Override tracks via `--pond-grid-columns`.
+Equal-width columns (1–4, 6, or 12) with tokenized gap. Override tracks via `--pond-grid-columns`. Prefer [Stack](/primitives/stack/) for linear reading; [Inline](/primitives/inline/) / [Flex](/components/flex/) for single rows; [Box](/primitives/box/) for surface. `appearance="plain"` strips grid chrome — you own layout CSS.
 
 <ComponentTabs>
   <Fragment slot="examples">
-    <PondDemo label="Three columns">
+    <PondDemo label="Default (three columns)">
       <pond-grid columns="3" gap="3">
-        <span>A</span>
-        <span>B</span>
-        <span>C</span>
+        <pond-box padding="3" background="subtle">A</pond-box>
+        <pond-box padding="3" background="subtle">B</pond-box>
+        <pond-box padding="3" background="subtle">C</pond-box>
+      </pond-grid>
+    </PondDemo>
+
+    <p>Use column counts that match the content density — not a decorative sampler.</p>
+
+    <PondDemo label="Two-up tiles">
+      <pond-grid columns="2" gap="4">
+        <pond-tile label="Document">Doc</pond-tile>
+        <pond-tile label="Folder">Folder</pond-tile>
+      </pond-grid>
+    </PondDemo>
+
+    <PondDemo label="Align end">
+      <pond-grid columns="3" gap="3" align="end" style="min-height: 5rem">
+        <pond-box padding="2" background="subtle">Short</pond-box>
+        <pond-box padding="4" background="subtle">Taller block</pond-box>
+        <pond-box padding="2" background="subtle">Short</pond-box>
+      </pond-grid>
+    </PondDemo>
+
+    <PondDemo label="Plain / reset">
+      <pond-grid appearance="plain" columns="2">
+        <span>Unstyled</span>
+        <span>grid children</span>
       </pond-grid>
     </PondDemo>
   </Fragment>
@@ -29,17 +53,60 @@ Grid lays out equal-width columns (1–4, 6, or 12) with tokenized gap. Override
   <span>B</span>
   <span>C</span>
 </pond-grid>
+<pond-grid columns="2" gap="4" align="start">…</pond-grid>
+<pond-grid appearance="plain">…</pond-grid>
 ```
+
+### API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `columns` | `'1' \| '2' \| '3' \| '4' \| '6' \| '12'` | `'1'` | Equal-width column count |
+| `gap` | space scale (`'0'`–`'12'`) | `'4'` | Gap between cells |
+| `align` | `'stretch' \| 'start' \| 'center' \| 'end'` | `'stretch'` | Align items on the block axis |
+| `appearance` | `'default' \| 'plain'` | `'default'` | `plain` strips grid chrome |
+
+**CSS custom property:** `--pond-grid-columns` — override track definition for custom layouts.
+
+**Slots:** default — grid children (DOM order should stay sensible when columns reflow).
+
+**CSS parts:** `root` — grid container.
+
+**Events:** none (presentational).
 
   </Fragment>
 
   <Fragment slot="usage">
+
+### Purpose
+
+Grid is for **equal-column** content matrices — tile pickers, field pairs, card boards. It is **not** a reading stack ([Stack](/primitives/stack/)), toolbar ([Inline](/primitives/inline/)), or free-form flex ([Flex](/components/flex/)).
+
+### Anatomy
+
+1. **Host** — `pond-grid`
+2. **Container** (`::part(root)`) — CSS grid
+3. **Cells** — default slot
+
+### Content guidelines
+
+- Keep interactive cells large enough for hit targets
+- Prefer DOM order that still reads well when the grid wraps
+- Use `--pond-grid-columns` for uneven tracks instead of fighting equal columns
+
+### Happy path vs plain
+
+Default ships equal columns, gap, and align. `appearance="plain"` unwraps — **you** own grid CSS.
+
     <DosDonts component="grid" />
+
+**Related:** [Stack](/primitives/stack/) · [Inline](/primitives/inline/) · [Flex](/components/flex/) · [Tile](/components/tile/) · [Page](/components/page/) for app chrome
+
   </Fragment>
 
   <Fragment slot="changelog">
 
-Unreleased — equal-column grid with gap and align.
+Unreleased — Phase 9 docs (purpose, anatomy, API, content, patterns); no API break.
 
   </Fragment>
 
@@ -49,7 +116,18 @@ Unreleased — equal-column grid with gap and align.
 
   <Fragment slot="patterns">
 
-Prefer Page for app chrome sections; Grid for content tiles and form field matrices.
+**Tile picker** — Grid of named nouns.
+
+```html
+<pond-grid columns="4" gap="3">
+  <pond-tile label="Document">Doc</pond-tile>
+  <pond-tile label="Folder">Folder</pond-tile>
+  <pond-tile label="Image">Img</pond-tile>
+  <pond-tile label="Code">Code</pond-tile>
+</pond-grid>
+```
+
+**Prefer Stack for linear forms** — a single column of fields is [Stack](/primitives/stack/), not a one-column Grid. Prefer [Inline](/primitives/inline/) for a lone toolbar row.
 
   </Fragment>
 </ComponentTabs>

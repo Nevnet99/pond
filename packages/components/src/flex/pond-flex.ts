@@ -23,6 +23,8 @@ export type PondFlexGap = PondSpace
  * @status stable
  * @since 0.0.0
  *
+ * Prefer Stack / Inline when they fit; Grid for equal columns; Box for surface.
+ *
  * @csspart root — Flex container.
  */
 @customElement('pond-flex')

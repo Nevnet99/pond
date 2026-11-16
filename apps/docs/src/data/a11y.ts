@@ -974,7 +974,11 @@ const catalog: Record<string, A11yEntry> = {
         how: 'DOM order should match reading order even when justify/align change visual spacing.'
       }
     ],
-    notes: ['Plain mode strips flex chrome.']
+    notes: ['Plain mode strips flex chrome.'],
+    limitations: [
+      '`direction="row-reverse"` / `column-reverse` can invert visual order against DOM — keep reading order sensible.',
+      'Plain mode: consumer owns flex CSS.'
+    ]
   },
   grid: {
     summary: 'Presentational CSS grid layout.',
@@ -984,6 +988,10 @@ const catalog: Record<string, A11yEntry> = {
         title: 'Meaningful Sequence',
         how: 'DOM order should remain sensible when columns reflow.'
       }
+    ],
+    limitations: [
+      'Dense grids can shrink hit targets below usable size — keep interactive cells spacious.',
+      'Plain mode: consumer owns grid CSS.'
     ]
   },
   bleed: {
@@ -994,6 +1002,10 @@ const catalog: Record<string, A11yEntry> = {
         title: 'Name, Role, Value',
         how: 'No control role; do not put click handlers on Bleed alone.'
       }
+    ],
+    limitations: [
+      'Bleeding interactive chrome can clip focus rings or controls off-screen on small viewports.',
+      'Plain mode: consumer owns margin CSS.'
     ]
   },
   'metric-text': {

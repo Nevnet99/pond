@@ -8,34 +8,111 @@ import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
-Bleed pulls children outside padded parents via tokenized negative margins (`all`, `inline`, `block`).
+Pulls children outside a padded parent via tokenized negative margins (`all`, `inline`, `block`). Pair with [Box](/primitives/box/) surfaces. Prefer Stack/Box padding for ordinary spacing — Bleed is for flush media edges, not general layout. `appearance="plain"` strips margin chrome — you own negative space.
 
 <ComponentTabs>
   <Fragment slot="examples">
-    <PondDemo label="Inline bleed">
-      <div style="padding:1rem;border:1px dashed var(--pond-color-border-default)">
+    <PondDemo label="Default (inline bleed)">
+      <pond-box padding="4" background="surface">
+        <pond-text size="sm" muted>Padded box</pond-text>
         <pond-bleed inline="4">
-          <div style="background:var(--pond-color-bg-subtle);padding:0.5rem">Bleeds sideways</div>
+          <div style="background:var(--pond-color-bg-subtle);padding:0.5rem">
+            Bleeds sideways to the box edges
+          </div>
         </pond-bleed>
-      </div>
+      </pond-box>
+    </PondDemo>
+
+    <p>Match the bleed step to the parent padding so the child lands flush.</p>
+
+    <PondDemo label="Block bleed">
+      <pond-box padding="4" background="surface">
+        <pond-bleed block="4">
+          <div style="background:var(--pond-color-bg-subtle);padding:0.5rem">
+            Bleeds vertically
+          </div>
+        </pond-bleed>
+      </pond-box>
+    </PondDemo>
+
+    <PondDemo label="All sides">
+      <pond-box padding="4" background="surface">
+        <pond-bleed all="4">
+          <pond-image
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='96'%3E%3Crect fill='%23dde3ea' width='320' height='96'/%3E%3C/svg%3E"
+            alt=""
+            style="width: 100%; display: block"
+          ></pond-image>
+        </pond-bleed>
+      </pond-box>
+    </PondDemo>
+
+    <PondDemo label="Plain / reset">
+      <pond-bleed appearance="plain" inline="4">
+        <span>Unstyled bleed — you own margins</span>
+      </pond-bleed>
     </PondDemo>
   </Fragment>
 
   <Fragment slot="code">
 
 ```html
-<pond-bleed inline="4">…</pond-bleed>
+<pond-box padding="4" background="surface">
+  <pond-bleed inline="4">…</pond-bleed>
+</pond-box>
+<pond-bleed block="4">…</pond-bleed>
+<pond-bleed all="4">…</pond-bleed>
+<pond-bleed appearance="plain">…</pond-bleed>
 ```
+
+### API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `all` | space scale \| `''` | `''` | Negative margin on every side |
+| `inline` | space scale \| `''` | `''` | Negative margin on the inline axis |
+| `block` | space scale \| `''` | `''` | Negative margin on the block axis |
+| `appearance` | `'default' \| 'plain'` | `'default'` | `plain` strips margin chrome |
+
+**Slots:** default — content that should extend past parent padding.
+
+**CSS parts:** `root` — bleed wrapper.
+
+**Events:** none (presentational).
 
   </Fragment>
 
   <Fragment slot="usage">
+
+### Purpose
+
+Bleed cancels parent padding so media or rules can sit flush. It is **not** a spacer ([Stack](/primitives/stack/) gap / [Box](/primitives/box/) padding) and **not** a flex/grid layout.
+
+### Anatomy
+
+1. **Host** — `pond-bleed`
+2. **Wrapper** (`::part(root)`) — negative margins
+3. **Content** — default slot
+
+### Content guidelines
+
+- Match bleed tokens to the parent’s padding step
+- Prefer bleeding decorative media over interactive chrome
+- Avoid nested bleeds that fight each other
+
+### Happy path vs plain
+
+Default applies tokenized negative margins. `appearance="plain"` unwraps — **you** own margin CSS.
+
     <DosDonts component="bleed" />
+
+**Related:** [Box](/primitives/box/) · [Image](/components/image/) · [Stack](/primitives/stack/) · [Flex](/components/flex/)
+
   </Fragment>
 
   <Fragment slot="changelog">
 
-Unreleased — all / inline / block negative space steps.
+Unreleased — Phase 9 docs (purpose, anatomy, API, content, patterns); no API break.
 
   </Fragment>
 
@@ -45,7 +122,21 @@ Unreleased — all / inline / block negative space steps.
 
   <Fragment slot="patterns">
 
-Use to edge media flush with a padded card without rewriting the parent padding.
+**Flush hero in a card** — Image bleeds to Box edges.
+
+```html
+<pond-box padding="4" background="surface">
+  <pond-bleed all="4">
+    <pond-image src="/hero.png" alt="Product hero"></pond-image>
+  </pond-bleed>
+  <pond-stack gap="2">
+    <pond-heading level="3">Card title</pond-heading>
+    <pond-text>Body stays inside the padding.</pond-text>
+  </pond-stack>
+</pond-box>
+```
+
+**Prefer Box padding for ordinary inset** — if you are not canceling padding, do not use Bleed.
 
   </Fragment>
 </ComponentTabs>
