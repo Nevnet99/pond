@@ -290,11 +290,13 @@ const catalog: Record<string, DosDontsEntry> = {
   'table-tree': {
     dos: [
       'Use for hierarchical rows with one expand control per parent',
-      'Indent children so depth is visible'
+      'Indent children so depth is visible',
+      'Seed `expanded-ids` for the path the user needs open'
     ],
     donts: [
       'Don’t lazy-load children via a remote API in this phase',
-      'Don’t combine drag-and-drop with the tree yet'
+      'Don’t combine drag-and-drop with the tree yet',
+      'Don’t use Table tree for flat sortable datasets — use Dynamic table'
     ]
   },
   menu: {

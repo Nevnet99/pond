@@ -8,7 +8,7 @@ import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
-Nested rows expand in place. No remote children API or drag-and-drop yet.
+Nested rows expand in place with indent. Prefer [Table](/components/table/) for flat grids and [Dynamic table](/components/dynamic-table/) for sort + pagination without nesting. No remote children API or drag-and-drop in this phase. `appearance="plain"` strips Pond chrome — you own borders, toggle chrome, and contrast.
 
 <ComponentTabs>
   <Fragment slot="examples">
@@ -20,6 +20,31 @@ Nested rows expand in place. No remote children API or drag-and-drop yet.
         expanded-ids='["src"]'
       ></pond-table-tree>
     </PondDemo>
+
+    <p>
+      Pass a tree of <code>nodes</code> with <code>id</code>, <code>cells</code>, and
+      optional <code>children</code>. Control open parents with
+      <code>expanded-ids</code>; toggles fire <code>pond-toggle</code>.
+    </p>
+
+    <PondDemo label="Collapsed">
+      <pond-table-tree
+        caption="Project"
+        columns='[{"key":"name","label":"Name"},{"key":"type","label":"Type"}]'
+        nodes='[{"id":"src","cells":{"name":"src","type":"Folder"},"children":[{"id":"a","cells":{"name":"app.ts","type":"File"}}]}]'
+        expanded-ids='[]'
+      ></pond-table-tree>
+    </PondDemo>
+
+    <PondDemo label="Plain / reset">
+      <pond-table-tree
+        appearance="plain"
+        caption="Plain tree"
+        columns='[{"key":"name","label":"Name"}]'
+        nodes='[{"id":"root","cells":{"name":"root"},"children":[{"id":"c","cells":{"name":"child"}}]}]'
+        expanded-ids='["root"]'
+      ></pond-table-tree>
+    </PondDemo>
   </Fragment>
 
   <Fragment slot="code">
@@ -27,25 +52,62 @@ Nested rows expand in place. No remote children API or drag-and-drop yet.
 ```html
 <pond-table-tree
   caption="Project"
-  columns='[{"key":"name","label":"Name"}]'
-  nodes='[{"id":"src","cells":{"name":"src"},"children":[]}]'
+  columns='[{"key":"name","label":"Name"},{"key":"type","label":"Type"}]'
+  nodes='[{"id":"src","cells":{"name":"src","type":"Folder"},"children":[{"id":"a","cells":{"name":"app.ts","type":"File"}}]}]'
   expanded-ids='["src"]'
 ></pond-table-tree>
 ```
+
+### API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `caption` | `string` | `''` | Table caption |
+| `columns` | `{ key: string; label: string }[]` | `[]` | Column headers; first column hosts the toggle |
+| `nodes` | `{ id: string; cells: Record<string,string>; children?: nodes[] }[]` | `[]` | Tree data |
+| `expanded-ids` | `string[]` | `[]` | Expanded parent ids |
+| `appearance` | `'default' \| 'plain'` | `'default'` | `plain` strips Pond visual CSS |
+
+**Slots:** none.
+
+**CSS parts:** `root`, `table`, `th`, `td`, `tr`, `toggle`, `cell-start`.
+
+**Events:** `pond-toggle` — `{ detail: { id, expanded } }`.
 
   </Fragment>
 
   <Fragment slot="usage">
 
-Pass `expanded-ids` to control which parents start open. Toggle fires `pond-toggle`.
+### Purpose
+
+Show hierarchical rows that expand and collapse in place. Not for sort/pagination (Dynamic table) or flat read-only grids (Table).
+
+### Anatomy
+
+1. **Root** (`::part(root)`) — scroll container  
+2. **Table** (`::part(table)`) — native table  
+3. **Toggle** (`::part(toggle)`) — Expand/Collapse button with `aria-expanded`  
+4. **Cell start** (`::part(cell-start)`) — indent + toggle + first-column value
+
+### Content guidelines
+
+- Caption names the hierarchy (“Project”, “Org”)
+- First-column labels should read clearly at every depth
+- Leaf rows hide the toggle (control is present but not operable)
+
+### Happy path vs plain
+
+Default ships borders, indent, and focusable toggles. Plain keeps expand/collapse behavior — **you** own chrome and focus paint.
 
     <DosDonts component="table-tree" />
+
+**Related:** [Table](/components/table/) · [Dynamic table](/components/dynamic-table/) · [Side nav](/components/side-nav/) (navigation trees, not tabular data)
 
   </Fragment>
 
   <Fragment slot="changelog">
 
-Unreleased — expandable nested rows with indent.
+Unreleased — Phase 9 docs (purpose, anatomy, API, content, patterns); expand API unchanged.
 
   </Fragment>
 
@@ -55,7 +117,18 @@ Unreleased — expandable nested rows with indent.
 
   <Fragment slot="patterns">
 
-Use Dynamic table when you need sort + pagination without nesting.
+**Folder-style project tree** — seed `expanded-ids` for the path the user cares about; listen for `pond-toggle` to persist open state.
+
+```html
+<pond-table-tree
+  caption="Project"
+  columns='[{"key":"name","label":"Name"}]'
+  nodes='[{"id":"src","cells":{"name":"src"},"children":[{"id":"a","cells":{"name":"app.ts"}}]}]'
+  expanded-ids='["src"]'
+></pond-table-tree>
+```
+
+**Prefer Dynamic table** when you need sort + pagination without nesting. **Prefer Table** for a flat static grid. Prefer Side nav for primary app navigation trees.
 
   </Fragment>
 </ComponentTabs>

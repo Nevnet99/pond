@@ -535,7 +535,14 @@ const catalog: Record<string, A11yEntry> = {
     keyboard: ['Tab to toggles', 'Enter/Space expands or collapses'],
     criteria: [
       keyboard('Expand and collapse without a pointer.'),
-      labels('Toggle buttons named Expand / Collapse with `aria-expanded`.')
+      labels('Toggle buttons named Expand / Collapse with `aria-expanded`.'),
+      focus('Toggle uses Pond focus rings (or host-owned in plain).')
+    ],
+    limitations: [
+      'Not a full APG treegrid — no arrow-key tree navigation between rows yet.',
+      'No lazy-load or drag-and-drop; all children must be in `nodes`.',
+      'Leaf toggles are disabled (hidden visually) — do not rely on them for actions.',
+      'Plain mode: consumer owns chrome, focus paint, and contrast.'
     ]
   },
   menu: {
