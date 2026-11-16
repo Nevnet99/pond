@@ -278,11 +278,13 @@ const catalog: Record<string, DosDontsEntry> = {
   'dynamic-table': {
     dos: [
       'Use for client-side sort + pagination',
-      'Keep page size small enough for readable pages'
+      'Keep page size small enough for readable pages',
+      'Set `reorderable` only when order is a first-class user task'
     ],
     donts: [
       'Don’t treat this as a remote/async data grid yet',
-      'Don’t add row reorder in this phase'
+      'Don’t use Dynamic table for nested rows — use Table tree',
+      'Don’t omit a caption on real datasets'
     ]
   },
   'table-tree': {

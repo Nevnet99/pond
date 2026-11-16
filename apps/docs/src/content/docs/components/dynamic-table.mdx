@@ -8,7 +8,7 @@ import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
-Sort, paginate, and optionally reorder rows in the browser — no remote/async data API.
+Client-side column sort, pagination, and optional row reorder on a flat dataset. Prefer plain [Table](/components/table/) when sorting and paging are not needed. Prefer [Table tree](/components/table-tree/) for nested rows. No remote/async data API in this phase. `appearance="plain"` strips Pond chrome — you own borders, sort chrome, and contrast.
 
 <ComponentTabs>
   <Fragment slot="examples">
@@ -20,6 +20,32 @@ Sort, paginate, and optionally reorder rows in the browser — no remote/async d
         rows='[{"name":"Ada","role":"Lead"},{"name":"Bea","role":"QA"},{"name":"Cal","role":"Dev"},{"name":"Dee","role":"PM"}]'
       ></pond-dynamic-table>
     </PondDemo>
+
+    <p>
+      Click headers to toggle ascending/descending sort (<code>aria-sort</code>).
+      Pagination sits under the table. Set <code>reorderable</code> for up/down
+      row controls.
+    </p>
+
+    <PondDemo label="Reorderable">
+      <pond-dynamic-table
+        caption="Priority"
+        page-size="4"
+        reorderable
+        columns='[{"key":"name","label":"Name"}]'
+        rows='[{"name":"First"},{"name":"Second"},{"name":"Third"}]'
+      ></pond-dynamic-table>
+    </PondDemo>
+
+    <PondDemo label="Plain / reset">
+      <pond-dynamic-table
+        appearance="plain"
+        caption="Plain dynamic"
+        page-size="2"
+        columns='[{"key":"name","label":"Name"}]'
+        rows='[{"name":"A"},{"name":"B"},{"name":"C"}]'
+      ></pond-dynamic-table>
+    </PondDemo>
   </Fragment>
 
   <Fragment slot="code">
@@ -28,26 +54,66 @@ Sort, paginate, and optionally reorder rows in the browser — no remote/async d
 <pond-dynamic-table
   caption="People"
   page-size="5"
-  columns='[{"key":"name","label":"Name"}]'
-  rows='[{"name":"Ada"}]'
+  columns='[{"key":"name","label":"Name"},{"key":"role","label":"Role"}]'
+  rows='[{"name":"Ada","role":"Lead"}]'
 ></pond-dynamic-table>
 ```
+
+### API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `caption` | `string` | `''` | Table caption |
+| `columns` | `{ key: string; label: string }[]` | `[]` | Sortable column headers |
+| `rows` | `Record<string, string>[]` | `[]` | Client-side dataset |
+| `page-size` | `number` | `5` | Rows per page |
+| `page` | `number` | `1` | Current page (1-based) |
+| `sort-key` | `string` | `''` | Active sort column key |
+| `sort-direction` | `'asc' \| 'desc'` | `'asc'` | Sort direction |
+| `reorderable` | `boolean` | `false` | Shows up/down controls; fires `pond-reorder` |
+| `appearance` | `'default' \| 'plain'` | `'default'` | `plain` strips Pond visual CSS |
+
+**Slots:** none.
+
+**CSS parts:** `root`, `table-wrap`, `table`, `th`, `td`, `sort`, `reorder`, `pagination`.
+
+**Events:** `pond-sort` — `{ detail: { key, direction } }`; `pond-change` — `{ detail: { page } }`; `pond-reorder` — `{ detail: { rows, from, to } }`.
 
   </Fragment>
 
   <Fragment slot="usage">
 
-Compose Pagination under the table; click headers to toggle asc/desc sort. Set `reorderable` for up/down row controls (`pond-reorder`).
+### Purpose
+
+Operate on an in-memory flat table: sort columns, page results, optionally reorder rows. Not a remote grid, selection model, or nested tree.
+
+### Anatomy
+
+1. **Root** (`::part(root)`) — table + pagination stack  
+2. **Table** (`::part(table)`) — native table with sortable header buttons  
+3. **Sort control** (`::part(sort)`) — per-column button; `aria-sort` on `<th>`  
+4. **Reorder** (`::part(reorder)`) — optional up/down buttons  
+5. **Pagination** (`::part(pagination)`) — composed [Pagination](/components/pagination/)
+
+### Content guidelines
+
+- Caption names the dataset
+- Column labels match what sorting means to the user
+- Keep `page-size` small enough that a page stays readable
+
+### Happy path vs plain
+
+Default ships borders, header surface, sort focus rings, and Pagination. Plain keeps sort/page/reorder behavior — **you** own chrome and focus paint.
 
     <DosDonts component="dynamic-table" />
+
+**Related:** [Table](/components/table/) · [Table tree](/components/table-tree/) · [Pagination](/components/pagination/)
 
   </Fragment>
 
   <Fragment slot="changelog">
 
-Unreleased — client row reorder via `reorderable`.
-
-Unreleased — client sort + pagination.
+Unreleased — Phase 9 docs (purpose, anatomy, API, content, patterns); reorderable unchanged.
 
   </Fragment>
 
@@ -57,7 +123,18 @@ Unreleased — client sort + pagination.
 
   <Fragment slot="patterns">
 
-Use plain Table when sorting and paging are not needed.
+**Client-sorted directory** — bind `rows`, set `page-size`, listen for `pond-sort` / `pond-change` if you mirror state upstream.
+
+```html
+<pond-dynamic-table
+  caption="People"
+  page-size="10"
+  columns='[{"key":"name","label":"Name"}]'
+  rows='[{"name":"Ada"}]'
+></pond-dynamic-table>
+```
+
+**Prefer Table** when you only need a static grid. **Prefer Table tree** when rows nest and expand. Do not treat Dynamic table as a server-driven data grid yet.
 
   </Fragment>
 </ComponentTabs>

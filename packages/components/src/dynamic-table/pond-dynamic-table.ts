@@ -144,27 +144,35 @@ export class PondDynamicTable extends LitElement {
     }
   `
 
+  /** Visual reset — `plain` strips Pond chrome. */
   @property({ reflect: true })
   appearance: PondAppearance = 'default'
 
+  /** Accessible table name rendered as `<caption>`. */
   @property()
   caption = ''
 
+  /** Sortable column headers; each `key` maps into row objects. */
   @property({ type: Array })
   columns: PondTableColumn[] = []
 
+  /** In-memory row dataset (client sort/page/reorder). */
   @property({ type: Array })
   rows: PondTableRow[] = []
 
+  /** Rows per page. */
   @property({ type: Number, attribute: 'page-size' })
   pageSize = 5
 
+  /** Current 1-based page. */
   @property({ type: Number })
   page = 1
 
+  /** Active sort column key; empty means unsorted. */
   @property({ attribute: 'sort-key' })
   sortKey = ''
 
+  /** Ascending or descending when `sortKey` is set. */
   @property({ attribute: 'sort-direction' })
   sortDirection: PondSortDirection = 'asc'
 
