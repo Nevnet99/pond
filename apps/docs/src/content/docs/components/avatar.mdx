@@ -2,36 +2,124 @@
 title: Avatar
 description: User image, initials, or icon fallback.
 ---
+
 import ComponentTabs from '../../../components/ComponentTabs.astro'
 import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
-Represent a person. Falls back to initials, then the user icon.
+Represents a person — photo, initials, then user icon. Prefer [Avatar group](/components/avatar-group/) for overlapping stacks; [Object](/components/object/) `type="person"` for a content-type cue, not identity; [Icon](/components/icon/) for non-person UI glyphs. `appearance="plain"` strips Pond chrome — you own the circle.
 
 <ComponentTabs>
   <Fragment slot="examples">
-    <PondDemo label="Initials">
-      <pond-avatar initials="LB" label="Luke"></pond-avatar>
+    <PondDemo label="Default (initials)">
+      <pond-avatar initials="LB" label="Luke Brannagan"></pond-avatar>
+    </PondDemo>
+
+    <p>Prefer <code>src</code> when available; initials for known names; icon when anonymous.</p>
+
+    <PondDemo label="Fallbacks">
+      <pond-inline gap="3" align="center">
+        <pond-avatar
+          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect fill='%2390a4ae' width='64' height='64'/%3E%3C/svg%3E"
+          label="Alex Rivera"
+        ></pond-avatar>
+        <pond-avatar initials="AR" label="Alex Rivera"></pond-avatar>
+        <pond-avatar label="Anonymous user"></pond-avatar>
+      </pond-inline>
+    </PondDemo>
+
+    <PondDemo label="Sizes">
+      <pond-inline gap="3" align="center">
+        <pond-avatar size="sm" initials="SM" label="Small"></pond-avatar>
+        <pond-avatar initials="MD" label="Medium"></pond-avatar>
+        <pond-avatar size="lg" initials="LG" label="Large"></pond-avatar>
+      </pond-inline>
+    </PondDemo>
+
+    <PondDemo label="Plain / reset">
+      <pond-avatar initials="PL" label="Plain" appearance="plain"></pond-avatar>
     </PondDemo>
   </Fragment>
+
   <Fragment slot="code">
 
 ```html
-<pond-avatar initials="LB" label="Luke"></pond-avatar>
+<pond-avatar src="/users/luke.jpg" label="Luke Brannagan"></pond-avatar>
+<pond-avatar initials="LB" label="Luke Brannagan"></pond-avatar>
+<pond-avatar label="Anonymous user"></pond-avatar>
+<pond-avatar appearance="plain" initials="PL" label="Plain"></pond-avatar>
 ```
 
+### API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `src` | `string` | `''` | Photo URL; falls back to initials, then user icon |
+| `initials` | `string` | `''` | Initials fallback when `src` is empty or fails visually |
+| `label` | `string` | `''` | Accessible name (`role="img"`) — required for meaningful avatars |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Face size |
+| `appearance` | `'default' \| 'plain'` | `'default'` | `plain` strips Pond visual CSS |
+
+**Slots:** none — content comes from `src` / `initials` / icon fallback.
+
+**CSS parts:** `root`, `image`.
+
+**Events:** none (presentational). Wrap a control if the avatar must activate.
+
   </Fragment>
+
   <Fragment slot="usage">
 
-Prefer src when available; initials for known names; icon when anonymous.
+### Purpose
+
+Avatar identifies a **person or entity**. It is **not** a content-type glyph ([Object](/components/object/)), brand mark ([Logo](/components/logo/)), or overlapping stack ([Avatar group](/components/avatar-group/)).
+
+### Anatomy
+
+1. **Host** — `pond-avatar`
+2. **Face** (`::part(root)`) — circle surface
+3. **Image** (`::part(image)`) — photo when `src` is set
+4. **Fallback** — initials text or user icon
+
+### Content guidelines
+
+- Always set `label` for meaningful avatars
+- Prefer two-letter initials from the display name
+- In dense tables, also show a visible name — do not rely on a tiny face alone
+
+### Happy path vs plain
+
+Default ships circle, sizes, and fallbacks. `appearance="plain"` unwraps — **you** own the face chrome; naming rules stay.
 
     <DosDonts component="avatar" />
 
+**Related:** [Avatar group](/components/avatar-group/) · [Object](/components/object/) (`person` type cue) · [Icon](/components/icon/)
+
   </Fragment>
-  <Fragment slot="changelog">Unreleased — src / initials / icon fallback.</Fragment>
+
+  <Fragment slot="changelog">
+
+Unreleased — Phase 9 docs (purpose, anatomy, API, content, patterns); no API break.
+
+  </Fragment>
+
   <Fragment slot="accessibility">
     <A11ySection component="avatar" />
   </Fragment>
-  <Fragment slot="patterns">None yet.</Fragment>
+
+  <Fragment slot="patterns">
+
+**Author row** — Avatar + name.
+
+```html
+<pond-inline gap="2" align="center">
+  <pond-avatar initials="LB" label="Luke Brannagan"></pond-avatar>
+  <pond-text>Luke Brannagan</pond-text>
+</pond-inline>
+```
+
+**Prefer Avatar group for many faces** — overlapping collaborators belong in [Avatar group](/components/avatar-group/), not a plain Inline of Avatars without the group name.
+
+  </Fragment>
 </ComponentTabs>
