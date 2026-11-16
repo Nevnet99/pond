@@ -88,33 +88,43 @@ export class PondTextField extends LitElement {
     }
   `
 
+  /** Visual presentation. `plain` strips Pond visual CSS. */
   @property({ reflect: true })
   appearance: PondAppearance = 'default'
 
+  /** Visible label associated with the input. Required for accessible use. */
   @property()
   label = ''
 
+  /** Native form `name`. */
   @property()
   name = ''
 
+  /** Current value. Updates on input and emits `pond-input`. */
   @property()
   value = ''
 
+  /** Native input type. */
   @property({ reflect: true })
   type: 'text' | 'email' | 'password' | 'search' | 'url' | 'tel' = 'text'
 
+  /** Hint text only — never use as the only label. */
   @property()
   placeholder = ''
 
+  /** Disables the input and removes it from tab order. */
   @property({ type: Boolean, reflect: true })
   disabled = false
 
+  /** Native required. */
   @property({ type: Boolean, reflect: true })
   required = false
 
+  /** Marks the field invalid (`aria-invalid`) and shows danger chrome. */
   @property({ type: Boolean, reflect: true })
   invalid = false
 
+  /** Error copy linked via `aria-describedby` when `invalid` is set. */
   @property({ attribute: 'error-message' })
   errorMessage = ''
 
