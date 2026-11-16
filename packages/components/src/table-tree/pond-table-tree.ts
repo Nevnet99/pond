@@ -115,19 +115,23 @@ export class PondTableTree extends LitElement {
     }
   `
 
+  /** Visual reset — `plain` strips Pond chrome. */
   @property({ reflect: true })
   appearance: PondAppearance = 'default'
 
+  /** Accessible table name rendered as `<caption>`. */
   @property()
   caption = ''
 
+  /** Column headers; first column hosts the expand toggle. */
   @property({ type: Array })
   columns: PondTableTreeColumn[] = []
 
+  /** Hierarchical rows (`id`, `cells`, optional `children`). */
   @property({ type: Array })
   nodes: PondTableTreeNode[] = []
 
-  /** Expanded node ids. */
+  /** Expanded parent node ids. */
   @property({ type: Array, attribute: 'expanded-ids' })
   expandedIds: string[] = []
 
