@@ -48,13 +48,15 @@ App navigation rail for the Page `navigation` slot — sections, link/button ite
 
   <Fragment slot="usage">
 
-Items with `href` render as links; without `href` they are buttons and fire `pond-select`. Sections fire `pond-toggle` when collapsed. Nest at most one level via `slot="nested"`.
+Items with `href` render as links; without `href` they are buttons and fire `pond-select`. Sections fire `pond-toggle` when collapsed. Nest at most one level via `slot="nested"`. Set `collapsed` on the side nav for an icon-only rail (labels stay available to assistive tech).
 
     <DosDonts component="side-nav" />
 
   </Fragment>
 
   <Fragment slot="changelog">
+
+Unreleased — collapsed icon-only rail (`collapsed` + `pond-collapse`).
 
 Unreleased — side nav rail with sections, items, icons, one nest level.
 
