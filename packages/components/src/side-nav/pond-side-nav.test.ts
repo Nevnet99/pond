@@ -64,6 +64,27 @@ describe('pond-side-nav', () => {
     expect(parent.hasAttribute('data-has-nested')).toBe(true)
   })
 
+  it('propagates collapsed rail mode to items', async () => {
+    const el = await fixture<PondSideNav>(html`
+      <pond-side-nav collapsed>
+        <pond-side-nav-section heading="Plan">
+          <pond-side-nav-item href="/board">
+            <span slot="icon" aria-hidden="true">▣</span>
+            Board
+          </pond-side-nav-item>
+        </pond-side-nav-section>
+      </pond-side-nav>
+    `)
+    await el.updateComplete
+    await new Promise<void>((r) => requestAnimationFrame(() => r()))
+    const item = el.querySelector('pond-side-nav-item') as PondSideNavItem
+    const section = el.querySelector(
+      'pond-side-nav-section'
+    ) as PondSideNavSection
+    expect(item.rail).toBe(true)
+    expect(section.rail).toBe(true)
+  })
+
   it('supports plain', async () => {
     const el = await fixture<PondSideNav>(
       html`<pond-side-nav appearance="plain"></pond-side-nav>`

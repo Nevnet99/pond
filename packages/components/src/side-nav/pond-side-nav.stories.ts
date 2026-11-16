@@ -56,6 +56,26 @@ export const InPage: Story = {
   `
 }
 
+export const CollapsedRail: Story = {
+  render: () => html`
+    <pond-side-nav
+      collapsed
+      style="border: 1px solid var(--pond-color-border-default); background: var(--pond-color-bg-surface)"
+    >
+      <pond-side-nav-section heading="Plan">
+        <pond-side-nav-item href="#board" current>
+          <span slot="icon" aria-hidden="true">▣</span>
+          Board
+        </pond-side-nav-item>
+        <pond-side-nav-item href="#list">
+          <span slot="icon" aria-hidden="true">☰</span>
+          List
+        </pond-side-nav-item>
+      </pond-side-nav-section>
+    </pond-side-nav>
+  `
+}
+
 export const Plain: Story = {
   render: () => html`
     <pond-side-nav appearance="plain" label="Plain nav">

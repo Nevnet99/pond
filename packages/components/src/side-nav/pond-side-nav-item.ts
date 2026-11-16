@@ -90,6 +90,32 @@ export class PondSideNavItem extends LitElement {
       flex: 1;
     }
 
+    :host([rail]) [part="control"] {
+      justify-content: center;
+      padding: var(--pond-space-2);
+    }
+
+    :host([rail]) [part="icon"] {
+      display: inline-flex;
+      width: 1.25rem;
+    }
+
+    :host([rail]) [part="label"] {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    :host([rail]) [part="nested"] {
+      display: none;
+    }
+
     [part="nested"] {
       display: flex;
       flex-direction: column;
@@ -126,6 +152,10 @@ export class PondSideNavItem extends LitElement {
   @property({ type: Boolean, reflect: true })
   current = false
 
+  /** Icon-only rail mode (set by parent Side nav when collapsed). */
+  @property({ type: Boolean, reflect: true })
+  rail = false
+
   @state() private hasIcon = false
   @state() private hasNested = false
 
@@ -156,7 +186,13 @@ export class PondSideNavItem extends LitElement {
     this.toggleAttribute('data-has-nested', this.hasNested)
   }
 
+  get #railLabel(): string {
+    return this.textContent?.replace(/\s+/g, ' ').trim() ?? ''
+  }
+
   override render() {
+    const rail = this.rail
+    const name = this.#railLabel
     const label = html`
       <span part="icon">
         <slot
@@ -173,6 +209,8 @@ export class PondSideNavItem extends LitElement {
             part="control"
             href=${this.href}
             aria-current=${this.current ? 'page' : nothing}
+            aria-label=${rail && name ? name : nothing}
+            title=${rail && name ? name : nothing}
             @click=${this.#onActivate}
             >${label}</a
           >
@@ -182,6 +220,8 @@ export class PondSideNavItem extends LitElement {
             type="button"
             part="control"
             aria-current=${this.current ? 'page' : nothing}
+            aria-label=${rail && name ? name : nothing}
+            title=${rail && name ? name : nothing}
             @click=${this.#onActivate}
           >
             ${label}

@@ -87,6 +87,14 @@ export class PondSideNavSection extends LitElement {
       display: none;
     }
 
+    :host([rail]) [part="heading"] {
+      display: none;
+    }
+
+    :host([rail]) [part="list"] {
+      display: flex;
+    }
+
     :host([appearance="plain"]) [part="root"],
     :host([appearance="plain"]) [part="heading"],
     :host([appearance="plain"]) [part="list"] {
@@ -108,6 +116,10 @@ export class PondSideNavSection extends LitElement {
   /** When true, the item list is hidden. */
   @property({ type: Boolean, reflect: true })
   collapsed = false
+
+  /** Icon-only rail mode (set by parent Side nav when collapsed). */
+  @property({ type: Boolean, reflect: true })
+  rail = false
 
   #toggle() {
     this.collapsed = !this.collapsed

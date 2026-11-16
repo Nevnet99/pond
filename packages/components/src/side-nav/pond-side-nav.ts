@@ -42,6 +42,16 @@ export class PondSideNav extends LitElement {
       font-size: var(--pond-font-size-sm);
     }
 
+    :host([collapsed]) {
+      width: 3.5rem;
+    }
+
+    :host([collapsed]) [part="root"] {
+      padding: var(--pond-space-2);
+      gap: var(--pond-space-2);
+      align-items: stretch;
+    }
+
     :host([appearance="plain"]) [part="root"] {
       all: unset;
       display: contents;
@@ -55,10 +65,37 @@ export class PondSideNav extends LitElement {
   @property()
   label = 'Side navigation'
 
+  /**
+   * Icon-only rail: item labels are visually hidden (kept for assistive tech),
+   * section headings hide, nested items hide.
+   */
+  @property({ type: Boolean, reflect: true })
+  collapsed = false
+
+  protected override updated(changed: Map<string, unknown>) {
+    if (!changed.has('collapsed')) return
+    this.dispatchEvent(
+      new CustomEvent('pond-collapse', {
+        detail: { collapsed: this.collapsed },
+        bubbles: true,
+        composed: true
+      })
+    )
+    this.#syncRail()
+  }
+
+  #syncRail() {
+    for (const el of this.querySelectorAll(
+      'pond-side-nav-item, pond-side-nav-section'
+    )) {
+      ;(el as HTMLElement & { rail?: boolean }).rail = this.collapsed
+    }
+  }
+
   override render() {
     return html`
       <nav part="root" aria-label=${this.label}>
-        <slot></slot>
+        <slot @slotchange=${() => this.#syncRail()}></slot>
       </nav>
     `
   }
