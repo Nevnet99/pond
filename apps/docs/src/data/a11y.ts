@@ -11,6 +11,11 @@ export type A11yEntry = {
   keyboard?: string[]
   criteria: A11yCriterion[]
   notes?: string[]
+  /**
+   * Known traps, incomplete affordances, or consumer duties.
+   * Required when disabled, plain mode, overlays, or live regions can be misused.
+   */
+  limitations?: string[]
 }
 
 const focus = (
@@ -54,7 +59,8 @@ const catalog: Record<string, A11yEntry> = {
     keyboard: [
       'Tab focuses the control',
       'Enter or Space activates',
-      'Disabled removes the control from tab order'
+      'Disabled removes the control from tab order',
+      'Pending (when shipped) stays focusable but does not activate'
     ],
     criteria: [
       keyboard('Full activation without a pointer.'),
@@ -65,8 +71,15 @@ const catalog: Record<string, A11yEntry> = {
       contrast()
     ],
     notes: [
+      'Prefer keeping the control pressable and validating on activate over `disabled`.',
       'Use Link for page navigation. Prefer one `primary` per region.',
       'Plain mode: you own focus paint and contrast.'
+    ],
+    limitations: [
+      '`disabled` removes the button from the tab order — keyboard and SR users cannot reach an explanation on the control itself.',
+      'Never put a tooltip on a disabled button; the trigger is not focusable.',
+      'Until `pending` ships, loading that uses `disabled` inherits the same tab-order trap.',
+      'Plain mode: consumer owns focus paint and contrast.'
     ]
   },
   link: {
@@ -85,6 +98,10 @@ const catalog: Record<string, A11yEntry> = {
         title: 'Link Purpose (In Context)',
         how: 'Visible text should describe the destination.'
       }
+    ],
+    limitations: [
+      'Do not use Link for in-page actions — use Button (including `variant="link"` for chrome-free actions).',
+      'Plain mode: consumer owns focus paint and contrast.'
     ]
   },
   'text-field': {
@@ -104,6 +121,10 @@ const catalog: Record<string, A11yEntry> = {
     notes: [
       'Control text is 16px (`md`) to avoid iOS zoom.',
       'Plain mode: you own chrome.'
+    ],
+    limitations: [
+      'Placeholder is never the only label — SR and recall both suffer.',
+      'Plain mode: consumer owns chrome, focus paint, and contrast.'
     ]
   },
   'text-area': {
@@ -130,6 +151,10 @@ const catalog: Record<string, A11yEntry> = {
       keyboard('Platform select keyboard map.'),
       focus(),
       name('Selected option exposed by the native control.')
+    ],
+    limitations: [
+      'Platform `<select>` styling and mobile pickers vary — do not assume custom listbox keyboard maps.',
+      'Plain mode: consumer owns chrome, focus paint, and contrast.'
     ]
   },
   checkbox: {
@@ -266,6 +291,11 @@ const catalog: Record<string, A11yEntry> = {
         title: 'Meaningful Sequence',
         how: 'Background content is not interactable while open (via host + blanket).'
       }
+    ],
+    limitations: [
+      'Consumers must pass a focusable trigger reference so focus can restore on close.',
+      'Disabling Escape or blanket dismiss needs an equivalent accessible exit.',
+      'Primary actions that go pending should use Button `pending` (when shipped), not a disabled confirm that drops out of tab order.'
     ]
   },
   drawer: {
