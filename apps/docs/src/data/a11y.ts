@@ -553,7 +553,7 @@ const catalog: Record<string, A11yEntry> = {
   breadcrumbs: {
     summary:
       '`nav aria-label="Breadcrumb"`; current crumb uses `aria-current="page"`.',
-    keyboard: ['Tab through crumb links'],
+    keyboard: ['Tab through crumb links', 'Enter activates a navigable crumb'],
     criteria: [
       labels('Breadcrumb navigation landmark.'),
       name('Current page indicated with `aria-current`.'),
@@ -563,6 +563,15 @@ const catalog: Record<string, A11yEntry> = {
         how: 'Breadcrumbs help orient; AA met via clear nav labeling.'
       },
       focus()
+    ],
+    notes: [
+      'Plain mode: you own focus paint and contrast; keep the landmark and current marker.'
+    ],
+    limitations: [
+      'The current crumb (explicit `current` or last item) renders as text — it is not in the tab order and must not be a self-link.',
+      'Items without `href` are never links; give ancestors a real `href` when they should be navigable.',
+      'Separators are `aria-hidden`; do not rely on them for meaning.',
+      'Plain mode: consumer owns focus paint and contrast.'
     ]
   },
   page: {

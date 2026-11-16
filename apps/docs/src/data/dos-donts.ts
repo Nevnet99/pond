@@ -328,11 +328,13 @@ const catalog: Record<string, DosDontsEntry> = {
   breadcrumbs: {
     dos: [
       'Show the path from a familiar root to the current page',
-      'Mark the current crumb with aria-current'
+      'Give ancestor crumbs real hrefs; mark the current crumb with current',
+      'Prefer the Page header breadcrumbs slot for page chrome'
     ],
     donts: [
       'Don’t duplicate the page title as the only crumb',
-      'Don’t make the current crumb a link to itself'
+      'Don’t make the current crumb a link to itself',
+      'Don’t use breadcrumbs as the primary peer navigation — use Side nav'
     ]
   },
   page: {

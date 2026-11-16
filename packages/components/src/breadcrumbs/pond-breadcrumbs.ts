@@ -92,9 +92,11 @@ export class PondBreadcrumbs extends LitElement {
     }
   `
 
+  /** Visual presentation. `plain` strips Pond visual CSS. */
   @property({ reflect: true })
   appearance: PondAppearance = 'default'
 
+  /** Crumb trail (`label`, optional `href`, optional `current`). */
   @property({ type: Array })
   items: PondBreadcrumbItem[] = []
 
