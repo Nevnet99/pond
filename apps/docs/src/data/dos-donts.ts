@@ -311,11 +311,13 @@ const catalog: Record<string, DosDontsEntry> = {
   tabs: {
     dos: [
       'Keep tab labels short and unique',
-      'Show one panel at a time and wire aria-controls'
+      'Match each panel slot name to the tab value',
+      'Use tabs only for closely related views on one page'
     ],
     donts: [
-      'Don’t use tabs for sequential wizard steps — use a tracker',
-      'Don’t load unrelated page-level destinations as tabs'
+      'Don’t use tabs for sequential wizard steps — use a progress tracker',
+      'Don’t load unrelated page-level destinations as tabs — use Side nav or Link',
+      'Don’t hide the only path to critical content behind a disabled tab'
     ]
   },
   pagination: {

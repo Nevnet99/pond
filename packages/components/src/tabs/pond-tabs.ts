@@ -105,12 +105,15 @@ export class PondTabs extends LitElement {
     }
   `
 
+  /** Visual presentation. `plain` strips Pond visual CSS. */
   @property({ reflect: true })
   appearance: PondAppearance = 'default'
 
+  /** Tab descriptors (`value`, `label`, optional `disabled`). */
   @property({ type: Array })
   items: PondTabItem[] = []
 
+  /** Selected tab `value`. Falls back to the first enabled item. */
   @property({ reflect: true })
   selected = ''
 

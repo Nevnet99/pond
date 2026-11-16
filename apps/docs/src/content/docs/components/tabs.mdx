@@ -2,12 +2,13 @@
 title: Tabs
 description: Switch between related views in one place.
 ---
+
 import ComponentTabs from '../../../components/ComponentTabs.astro'
 import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
-Switch between related views. Panel content uses named slots matching each tab value.
+Switch between closely related views in one place. Panel content uses named slots matching each tab `value`. Prefer separate pages or [Side nav](/components/side-nav/) when destinations are unrelated. `appearance="plain"` strips Pond visuals — you own focus paint and contrast.
 
 <ComponentTabs>
   <Fragment slot="examples">
@@ -22,7 +23,35 @@ Switch between related views. Panel content uses named slots matching each tab v
         <p slot="a11y">Accessibility panel</p>
       </pond-tabs>
     </PondDemo>
+
+    <p>
+      Disable a tab when its panel is temporarily unavailable — it stays visible
+      but is skipped by arrow keys and removed from the roving tabindex.
+    </p>
+
+    <PondDemo label="Disabled tab">
+      <pond-tabs
+        selected="overview"
+        style="max-width:24rem"
+        items='[{"value":"overview","label":"Overview"},{"value":"beta","label":"Beta","disabled":true},{"value":"usage","label":"Usage"}]'
+      >
+        <p slot="overview">Overview panel</p>
+        <p slot="usage">Usage panel</p>
+      </pond-tabs>
+    </PondDemo>
+
+    <PondDemo label="Plain / reset">
+      <pond-tabs
+        appearance="plain"
+        selected="one"
+        items='[{"value":"one","label":"One"},{"value":"two","label":"Two"}]'
+      >
+        <p slot="one">Plain panel one</p>
+        <p slot="two">Plain panel two</p>
+      </pond-tabs>
+    </PondDemo>
   </Fragment>
+
   <Fragment slot="code">
 
 ```html
@@ -35,17 +64,78 @@ Switch between related views. Panel content uses named slots matching each tab v
 </pond-tabs>
 ```
 
+### API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `items` | `PondTabItem[]` | `[]` | Tab descriptors: `{ value, label, disabled? }` |
+| `selected` | `string` | `''` | Selected tab `value`; falls back to first enabled item |
+| `appearance` | `'default' \| 'plain'` | `'default'` | `plain` strips Pond visual CSS |
+
+**Slots:** one named slot per tab `value` — panel content for that tab.
+
+**CSS parts:** `root`, `tablist`, `tab`, `panels`, `panel`.
+
+**Events:** `pond-change` — `{ detail: { value } }` when selection changes.
+
   </Fragment>
+
   <Fragment slot="usage">
 
-One selected tab at a time. Prefer separate pages when content is not closely related.
+### Purpose
+
+Tabs keep related panels in one view with a single selection. They are **not** for multi-step wizards ([Progress tracker](/components/progress-tracker/)) or page-level destinations ([Link](/components/link/), [Side nav](/components/side-nav/)).
+
+### Anatomy
+
+1. **Tab list** (`::part(tablist)`) — `role="tablist"`
+2. **Tab** (`::part(tab)`) — `role="tab"` button per item
+3. **Panels** (`::part(panels)` / `::part(panel)`) — active `role="tabpanel"` with a named slot
+
+### Content guidelines
+
+- Short, unique labels (sentence case)
+- Labels name the panel, not an action (“Settings”, not “Click settings”)
+- Keep panels related; if users compare content side-by-side, prefer separate regions instead of tabs
+
+### Happy path vs plain
+
+Default ships underline chrome and Pond focus rings. `appearance="plain"` keeps tab / tabpanel semantics and keyboard behavior — **you** own focus paint and contrast.
 
     <DosDonts component="tabs" />
 
+**Related:** [Page header](/components/page-header/) (`bottom` slot) · [Side nav](/components/side-nav/) for app destinations · [Progress tracker](/components/progress-tracker/) for sequential steps
+
   </Fragment>
-  <Fragment slot="changelog">Unreleased — items array, named panel slots, keyboard arrows.</Fragment>
+
+  <Fragment slot="changelog">
+
+Unreleased — Phase 9 docs (purpose, anatomy, API, content, limitations, patterns); no API break.
+
+  </Fragment>
+
   <Fragment slot="accessibility">
     <A11ySection component="tabs" />
   </Fragment>
-  <Fragment slot="patterns">Compose into Page header bottom slot in Phase 3.</Fragment>
+
+  <Fragment slot="patterns">
+
+**Page header bottom tabs** — section a page under the title without leaving the route.
+
+```html
+<pond-page-header heading="Projects">
+  <pond-tabs
+    slot="bottom"
+    selected="overview"
+    items='[{"value":"overview","label":"Overview"},{"value":"activity","label":"Activity"}]'
+  >
+    <div slot="overview">…</div>
+    <div slot="activity">…</div>
+  </pond-tabs>
+</pond-page-header>
+```
+
+**Prefer Side nav for destinations** — if each “tab” is a different app area with its own URL, use [Side nav](/components/side-nav/) (or links), not Tabs.
+
+  </Fragment>
 </ComponentTabs>
