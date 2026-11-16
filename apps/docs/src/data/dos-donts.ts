@@ -213,7 +213,8 @@ const catalog: Record<string, DosDontsEntry> = {
     ],
     donts: [
       'Don’t omit alt on informative images',
-      'Don’t use Image as a clickable button without a real control'
+      'Don’t use Image as a clickable button without a real control',
+      'Don’t use Image for brand marks — prefer Logo'
     ]
   },
   tile: {
@@ -223,17 +224,20 @@ const catalog: Record<string, DosDontsEntry> = {
     ],
     donts: [
       'Don’t use Tile for photographic heroes — prefer Image',
-      'Don’t overcrowd the tile with long paragraphs'
+      'Don’t overcrowd the tile with long paragraphs',
+      'Don’t use Tile for inline type cues beside titles — prefer Object'
     ]
   },
   logo: {
     dos: [
       'Pass your own brand assets via src and wordmark',
-      'Use empty alt when the wordmark already names the brand'
+      'Use empty alt when the wordmark already names the brand',
+      'Set href for home / brand navigation'
     ],
     donts: [
       'Don’t ship Atlassian or third-party logos from Pond',
-      'Don’t use Logo for content-type glyphs — prefer Object or Tile'
+      'Don’t use Logo for content-type glyphs — prefer Object or Tile',
+      'Don’t use Logo for photography — prefer Image'
     ]
   },
   object: {
@@ -243,7 +247,8 @@ const catalog: Record<string, DosDontsEntry> = {
     ],
     donts: [
       'Don’t treat Object as Atlassian product branding',
-      'Don’t use Object for photographic media — prefer Image'
+      'Don’t use Object for photographic media — prefer Image',
+      'Don’t use Object for person identity — prefer Avatar'
     ]
   },
   'time-picker': {
@@ -537,28 +542,37 @@ const catalog: Record<string, DosDontsEntry> = {
   avatar: {
     dos: [
       'Provide an accessible name for the person or entity',
-      'Use initials fallback when the image fails'
+      'Use initials fallback when the image fails',
+      'Show a visible name beside tiny faces in dense tables'
     ],
     donts: [
       'Don’t leave meaningful avatars unlabeled',
-      'Don’t use tiny avatars as the only identity cue in dense tables without a name'
+      'Don’t use tiny avatars as the only identity cue in dense tables without a name',
+      'Don’t use Avatar for content-type cues — prefer Object'
     ]
   },
   'avatar-group': {
     dos: [
       'Name the group (e.g. Collaborators)',
-      'Expose overflow count accessibly'
+      'Label each slotted Avatar',
+      'Keep the stack short until overflow counting ships'
     ],
     donts: [
       'Don’t hide who is included with no way to reveal the list',
-      'Don’t stack so many faces that names become impossible'
+      'Don’t stack so many faces that names become impossible',
+      'Don’t use Avatar group for a single person — prefer Avatar'
     ]
   },
   icon: {
-    dos: ['Label meaningful icons', 'Hide decorative icons from AT'],
+    dos: [
+      'Label meaningful icons',
+      'Hide decorative icons from AT',
+      'Put icon-only action names on Button, not Icon'
+    ],
     donts: [
       'Don’t ship icon-only actions without a name',
-      'Don’t announce decorative icons'
+      'Don’t announce decorative icons',
+      'Don’t use Icon for content-type cues — prefer Object'
     ]
   },
   code: {
