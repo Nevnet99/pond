@@ -525,6 +525,15 @@ const catalog: Record<string, A11yEntry> = {
       keyboard('Roving tabindex / APG tabs pattern.'),
       name('`aria-selected` and `aria-controls` wire tabs to panels.'),
       focus()
+    ],
+    notes: [
+      'Plain mode: you own focus paint and contrast; keep roles and keyboard.'
+    ],
+    limitations: [
+      'Only the selected tab is in the tab order (`tabindex="0"`); arrows move selection and focus among enabled tabs.',
+      '`disabled` items stay visible but are skipped by arrow keys and never receive focus — do not put essential content only behind a disabled tab.',
+      'Wire each panel via a named slot matching `value` so `aria-controls` / `aria-labelledby` stay valid.',
+      'Plain mode: consumer owns focus paint and contrast.'
     ]
   },
   pagination: {
