@@ -14,11 +14,13 @@ export type PondSortDirection = 'asc' | 'desc'
  *
  * @fires pond-sort — Sort changed (`detail.key`, `detail.direction`).
  * @fires pond-change — Page changed (`detail.page`).
+ * @fires pond-reorder — Row order changed (`detail.rows`, `detail.from`, `detail.to`).
  *
  * @csspart root — Outer shell.
  * @csspart table — Table element.
  * @csspart th — Sortable header button cell.
  * @csspart td — Body cell.
+ * @csspart reorder — Row reorder controls cell.
  * @csspart pagination — Pagination row.
  */
 @customElement('pond-dynamic-table')
@@ -95,12 +97,44 @@ export class PondDynamicTable extends LitElement {
       justify-content: flex-end;
     }
 
+    [part="reorder"] {
+      width: 1%;
+      padding: var(--pond-space-2) var(--pond-space-4);
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--pond-color-border-default);
+      white-space: nowrap;
+    }
+
+    [part="reorder"] button {
+      margin: 0;
+      padding: var(--pond-space-1);
+      border: 1px solid var(--pond-color-border-default);
+      border-radius: var(--pond-radius-sm);
+      background: var(--pond-color-bg-surface);
+      color: inherit;
+      font: inherit;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    [part="reorder"] button:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    [part="reorder"] button:focus-visible {
+      outline: var(--pond-focus-width) solid var(--pond-color-focus-ring);
+      outline-offset: var(--pond-focus-offset);
+    }
+
     :host([appearance="plain"]) [part="root"],
     :host([appearance="plain"]) [part="table-wrap"],
     :host([appearance="plain"]) [part="table"],
     :host([appearance="plain"]) [part="th"],
     :host([appearance="plain"]) [part="td"],
     :host([appearance="plain"]) [part="sort"],
+    :host([appearance="plain"]) [part="reorder"],
     :host([appearance="plain"]) [part="pagination"] {
       all: unset;
     }
@@ -133,6 +167,10 @@ export class PondDynamicTable extends LitElement {
 
   @property({ attribute: 'sort-direction' })
   sortDirection: PondSortDirection = 'asc'
+
+  /** When true, each row gets up/down controls for client-side reorder. */
+  @property({ type: Boolean, reflect: true })
+  reorderable = false
 
   @state() private internalPage = 1
 
@@ -192,7 +230,27 @@ export class PondDynamicTable extends LitElement {
     )
   }
 
+  #move(fromSorted: number, delta: number) {
+    const sorted = this.#sorted
+    const to = fromSorted + delta
+    if (to < 0 || to >= sorted.length) return
+    const next = [...sorted]
+    const [row] = next.splice(fromSorted, 1)
+    next.splice(to, 0, row)
+    this.rows = next
+    this.sortKey = ''
+    this.dispatchEvent(
+      new CustomEvent('pond-reorder', {
+        detail: { rows: next, from: fromSorted, to },
+        bubbles: true,
+        composed: true
+      })
+    )
+  }
+
   override render() {
+    const size = Math.max(1, this.pageSize)
+    const pageStart = (this.#page - 1) * size
     return html`
       <div part="root">
         <div part="table-wrap">
@@ -200,6 +258,16 @@ export class PondDynamicTable extends LitElement {
             ${this.caption ? html`<caption>${this.caption}</caption>` : nothing}
             <thead>
               <tr part="tr">
+                ${
+                  this.reorderable
+                    ? html`<th part="th" scope="col">
+                      <span
+                        style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0"
+                        >Reorder</span
+                      >
+                    </th>`
+                    : nothing
+                }
                 ${this.columns.map(
                   (c) => html`<th
                     part="th"
@@ -231,13 +299,36 @@ export class PondDynamicTable extends LitElement {
               </tr>
             </thead>
             <tbody>
-              ${this.#pageRows.map(
-                (row) => html`<tr part="tr">
+              ${this.#pageRows.map((row, i) => {
+                const absolute = pageStart + i
+                return html`<tr part="tr">
+                  ${
+                    this.reorderable
+                      ? html`<td part="reorder">
+                        <button
+                          type="button"
+                          aria-label="Move up"
+                          ?disabled=${absolute === 0}
+                          @click=${() => this.#move(absolute, -1)}
+                        >
+                          ↑
+                        </button>
+                        <button
+                          type="button"
+                          aria-label="Move down"
+                          ?disabled=${absolute >= this.#sorted.length - 1}
+                          @click=${() => this.#move(absolute, 1)}
+                        >
+                          ↓
+                        </button>
+                      </td>`
+                      : nothing
+                  }
                   ${this.columns.map(
                     (c) => html`<td part="td">${row[c.key] ?? ''}</td>`
                   )}
                 </tr>`
-              )}
+              })}
             </tbody>
           </table>
         </div>
