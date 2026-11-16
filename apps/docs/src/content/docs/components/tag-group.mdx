@@ -2,12 +2,13 @@
 title: Tag group
 description: Wrapping layout for a collection of Tags.
 ---
+
 import ComponentTabs from '../../../components/ComponentTabs.astro'
 import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
-Compose existing Tags into a wrapping row.
+Layout helper that wraps related [Tag](/components/tag/) children in a named group. Style and remove behavior come from Tag — Tag group only provides wrap layout and `role="group"`. `appearance="plain"` strips Pond gap chrome — you own spacing and contrast.
 
 <ComponentTabs>
   <Fragment slot="examples">
@@ -18,26 +19,101 @@ Compose existing Tags into a wrapping row.
         <pond-tag>AA</pond-tag>
       </pond-tag-group>
     </PondDemo>
+
+    <p>
+      Always set a meaningful <code>label</code> for AT. Mix removable and static
+      tags when the group represents an editable set.
+    </p>
+
+    <PondDemo label="With removable tags">
+      <pond-tag-group label="Filters">
+        <pond-tag removable>Design</pond-tag>
+        <pond-tag removable>Docs</pond-tag>
+        <pond-tag>Locked</pond-tag>
+      </pond-tag-group>
+    </PondDemo>
+
+    <PondDemo label="Plain / reset">
+      <pond-tag-group appearance="plain" label="Plain group">
+        <pond-tag>One</pond-tag>
+        <pond-tag>Two</pond-tag>
+      </pond-tag-group>
+    </PondDemo>
   </Fragment>
+
   <Fragment slot="code">
 
 ```html
 <pond-tag-group label="Labels">
   <pond-tag>Design</pond-tag>
+  <pond-tag removable>Lit</pond-tag>
 </pond-tag-group>
 ```
 
+### API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `string` | `'Tags'` | Accessible name for `role="group"` (`aria-label`) |
+| `appearance` | `'default' \| 'plain'` | `'default'` | `plain` strips Pond visual CSS |
+
+**Slots:** default — one or more `pond-tag` (or compatible) children.
+
+**CSS parts:** `root` — flex wrap row with `role="group"`.
+
+**Events:** none from the group — listen on child Tags for `pond-remove`.
+
   </Fragment>
+
   <Fragment slot="usage">
 
-Layout helper only — style comes from Tag.
+### Purpose
+
+Group related tags with wrapping layout and an accessible group name. Not a substitute for Tag itself, and not a status list ([Lozenge](/components/lozenge/)).
+
+### Anatomy
+
+1. **Root** (`::part(root)`) — `role="group"` + `aria-label` from `label`  
+2. **Default slot** — Tag children
+
+### Content guidelines
+
+- `label` describes the set (“Filters”, “Topics”), not a single tag
+- Keep one taxonomy per group
+- Removable children still need operable, named remove controls
+
+### Happy path vs plain
+
+Default ships flex wrap + gap. Plain keeps group semantics — **you** own spacing chrome.
 
     <DosDonts component="tag-group" />
 
+**Related:** [Tag](/components/tag/) · [Lozenge](/components/lozenge/) · [Avatar group](/components/avatar-group/)
+
   </Fragment>
-  <Fragment slot="changelog">Unreleased — wrap row.</Fragment>
+
+  <Fragment slot="changelog">
+
+Unreleased — Phase 9 docs (purpose, anatomy, API, content, patterns); layout unchanged.
+
+  </Fragment>
+
   <Fragment slot="accessibility">
     <A11ySection component="tag-group" />
   </Fragment>
-  <Fragment slot="patterns">None yet.</Fragment>
+
+  <Fragment slot="patterns">
+
+**Editable filter chips** — wrap removable Tags; handle `pond-remove` on each child (or via delegation on the group host).
+
+```html
+<pond-tag-group label="Filters">
+  <pond-tag removable>Design</pond-tag>
+  <pond-tag removable>Docs</pond-tag>
+</pond-tag-group>
+```
+
+**Prefer a single Tag** when there is only one chip and no group name is needed. Prefer Lozenge for status, not Tag group.
+
+  </Fragment>
 </ComponentTabs>
