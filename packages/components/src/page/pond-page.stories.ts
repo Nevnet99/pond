@@ -14,8 +14,11 @@ export default meta
 type Story = StoryObj
 
 export const Default: Story = {
+  parameters: { layout: 'padded' },
   render: () => html`
-    <pond-page style="min-height: 24rem; border: 1px solid var(--pond-color-border-default)">
+    <pond-page
+      style="width:100%; min-height:24rem; border:1px solid var(--pond-color-border-default)"
+    >
       <pond-banner slot="banner" tone="info">Fork-first Lit design system</pond-banner>
       <div slot="navigation" style="padding: 1rem">
         <pond-text size="sm" muted>Navigation slot</pond-text>

@@ -28,7 +28,10 @@ export class PondPage extends LitElement {
     :host {
       display: block;
       box-sizing: border-box;
+      width: 100%;
+      min-width: 0;
       min-height: 100%;
+      /* inline-size containment needs an explicit width or the host collapses */
       container-type: inline-size;
       container-name: pond-page;
     }
