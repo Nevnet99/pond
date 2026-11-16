@@ -58,13 +58,28 @@ export class PondSelect extends LitElement {
       display: contents;
     }
   `
+  /** Visual presentation. `plain` strips Pond visual CSS. */
   @property({ reflect: true }) appearance: PondAppearance = 'default'
+
+  /** Visible label associated with the select. Required for accessible use. */
   @property() label = ''
+
+  /** Native form `name`. */
   @property() name = ''
+
+  /** Selected value in single mode. */
   @property() value = ''
+
+  /** Selected values when `multiple` is set. */
   @property({ type: Array }) values: string[] = []
+
+  /** Native multi-select mode. */
   @property({ type: Boolean, reflect: true }) multiple = false
+
+  /** Disables the control and removes it from tab order. */
   @property({ type: Boolean, reflect: true }) disabled = false
+
+  /** Options rendered as native `<option>` elements. */
   @property({ type: Array }) options: PondSelectOption[] = []
 
   #onChange(e: Event) {

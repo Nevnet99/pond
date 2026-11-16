@@ -60,11 +60,13 @@ const catalog: Record<string, DosDontsEntry> = {
   select: {
     dos: [
       'Use for choosing from a known, finite list',
-      'Label the control; keep options readable'
+      'Label the control; keep options readable',
+      'Prefer radio/checkbox groups when comparison needs all options visible'
     ],
     donts: [
       'Don’t use for free-text entry',
-      'Don’t nest selects that change meaning without announcing the change'
+      'Don’t nest selects that change meaning without announcing the change',
+      'Don’t omit the visible label'
     ]
   },
   checkbox: {
@@ -156,12 +158,15 @@ const catalog: Record<string, DosDontsEntry> = {
   },
   modal: {
     dos: [
+      'Open from a focusable trigger so focus can restore on close',
       'Move focus into the dialog on open and restore it on close',
-      'Use for focused tasks that block the page'
+      'Use for focused tasks that block the page',
+      'Use Button pending on in-flight confirms'
     ],
     donts: [
       'Don’t open modals without a clear dismiss path (Escape / Cancel)',
-      'Don’t stack multiple modals without a strong reason'
+      'Don’t stack multiple modals without a strong reason',
+      'Don’t disable the confirm control while saving — use pending'
     ]
   },
   drawer: {

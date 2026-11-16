@@ -2,40 +2,124 @@
 title: Modal
 description: Dialog overlay with Escape and backdrop dismiss.
 ---
+
 import ComponentTabs from '../../../components/ComponentTabs.astro'
 import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
-Focused task that blocks the page until dismissed.
+Focused task that blocks the page until dismissed. Prefer [Popup](/components/popup/) or [Inline dialog](/components/inline-dialog/) when you need a non-blocking anchored surface. `appearance="plain"` strips Pond dialog chrome — you still get dialog semantics, trap, and dismiss.
 
 <ComponentTabs>
   <Fragment slot="examples">
-    <PondDemo label="Open">
+    <p>
+      Demo below opens inline in the docs frame. In product UI, toggle
+      <code>open</code> from a focusable trigger so focus can restore.
+    </p>
+
+    <PondDemo label="Confirm (open)">
       <pond-modal open title="Delete project">
         <p>This cannot be undone.</p>
         <pond-button slot="actions" variant="secondary">Cancel</pond-button>
         <pond-button slot="actions" variant="danger">Delete</pond-button>
       </pond-modal>
     </PondDemo>
+
+    <p>
+      Destructive confirms: danger primary + clear Cancel. Use Button
+      <code>pending</code> on the confirm action while a request runs — not
+      <code>disabled</code>.
+    </p>
   </Fragment>
+
   <Fragment slot="code">
 
 ```html
-<pond-modal open title="Confirm">...</pond-modal>
+<pond-button id="open">Delete…</pond-button>
+<pond-modal id="dialog" title="Delete project">
+  <p>This cannot be undone.</p>
+  <pond-button slot="actions" variant="secondary" id="cancel">Cancel</pond-button>
+  <pond-button slot="actions" variant="danger">Delete</pond-button>
+</pond-modal>
+<script type="module">
+  const dialog = document.querySelector('#dialog')
+  const open = document.querySelector('#open')
+  open.addEventListener('click', () => {
+    dialog.open = true
+  })
+  dialog.addEventListener('pond-close', () => {
+    open.focus()
+  })
+  document.querySelector('#cancel').addEventListener('click', () => dialog.close())
+</script>
 ```
 
+### API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `open` | `boolean` | `false` | When true, renders dialog + blanket and moves focus in |
+| `title` | `string` | `''` | Dialog title (visible + accessible name via `aria-label`) |
+| `appearance` | `'default' \| 'plain'` | `'default'` | `plain` strips Pond visual CSS on dialog parts |
+
+**Methods:** `close()` — sets `open` false and fires `pond-close`.
+
+**Slots:** default (body) · `actions` (footer buttons).
+
+**CSS parts:** `dialog`, `title`, `body`, `actions`.
+
+**Events:** `pond-close` — after dismiss (Escape, backdrop, or `close()`).
+
   </Fragment>
+
   <Fragment slot="usage">
 
-Use for confirmations and short forms. Escape and backdrop click close.
+### Purpose
+
+Interrupt the page for a short, blocking task — confirm, alert, or a compact form. Not for non-modal menus ([Popup](/components/popup/)) or side panels ([Drawer](/components/drawer/)).
+
+### Anatomy
+
+1. **Blanket** — dims and dismisses on click (`pond-dismiss`)  
+2. **Dialog** (`::part(dialog)`) — `role="dialog"` + `aria-modal="true"`  
+3. **Title** (`::part(title)`) — optional visible heading from `title`  
+4. **Body** — default slot  
+5. **Actions** — `slot="actions"`
+
+### Content guidelines
+
+- Title names the task (“Delete project”), not “Are you sure?”
+- Body explains consequence in one or two sentences
+- Primary action verb matches the title (“Delete”)
+- Always offer a clear Cancel / dismiss path
+
+### Happy path vs plain
+
+Default ships canvas, radius, shadow, and motion (honors `prefers-reduced-motion`). Plain keeps trap + semantics — **you** own chrome.
 
     <DosDonts component="modal" />
 
+**Related:** [Popup](/components/popup/) · [Inline dialog](/components/inline-dialog/) · [Drawer](/components/drawer/) · [Button](/components/button/) (`pending`)
+
   </Fragment>
-  <Fragment slot="changelog">Unreleased — open, title, Escape/backdrop close.</Fragment>
+
+  <Fragment slot="changelog">
+
+Unreleased — Phase 9 docs (purpose, anatomy, API, content, patterns); focus trap already on master.
+
+  </Fragment>
+
   <Fragment slot="accessibility">
     <A11ySection component="modal" />
   </Fragment>
-  <Fragment slot="patterns">None yet.</Fragment>
+
+  <Fragment slot="patterns">
+
+**Open from a trigger and restore focus** — set `open` from a button; on `pond-close`, focus returns automatically to the element that was focused when the dialog opened (Pond stores it). Keep Cancel wired to `close()`.
+
+**Pending confirm** — use `<pond-button pending>` on the destructive action while saving; do not `disabled` the confirm control during the request.
+
+**Prefer Popup / Inline dialog** when the task should not block the rest of the page.
+
+  </Fragment>
 </ComponentTabs>

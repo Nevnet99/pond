@@ -2,16 +2,17 @@
 title: Select
 description: Single or multi-select dropdown.
 ---
+
 import ComponentTabs from '../../../components/ComponentTabs.astro'
 import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
-Choose one or more options from a list.
+Choose one or more options from a known, finite list. Prefer [Radio](/components/radio/) or [Checkbox](/components/checkbox/) when every option should stay visible. Always set a visible `label`. `appearance="plain"` strips Pond visuals — you own chrome, focus paint, and contrast.
 
 <ComponentTabs>
   <Fragment slot="examples">
-    <PondDemo label="Default">
+    <PondDemo label="Single">
       <pond-select
         label="Size"
         value="m"
@@ -19,6 +20,12 @@ Choose one or more options from a list.
         options='[{"value":"s","label":"Small"},{"value":"m","label":"Medium"},{"value":"l","label":"Large"}]'
       ></pond-select>
     </PondDemo>
+
+    <p>
+      Multi mode uses native <code>multiple</code> selection and
+      <code>values</code> (array) instead of <code>value</code>.
+    </p>
+
     <PondDemo label="Multiple">
       <pond-select
         label="Sizes"
@@ -28,25 +35,108 @@ Choose one or more options from a list.
         values='["s","l"]'
       ></pond-select>
     </PondDemo>
+
+    <PondDemo label="Disabled">
+      <pond-select
+        label="Plan"
+        disabled
+        value="pro"
+        style="max-width:16rem"
+        options='[{"value":"pro","label":"Pro"}]'
+      ></pond-select>
+    </PondDemo>
+
+    <PondDemo label="Plain / reset">
+      <pond-select
+        appearance="plain"
+        label="Plain select"
+        value="a"
+        options='[{"value":"a","label":"Alpha"},{"value":"b","label":"Beta"}]'
+      ></pond-select>
+    </PondDemo>
   </Fragment>
+
   <Fragment slot="code">
 
 ```html
-<pond-select label="Size" options='[...]' value="m"></pond-select>
-<pond-select label="Sizes" multiple options='[...]' values='["s","l"]'></pond-select>
+<pond-select
+  label="Size"
+  value="m"
+  options='[{"value":"s","label":"Small"},{"value":"m","label":"Medium"}]'
+></pond-select>
+
+<pond-select
+  label="Sizes"
+  multiple
+  values='["s","l"]'
+  options='[{"value":"s","label":"Small"},{"value":"l","label":"Large"}]'
+></pond-select>
 ```
 
+### API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `string` | `''` | Visible label (required for accessible use) |
+| `name` | `string` | `''` | Native form name |
+| `value` | `string` | `''` | Selected value (single mode) |
+| `values` | `string[]` | `[]` | Selected values (`multiple`) |
+| `options` | `{ value: string; label: string }[]` | `[]` | Option list (property or JSON attribute) |
+| `multiple` | `boolean` | `false` | Native multi-select |
+| `disabled` | `boolean` | `false` | Removes from tab order when set |
+| `appearance` | `'default' \| 'plain'` | `'default'` | `plain` strips Pond visual CSS |
+
+**Slots:** none — options come from the `options` property.
+
+**CSS parts:** `root`, `label`, `select`.
+
+**Events:** `pond-change` — `{ detail: { value } }` or `{ detail: { values } }` in multi mode.
+
   </Fragment>
+
   <Fragment slot="usage">
 
-Use `multiple` for multi-select. Prefer radio / checkbox groups when all options should stay visible.
+### Purpose
+
+Pick from a finite list that does not need to stay fully visible. Not for free text ([Text field](/components/text-field/)) or long searchable catalogs (build a combobox pattern later).
+
+### Anatomy
+
+1. **Root** (`::part(root)`)  
+2. **Label** (`::part(label)`) — associated via `for`/`id`  
+3. **Select** (`::part(select)`) — native `<select>` / `<option>`
+
+### Content guidelines
+
+- Label the control (“Size”), not the first option (“Select…”)
+- Option labels are sentence case and distinct
+- Prefer Radio/Checkbox groups when there are few options and comparison matters
+
+### Happy path vs plain
+
+Default ships label type, border, and focus ring. Plain keeps native select behavior and labeling — **you** own chrome.
 
     <DosDonts component="select" />
 
+**Related:** [Radio](/components/radio/) · [Checkbox](/components/checkbox/) · [Text field](/components/text-field/) · [Form](/components/form/)
+
   </Fragment>
-  <Fragment slot="changelog">Unreleased — multi mode via `multiple` + `values`.</Fragment>
+
+  <Fragment slot="changelog">
+
+Unreleased — Phase 9 docs (purpose, anatomy, API, content, patterns); multi mode unchanged.
+
+  </Fragment>
+
   <Fragment slot="accessibility">
     <A11ySection component="select" />
   </Fragment>
-  <Fragment slot="patterns">None yet.</Fragment>
+
+  <Fragment slot="patterns">
+
+**Labeled single select in a form** — set `label` + `options`; listen for `pond-change`.
+
+**Prefer Radio / Checkbox** when all choices should stay on screen for comparison — Select hides options until opened (and mobile pickers vary by platform).
+
+  </Fragment>
 </ComponentTabs>
