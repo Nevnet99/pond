@@ -1,7 +1,7 @@
 {
   "name": "pond",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Fork-first Lit design system — WCAG AA, brandable tokens, Storybook, Starlight",
   "type": "module",
   "packageManager": "pnpm@10.34.9",
