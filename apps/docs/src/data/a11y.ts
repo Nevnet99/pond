@@ -478,15 +478,25 @@ const catalog: Record<string, A11yEntry> = {
     summary: 'Sortable column headers with `aria-sort` and Pagination.',
     keyboard: [
       'Tab to sort buttons and pagination',
-      'Enter/Space activates sort and page controls'
+      'Enter/Space activates sort and page controls',
+      'When reorderable, Tab to Move up / Move down per row'
     ],
     criteria: [
-      keyboard('Sort and page without a pointer.'),
+      keyboard('Sort, page, and reorder without a pointer.'),
       {
         id: '1.3.1',
         title: 'Info and Relationships',
         how: 'Header cells expose `aria-sort` for the active column.'
-      }
+      },
+      focus(
+        'Sort and reorder controls use Pond focus rings (or host-owned in plain).'
+      )
+    ],
+    limitations: [
+      'Client-side only — no remote fetch, virtualization, or selection model.',
+      'Reorder clears the active sort key so order is not fighting sort.',
+      'Disabled Move up/down buttons stay in the tree but are not operable at the ends.',
+      'Plain mode: consumer owns chrome, focus paint, and contrast.'
     ]
   },
   'table-tree': {
