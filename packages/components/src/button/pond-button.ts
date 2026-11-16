@@ -1,6 +1,7 @@
 import { css, html, LitElement, nothing } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import type { PondAppearance } from '../shared/appearance.js'
+import '../spinner/pond-spinner.js'
 
 export type PondButtonVariant =
   | 'primary'
@@ -14,7 +15,10 @@ export type PondButtonVariant =
  * @status stable
  * @since 0.0.0
  *
+ * @attr {boolean} pending - In-flight action: stays focusable, does not activate, exposes busy to AT.
+ *
  * @csspart button — The native button element.
+ * @csspart pending — Spinner shown while `pending` is set.
  */
 @customElement('pond-button')
 export class PondButton extends LitElement {
@@ -53,11 +57,12 @@ export class PondButton extends LitElement {
         scale var(--pond-motion-duration-fast) var(--pond-motion-easing-exit);
     }
 
-    [part="button"]:not(:disabled):active {
+    [part="button"]:not(:disabled):not([aria-disabled="true"]):active {
       scale: 0.96;
     }
 
-    :host([variant="link"]) [part="button"]:not(:disabled):active {
+    :host([variant="link"])
+      [part="button"]:not(:disabled):not([aria-disabled="true"]):active {
       scale: none;
     }
 
@@ -68,8 +73,10 @@ export class PondButton extends LitElement {
       color: var(--pond-color-fg-on-accent);
     }
 
-    :host([variant="primary"]) [part="button"]:hover:not(:disabled),
-    :host(:not([variant])) [part="button"]:hover:not(:disabled) {
+    :host([variant="primary"])
+      [part="button"]:hover:not(:disabled):not([aria-disabled="true"]),
+    :host(:not([variant]))
+      [part="button"]:hover:not(:disabled):not([aria-disabled="true"]) {
       background: var(--pond-color-accent-hover);
     }
 
@@ -80,7 +87,8 @@ export class PondButton extends LitElement {
       color: var(--pond-color-fg-default);
     }
 
-    :host([variant="secondary"]) [part="button"]:hover:not(:disabled) {
+    :host([variant="secondary"])
+      [part="button"]:hover:not(:disabled):not([aria-disabled="true"]) {
       background: var(--pond-color-bg-subtle);
       border-color: var(--pond-color-fg-default);
     }
@@ -91,7 +99,8 @@ export class PondButton extends LitElement {
       color: var(--pond-color-fg-default);
     }
 
-    :host([variant="subtle"]) [part="button"]:hover:not(:disabled) {
+    :host([variant="subtle"])
+      [part="button"]:hover:not(:disabled):not([aria-disabled="true"]) {
       background: var(--pond-color-border-default);
     }
 
@@ -101,7 +110,8 @@ export class PondButton extends LitElement {
       color: var(--pond-color-fg-on-accent);
     }
 
-    :host([variant="danger"]) [part="button"]:hover:not(:disabled) {
+    :host([variant="danger"])
+      [part="button"]:hover:not(:disabled):not([aria-disabled="true"]) {
       background: var(--pond-color-danger-hover);
     }
 
@@ -116,7 +126,8 @@ export class PondButton extends LitElement {
       text-underline-offset: 0.15em;
     }
 
-    :host([variant="link"]) [part="button"]:hover:not(:disabled) {
+    :host([variant="link"])
+      [part="button"]:hover:not(:disabled):not([aria-disabled="true"]) {
       color: var(--pond-color-accent-hover);
     }
 
@@ -125,9 +136,19 @@ export class PondButton extends LitElement {
       outline-offset: var(--pond-focus-offset);
     }
 
-    [part="button"]:disabled {
+    [part="button"]:disabled,
+    [part="button"][aria-disabled="true"] {
       opacity: 0.5;
       cursor: not-allowed;
+    }
+
+    :host([pending]) [part="button"]:not(:disabled) {
+      cursor: wait;
+    }
+
+    [part="pending"] {
+      display: inline-flex;
+      flex-shrink: 0;
     }
 
     :host([appearance="plain"]) [part="button"] {
@@ -136,8 +157,13 @@ export class PondButton extends LitElement {
       display: inline;
     }
 
-    :host([appearance="plain"]) [part="button"]:disabled {
+    :host([appearance="plain"]) [part="button"]:disabled,
+    :host([appearance="plain"]) [part="button"][aria-disabled="true"] {
       cursor: not-allowed;
+    }
+
+    :host([appearance="plain"][pending]) [part="button"]:not(:disabled) {
+      cursor: wait;
     }
 
     :host([appearance="plain"]) [part="button"]:focus-visible {
@@ -165,30 +191,52 @@ export class PondButton extends LitElement {
   @property({ reflect: true })
   type: 'button' | 'submit' | 'reset' = 'button'
 
-  /** Disabled state. */
+  /**
+   * Disabled state. Prefer validating while pressable; `disabled` removes the
+   * control from the tab order.
+   */
   @property({ type: Boolean, reflect: true })
   disabled = false
+
+  /**
+   * In-flight action. Stays focusable, does not activate, sets `aria-busy`.
+   * Prefer over `disabled` while a request runs. Do not combine with `disabled`.
+   */
+  @property({ type: Boolean, reflect: true })
+  pending = false
 
   /** Accessible name when slot text is insufficient. */
   @property({ attribute: 'aria-label' })
   override ariaLabel: string | null = null
 
   override render() {
+    const pending = this.pending && !this.disabled
+
     return html`
       <button
         part="button"
         class="pond-focus-ring"
         type=${this.type}
         ?disabled=${this.disabled}
+        aria-busy=${pending ? 'true' : nothing}
+        aria-disabled=${pending ? 'true' : nothing}
         aria-label=${this.ariaLabel ?? nothing}
         @click=${this.#onClick}>
+        ${
+          pending
+            ? html`<pond-spinner
+              part="pending"
+              size="sm"
+              label="Loading"></pond-spinner>`
+            : nothing
+        }
         <slot></slot>
       </button>
     `
   }
 
   #onClick(event: MouseEvent) {
-    if (this.disabled) {
+    if (this.disabled || this.pending) {
       event.preventDefault()
       event.stopImmediatePropagation()
     }

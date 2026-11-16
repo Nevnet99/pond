@@ -1,6 +1,6 @@
 import { fixture, html } from '@open-wc/testing-helpers'
 import * as axe from 'axe-core'
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import './pond-button.js'
 import type { PondButton } from './pond-button.js'
 
@@ -43,6 +43,36 @@ describe('pond-button', () => {
     expect(button.disabled).toBe(true)
   })
 
+  it('pending stays focusable, busy, and non-activating', async () => {
+    const el = await fixture<PondButton>(
+      html`<pond-button pending>Save</pond-button>`
+    )
+    const button = el.shadowRoot?.querySelector(
+      '[part="button"]'
+    ) as HTMLButtonElement
+    expect(button.disabled).toBe(false)
+    expect(button.getAttribute('aria-busy')).toBe('true')
+    expect(button.getAttribute('aria-disabled')).toBe('true')
+    expect(el.shadowRoot?.querySelector('[part="pending"]')).toBeTruthy()
+
+    const spy = vi.fn()
+    el.addEventListener('click', spy)
+    button.click()
+    expect(spy).not.toHaveBeenCalled()
+  })
+
+  it('disabled wins over pending for the native disabled attribute', async () => {
+    const el = await fixture<PondButton>(
+      html`<pond-button disabled pending>Save</pond-button>`
+    )
+    const button = el.shadowRoot?.querySelector(
+      '[part="button"]'
+    ) as HTMLButtonElement
+    expect(button.disabled).toBe(true)
+    expect(button.getAttribute('aria-busy')).toBeNull()
+    expect(el.shadowRoot?.querySelector('[part="pending"]')).toBeNull()
+  })
+
   it('has no serious axe violations', async () => {
     const el = await fixture<PondButton>(
       html`<pond-button>Accessible</pond-button>`
@@ -51,6 +81,23 @@ describe('pond-button', () => {
     const results = await axe.run(el, {
       rules: {
         // Host custom elements are fine; region noise off
+        region: { enabled: false }
+      }
+    })
+    const serious = results.violations.filter(
+      (v) => v.impact === 'serious' || v.impact === 'critical'
+    )
+    expect(serious).toEqual([])
+    el.remove()
+  })
+
+  it('pending has no serious axe violations', async () => {
+    const el = await fixture<PondButton>(
+      html`<pond-button pending>Saving</pond-button>`
+    )
+    document.body.append(el)
+    const results = await axe.run(el, {
+      rules: {
         region: { enabled: false }
       }
     })
