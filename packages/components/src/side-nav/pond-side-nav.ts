@@ -58,16 +58,18 @@ export class PondSideNav extends LitElement {
     }
   `
 
+  /** Visual presentation. `plain` strips Pond visual CSS. */
   @property({ reflect: true })
   appearance: PondAppearance = 'default'
 
-  /** Accessible name for the nav landmark. */
+  /** Accessible name for the `nav` landmark. */
   @property()
   label = 'Side navigation'
 
   /**
-   * Icon-only rail: item labels are visually hidden (kept for assistive tech),
-   * section headings hide, nested items hide.
+   * Icon-only rail: item labels are visually hidden (kept for assistive tech
+   * via `aria-label` / `title` from slot text), section headings hide, nested
+   * items hide. Every item still needs label text.
    */
   @property({ type: Boolean, reflect: true })
   collapsed = false

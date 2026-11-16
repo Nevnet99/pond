@@ -378,11 +378,13 @@ const catalog: Record<string, DosDontsEntry> = {
   'side-nav': {
     dos: [
       'Put Side nav in the Page navigation slot',
-      'Mark the active item with current; nest at most one level'
+      'Mark the active item with current; nest at most one level',
+      'Keep a text label on every item — required when the rail is collapsed'
     ],
     donts: [
       'Don’t rebuild the full Atlassian top + side Navigation system here',
-      'Don’t nest Side nav items more than one level deep'
+      'Don’t nest Side nav items more than one level deep',
+      'Don’t ship icon-only items without an accessible name in the label slot'
     ]
   },
   banner: {

@@ -106,10 +106,11 @@ export class PondSideNavSection extends LitElement {
     }
   `
 
+  /** Visual presentation. `plain` strips Pond visual CSS. */
   @property({ reflect: true })
   appearance: PondAppearance = 'default'
 
-  /** Section title shown on the toggle control. */
+  /** Section title shown on the collapse/expand control. */
   @property()
   heading = ''
 
@@ -117,7 +118,7 @@ export class PondSideNavSection extends LitElement {
   @property({ type: Boolean, reflect: true })
   collapsed = false
 
-  /** Icon-only rail mode (set by parent Side nav when collapsed). */
+  /** Icon-only rail mode from parent Side nav — hides the section heading. */
   @property({ type: Boolean, reflect: true })
   rail = false
 
