@@ -110,6 +110,7 @@ export default defineConfig({
             { label: 'Banner', slug: 'components/banner' },
             { label: 'Flag', slug: 'components/flag' },
             { label: 'Flag group', slug: 'components/flag-group' },
+            { label: 'Spotlight', slug: 'components/spotlight' },
             { label: 'Inline message', slug: 'components/inline-message' },
             { label: 'Empty state', slug: 'components/empty-state' },
             { label: 'Visually hidden', slug: 'components/visually-hidden' }

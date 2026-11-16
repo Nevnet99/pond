@@ -1,0 +1,58 @@
+---
+title: Spotlight
+description: Coachmark that highlights a target control.
+---
+
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import DosDonts from '../../../components/DosDonts.astro'
+import A11ySection from '../../../components/A11ySection.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Spotlight teaches a single step: highlight a target, explain it, then Next or Dismiss. It is not Atlassian product onboarding chrome.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Centered step">
+      <div style="min-height:14rem;position:relative">
+        <pond-spotlight open heading="Welcome" label="Welcome tip" show-next>
+          Spotlights walk people through one control at a time.
+        </pond-spotlight>
+      </div>
+    </PondDemo>
+  </Fragment>
+
+  <Fragment slot="code">
+
+```html
+<button id="create">Create</button>
+<pond-spotlight open target="#create" heading="Create an issue">
+  Start here for a new work item.
+</pond-spotlight>
+```
+
+  </Fragment>
+
+  <Fragment slot="usage">
+
+Point `target` at a stable id/selector. Listen for `pond-next` and `pond-close` to advance a tour.
+
+    <DosDonts component="spotlight" />
+
+  </Fragment>
+
+  <Fragment slot="changelog">
+
+Unreleased — coachmark with target pulse, dismiss / next, Escape to close.
+
+  </Fragment>
+
+  <Fragment slot="accessibility">
+    <A11ySection component="spotlight" />
+  </Fragment>
+
+  <Fragment slot="patterns">
+
+One tip at a time. Prefer Tooltip for single-word hints; Modal for blocking workflows.
+
+  </Fragment>
+</ComponentTabs>

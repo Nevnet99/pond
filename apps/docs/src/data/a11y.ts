@@ -634,6 +634,17 @@ const catalog: Record<string, A11yEntry> = {
       }
     ]
   },
+  spotlight: {
+    summary:
+      '`role="dialog"` coachmark; Escape dismisses; focus moves into the dialog while open.',
+    keyboard: ['Escape closes', 'Tab within dialog actions'],
+    criteria: [
+      name('Dialog named via `label` / heading.'),
+      keyboard('Escape dismisses; actions are keyboard operable.'),
+      focus('Focus moves to the dialog when opened and restores on close.')
+    ],
+    notes: ['Plain mode: consumer owns overlay chrome.']
+  },
   'section-message': {
     summary: '`role="status"` by default; `role="alert"` for danger.',
     criteria: [
