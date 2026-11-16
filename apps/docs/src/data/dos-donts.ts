@@ -610,6 +610,16 @@ const catalog: Record<string, DosDontsEntry> = {
       'Don’t force nowrap on groups that must reflow on small screens',
       'Don’t put primary page structure only in an Inline'
     ]
+  },
+  flex: {
+    dos: [
+      'Use when you need reverse, wrap, or space-evenly beyond Stack/Inline',
+      'Keep DOM order matching reading order'
+    ],
+    donts: [
+      'Don’t reach for Flex when Stack or Inline already fits',
+      'Don’t use Flex to fake tabular data — prefer Table'
+    ]
   }
 }
 

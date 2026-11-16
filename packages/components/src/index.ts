@@ -27,6 +27,13 @@ export type { PondFlagTone } from './flag/pond-flag.js'
 export { PondFlag } from './flag/pond-flag.js'
 export type { PondFlagGroupPlacement } from './flag-group/pond-flag-group.js'
 export { PondFlagGroup } from './flag-group/pond-flag-group.js'
+export type {
+  PondFlexAlign,
+  PondFlexDirection,
+  PondFlexGap,
+  PondFlexJustify
+} from './flex/pond-flex.js'
+export { PondFlex } from './flex/pond-flex.js'
 export { PondForm } from './form/pond-form.js'
 export { PondHeading } from './heading/pond-heading.js'
 export type { PondIconSize } from './icon/pond-icon.js'
