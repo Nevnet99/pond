@@ -35,6 +35,8 @@ export type {
 } from './flex/pond-flex.js'
 export { PondFlex } from './flex/pond-flex.js'
 export { PondForm } from './form/pond-form.js'
+export type { PondGridGap } from './grid/pond-grid.js'
+export { PondGrid } from './grid/pond-grid.js'
 export { PondHeading } from './heading/pond-heading.js'
 export type { PondIconSize } from './icon/pond-icon.js'
 export { PondIcon } from './icon/pond-icon.js'
