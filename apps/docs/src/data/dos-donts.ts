@@ -226,6 +226,16 @@ const catalog: Record<string, DosDontsEntry> = {
       'Don’t use Logo for content-type glyphs — prefer Object or Tile'
     ]
   },
+  object: {
+    dos: [
+      'Use for content-type cues beside titles and rows',
+      'Set label when the glyph is the only name'
+    ],
+    donts: [
+      'Don’t treat Object as Atlassian product branding',
+      'Don’t use Object for photographic media — prefer Image'
+    ]
+  },
   'time-picker': {
     dos: [
       'Use for time-only values',
