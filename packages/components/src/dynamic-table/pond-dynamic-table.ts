@@ -99,6 +99,10 @@ export class PondDynamicTable extends LitElement {
 
     [part="reorder"] {
       width: 1%;
+      padding: var(--pond-space-2) var(--pond-space-4);
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--pond-color-border-default);
       white-space: nowrap;
     }
 
@@ -300,7 +304,7 @@ export class PondDynamicTable extends LitElement {
                 return html`<tr part="tr">
                   ${
                     this.reorderable
-                      ? html`<td part="td reorder">
+                      ? html`<td part="reorder">
                         <button
                           type="button"
                           aria-label="Move up"
