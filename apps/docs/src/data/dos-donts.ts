@@ -216,6 +216,16 @@ const catalog: Record<string, DosDontsEntry> = {
       'Don’t overcrowd the tile with long paragraphs'
     ]
   },
+  'time-picker': {
+    dos: [
+      'Use for time-only values',
+      'Prefer Date time picker when date and time belong together'
+    ],
+    donts: [
+      'Don’t invent a custom clock UI when the native control suffices',
+      'Don’t leave the field unlabeled'
+    ]
+  },
   menu: {
     dos: ['Group related actions', 'Support arrow-key movement between items'],
     donts: [
