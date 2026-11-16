@@ -2,12 +2,13 @@
 title: Table
 description: Simple data table with headers and rows.
 ---
+
 import ComponentTabs from '../../../components/ComponentTabs.astro'
 import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
-Present tabular data. Not a Dynamic table or Table tree.
+Present flat tabular data with a caption, column headers, and rows. Prefer [Dynamic table](/components/dynamic-table/) when you need client sort or pagination, and [Table tree](/components/table-tree/) when rows nest. `appearance="plain"` strips Pond chrome — you own borders and contrast.
 
 <ComponentTabs>
   <Fragment slot="examples">
@@ -18,24 +19,109 @@ Present tabular data. Not a Dynamic table or Table tree.
         rows='[{"name":"Ada","role":"Engineer","status":"Active"},{"name":"Grace","role":"Lead","status":"Active"},{"name":"Alan","role":"Research","status":"Away"}]'
       ></pond-table>
     </PondDemo>
+
+    <p>
+      Pass <code>columns</code> and <code>rows</code> as JSON attributes or
+      properties. Always set a meaningful <code>caption</code>.
+    </p>
+
+    <PondDemo label="Empty rows">
+      <pond-table
+        caption="No matches"
+        columns='[{"key":"name","label":"Name"},{"key":"role","label":"Role"}]'
+        rows='[]'
+      ></pond-table>
+    </PondDemo>
+
+    <PondDemo label="Plain / reset">
+      <pond-table
+        appearance="plain"
+        caption="Plain table"
+        columns='[{"key":"id","label":"Id"}]'
+        rows='[{"id":"1"}]'
+      ></pond-table>
+    </PondDemo>
   </Fragment>
+
   <Fragment slot="code">
 
 ```html
-<pond-table caption="Team" columns='[...]' rows='[...]'></pond-table>
+<pond-table
+  caption="Team"
+  columns='[{"key":"name","label":"Name"},{"key":"role","label":"Role"}]'
+  rows='[{"name":"Ada","role":"Engineer"}]'
+></pond-table>
 ```
 
+### API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `caption` | `string` | `''` | Table caption (strongly recommended) |
+| `columns` | `{ key: string; label: string }[]` | `[]` | Header definitions (`key` maps into each row) |
+| `rows` | `Record<string, string>[]` | `[]` | Row objects keyed by column `key` |
+| `appearance` | `'default' \| 'plain'` | `'default'` | `plain` strips Pond visual CSS |
+
+**Slots:** none — data is properties / JSON attributes.
+
+**CSS parts:** `root`, `table`, `caption`, `tr`, `th`, `td`.
+
+**Events:** none.
+
   </Fragment>
+
   <Fragment slot="usage">
 
-Simple headers + rows only. Sorting, selection, and trees come later.
+### Purpose
+
+Show a simple, non-interactive grid of string cells. Not for layout, sorting, paging, selection, or nested rows.
+
+### Anatomy
+
+1. **Root** (`::part(root)`) — scroll container  
+2. **Table** (`::part(table)`) — native `<table>`  
+3. **Caption** (`::part(caption)`) — when `caption` is set  
+4. **Headers / cells** (`::part(th)`, `::part(td)`) — `scope="col"` on headers
+
+### Content guidelines
+
+- Caption names the dataset (“Team”, “Invoices”)
+- Column labels are short nouns; keep cell text scannable
+- Empty datasets still need headers + caption (pair with [Empty state](/components/empty-state/) nearby when useful)
+
+### Happy path vs plain
+
+Default ships border, caption type, and header surface. Plain keeps native table semantics — **you** own chrome.
 
     <DosDonts component="table" />
 
+**Related:** [Dynamic table](/components/dynamic-table/) · [Table tree](/components/table-tree/) · [Empty state](/components/empty-state/)
+
   </Fragment>
-  <Fragment slot="changelog">Unreleased — caption, columns, rows.</Fragment>
+
+  <Fragment slot="changelog">
+
+Unreleased — Phase 9 docs (purpose, anatomy, API, content, patterns); API unchanged.
+
+  </Fragment>
+
   <Fragment slot="accessibility">
     <A11ySection component="table" />
   </Fragment>
-  <Fragment slot="patterns">None yet.</Fragment>
+
+  <Fragment slot="patterns">
+
+**Read-only roster** — Table when every row is flat and the page owns any filters.
+
+```html
+<pond-table
+  caption="Assignees"
+  columns='[{"key":"name","label":"Name"},{"key":"role","label":"Role"}]'
+  rows='[{"name":"Ada","role":"Lead"}]'
+></pond-table>
+```
+
+**Prefer Dynamic table** for client sort + pagination. **Prefer Table tree** for expandable nested rows. Do not use Table for page layout.
+
+  </Fragment>
 </ComponentTabs>

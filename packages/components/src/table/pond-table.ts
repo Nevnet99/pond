@@ -5,7 +5,17 @@ import type { PondAppearance } from '../shared/appearance.js'
 export type PondTableColumn = { key: string; label: string }
 export type PondTableRow = Record<string, string>
 
-/** @summary Simple data table. @status stable @since 0.0.0 */
+/**
+ * @summary Simple data table with caption, headers, and string rows.
+ * @status stable
+ * @since 0.0.0
+ *
+ * @csspart root — Scroll container.
+ * @csspart table — Native `<table>`.
+ * @csspart caption — Caption when set.
+ * @csspart th — Column header.
+ * @csspart td — Body cell.
+ */
 @customElement('pond-table')
 export class PondTable extends LitElement {
   static override styles = css`
@@ -62,9 +72,13 @@ export class PondTable extends LitElement {
       display: contents;
     }
   `
+  /** Visual reset — `plain` strips Pond chrome. */
   @property({ reflect: true }) appearance: PondAppearance = 'default'
+  /** Accessible table name rendered as `<caption>`. */
   @property() caption = ''
+  /** Column headers; each `key` maps into row objects. */
   @property({ type: Array }) columns: PondTableColumn[] = []
+  /** Row data as string maps keyed by column `key`. */
   @property({ type: Array }) rows: PondTableRow[] = []
 
   override render() {

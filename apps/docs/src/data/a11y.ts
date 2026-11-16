@@ -752,6 +752,12 @@ const catalog: Record<string, A11yEntry> = {
         title: 'Info and Relationships',
         how: 'Native table semantics — avoid layout-only tables.'
       }
+    ],
+    limitations: [
+      'String cells only — interactive row actions must be composed outside or via cell text that is not focusable from Table itself.',
+      'No sort, selection, or virtualization — use Dynamic table / a custom grid when those are required.',
+      'Omit `caption` and AT loses the table name; always set one for real datasets.',
+      'Plain mode: consumer owns borders, header chrome, and contrast.'
     ]
   },
   'progress-bar': {
