@@ -317,12 +317,14 @@ const catalog: Record<string, DosDontsEntry> = {
   },
   pagination: {
     dos: [
-      'Label the nav as Pagination',
-      'Mark the current page with aria-current'
+      'Keep page-count honest and load data on pond-change',
+      'Pair with a nearby results summary when totals matter',
+      'Leave Previous/Next available (they disable at the ends)'
     ],
     donts: [
       'Don’t paginate tiny lists that fit on one screen',
-      'Don’t remove prev/next without another way to move'
+      'Don’t dump dozens of page buttons without product-level compression',
+      'Don’t use pagination for wizard steps — use a progress tracker'
     ]
   },
   breadcrumbs: {

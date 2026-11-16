@@ -548,6 +548,14 @@ const catalog: Record<string, A11yEntry> = {
       name('Current page marked with `aria-current`.'),
       keyboard('All controls are buttons/links activatable by keyboard.'),
       focus()
+    ],
+    notes: [
+      'Plain mode: you own focus paint and contrast; keep the landmark and current marker.'
+    ],
+    limitations: [
+      '`disabled` Previous/Next (and the current page button) are removed from the tab order — announce page changes in surrounding UI if users need confirmation beyond the control.',
+      'Every page renders a button — large `page-count` creates a long tab stop list; compress in the product layer until ellipsis ships.',
+      'Plain mode: consumer owns focus paint and contrast.'
     ]
   },
   breadcrumbs: {

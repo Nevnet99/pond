@@ -7,6 +7,11 @@ import type { PondAppearance } from '../shared/appearance.js'
  * @status stable
  * @since 0.0.0
  *
+ * @csspart root — Pagination nav.
+ * @csspart prev — Previous page button.
+ * @csspart page — Numbered page button.
+ * @csspart next — Next page button.
+ *
  * @fires pond-change — Page changed (`detail.page`).
  */
 @customElement('pond-pagination')
@@ -77,12 +82,15 @@ export class PondPagination extends LitElement {
     }
   `
 
+  /** Visual presentation. `plain` strips Pond visual CSS. */
   @property({ reflect: true })
   appearance: PondAppearance = 'default'
 
+  /** Current 1-based page. */
   @property({ type: Number })
   page = 1
 
+  /** Total number of pages. */
   @property({ type: Number, attribute: 'page-count' })
   pageCount = 1
 

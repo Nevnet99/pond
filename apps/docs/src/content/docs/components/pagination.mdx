@@ -2,36 +2,109 @@
 title: Pagination
 description: Navigate multi-page lists.
 ---
+
 import ComponentTabs from '../../../components/ComponentTabs.astro'
 import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
-Move between pages of a list. Compact ellipsis can wait for a later iteration.
+Move between pages of a list or table. Prefer loading more / infinite scroll only when the product already commits to that model. Compact ellipsis for large page counts is not shipped yet — keep `page-count` modest or own truncation in the product layer. `appearance="plain"` strips Pond visuals — you own focus paint and contrast.
 
 <ComponentTabs>
   <Fragment slot="examples">
     <PondDemo label="Default">
       <pond-pagination page="2" page-count="5"></pond-pagination>
     </PondDemo>
+
+    <p>
+      Previous / Next disable at the ends. Listen for <code>pond-change</code> to
+      load the next slice of data.
+    </p>
+
+    <PondDemo label="First page (Previous disabled)">
+      <pond-pagination page="1" page-count="4"></pond-pagination>
+    </PondDemo>
+
+    <PondDemo label="Plain / reset">
+      <pond-pagination appearance="plain" page="1" page-count="3"></pond-pagination>
+    </PondDemo>
   </Fragment>
+
   <Fragment slot="code">
 
 ```html
 <pond-pagination page="1" page-count="5"></pond-pagination>
 ```
 
+### API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `page` | `number` | `1` | Current 1-based page |
+| `page-count` | `number` | `1` | Total pages (`pageCount` in JS) |
+| `appearance` | `'default' \| 'plain'` | `'default'` | `plain` strips Pond visual CSS |
+
+**Slots:** none.
+
+**CSS parts:** `root`, `prev`, `page`, `next`.
+
+**Events:** `pond-change` — `{ detail: { page } }` when the page changes.
+
   </Fragment>
+
   <Fragment slot="usage">
 
-Prefer infinite scroll only when the product already commits to it.
+### Purpose
+
+Pagination chunks large collections into numbered pages. It is **not** for stepping through a wizard ([Progress tracker](/components/progress-tracker/)) or switching related panels ([Tabs](/components/tabs/)).
+
+### Anatomy
+
+1. **Nav** (`::part(root)`) — `nav` with `aria-label="Pagination"`
+2. **Previous / Next** (`::part(prev)` / `::part(next)`) — buttons; disabled at ends
+3. **Page** (`::part(page)`) — one button per page; current uses `aria-current="page"`
+
+### Content guidelines
+
+- Keep visible page counts readable; avoid dumping dozens of page buttons without product-level compression
+- Pair with a results summary nearby (“Showing 21–40 of 128”) owned by the page
+- Sentence case on Previous / Next (shipped labels)
+
+### Happy path vs plain
+
+Default ships bordered controls, accent current page, and Pond focus rings. `appearance="plain"` keeps the landmark and button semantics — **you** own chrome and focus paint.
 
     <DosDonts component="pagination" />
 
+**Related:** [Table](/components/table/) · [Dynamic table](/components/dynamic-table/) · [Tabs](/components/tabs/) for in-view panels
+
   </Fragment>
-  <Fragment slot="changelog">Unreleased — page, page-count, previous/next.</Fragment>
+
+  <Fragment slot="changelog">
+
+Unreleased — Phase 9 docs (purpose, anatomy, API, content, limitations, patterns); no API break.
+
+  </Fragment>
+
   <Fragment slot="accessibility">
     <A11ySection component="pagination" />
   </Fragment>
-  <Fragment slot="patterns">None yet.</Fragment>
+
+  <Fragment slot="patterns">
+
+**List + pagination** — keep the control under the list; update data on `pond-change`.
+
+```html
+<ul><!-- page of results --></ul>
+<pond-pagination page="1" page-count="12"></pond-pagination>
+<script type="module">
+  document.querySelector('pond-pagination')?.addEventListener('pond-change', (e) => {
+    // load e.detail.page
+  })
+</script>
+```
+
+**Prefer Tabs for related panels** — do not paginate short, related sections that fit on one screen; use [Tabs](/components/tabs/) or a single scrollable region instead.
+
+  </Fragment>
 </ComponentTabs>
