@@ -1,4 +1,5 @@
 ---
+
 title: Component page template
 description: Authoring bar for Starlight component pages (Phase 9 polish).
 ---

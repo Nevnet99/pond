@@ -10,16 +10,16 @@ Phase 9 is **docs / API / a11y polish** — not new catalog breadth. North star 
 
 ## Locked decisions
 
-| Topic | Lock |
-| --- | --- |
-| Shape | Raise docs DoD + page template first, then pilot five, then family batches |
-| Tabs | Keep **Accessibility** + **Patterns** tabs; deepen **Usage** (Parts, content, related, happy path vs `plain`) |
-| API naming | Native Lit/HTML attributes (`disabled`, `aria-*`); no Atlaskit-style `isDisabled` renames |
-| Disabled | Prefer keep pressable + validate; document tab-order / SR traps where `disabled` remains; never tooltip-on-disabled |
-| Pending | Button ships boolean `pending` — focusable, non-activating, busy for AT |
-| API tables | CEM-backed first; hand-fill gaps |
-| Patterns | Ban empty “None yet” for compliant pages — composition or “prefer X instead” |
-| Matrix | Hub shipped-vs-docs-complete matrix deferred to **P2** after the pilot |
+| Topic      | Lock                                                                                                                |
+| ---------- | ------------------------------------------------------------------------------------------------------------------- |
+| Shape      | Raise docs DoD + page template first, then pilot five, then family batches                                          |
+| Tabs       | Keep **Accessibility** + **Patterns** tabs; deepen **Usage** (Parts, content, related, happy path vs `plain`)       |
+| API naming | Native Lit/HTML attributes (`disabled`, `aria-*`); no Atlaskit-style `isDisabled` renames                           |
+| Disabled   | Prefer keep pressable + validate; document tab-order / SR traps where `disabled` remains; never tooltip-on-disabled |
+| Pending    | Button ships boolean `pending` — focusable, non-activating, busy for AT                                             |
+| API tables | CEM-backed first; hand-fill gaps                                                                                    |
+| Patterns   | Ban empty “None yet” for compliant pages — composition or “prefer X instead”                                        |
+| Matrix     | Hub shipped-vs-docs-complete matrix deferred to **P2** after the pilot                                              |
 
 ## Build order (stack)
 
@@ -32,12 +32,12 @@ Phase 9 is **docs / API / a11y polish** — not new catalog breadth. North star 
 
 ## After the pilot (family batches)
 
-1. Forms  
-2. Overlays  
-3. Status / feedback  
-4. Nav / chrome  
-5. Data  
-6. Layout / primitives  
+1. Forms
+2. Overlays
+3. Status / feedback
+4. Nav / chrome
+5. Data
+6. Layout / primitives
 
 Each batch applies the same page template + a11y contract. Prefer `gh stack` per family.
 

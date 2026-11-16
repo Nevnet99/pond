@@ -17,14 +17,14 @@ Component pages stay under `content/docs/components/` (and primitives under `pri
 
 Each Component / Primitive page uses **`ComponentTabs`** — a horizontal tab bar under the title:
 
-| Tab               | Content                                                                 |
-| ----------------- | ----------------------------------------------------------------------- |
-| **Examples**      | Live `<PondDemo>` frames — default → variants → states → form → edges   |
+| Tab               | Content                                                                  |
+| ----------------- | ------------------------------------------------------------------------ |
+| **Examples**      | Live `<PondDemo>` frames — default → variants → states → form → edges    |
 | **Code**          | Happy-path snippet + **API** (attrs / events / slots / parts; CEM-first) |
-| **Usage**         | Purpose, anatomy/Parts, do/don’t, content guidelines, related, plain    |
-| **Accessibility** | Keyboard, WCAG criteria, notes, **limitations** (`A11ySection`)         |
-| **Patterns**      | Real composition or “prefer X instead” — not empty for compliant pages  |
-| **Changelog**     | Component-scoped history                                                |
+| **Usage**         | Purpose, anatomy/Parts, do/don’t, content guidelines, related, plain     |
+| **Accessibility** | Keyboard, WCAG criteria, notes, **limitations** (`A11ySection`)          |
+| **Patterns**      | Real composition or “prefer X instead” — not empty for compliant pages   |
+| **Changelog**     | Component-scoped history                                                 |
 
 ADS folds a11y into Usage; Pond keeps a dedicated **Accessibility** tab so keyboard matrices and limitations stay findable. Put Parts, content guidelines, and related-component links in **Usage**.
 
