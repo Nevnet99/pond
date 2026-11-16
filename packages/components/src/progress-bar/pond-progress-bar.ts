@@ -8,6 +8,9 @@ export class PondProgressBar extends LitElement {
   static override styles = css`
     :host {
       display: block;
+      width: 100%;
+      min-width: 10rem;
+      box-sizing: border-box;
     }
     :host([appearance="plain"]) {
       display: contents;

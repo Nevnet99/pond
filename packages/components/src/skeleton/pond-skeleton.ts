@@ -10,14 +10,21 @@ export class PondSkeleton extends LitElement {
   static override styles = css`
     :host {
       display: block;
+      width: 100%;
+      min-width: 4rem;
+      box-sizing: border-box;
     }
     :host([appearance="plain"]) {
       display: contents;
     }
+    :host([shape="circle"]) {
+      width: var(--pond-skeleton-size, 2.5rem);
+      min-width: var(--pond-skeleton-size, 2.5rem);
+    }
     [part="root"] {
       display: block;
       width: 100%;
-      height: var(--pond-skeleton-height, 1rem);
+      height: var(--pond-skeleton-height, 1.125rem);
       border-radius: var(--pond-radius-sm);
       background: linear-gradient(
         90deg,

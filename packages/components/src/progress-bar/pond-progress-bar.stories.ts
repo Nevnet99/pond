@@ -10,9 +10,17 @@ export default meta
 type Story = StoryObj
 export const Default: Story = {
   render: () =>
-    html`<pond-progress-bar style="max-width:20rem" .value=${0.65} label="Upload"></pond-progress-bar>`
+    html`<pond-progress-bar
+      style="width:20rem"
+      .value=${0.65}
+      label="Upload"
+    ></pond-progress-bar>`
 }
 export const Indeterminate: Story = {
   render: () =>
-    html`<pond-progress-bar style="max-width:20rem" indeterminate label="Loading"></pond-progress-bar>`
+    html`<pond-progress-bar
+      style="width:20rem"
+      indeterminate
+      label="Loading"
+    ></pond-progress-bar>`
 }
