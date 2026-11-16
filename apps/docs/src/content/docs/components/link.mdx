@@ -8,15 +8,38 @@ import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
-Use for navigation between pages or external URLs. For in-flow actions without leaving the page, prefer `pond-button variant="link"`.
+Navigates to another page or URL. For in-place actions that stay on the current view, use [Button](/components/button/) — including `variant="link"` when you want text chrome. `appearance="plain"` strips Pond visuals — you own focus paint and contrast.
 
 <ComponentTabs>
   <Fragment slot="examples">
-    <PondDemo label="Default">
+    <PondDemo label="Default (inline)">
       <pond-text>
         See the <pond-link href="/getting-started/fork/">fork guide</pond-link> to
         adopt Pond.
       </pond-text>
+    </PondDemo>
+
+    <p>Stand alone when the link is the primary next step after a message.</p>
+
+    <PondDemo label="Standalone">
+      <pond-link href="/components/button/">Read Button docs</pond-link>
+    </PondDemo>
+
+    <p>
+      <code>target="_blank"</code> defaults <code>rel="noopener noreferrer"</code>.
+      Tell people a new tab or window will open.
+    </p>
+
+    <PondDemo label="External / new tab">
+      <pond-link href="https://example.com" target="_blank"
+        >Example.com (opens in a new tab)</pond-link
+      >
+    </PondDemo>
+
+    <PondDemo label="Plain / reset">
+      <pond-link href="/getting-started/fork/" appearance="plain"
+        >Unstyled link</pond-link
+      >
     </PondDemo>
   </Fragment>
 
@@ -24,23 +47,60 @@ Use for navigation between pages or external URLs. For in-flow actions without l
 
 ```html
 <pond-link href="/docs">Read the docs</pond-link>
-<pond-link href="https://example.com" target="_blank">External</pond-link>
+<pond-link href="https://example.com" target="_blank"
+  >Example.com (opens in a new tab)</pond-link
+>
+<pond-link href="/docs" appearance="plain">Unstyled link</pond-link>
 ```
+
+### API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `href` | `string` | `'#'` | Destination URL — always set a real path or URL |
+| `target` | `'_self' \| '_blank' \| '_parent' \| '_top' \| null` | `null` | Native target; `_blank` implies safe `rel` unless overridden |
+| `rel` | `string \| null` | `null` | Link relationship; defaults to `noopener noreferrer` when `target="_blank"` |
+| `appearance` | `'default' \| 'plain'` | `'default'` | `plain` strips Pond visual CSS |
+
+**Slots:** default — link text (the accessible name).
+
+**CSS parts:** `link` (native `<a>`).
+
+**Events:** standard navigation via the native anchor (no custom Pond events).
 
   </Fragment>
 
   <Fragment slot="usage">
 
+### Purpose
 
-**Do** use for navigation. **Don't** use for submit/cancel actions — use Button. `target="_blank"` gets `rel="noopener noreferrer"` by default.
+Link changes location — another route, document, or external site. It is **not** for submit, toggle, or dialog triggers ([Button](/components/button/)).
+
+### Anatomy
+
+1. **Anchor** (`::part(link)`) — native `<a>`
+2. **Label** — default slot (must describe the destination)
+
+### Content guidelines
+
+- Name the destination in the link text (“Fork guide”, not “click here”)
+- Sentence case
+- If `target="_blank"`, include that fact in the visible text or adjacent copy
+- Keep underline for affordance in default appearance
+
+### Happy path vs plain
+
+Default ships accent color, underline, and Pond focus ring. `appearance="plain"` keeps navigation semantics — **you** own focus paint, color, and underline.
 
     <DosDonts component="link" />
+
+**Related:** [Button](/components/button/) (`variant="link"` for in-page actions) · [Text](/primitives/text/) for inline wrapping
 
   </Fragment>
 
   <Fragment slot="changelog">
 
-Unreleased — href, target, plain appearance.
+Unreleased — Phase 9 docs (purpose, anatomy, API, content, patterns); no API break.
 
   </Fragment>
 
@@ -50,7 +110,15 @@ Unreleased — href, target, plain appearance.
 
   <Fragment slot="patterns">
 
-Inline with Text; standalone “Learn more” after Section message.
+**Inline in prose** — wrap with Text so size/line-height inherit.
+
+```html
+<pond-text>
+  See the <pond-link href="/getting-started/fork/">fork guide</pond-link>.
+</pond-text>
+```
+
+**Prefer Button for actions** — if activating the control does not navigate, use [Button](/components/button/), not Link. Use `variant="link"` when the action should look like text.
 
   </Fragment>
 </ComponentTabs>

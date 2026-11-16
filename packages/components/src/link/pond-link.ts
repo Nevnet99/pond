@@ -51,15 +51,19 @@ export class PondLink extends LitElement {
     }
   `
 
+  /** Visual presentation. `plain` strips Pond visual CSS. */
   @property({ reflect: true })
   appearance: PondAppearance = 'default'
 
+  /** Destination URL. Always set a real path or URL — `#` is only a placeholder. */
   @property({ reflect: true })
   href = '#'
 
+  /** Native browsing context. `_blank` implies safe `rel` unless `rel` is set. */
   @property({ reflect: true })
   target: '_self' | '_blank' | '_parent' | '_top' | null = null
 
+  /** Link relationship. Defaults to `noopener noreferrer` when `target="_blank"`. */
   @property({ attribute: 'rel' })
   rel: string | null = null
 
