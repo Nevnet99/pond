@@ -382,6 +382,18 @@ const catalog: Record<string, A11yEntry> = {
     ],
     notes: ['Plain mode: consumer owns focus and color chrome.']
   },
+  object: {
+    summary:
+      'Content-type glyph; set `label` for meaningful icons (`role="img"`); unlabeled objects are `aria-hidden`.',
+    criteria: [
+      labels('`role="img"` + `aria-label` when `label` is set.'),
+      {
+        id: '1.1.1',
+        title: 'Non-text Content',
+        how: 'Name meaningful glyphs via `label`; leave unlabeled only when decorative beside visible text.'
+      }
+    ]
+  },
   'time-picker': {
     summary: 'Labeled native time input.',
     keyboard: ['Tab to the field', 'Platform time controls'],
