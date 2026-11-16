@@ -592,11 +592,13 @@ const catalog: Record<string, DosDontsEntry> = {
   code: {
     dos: [
       'Use inline for short identifiers; block for multi-line snippets',
-      'Keep contrast readable on the subtle surface'
+      'Keep contrast readable on the subtle surface',
+      'Keep snippets short and copy-pasteable'
     ],
     donts: [
       'Don’t use Code for long-form prose',
-      'Don’t rely on syntax color alone for meaning (no highlighter yet)'
+      'Don’t rely on syntax color alone for meaning (no highlighter yet)',
+      'Don’t nest interactive controls inside Code'
     ]
   },
   'visually-hidden': {

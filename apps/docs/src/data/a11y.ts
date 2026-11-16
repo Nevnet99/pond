@@ -981,6 +981,12 @@ const catalog: Record<string, A11yEntry> = {
         title: 'Contrast (Minimum)',
         how: 'Mono text on subtle background must meet AA in default themes.'
       }
+    ],
+    notes: ['No syntax highlighter — do not convey meaning with color alone.'],
+    limitations: [
+      'Not a live region or interactive control — do not put actionable UI inside Code.',
+      'Plain mode: consumer owns mono surface and contrast on the surrounding page.',
+      'Long blocks need overflow handling from the consumer layout; Code scrolls within the block but does not announce length.'
     ]
   },
   'visually-hidden': {
