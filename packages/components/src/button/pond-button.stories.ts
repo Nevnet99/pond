@@ -9,7 +9,8 @@ const meta: Meta = {
     label: 'Save changes',
     appearance: 'default',
     variant: 'primary',
-    disabled: false
+    disabled: false,
+    pending: false
   },
   argTypes: {
     appearance: {
@@ -31,7 +32,8 @@ export const Default: Story = {
     <pond-button
       appearance=${args.appearance}
       variant=${args.variant}
-      ?disabled=${args.disabled}>
+      ?disabled=${args.disabled}
+      ?pending=${args.pending}>
       ${args.label}
     </pond-button>
   `
@@ -81,5 +83,10 @@ export const Plain: Story = {
 
 export const Disabled: Story = {
   args: { disabled: true },
+  render: Default.render
+}
+
+export const Pending: Story = {
+  args: { pending: true, label: 'Saving' },
   render: Default.render
 }

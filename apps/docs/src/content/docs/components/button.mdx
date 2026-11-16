@@ -8,11 +8,17 @@ import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
-Triggers an action. Pick a **variant** for emphasis; `appearance="plain"` strips Pond visuals.
+Triggers an in-place action. Pick a **variant** for emphasis. Use [Link](/components/link/) for navigation between pages. `appearance="plain"` strips Pond visuals — you own focus paint and contrast.
 
 <ComponentTabs>
   <Fragment slot="examples">
-    <PondDemo label="Variants">
+    <PondDemo label="Default (primary)">
+      <pond-button>Save changes</pond-button>
+    </PondDemo>
+
+    <p>Use each appearance for a clear job — not as a style sampler.</p>
+
+    <PondDemo label="Appearances">
       <div class="pond-demo__row">
         <pond-button variant="primary">Primary</pond-button>
         <pond-button variant="secondary">Secondary</pond-button>
@@ -22,8 +28,21 @@ Triggers an action. Pick a **variant** for emphasis; `appearance="plain"` strips
       </div>
     </PondDemo>
 
-    <PondDemo label="Disabled primary">
-      <pond-button variant="primary" disabled>Disabled</pond-button>
+    <p>
+      Prefer keeping actions pressable. Use <code>pending</code> while a request
+      runs — it stays focusable. Reach for <code>disabled</code> only when the
+      control must be unavailable (and accept tab-order removal).
+    </p>
+
+    <PondDemo label="States">
+      <div class="pond-demo__row">
+        <pond-button variant="primary" pending>Saving</pond-button>
+        <pond-button variant="primary" disabled>Disabled</pond-button>
+      </div>
+    </PondDemo>
+
+    <PondDemo label="Plain / reset">
+      <pond-button appearance="plain">Unstyled action</pond-button>
     </PondDemo>
   </Fragment>
 
@@ -35,13 +54,42 @@ Triggers an action. Pick a **variant** for emphasis; `appearance="plain"` strips
 <pond-button variant="subtle">More options</pond-button>
 <pond-button variant="danger">Delete project</pond-button>
 <pond-button variant="link">Learn more</pond-button>
+<pond-button pending>Saving</pond-button>
 <pond-button appearance="plain">Unstyled action</pond-button>
 ```
+
+### API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `variant` | `'primary' \| 'secondary' \| 'subtle' \| 'danger' \| 'link'` | `'primary'` | Emphasis / intent |
+| `type` | `'button' \| 'submit' \| 'reset'` | `'button'` | Native button type |
+| `disabled` | `boolean` | `false` | Removes from tab order; prefer validate-while-pressable |
+| `pending` | `boolean` | `false` | Focusable busy state; blocks activation; shows spinner |
+| `appearance` | `'default' \| 'plain'` | `'default'` | `plain` strips Pond visual CSS |
+| `aria-label` | `string` | — | Name when slot text is insufficient (icon-only) |
+
+**Slots:** default — label content.
+
+**CSS parts:** `button` (native control), `pending` (spinner host while pending).
+
+**Events:** standard `click` on the host when not `disabled` / `pending`.
 
   </Fragment>
 
   <Fragment slot="usage">
 
+### Purpose
+
+Button fires an action on the current view (submit, save, delete, open a dialog). It is **not** for moving to another page — that is [Link](/components/link/).
+
+### Anatomy
+
+1. **Button surface** (`::part(button)`) — native `<button>`
+2. **Label** — default slot
+3. **Pending spinner** (`::part(pending)`) — only when `pending`
+
+### When to use each variant
 
 | Variant | Use when |
 | --- | --- |
@@ -51,15 +99,26 @@ Triggers an action. Pick a **variant** for emphasis; `appearance="plain"` strips
 | `danger` | Destructive or irreversible actions |
 | `link` | In-flow actions without button chrome (not page navigation) |
 
-**Do** use for actions the user triggers. **Don't** use for navigation between pages — use Link (when it ships). Prefer one `primary` per region.
+### Content guidelines
+
+- Sentence case labels (“Save changes”, not “Save Changes”)
+- Prefer specific verbs (“Publish page”, not “OK” / “Submit”)
+- Keep labels short; truncation must still expose the full name to AT via the slot text or `aria-label`
+- Match the verb on the button to the outcome (“Delete” → confirm copy says delete)
+
+### Happy path vs plain
+
+Default appearance ships Pond chrome and focus ring. `appearance="plain"` keeps behavior, slots, parts, and semantics — **you** own focus paint and contrast.
 
     <DosDonts component="button" />
+
+**Related:** [Link](/components/link/) for navigation · [Spinner](/components/spinner/) for standalone loading · [Modal](/components/modal/) for confirms that use a pending primary
 
   </Fragment>
 
   <Fragment slot="changelog">
 
-Unreleased — five variants: primary, secondary, subtle, danger, link.
+Unreleased — `pending` attribute (focusable busy); docs raised to Phase 9 template (purpose, anatomy, API, content, limitations).
 
   </Fragment>
 
@@ -69,7 +128,13 @@ Unreleased — five variants: primary, secondary, subtle, danger, link.
 
   <Fragment slot="patterns">
 
-None yet.
+**Form submit with pending** — keep the primary pressable; set `pending` while the request runs instead of `disabled`.
+
+```html
+<pond-button type="submit" pending>Saving</pond-button>
+```
+
+**Prefer Link for navigation** — use [Link](/components/link/) when the control changes the URL. Use `variant="link"` only for in-page actions that should look like text.
 
   </Fragment>
 </ComponentTabs>

@@ -78,7 +78,7 @@ const catalog: Record<string, A11yEntry> = {
     limitations: [
       '`disabled` removes the button from the tab order — keyboard and SR users cannot reach an explanation on the control itself.',
       'Never put a tooltip on a disabled button; the trigger is not focusable.',
-      'Until `pending` ships, loading that uses `disabled` inherits the same tab-order trap.',
+      '`pending` stays focusable and sets `aria-busy` / `aria-disabled`; do not also set `disabled` or the control drops out of tab order.',
       'Plain mode: consumer owns focus paint and contrast.'
     ]
   },

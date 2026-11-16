@@ -10,11 +10,14 @@ const catalog: Record<string, DosDontsEntry> = {
     dos: [
       'Use for actions the user triggers in place',
       'Prefer one primary per region',
+      'Use pending while a request runs (stays focusable)',
       'Name icon-only buttons with aria-label'
     ],
     donts: [
       'Don’t use for page navigation — use Link',
       'Don’t place multiple primaries competing for attention',
+      'Don’t disable instead of pending for in-flight actions',
+      'Don’t put a tooltip on a disabled button',
       'Don’t rely on color alone for danger — keep the label clear'
     ]
   },

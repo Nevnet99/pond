@@ -41,4 +41,11 @@ describe('pond-button visual', () => {
     )
     await matchScreenshotAtViewports('button-variants', el)
   })
+
+  it('matches pending primary at mobile / tablet / desktop', async () => {
+    const el = await fixture<PondButton>(
+      html`<pond-button variant="primary" pending>Saving</pond-button>`
+    )
+    await matchScreenshotAtViewports('button-pending', el)
+  })
 })
