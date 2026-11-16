@@ -157,6 +157,7 @@ export default defineConfig({
             { label: 'Icon', slug: 'components/icon' },
             { label: 'Image', slug: 'components/image' },
             { label: 'Tile', slug: 'components/tile' },
+            { label: 'Logo', slug: 'components/logo' },
             { label: 'Avatar', slug: 'components/avatar' },
             { label: 'Avatar group', slug: 'components/avatar-group' }
           ]
@@ -178,7 +179,8 @@ export default defineConfig({
             { label: 'Phase 3 slice', slug: 'contributing/phase-3-slice' },
             { label: 'Phase 4 slice', slug: 'contributing/phase-4-slice' },
             { label: 'Phase 5 slice', slug: 'contributing/phase-5-slice' },
-            { label: 'Phase 6 slice', slug: 'contributing/phase-6-slice' }
+            { label: 'Phase 6 slice', slug: 'contributing/phase-6-slice' },
+            { label: 'Phase 8 slice', slug: 'contributing/phase-8-slice' }
           ]
         }
       ]
