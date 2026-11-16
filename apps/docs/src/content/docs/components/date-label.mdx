@@ -2,36 +2,104 @@
 title: Date label
 description: Non-interactive formatted date.
 ---
+
 import ComponentTabs from '../../../components/ComponentTabs.astro'
 import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
-Display a date without editing it.
+Display a date without editing it. Prefer [Calendar](/components/calendar/) or [Date time picker](/components/date-time-picker/) when the user must choose a value. `appearance="plain"` strips Pond type chrome — you own contrast.
 
 <ComponentTabs>
   <Fragment slot="examples">
     <PondDemo label="Default">
       <pond-date-label value="2026-11-15"></pond-date-label>
     </PondDemo>
+
+    <p>
+      Pass an ISO <code>YYYY-MM-DD</code> <code>value</code>. Visible text is
+      locale-formatted; the native <code>datetime</code> stays machine-readable.
+    </p>
+
+    <PondDemo label="In a sentence">
+      <p>
+        Posted on <pond-date-label value="2026-11-15"></pond-date-label>.
+      </p>
+    </PondDemo>
+
+    <PondDemo label="Plain / reset">
+      <pond-date-label appearance="plain" value="2026-01-01"></pond-date-label>
+    </PondDemo>
   </Fragment>
+
   <Fragment slot="code">
 
 ```html
 <pond-date-label value="2026-11-15"></pond-date-label>
 ```
 
+### API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `string` | `''` | ISO date `YYYY-MM-DD` (also sets `<time datetime>`) |
+| `appearance` | `'default' \| 'plain'` | `'default'` | `plain` strips Pond visual CSS |
+
+**Slots:** none.
+
+**CSS parts:** `root` — the native `<time>` element.
+
+**Events:** none.
+
   </Fragment>
+
   <Fragment slot="usage">
 
-Prefer Calendar / Date time picker when the user must choose a date.
+### Purpose
+
+Show a formatted, non-interactive date. Not for choosing or editing dates.
+
+### Anatomy
+
+1. **Root** (`::part(root)`) — native `<time datetime="…">` with locale-formatted text
+
+### Content guidelines
+
+- Always pass a parseable ISO `value`
+- Visible text comes from the locale formatter — do not invent a second conflicting string
+- Prefer absolute dates when relative phrasing would confuse (“2 hours ago” belongs in Comment `meta`, not here)
+
+### Happy path vs plain
+
+Default ships sans type size/color. Plain keeps `<time datetime>` — **you** own chrome.
 
     <DosDonts component="date-label" />
 
+**Related:** [Calendar](/components/calendar/) · [Date time picker](/components/date-time-picker/) · [Time picker](/components/time-picker/) · [Comment](/components/comment/)
+
   </Fragment>
-  <Fragment slot="changelog">Unreleased — locale-formatted time element.</Fragment>
+
+  <Fragment slot="changelog">
+
+Unreleased — Phase 9 docs (purpose, anatomy, API, content, patterns); formatting unchanged.
+
+  </Fragment>
+
   <Fragment slot="accessibility">
     <A11ySection component="date-label" />
   </Fragment>
-  <Fragment slot="patterns">None yet.</Fragment>
+
+  <Fragment slot="patterns">
+
+**Absolute date beside relative meta** — use Date label when you need a stable absolute value; keep relative phrasing in Comment `meta` or nearby copy.
+
+```html
+<p>
+  Due <pond-date-label value="2026-11-15"></pond-date-label>
+</p>
+```
+
+**Prefer Calendar / Date time picker** when the user must pick or change the date.
+
+  </Fragment>
 </ComponentTabs>

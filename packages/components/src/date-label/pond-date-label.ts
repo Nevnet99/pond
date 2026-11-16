@@ -2,7 +2,13 @@ import { css, html, LitElement } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import type { PondAppearance } from '../shared/appearance.js'
 
-/** @summary Non-interactive formatted date. @status stable @since 0.0.0 */
+/**
+ * @summary Non-interactive formatted date via native `<time>`.
+ * @status stable
+ * @since 0.0.0
+ *
+ * @csspart root — Native `<time>` element.
+ */
 @customElement('pond-date-label')
 export class PondDateLabel extends LitElement {
   static override styles = css`
@@ -22,8 +28,9 @@ export class PondDateLabel extends LitElement {
       display: contents;
     }
   `
+  /** Visual reset — `plain` strips Pond type chrome. */
   @property({ reflect: true }) appearance: PondAppearance = 'default'
-  /** ISO date YYYY-MM-DD */
+  /** ISO date `YYYY-MM-DD`; sets `<time datetime>` and locale-formatted text. */
   @property() value = ''
   override render() {
     let text = this.value

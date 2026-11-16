@@ -281,6 +281,11 @@ const catalog: Record<string, A11yEntry> = {
     criteria: [
       labels('`datetime` provides a parseable value alongside visible text.'),
       name('Time element exposes the absolute date to AT.')
+    ],
+    limitations: [
+      'Non-interactive — do not wrap Date label as the only control for changing a date; use Calendar / Date time picker.',
+      'Empty or non-ISO `value` may render as raw text without a reliable `datetime`.',
+      'Plain mode: consumer owns type chrome and contrast.'
     ]
   },
   modal: {
