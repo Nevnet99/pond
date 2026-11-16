@@ -7,6 +7,10 @@ import '../icon/pond-icon.js'
  * @summary Compact label chip; optional remove control.
  * @status stable
  * @since 0.0.0
+ *
+ * @slot — Tag label text.
+ * @csspart root — Chip shell.
+ * @csspart remove — Remove button when `removable`.
  * @fires pond-remove — Remove control activated.
  */
 @customElement('pond-tag')
@@ -53,7 +57,9 @@ export class PondTag extends LitElement {
       display: contents;
     }
   `
+  /** Visual reset — `plain` strips Pond chrome. */
   @property({ reflect: true }) appearance: PondAppearance = 'default'
+  /** Shows a remove button that fires `pond-remove`. */
   @property({ type: Boolean }) removable = false
   override render() {
     return html`<span part="root">

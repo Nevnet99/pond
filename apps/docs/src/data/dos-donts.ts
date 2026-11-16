@@ -529,12 +529,14 @@ const catalog: Record<string, DosDontsEntry> = {
   },
   tag: {
     dos: [
-      'Name the remove control with the tag value',
-      'Keep tags scannable and short'
+      'Name the remove control with the tag value when you can',
+      'Keep tags scannable and short',
+      'Compose related tags in a Tag group'
     ],
     donts: [
       'Don’t use tags as the only way to navigate',
-      'Don’t make remove pointer-only'
+      'Don’t make remove pointer-only',
+      'Don’t use Tag for status tone — use Lozenge'
     ]
   },
   'tag-group': {
