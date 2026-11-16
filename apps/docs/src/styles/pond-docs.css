@@ -10,8 +10,29 @@
 /* Avoid FOUC: slotted text shows before Lit upgrades */
 pond-button:not(:defined),
 pond-text:not(:defined),
-pond-heading:not(:defined) {
+pond-heading:not(:defined),
+pond-radio:not(:defined),
+pond-select:not(:defined) {
   visibility: hidden;
+}
+
+/* Starlight prose — lean on Pond rhythm */
+.sl-markdown-content {
+  line-height: var(--pond-font-line-normal);
+  letter-spacing: var(--pond-font-tracking-normal);
+}
+
+.sl-markdown-content :is(h1, h2, h3, h4) {
+  line-height: var(--pond-font-line-tight);
+  letter-spacing: var(--pond-font-tracking-tight);
+  text-wrap: balance;
+}
+
+.sl-markdown-content p,
+.sl-markdown-content li {
+  line-height: var(--pond-font-line-relaxed);
+  letter-spacing: var(--pond-font-tracking-normal);
+  text-wrap: pretty;
 }
 
 .pond-demo {
@@ -103,6 +124,8 @@ pond-heading:not(:defined) {
 .pond-doc-tabs__panel {
   min-height: 12rem;
   color: var(--pond-color-fg-default);
+  line-height: var(--pond-font-line-normal);
+  letter-spacing: var(--pond-font-tracking-normal);
 }
 
 .pond-space-ladder {

@@ -62,15 +62,20 @@ export class PondPageHeader extends LitElement {
 
     [part="title"] {
       margin: 0;
+      font-family: var(--pond-font-family-display);
       font-size: var(--pond-font-size-xl);
       font-weight: var(--pond-font-weight-semibold);
       line-height: var(--pond-font-line-tight);
+      letter-spacing: var(--pond-font-tracking-tight);
+      text-wrap: balance;
     }
 
     [part="description"] {
       margin: 0;
       color: var(--pond-color-fg-muted);
       font-size: var(--pond-font-size-md);
+      line-height: var(--pond-font-line-normal);
+      letter-spacing: var(--pond-font-tracking-normal);
     }
 
     [part="actions"] {

@@ -164,32 +164,33 @@
     },
     "line": {
       "tight": {
-        "value": "1.2",
-        "comment": "display / large headings"
+        "value": "1.15",
+        "comment": "display / large headings — compact silhouette"
       },
       "snug": {
-        "value": "1.35",
-        "comment": "small headings"
+        "value": "1.3",
+        "comment": "small headings / lead titles"
       },
       "normal": {
-        "value": "1.5",
-        "comment": "body"
+        "value": "1.55",
+        "comment": "body — a bit of air for scanning"
       },
       "relaxed": {
-        "value": "1.65",
+        "value": "1.7",
         "comment": "long-form reading"
       }
     },
     "tracking": {
       "tight": {
-        "value": "-0.02em",
-        "comment": "large display"
+        "value": "-0.03em",
+        "comment": "large display — optical tightening"
       },
       "normal": {
-        "value": "0"
+        "value": "-0.005em",
+        "comment": "body — barely negative to reduce loom"
       },
       "wide": {
-        "value": "0.05em",
+        "value": "0.06em",
         "comment": "uppercase labels / overlines ≤14px"
       }
     }
