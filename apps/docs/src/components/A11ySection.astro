@@ -1,7 +1,7 @@
 ---
 /**
- * Shared Accessibility tab body — summary, keyboard, WCAG 2.2 AA criteria.
- * Data lives in `../data/a11y.ts`.
+ * Shared Accessibility tab body — summary, keyboard, WCAG 2.2 AA criteria,
+ * notes, and known limitations. Data lives in `../data/a11y.ts`.
  */
 import { getA11yEntry } from '../data/a11y'
 
@@ -60,6 +60,17 @@ const entry = getA11yEntry(component)
           </ul>
         </>
       ) : null}
+
+      {entry.limitations?.length ? (
+        <>
+          <h3 class="pond-a11y__h">Limitations</h3>
+          <ul class="pond-a11y__limitations">
+            {entry.limitations.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </>
+      ) : null}
     </div>
   ) : (
     <p>
@@ -91,5 +102,10 @@ const entry = getA11yEntry(component)
   .pond-a11y th[scope='row'] {
     white-space: nowrap;
     font-weight: 600;
+  }
+  .pond-a11y__limitations {
+    border-inline-start: 3px solid var(--sl-color-orange-accent, #c47600);
+    padding-inline-start: 0.85rem;
+    margin-block: 0.35rem 0;
   }
 </style>

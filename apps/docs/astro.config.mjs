@@ -181,13 +181,18 @@ export default defineConfig({
           label: 'Contributing',
           items: [
             { label: 'Component DoD', slug: 'contributing/component-dod' },
+            {
+              label: 'Component page template',
+              slug: 'contributing/component-page-template'
+            },
             { label: 'Forking', slug: 'contributing/forking' },
             { label: 'v1 slice', slug: 'contributing/v1-slice' },
             { label: 'Phase 3 slice', slug: 'contributing/phase-3-slice' },
             { label: 'Phase 4 slice', slug: 'contributing/phase-4-slice' },
             { label: 'Phase 5 slice', slug: 'contributing/phase-5-slice' },
             { label: 'Phase 6 slice', slug: 'contributing/phase-6-slice' },
-            { label: 'Phase 8 slice', slug: 'contributing/phase-8-slice' }
+            { label: 'Phase 8 slice', slug: 'contributing/phase-8-slice' },
+            { label: 'Phase 9 slice', slug: 'contributing/phase-9-slice' }
           ]
         }
       ]
