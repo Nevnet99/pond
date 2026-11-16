@@ -216,6 +216,16 @@ const catalog: Record<string, DosDontsEntry> = {
       'Don’t overcrowd the tile with long paragraphs'
     ]
   },
+  logo: {
+    dos: [
+      'Pass your own brand assets via src and wordmark',
+      'Use empty alt when the wordmark already names the brand'
+    ],
+    donts: [
+      'Don’t ship Atlassian or third-party logos from Pond',
+      'Don’t use Logo for content-type glyphs — prefer Object or Tile'
+    ]
+  },
   'time-picker': {
     dos: [
       'Use for time-only values',

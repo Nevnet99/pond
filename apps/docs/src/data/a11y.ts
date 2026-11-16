@@ -369,6 +369,19 @@ const catalog: Record<string, A11yEntry> = {
       }
     ]
   },
+  logo: {
+    summary:
+      'Brand mark; empty image `alt` when the wordmark names the brand; set `alt` / `aria-label` for image-only or linked logos.',
+    criteria: [
+      {
+        id: '1.1.1',
+        title: 'Non-text Content',
+        how: 'Provide meaningful image alt, or empty alt when the adjacent wordmark carries the name.'
+      },
+      name('Linked logos expose an accessible name via wordmark text or `alt`.')
+    ],
+    notes: ['Plain mode: consumer owns focus and color chrome.']
+  },
   'time-picker': {
     summary: 'Labeled native time input.',
     keyboard: ['Tab to the field', 'Platform time controls'],
