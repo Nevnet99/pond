@@ -466,11 +466,13 @@ const catalog: Record<string, DosDontsEntry> = {
   table: {
     dos: [
       'Provide a caption and scoped headers',
-      'Keep row actions keyboard reachable'
+      'Keep cell text scannable',
+      'Use Dynamic table when sort or paging is required'
     ],
     donts: [
       'Don’t use tables for page layout',
-      'Don’t omit headers for numeric columns'
+      'Don’t omit headers for numeric columns',
+      'Don’t stretch Table into a tree or remote data grid'
     ]
   },
   'progress-bar': {
