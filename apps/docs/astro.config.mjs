@@ -165,6 +165,10 @@ export default defineConfig({
           ]
         },
         {
+          label: 'Foundations',
+          items: [{ label: 'Flex', slug: 'components/flex' }]
+        },
+        {
           label: 'Patterns',
           items: [{ label: 'Overview', slug: 'patterns/overview' }]
         },

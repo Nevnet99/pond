@@ -888,6 +888,17 @@ const catalog: Record<string, A11yEntry> = {
         how: 'Keep interactive children keyboard-reachable in DOM order.'
       }
     ]
+  },
+  flex: {
+    summary: 'Presentational flexbox layout.',
+    criteria: [
+      {
+        id: '1.3.2',
+        title: 'Meaningful Sequence',
+        how: 'DOM order should match reading order even when justify/align change visual spacing.'
+      }
+    ],
+    notes: ['Plain mode strips flex chrome.']
   }
 }
 
