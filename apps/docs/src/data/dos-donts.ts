@@ -393,6 +393,16 @@ const catalog: Record<string, DosDontsEntry> = {
       'Don’t put persistent page instructions in a Flag group'
     ]
   },
+  spotlight: {
+    dos: [
+      'Highlight one control per step',
+      'Advance with pond-next and close with pond-close / Escape'
+    ],
+    donts: [
+      'Don’t run multiple Spotlights at once',
+      'Don’t use Spotlight for permanent help — prefer docs or Tooltip'
+    ]
+  },
   'section-message': {
     dos: ['Place near the content it explains', 'Pair tone with icon and text'],
     donts: [
