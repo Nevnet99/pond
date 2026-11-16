@@ -128,7 +128,6 @@ pond-select:not(:defined) {
   letter-spacing: var(--pond-font-tracking-normal);
 }
 
-
 .pond-space-ladder {
   display: grid;
   gap: var(--pond-space-2);
