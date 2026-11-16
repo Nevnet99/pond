@@ -7,6 +7,9 @@ import type { PondAppearance } from '../shared/appearance.js'
  * @status stable
  * @since 0.0.0
  *
+ * Photos and illustrations. Prefer Tile for noun squares, Logo for brand marks,
+ * Object for content-type glyphs.
+ *
  * @csspart root — Figure wrapper when captioned, otherwise the image.
  * @csspart image — The rendered `img`.
  * @csspart caption — Optional caption.

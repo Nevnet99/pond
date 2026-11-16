@@ -9,8 +9,10 @@ export type PondTileSize = 'sm' | 'md' | 'lg'
  * @status stable
  * @since 0.0.0
  *
- * @slot — Label or nested media (icon / image).
+ * Compact picker/grid nouns. Prefer Image for photos, Object for inline type
+ * cues, Logo for brand marks.
  *
+ * @slot — Label or nested media (icon / image).
  * @csspart root — Tile surface.
  */
 @customElement('pond-tile')
