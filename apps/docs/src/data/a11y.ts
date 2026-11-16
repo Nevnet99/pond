@@ -895,7 +895,11 @@ const catalog: Record<string, A11yEntry> = {
   text: {
     summary: 'Semantic `<p>` in the shadow tree for body copy.',
     criteria: [labels('Paragraph semantics for body text.'), contrast()],
-    notes: ['Plain mode: no Pond visual CSS.']
+    notes: ['Plain mode: no Pond visual CSS.'],
+    limitations: [
+      'Plain mode: consumer owns font size, weight, and contrast.',
+      'Muted color alone is not enough for critical instructions — keep the wording clear.'
+    ]
   },
   heading: {
     summary:
@@ -911,6 +915,10 @@ const catalog: Record<string, A11yEntry> = {
         title: 'Headings and Labels',
         how: 'Do not skip levels for styling — use `size`.'
       }
+    ],
+    limitations: [
+      'Skipping `level` values for visual size breaks the outline for AT — use `size` instead.',
+      'Plain mode: consumer owns type CSS; keep a real heading element in the tree.'
     ]
   },
   box: {
@@ -922,7 +930,11 @@ const catalog: Record<string, A11yEntry> = {
         how: 'No implicit control role; do not put click handlers on Box alone.'
       }
     ],
-    notes: ['Plain mode: you own spacing and paint.']
+    notes: ['Plain mode: you own spacing and paint.'],
+    limitations: [
+      'Box is not a control — click/keyboard handlers belong on Button or Link.',
+      'Plain mode: consumer owns spacing and paint (`display: contents`).'
+    ]
   },
   stack: {
     summary: 'Presentational vertical flex layout.',
@@ -933,7 +945,11 @@ const catalog: Record<string, A11yEntry> = {
         how: 'DOM order should match reading order of stacked children.'
       }
     ],
-    notes: ['Plain mode strips flex chrome.']
+    notes: ['Plain mode strips flex chrome.'],
+    limitations: [
+      'Visual reordering against DOM order confuses keyboard and SR reading order.',
+      'Plain mode: consumer owns flex/gap CSS.'
+    ]
   },
   inline: {
     summary: 'Presentational horizontal flex layout.',
@@ -943,6 +959,10 @@ const catalog: Record<string, A11yEntry> = {
         title: 'Meaningful Sequence',
         how: 'Keep interactive children keyboard-reachable in DOM order.'
       }
+    ],
+    limitations: [
+      'Overflowing nowrap rows can hide controls off-screen — prefer `wrap` on small viewports.',
+      'Plain mode: consumer owns flex CSS.'
     ]
   },
   flex: {

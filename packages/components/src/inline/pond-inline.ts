@@ -17,6 +17,10 @@ export type PondInlineJustify =
  * @status stable
  * @since 0.0.0
  *
+ * Toolbars and chip rows. Prefer Stack for columns; Flex for reverse /
+ * space-evenly; Grid for equal-width matrices.
+ *
+ * @slot — Row children (DOM order = tab order).
  * @csspart inline — The flex row container.
  */
 @customElement('pond-inline')

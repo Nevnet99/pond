@@ -8,48 +8,96 @@ import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
-Body copy for product UI. Sizes map to the type scale (`xs`–`xl`).
+Body copy for product UI. Sizes map to the type scale (`xs`–`xl`). Prefer [Heading](/primitives/heading/) for outline titles and [Metric text](/components/metric-text/) for short KPIs. `appearance="plain"` strips Pond type CSS — you own font size and color.
 
 <ComponentTabs>
   <Fragment slot="examples">
+    <PondDemo label="Default (md body)">
+      <pond-text>
+        Pond ships a nine-step type scale. Body copy usually sits on md.
+      </pond-text>
+    </PondDemo>
+
+    <p>Pick a step for the job — caption, helper, body, or lead — not a style sampler.</p>
+
     <PondDemo label="Type scale">
-      <div class="pond-demo__stack">
+      <pond-stack gap="2">
         <pond-text size="xs">xs — captions, meta, timestamps</pond-text>
         <pond-text size="sm">sm — secondary body, helpers</pond-text>
         <pond-text size="md">md — default body copy</pond-text>
         <pond-text size="lg">lg — lead / intro paragraphs</pond-text>
-        <pond-text size="xl">xl — compact title-as-text</pond-text>
-        <pond-text size="sm" muted>
-          Muted helper on the sm step
-        </pond-text>
-      </div>
+        <pond-text size="xl">xl — compact title-as-text (not a heading)</pond-text>
+      </pond-stack>
+    </PondDemo>
+
+    <PondDemo label="Muted helper">
+      <pond-text size="sm" muted>
+        Helper copy on the sm step — secondary to the field label.
+      </pond-text>
+    </PondDemo>
+
+    <PondDemo label="Plain / reset">
+      <pond-text appearance="plain">Unstyled text — you own type CSS</pond-text>
     </PondDemo>
   </Fragment>
 
   <Fragment slot="code">
 
 ```html
-<pond-text size="xs">Caption</pond-text>
-<pond-text size="sm" muted>Helper</pond-text>
 <pond-text>Body (md)</pond-text>
+<pond-text size="sm" muted>Helper</pond-text>
 <pond-text size="lg">Lead paragraph</pond-text>
-<pond-text size="xl">Compact title-as-text</pond-text>
+<pond-text appearance="plain">Unstyled</pond-text>
 ```
+
+### API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `size` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` | Body scale step |
+| `muted` | `boolean` | `false` | Muted foreground (ignored when plain) |
+| `appearance` | `'default' \| 'plain'` | `'default'` | `plain` strips Pond visual CSS |
+
+**Slots:** default — text content (may include inline [Link](/components/link/)).
+
+**CSS parts:** `text` — semantic `<p>` in the shadow tree.
+
+**Events:** none (presentational).
 
   </Fragment>
 
   <Fragment slot="usage">
 
+### Purpose
 
-Use for paragraphs and product copy. Prefer Heading for outline titles. See [Typography](/theming/typography/).
+Text is paragraph body copy. It is **not** a document outline ([Heading](/primitives/heading/)) and **not** a numeric KPI face ([Metric text](/components/metric-text/)).
+
+### Anatomy
+
+1. **Host** — `pond-text`
+2. **Paragraph** (`::part(text)`) — native `<p>`
+3. **Content** — default slot
+
+### Content guidelines
+
+- Sentence case for product UI
+- Cap long-form measure (~60–75ch) on reading columns
+- Use `muted` for helpers secondary to a label — not as the only instruction
+- See [Typography](/theming/typography/)
+
+### Happy path vs plain
+
+Default ships scale step, weight, line-height, and color. `appearance="plain"` unwraps — **you** own type CSS; keep real paragraph semantics via the slot or your own markup.
 
     <DosDonts component="text" />
+
+**Related:** [Heading](/primitives/heading/) · [Metric text](/components/metric-text/) · [Link](/components/link/) (inline in prose)
 
   </Fragment>
 
   <Fragment slot="changelog">
 
-Unreleased — body sizes `xs`–`xl` on the nine-step scale.
+Unreleased — Phase 9 docs (purpose, anatomy, API, content, patterns); no API break.
 
   </Fragment>
 
@@ -59,7 +107,15 @@ Unreleased — body sizes `xs`–`xl` on the nine-step scale.
 
   <Fragment slot="patterns">
 
-None yet.
+**Inline link in prose** — wrap Link inside Text so size/line-height inherit.
+
+```html
+<pond-text>
+  See the <pond-link href="/getting-started/fork/">fork guide</pond-link>.
+</pond-text>
+```
+
+**Prefer Heading for titles** — if the string belongs in the page outline, use [Heading](/primitives/heading/), not a large Text size.
 
   </Fragment>
 </ComponentTabs>

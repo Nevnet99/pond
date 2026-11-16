@@ -8,15 +8,26 @@ import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
-Generic surface for padding and background. Prefer Stack / Inline for arranging children.
+Padded surface for grouping content. Prefer [Stack](/primitives/stack/) or [Inline](/primitives/inline/) to arrange children — Box only frames. Reach for [Flex](/components/flex/) / [Grid](/components/grid/) when you need reverse, wrap, or columns. `appearance="plain"` strips Pond visuals — you own spacing and paint.
 
 <ComponentTabs>
   <Fragment slot="examples">
-    <PondDemo label="Padding + background">
+    <PondDemo label="Default (surface + padding)">
+      <pond-box padding="4" background="surface">Surface · padding 4</pond-box>
+    </PondDemo>
+
+    <p>Pick a background intent per region — not a nested sampler.</p>
+
+    <PondDemo label="Backgrounds">
       <pond-stack gap="3">
-        <pond-box padding="4" background="surface">Surface · padding 4</pond-box>
-        <pond-box padding="6" background="subtle">Subtle · padding 6</pond-box>
+        <pond-box padding="4" background="canvas">Canvas</pond-box>
+        <pond-box padding="4" background="surface">Surface</pond-box>
+        <pond-box padding="4" background="subtle">Subtle</pond-box>
       </pond-stack>
+    </PondDemo>
+
+    <PondDemo label="Plain / reset">
+      <pond-box appearance="plain" padding="4">Unstyled wrapper</pond-box>
     </PondDemo>
   </Fragment>
 
@@ -27,20 +38,53 @@ Generic surface for padding and background. Prefer Stack / Inline for arranging 
 <pond-box appearance="plain">Unstyled wrapper</pond-box>
 ```
 
+### API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `padding` | `'0' \| '1' \| '2' \| '3' \| '4' \| '6' \| '8'` | `'0'` | Uniform padding from the space scale |
+| `background` | `'transparent' \| 'canvas' \| 'surface' \| 'subtle'` | `'transparent'` | Background token |
+| `appearance` | `'default' \| 'plain'` | `'default'` | `plain` strips Pond visual CSS (`display: contents`) |
+
+**Slots:** default — box content.
+
+**CSS parts:** `box` — inner layout element.
+
+**Events:** none (presentational).
+
   </Fragment>
 
   <Fragment slot="usage">
 
+### Purpose
 
-Use when you need a padded region or background. **Don't** use for vertical rhythm alone — use Stack. Prefer one background intent per region.
+Box is a surface and padding shell. It is **not** a flex/grid layout and **not** an interactive control — put actions on [Button](/components/button/) or [Link](/components/link/).
+
+### Anatomy
+
+1. **Host** — `pond-box`
+2. **Surface** (`::part(box)`) — padded background region
+3. **Content** — default slot
+
+### Content guidelines
+
+- Keep copy short inside decorative boxes; long prose belongs in [Text](/primitives/text/)
+- One background intent per region
+- Do not use Box alone as a click target
+
+### Happy path vs plain
+
+Default applies padding tokens, background tokens, radius, and foreground. `appearance="plain"` unwraps to `display: contents` — **you** own spacing and paint; slot content and semantics stay.
 
     <DosDonts component="box" />
+
+**Related:** [Stack](/primitives/stack/) (vertical rhythm) · [Inline](/primitives/inline/) (rows) · [Flex](/components/flex/) / [Grid](/components/grid/) (richer layout) · [Bleed](/components/bleed/) (negative margins out of a padded Box)
 
   </Fragment>
 
   <Fragment slot="changelog">
 
-Unreleased — padding scale `0–8`, backgrounds transparent / canvas / surface / subtle.
+Unreleased — Phase 9 docs (purpose, anatomy, API, content, patterns); no API break.
 
   </Fragment>
 
@@ -50,7 +94,18 @@ Unreleased — padding scale `0–8`, backgrounds transparent / canvas / surface
 
   <Fragment slot="patterns">
 
-Compose with Stack and Inline for page structure.
+**Section frame** — Box + Stack for a padded block with vertical rhythm.
+
+```html
+<pond-box padding="6" background="surface">
+  <pond-stack gap="3">
+    <pond-heading level="3">Section</pond-heading>
+    <pond-text>Supporting copy.</pond-text>
+  </pond-stack>
+</pond-box>
+```
+
+**Prefer Stack / Inline for arrangement** — if you only need gap between children, use [Stack](/primitives/stack/) or [Inline](/primitives/inline/), not nested Boxes.
 
   </Fragment>
 </ComponentTabs>

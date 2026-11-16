@@ -8,30 +8,41 @@ import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
-Page and section titles. `level` sets h1–h6; visual size defaults from level and can be overridden with `size`.
+Page and section titles. `level` sets `h1`–`h6`; visual size defaults from level and can be overridden with `size`. Prefer [Text](/primitives/text/) for body copy and [Metric text](/components/metric-text/) for KPIs. `appearance="plain"` strips Pond type CSS — you own font size; keep a real heading element.
 
 <ComponentTabs>
   <Fragment slot="examples">
     <PondDemo label="Default sizes by level">
-      <div class="pond-demo__stack">
+      <pond-stack gap="3">
         <pond-heading level="1">h1 · 5xl — page title</pond-heading>
         <pond-heading level="2">h2 · 4xl — section</pond-heading>
         <pond-heading level="3">h3 · 3xl — subsection</pond-heading>
         <pond-heading level="4">h4 · 2xl</pond-heading>
         <pond-heading level="5">h5 · xl</pond-heading>
         <pond-heading level="6">h6 · lg</pond-heading>
-      </div>
+      </pond-stack>
     </PondDemo>
 
-    <PondDemo label="Level vs size (don’t skip levels for styling)">
-      <div class="pond-demo__stack">
+    <p>
+      Don’t skip levels for styling — change <code>size</code> instead so the
+      outline stays honest.
+    </p>
+
+    <PondDemo label="Level vs size">
+      <pond-stack gap="3">
         <pond-heading level="2" size="lg">
           h2 at lg — smaller look, same outline level
         </pond-heading>
         <pond-heading level="3" size="4xl">
           h3 at 4xl — emphasize without skipping levels
         </pond-heading>
-      </div>
+      </pond-stack>
+    </PondDemo>
+
+    <PondDemo label="Plain / reset">
+      <pond-heading level="2" appearance="plain"
+        >Unstyled heading — you own type CSS</pond-heading
+      >
     </PondDemo>
   </Fragment>
 
@@ -41,22 +52,57 @@ Page and section titles. `level` sets h1–h6; visual size defaults from level a
 <pond-heading level="1">Page title</pond-heading>
 <pond-heading level="2">Section</pond-heading>
 <pond-heading level="2" size="lg">Same level, smaller type</pond-heading>
+<pond-heading level="2" appearance="plain">Unstyled</pond-heading>
 ```
+
+### API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `level` | `1 \| 2 \| 3 \| 4 \| 5 \| 6` | `2` | Maps to native `h1`–`h6` |
+| `size` | type scale step \| omitted | from `level` | Visual override; omit to use level defaults (h1→5xl … h6→lg) |
+| `appearance` | `'default' \| 'plain'` | `'default'` | `plain` strips Pond visual CSS |
+
+**Slots:** default — heading text.
+
+**CSS parts:** `heading` — native `h1`–`h6`.
+
+**Events:** none (presentational).
 
   </Fragment>
 
   <Fragment slot="usage">
 
+### Purpose
 
-One `level="1"` per view. **Don't** skip levels for styling — use `size`. See [Typography](/theming/typography/).
+Heading owns the **document outline**. It is **not** body copy ([Text](/primitives/text/)) and **not** a KPI numeral ([Metric text](/components/metric-text/)).
+
+### Anatomy
+
+1. **Host** — `pond-heading`
+2. **Heading** (`::part(heading)`) — real `h1`–`h6`
+3. **Label** — default slot
+
+### Content guidelines
+
+- One `level="1"` per view
+- Sentence case unless the product brand requires otherwise
+- Never skip levels only to get a visual size — use `size`
+- See [Typography](/theming/typography/)
+
+### Happy path vs plain
+
+Default ships display face, weight, tracking, and level→size mapping. `appearance="plain"` unwraps paint — the native heading element remains; **you** own type CSS.
 
     <DosDonts component="heading" />
+
+**Related:** [Text](/primitives/text/) · [Metric text](/components/metric-text/) · [Page header](/components/page-header/) for app chrome titles
 
   </Fragment>
 
   <Fragment slot="changelog">
 
-Unreleased — level→scale defaults; optional `size` override.
+Unreleased — Phase 9 docs (purpose, anatomy, API, content, patterns); no API break.
 
   </Fragment>
 
@@ -66,7 +112,16 @@ Unreleased — level→scale defaults; optional `size` override.
 
   <Fragment slot="patterns">
 
-None yet.
+**Section with body** — Heading then Text in a Stack.
+
+```html
+<pond-stack gap="2">
+  <pond-heading level="2">Billing</pond-heading>
+  <pond-text>Invoices appear here after your first charge.</pond-text>
+</pond-stack>
+```
+
+**Prefer Text for non-outline titles** — compact “title-as-text” that must not enter the outline belongs on [Text](/primitives/text/) (`size="xl"`), not a fake heading.
 
   </Fragment>
 </ComponentTabs>

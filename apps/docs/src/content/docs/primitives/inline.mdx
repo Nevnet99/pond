@@ -8,15 +8,40 @@ import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
-Lays out children in a row. Use `wrap` for dense toolbars that reflow.
+Horizontal row with tokenized gap. Toolbars, chip rows, and sibling actions. Prefer [Stack](/primitives/stack/) for vertical order; [Flex](/components/flex/) when you need reverse or space-evenly; [Grid](/components/grid/) for equal columns. `appearance="plain"` strips flex chrome — you own layout CSS.
 
 <ComponentTabs>
   <Fragment slot="examples">
-    <PondDemo label="Actions">
+    <PondDemo label="Default (actions)">
       <pond-inline gap="2">
         <pond-button variant="primary">Save</pond-button>
         <pond-button variant="secondary">Cancel</pond-button>
         <pond-button variant="subtle">More</pond-button>
+      </pond-inline>
+    </PondDemo>
+
+    <p>Use <code>wrap</code> when the row must reflow instead of overflowing.</p>
+
+    <PondDemo label="Wrap">
+      <pond-inline gap="2" wrap style="max-width: 14rem">
+        <pond-button variant="subtle">Alpha</pond-button>
+        <pond-button variant="subtle">Beta</pond-button>
+        <pond-button variant="subtle">Gamma</pond-button>
+        <pond-button variant="subtle">Delta</pond-button>
+      </pond-inline>
+    </PondDemo>
+
+    <PondDemo label="Justify between">
+      <pond-inline gap="3" justify="between" style="width: 100%">
+        <pond-text>Filters</pond-text>
+        <pond-button variant="primary">Apply</pond-button>
+      </pond-inline>
+    </PondDemo>
+
+    <PondDemo label="Plain / reset">
+      <pond-inline appearance="plain" gap="2">
+        <pond-button appearance="plain">A</pond-button>
+        <pond-button appearance="plain">B</pond-button>
       </pond-inline>
     </PondDemo>
   </Fragment>
@@ -28,22 +53,59 @@ Lays out children in a row. Use `wrap` for dense toolbars that reflow.
   <pond-button variant="primary">Save</pond-button>
   <pond-button variant="secondary">Cancel</pond-button>
 </pond-inline>
+<pond-inline gap="2" wrap>…</pond-inline>
+<pond-inline appearance="plain">…</pond-inline>
 ```
+
+### API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `gap` | space scale (`'0'`–`'12'`) | `'2'` | Horizontal gap between children |
+| `align` | `'start' \| 'center' \| 'end' \| 'baseline'` | `'center'` | Cross-axis alignment |
+| `justify` | `'start' \| 'center' \| 'end' \| 'between' \| 'around'` | `'start'` | Main-axis distribution |
+| `wrap` | `boolean` | `false` | Allow children to wrap onto new rows |
+| `appearance` | `'default' \| 'plain'` | `'default'` | `plain` strips flex chrome |
+
+**Slots:** default — row children (DOM order = tab/reading order).
+
+**CSS parts:** `inline` — flex row container.
+
+**Events:** none (presentational).
 
   </Fragment>
 
   <Fragment slot="usage">
 
+### Purpose
 
-Toolbars, chip rows, and sibling actions. Prefer Stack when order is vertical.
+Inline lays out a **row** of related controls or chips. It is **not** page structure ([Stack](/primitives/stack/) / [Box](/primitives/box/)) and **not** a multi-column matrix ([Grid](/components/grid/)).
+
+### Anatomy
+
+1. **Host** — `pond-inline`
+2. **Row** (`::part(inline)`) — flex row + gap
+3. **Children** — default slot
+
+### Content guidelines
+
+- Keep interactive children keyboard-reachable in DOM order
+- Prefer `wrap` over horizontal scroll for dense toolbars on small screens
+- One primary action per row when the row is a decision bar
+
+### Happy path vs plain
+
+Default ships row flex, gap, align, and justify. `appearance="plain"` unwraps — **you** own flex CSS; behavior of slotted controls stays.
 
     <DosDonts component="inline" />
+
+**Related:** [Stack](/primitives/stack/) (column) · [Flex](/components/flex/) (direction/reverse/evenly) · [Box](/primitives/box/) (surface) · [Grid](/components/grid/) (columns)
 
   </Fragment>
 
   <Fragment slot="changelog">
 
-Unreleased — gap, align, justify, wrap.
+Unreleased — Phase 9 docs (purpose, anatomy, API, content, patterns); no API break.
 
   </Fragment>
 
@@ -53,7 +115,16 @@ Unreleased — gap, align, justify, wrap.
 
   <Fragment slot="patterns">
 
-Button groups; form field + helper on one line.
+**Button group** — primary + secondary on one row.
+
+```html
+<pond-inline gap="2">
+  <pond-button variant="primary">Publish</pond-button>
+  <pond-button variant="secondary">Cancel</pond-button>
+</pond-inline>
+```
+
+**Prefer Stack for forms** — field lists are vertical; use [Stack](/primitives/stack/), and nest Inline only for the action row.
 
   </Fragment>
 </ComponentTabs>
