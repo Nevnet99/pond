@@ -371,11 +371,13 @@ const catalog: Record<string, DosDontsEntry> = {
   panel: {
     dos: [
       'Place Panel in the Page panel slot for contextual side content',
-      'Use heading (h2) for the panel title; keep page title in Page header'
+      'Use heading (h2) for the panel title; keep page title in Page header',
+      'Keep filters / inspectors / secondary actions here — not the main story'
     ],
     donts: [
       'Don’t use Panel as a second page chrome shell',
-      'Don’t put the primary reading column inside Panel'
+      'Don’t put the primary reading column inside Panel',
+      'Don’t set conflicting titles on both heading property and heading slot'
     ]
   },
   'side-nav': {

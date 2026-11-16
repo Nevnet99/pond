@@ -681,7 +681,13 @@ const catalog: Record<string, A11yEntry> = {
         how: 'Header / body / footer order is preserved; empty regions collapse.'
       }
     ],
-    notes: ['Plain mode: you own structure and paint.']
+    notes: ['Plain mode: you own structure and paint.'],
+    limitations: [
+      '`aria-labelledby` is wired only when the `heading` property renders the built-in `h2` — if you use the `heading` slot, label the section yourself.',
+      'Do not promote Panel to the page title; keep a single page `h1` in Page header.',
+      'Empty header/footer collapse — avoid empty decorative wrappers that keep regions exposed.',
+      'Plain mode: consumer owns structure and paint.'
+    ]
   },
   'side-nav': {
     summary:
