@@ -645,7 +645,8 @@ const catalog: Record<string, DosDontsEntry> = {
     ],
     donts: [
       'Don’t reach for Flex when Stack or Inline already fits',
-      'Don’t use Flex to fake tabular data — prefer Table'
+      'Don’t use Flex to fake tabular data — prefer Table',
+      'Don’t use Flex for equal-width column grids — prefer Grid'
     ]
   },
   grid: {
@@ -655,17 +656,19 @@ const catalog: Record<string, DosDontsEntry> = {
     ],
     donts: [
       'Don’t use Grid for linear reading stacks — prefer Stack',
-      'Don’t pack interactive controls so dense they fail hit targets'
+      'Don’t pack interactive controls so dense they fail hit targets',
+      'Don’t use Grid for a single toolbar row — prefer Inline'
     ]
   },
   bleed: {
     dos: [
-      'Pull media flush with a padded parent',
+      'Pull media flush with a padded parent (often a Box)',
       'Prefer token steps over ad-hoc negative margins'
     ],
     donts: [
       'Don’t bleed interactive chrome off-screen on small viewports',
-      'Don’t nest bleeds that cancel each other into confusion'
+      'Don’t nest bleeds that cancel each other into confusion',
+      'Don’t use Bleed as a general spacer — prefer Stack / Box padding'
     ]
   },
   'metric-text': {

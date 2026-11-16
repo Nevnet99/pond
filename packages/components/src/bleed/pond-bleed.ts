@@ -10,6 +10,10 @@ export type PondBleedSpace = PondSpace
  * @status stable
  * @since 0.0.0
  *
+ * Pull media flush with a padded Box. Not a general spacer — prefer Stack gap
+ * or Box padding for ordinary inset.
+ *
+ * @slot — Content that should extend past parent padding.
  * @csspart root — Bleed wrapper.
  */
 @customElement('pond-bleed')

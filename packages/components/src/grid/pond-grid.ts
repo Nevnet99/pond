@@ -10,6 +10,10 @@ export type PondGridGap = PondSpace
  * @status stable
  * @since 0.0.0
  *
+ * Equal-width columns for tile grids and field matrices. Prefer Stack for
+ * linear reading; Inline for a single toolbar row.
+ *
+ * @slot — Grid children.
  * @csspart root — Grid container.
  */
 @customElement('pond-grid')
