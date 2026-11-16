@@ -236,6 +236,16 @@ const catalog: Record<string, DosDontsEntry> = {
       'Don’t build reactions or a live editor here'
     ]
   },
+  'dynamic-table': {
+    dos: [
+      'Use for client-side sort + pagination',
+      'Keep page size small enough for readable pages'
+    ],
+    donts: [
+      'Don’t treat this as a remote/async data grid yet',
+      'Don’t add row reorder in this phase'
+    ]
+  },
   menu: {
     dos: ['Group related actions', 'Support arrow-key movement between items'],
     donts: [
