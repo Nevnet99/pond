@@ -358,6 +358,17 @@ const catalog: Record<string, A11yEntry> = {
       }
     ]
   },
+  tile: {
+    summary: 'Noun tile; use `label` when the slot is visual-only.',
+    criteria: [
+      labels('`role="img"` + `aria-label` when `label` is set.'),
+      {
+        id: '1.1.1',
+        title: 'Non-text Content',
+        how: 'Name icon-only tiles via `label`.'
+      }
+    ]
+  },
   menu: {
     summary:
       'Menu trigger with `aria-haspopup` / `aria-expanded`; items use menu roles.',
