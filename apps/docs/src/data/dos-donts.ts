@@ -259,11 +259,13 @@ const catalog: Record<string, DosDontsEntry> = {
   comment: {
     dos: [
       'Show author and relative time clearly',
-      'Keep actions in the actions slot'
+      'Keep actions in the actions slot',
+      'Name every slotted action (Reply, Edit)'
     ],
     donts: [
       'Don’t nest Comment inside Comment for threads in this phase',
-      'Don’t build reactions or a live editor here'
+      'Don’t build reactions or a live editor here',
+      'Don’t leave author empty when the speaker matters'
     ]
   },
   'dynamic-table': {

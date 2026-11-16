@@ -100,15 +100,19 @@ export class PondComment extends LitElement {
     }
   `
 
+  /** Visual reset — `plain` strips Pond chrome. */
   @property({ reflect: true })
   appearance: PondAppearance = 'default'
 
+  /** Visible author name shown in the header. */
   @property()
   author = ''
 
+  /** Timestamp or secondary meta line under the author. */
   @property()
   meta = ''
 
+  /** Initials for the default Avatar; falls back to first two chars of `author`. */
   @property({ attribute: 'avatar-initials' })
   avatarInitials = ''
 
