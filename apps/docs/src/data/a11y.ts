@@ -488,7 +488,16 @@ const catalog: Record<string, A11yEntry> = {
         id: '1.3.1',
         title: 'Info and Relationships',
         how: 'Header / body / actions order is preserved.'
-      }
+      },
+      focus('Slotted actions must expose their own focus paint.')
+    ],
+    notes: [
+      'Default Avatar uses initials from `avatar-initials` or `author` — override the avatar slot for images with proper names.'
+    ],
+    limitations: [
+      'No thread semantics — nested Comments are not a tree; compose siblings and convey hierarchy in layout if needed.',
+      'Actions are consumer-owned; name every control (do not rely on icon-only without `aria-label`).',
+      'Plain mode: consumer owns chrome, focus paint on slotted controls, and contrast.'
     ]
   },
   'dynamic-table': {

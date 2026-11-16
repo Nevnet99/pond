@@ -8,14 +8,38 @@ import DosDonts from '../../../components/DosDonts.astro'
 import A11ySection from '../../../components/A11ySection.astro'
 import PondDemo from '../../../components/PondDemo.astro'
 
-One comment — no threads, reactions, or live editor in this phase.
+One discussion item — avatar, author/meta, body, optional actions. Not a thread, reaction strip, or live editor in this phase. Compose siblings for replies. `appearance="plain"` strips Pond chrome — you own border, spacing, and contrast.
 
 <ComponentTabs>
   <Fragment slot="examples">
+    <PondDemo label="Default">
+      <pond-comment author="Ada Lovelace" meta="2 hours ago" style="max-width: 22rem">
+        <pond-text size="sm">Shipping the chart tomorrow — LGTM on the slice.</pond-text>
+      </pond-comment>
+    </PondDemo>
+
+    <p>
+      Put reply / more actions in the <code>actions</code> slot. Keep author identity
+      in <code>author</code> / <code>meta</code> (or override <code>avatar</code>).
+    </p>
+
     <PondDemo label="With actions">
       <pond-comment author="Ada Lovelace" meta="2 hours ago" style="max-width: 22rem">
         <pond-text size="sm">Shipping the chart tomorrow — LGTM on the slice.</pond-text>
         <pond-button slot="actions" variant="subtle">Reply</pond-button>
+      </pond-comment>
+    </PondDemo>
+
+    <PondDemo label="Custom avatar">
+      <pond-comment author="Grace Hopper" meta="Yesterday" style="max-width: 22rem">
+        <pond-avatar slot="avatar" initials="GH" size="md"></pond-avatar>
+        <pond-text size="sm">Approved the naming pass.</pond-text>
+      </pond-comment>
+    </PondDemo>
+
+    <PondDemo label="Plain / reset">
+      <pond-comment appearance="plain" author="Alan" meta="Just now">
+        <span>Unstyled shell — you own chrome.</span>
       </pond-comment>
     </PondDemo>
   </Fragment>
@@ -25,23 +49,60 @@ One comment — no threads, reactions, or live editor in this phase.
 ```html
 <pond-comment author="Ada Lovelace" meta="2 hours ago">
   <p>Body copy</p>
-  <pond-button slot="actions">Reply</pond-button>
+  <pond-button slot="actions" variant="subtle">Reply</pond-button>
 </pond-comment>
 ```
+
+### API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `author` | `string` | `''` | Visible author name |
+| `meta` | `string` | `''` | Timestamp or secondary meta line |
+| `avatar-initials` | `string` | `''` | Initials for default Avatar (falls back to first two of `author`) |
+| `appearance` | `'default' \| 'plain'` | `'default'` | `plain` strips Pond visual CSS |
+
+**Slots:** default — body; `avatar` — overrides default Avatar; `actions` — footer actions.
+
+**CSS parts:** `root`, `header`, `identity`, `author`, `meta`, `body`, `actions`.
+
+**Events:** none from Comment itself — listen on slotted actions.
 
   </Fragment>
 
   <Fragment slot="usage">
 
-Compose replies as sibling Comments — do not nest Comment inside Comment for threads.
+### Purpose
+
+Render a single discussion item in a feed or review. Not for nested threads (compose siblings), reactions, or an inline editor.
+
+### Anatomy
+
+1. **Root** (`::part(root)`) — `<article>` shell  
+2. **Header** (`::part(header)`) — avatar + identity  
+3. **Author / meta** (`::part(author)`, `::part(meta)`)  
+4. **Body** (`::part(body)`) — default slot  
+5. **Actions** (`::part(actions)`) — `actions` slot (hidden when empty)
+
+### Content guidelines
+
+- Author is a person or system name; meta is relative or absolute time
+- Body is the comment text — keep actions labeled verbs (“Reply”, “Edit”)
+- Do not nest Comment inside Comment for threads in this phase
+
+### Happy path vs plain
+
+Default ships border, padding, type, and Avatar. Plain keeps article structure and slots — **you** own chrome.
 
     <DosDonts component="comment" />
+
+**Related:** [Avatar](/components/avatar/) · [Button](/components/button/) · [Flag](/components/flag/) (transient feedback, not discussion)
 
   </Fragment>
 
   <Fragment slot="changelog">
 
-Unreleased — single discussion item shell.
+Unreleased — Phase 9 docs (purpose, anatomy, API, content, patterns); API unchanged.
 
   </Fragment>
 
@@ -51,7 +112,21 @@ Unreleased — single discussion item shell.
 
   <Fragment slot="patterns">
 
-Override the avatar slot when you need a custom Avatar size or image.
+**Reply as a sibling** — render a second Comment under the first; do not nest.
+
+```html
+<pond-stack gap="3">
+  <pond-comment author="Ada" meta="2 hours ago">
+    <p>Looks good.</p>
+    <pond-button slot="actions" variant="subtle">Reply</pond-button>
+  </pond-comment>
+  <pond-comment author="Grace" meta="1 hour ago">
+    <p>Agreed — ship it.</p>
+  </pond-comment>
+</pond-stack>
+```
+
+**Prefer Flag** for short-lived system feedback; Comment is for human discussion items.
 
   </Fragment>
 </ComponentTabs>
