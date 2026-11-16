@@ -10,6 +10,9 @@ export type PondIconSize = 'sm' | 'md' | 'lg'
  * @status stable
  * @since 0.0.0
  *
+ * UI glyphs only. Prefer Object for content types, Avatar for people, Button
+ * for icon-only actions (keep Icon decorative inside).
+ *
  * @slot — Custom SVG when `name` is empty.
  * @csspart icon — SVG root.
  */

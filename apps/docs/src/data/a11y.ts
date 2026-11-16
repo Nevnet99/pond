@@ -401,6 +401,11 @@ const catalog: Record<string, A11yEntry> = {
         title: 'Non-text Content',
         how: 'Provide `alt` that describes the image purpose.'
       }
+    ],
+    limitations: [
+      'Empty `alt` on informative images hides meaning from AT — reserve empty alt for decorative media.',
+      'Image is not a control; do not attach click handlers without a real Button/Link wrapper.',
+      'Plain mode: consumer owns radius, caption type, and contrast.'
     ]
   },
   tile: {
@@ -412,20 +417,41 @@ const catalog: Record<string, A11yEntry> = {
         title: 'Non-text Content',
         how: 'Name icon-only tiles via `label`.'
       }
+    ],
+    limitations: [
+      'Icon-only tiles without `label` have no accessible name.',
+      'Tile is presentational — wrap a real control if it must activate.',
+      'Plain mode: consumer owns the square surface.'
     ]
   },
   logo: {
     summary:
       'Brand mark; empty image `alt` when the wordmark names the brand; set `alt` / `aria-label` for image-only or linked logos.',
+    keyboard: [
+      'When `href` is set: Tab focuses the native link',
+      'Enter activates navigation',
+      'Cmd/Ctrl/middle-click open in a new context'
+    ],
     criteria: [
       {
         id: '1.1.1',
         title: 'Non-text Content',
         how: 'Provide meaningful image alt, or empty alt when the adjacent wordmark carries the name.'
       },
-      name('Linked logos expose an accessible name via wordmark text or `alt`.')
+      name(
+        'Linked logos expose an accessible name via wordmark text or `alt`.'
+      ),
+      keyboard('Linked logos use native anchor keyboard behavior.'),
+      focus(
+        'Visible `:focus-visible` ring on the linked root (or host-owned in plain mode).'
+      )
     ],
-    notes: ['Plain mode: consumer owns focus and color chrome.']
+    notes: ['Plain mode: consumer owns focus and color chrome.'],
+    limitations: [
+      'Image-only logos without `alt` (and without wordmark text) have no accessible name.',
+      'Linked `appearance="plain"` logos: consumer owns focus paint and contrast.',
+      'Logo is not for content-type glyphs — use Object or Tile.'
+    ]
   },
   object: {
     summary:
@@ -437,6 +463,11 @@ const catalog: Record<string, A11yEntry> = {
         title: 'Non-text Content',
         how: 'Name meaningful glyphs via `label`; leave unlabeled only when decorative beside visible text.'
       }
+    ],
+    limitations: [
+      'Meaningful glyphs without `label` are hidden from AT (`aria-hidden`).',
+      'Object is not a person identity control — use Avatar for faces.',
+      'Plain mode: consumer owns the glyph surface.'
     ]
   },
   'time-picker': {
@@ -846,13 +877,24 @@ const catalog: Record<string, A11yEntry> = {
         how: 'Provide an accessible name; decorative avatars should be host-hidden.'
       },
       name('`role="img"` + `aria-label`.')
+    ],
+    limitations: [
+      'Meaningful avatars without `label` have no accessible name.',
+      'Tiny avatars as the only identity cue fail in dense tables — also show a visible name.',
+      'Avatar is presentational — wrap a real control if it must activate.',
+      'Plain mode: consumer owns the circle chrome.'
     ]
   },
   'avatar-group': {
     summary: '`role="group"` with an accessible name for the collection.',
     criteria: [
       labels('Group named (e.g. “Collaborators”).'),
-      name('Overflow/count exposed when shown.')
+      name('Each Avatar should keep its own accessible name.')
+    ],
+    limitations: [
+      'No built-in overflow/`+N` count yet — long stacks can hide who is included; provide another way to list members.',
+      'Unnamed groups fall back to a generic “Avatars” label — set a meaningful `label`.',
+      'Plain mode: consumer owns overlap layout.'
     ]
   },
   icon: {
@@ -865,6 +907,11 @@ const catalog: Record<string, A11yEntry> = {
         how: 'Label meaningful icons; hide decorative ones from AT.'
       },
       name('Labelled icons expose `role="img"`.')
+    ],
+    limitations: [
+      'Icon is not a control — put `aria-label` on Button for icon-only actions; keep Icon decorative inside.',
+      'Meaningful icons without `label` are `aria-hidden` and silent to AT.',
+      'Plain mode: consumer owns glyph dimensions.'
     ]
   },
   code: {
