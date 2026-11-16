@@ -383,6 +383,16 @@ const catalog: Record<string, DosDontsEntry> = {
       'Don’t use flags for persistent page instructions'
     ]
   },
+  'flag-group': {
+    dos: [
+      'Group transient Flags in one live region',
+      'Use placement end/start for app toast corners'
+    ],
+    donts: [
+      'Don’t let the stack grow without dismissing old Flags',
+      'Don’t put persistent page instructions in a Flag group'
+    ]
+  },
   'section-message': {
     dos: ['Place near the content it explains', 'Pair tone with icon and text'],
     donts: [

@@ -623,6 +623,17 @@ const catalog: Record<string, A11yEntry> = {
       }
     ]
   },
+  'flag-group': {
+    summary: 'Region with polite `aria-live` wrapping slotted Flags.',
+    criteria: [
+      labels('Named via `label` / `aria-label` on the region.'),
+      {
+        id: '4.1.3',
+        title: 'Status Messages',
+        how: 'Stack announces updates politely; individual Flags keep status/alert roles.'
+      }
+    ]
+  },
   'section-message': {
     summary: '`role="status"` by default; `role="alert"` for danger.',
     criteria: [

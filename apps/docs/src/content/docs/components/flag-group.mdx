@@ -1,0 +1,56 @@
+---
+title: Flag group
+description: Stacked region for multiple Flags.
+---
+
+import ComponentTabs from '../../../components/ComponentTabs.astro'
+import DosDonts from '../../../components/DosDonts.astro'
+import A11ySection from '../../../components/A11ySection.astro'
+import PondDemo from '../../../components/PondDemo.astro'
+
+Flag group stacks Flags into one polite live region. Use `placement="end"` or `start` to pin a toast corner in apps.
+
+<ComponentTabs>
+  <Fragment slot="examples">
+    <PondDemo label="Stack">
+      <pond-flag-group label="Notifications">
+        <pond-flag tone="success" title="Saved">Changes stored.</pond-flag>
+        <pond-flag tone="info" title="Syncing">Pulling updates…</pond-flag>
+      </pond-flag-group>
+    </PondDemo>
+  </Fragment>
+
+  <Fragment slot="code">
+
+```html
+<pond-flag-group placement="end">
+  <pond-flag tone="success" title="Saved">Changes stored.</pond-flag>
+</pond-flag-group>
+```
+
+  </Fragment>
+
+  <Fragment slot="usage">
+
+Keep the stack short — newest on top or bottom, but don’t let it grow forever.
+
+    <DosDonts component="flag-group" />
+
+  </Fragment>
+
+  <Fragment slot="changelog">
+
+Unreleased — stacked Flags region with optional corner placement.
+
+  </Fragment>
+
+  <Fragment slot="accessibility">
+    <A11ySection component="flag-group" />
+  </Fragment>
+
+  <Fragment slot="patterns">
+
+Compose Flag children. Prefer Banner or Section message for persistent page instructions.
+
+  </Fragment>
+</ComponentTabs>
