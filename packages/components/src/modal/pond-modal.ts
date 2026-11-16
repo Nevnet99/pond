@@ -68,8 +68,13 @@ export class PondModal extends LitElement {
     }
   `
 
+  /** Visual presentation. `plain` strips Pond visual CSS on dialog parts. */
   @property({ reflect: true }) appearance: PondAppearance = 'default'
+
+  /** When true, shows the dialog + blanket and moves focus inside. */
   @property({ type: Boolean, reflect: true }) open = false
+
+  /** Dialog title — visible heading and `aria-label` on the dialog. */
   @property() title = ''
 
   @query('[part="dialog"]')

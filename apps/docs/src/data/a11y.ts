@@ -161,8 +161,13 @@ const catalog: Record<string, A11yEntry> = {
       focus(),
       name('Selected option exposed by the native control.')
     ],
+    notes: [
+      'Always set `label` — options alone are not a name.',
+      '`multiple` uses platform multi-select interaction (not a custom listbox).'
+    ],
     limitations: [
       'Platform `<select>` styling and mobile pickers vary — do not assume custom listbox keyboard maps.',
+      '`disabled` removes the control from tab order.',
       'Plain mode: consumer owns chrome, focus paint, and contrast.'
     ]
   },
@@ -302,9 +307,10 @@ const catalog: Record<string, A11yEntry> = {
       }
     ],
     limitations: [
-      'Consumers must pass a focusable trigger reference so focus can restore on close.',
+      'Focus restores to the element that was focused when `open` became true — open from a focusable trigger.',
       'Disabling Escape or blanket dismiss needs an equivalent accessible exit.',
-      'Primary actions that go pending should use Button `pending` (when shipped), not a disabled confirm that drops out of tab order.'
+      'Title is exposed as `aria-label` on the dialog; keep `title` accurate even if you restyle the heading away.',
+      'Primary actions that go pending should use Button `pending`, not a disabled confirm that drops out of tab order.'
     ]
   },
   drawer: {
