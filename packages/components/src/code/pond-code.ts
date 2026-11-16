@@ -33,6 +33,8 @@ export class PondCode extends LitElement {
         monospace
       );
       font-size: 0.9em;
+      /* Keep VRT height stable across host/CI font metric rounding */
+      line-height: 1.25;
       color: var(--pond-color-fg-default);
       background: var(--pond-color-bg-subtle, #f0f0f0);
       border-radius: var(--pond-radius-sm);
